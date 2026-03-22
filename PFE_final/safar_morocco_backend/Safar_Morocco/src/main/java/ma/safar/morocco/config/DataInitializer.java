@@ -294,7 +294,7 @@ public class DataInitializer {
                                                         eventRepository.save(ev);
                                                 });
                                         }
-                                        logger.info("✅ Event dates updated to future 2026 dates.");
+                                        logger.info("Event dates updated to future 2026 dates.");
                                 }
 
                                 /*
@@ -517,13 +517,13 @@ public class DataInitializer {
                                                                 .build());
                                         }
                                         offerRepository.saveAll(initialOffers);
-                                        logger.info("✅ Generated {} default Offers.", initialOffers.size());
+                                        logger.info("Generated {} default Offers.", initialOffers.size());
                                 }
 
-                                logger.info("✅ Data Initialization Completed Successfully");
+                                logger.info("Data Initialization Completed Successfully");
 
                         } catch (Exception e) {
-                                logger.error("❌ Error during data initialization", e);
+                                logger.error("Error during data initialization", e);
                         }
                 };
 
