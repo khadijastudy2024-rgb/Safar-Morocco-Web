@@ -4,6 +4,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { ChartConfiguration, ChartData, ChartOptions } from 'chart.js';
 import { catchError } from 'rxjs/operators';
 import { Subject, forkJoin, of } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     standalone: false,
@@ -111,6 +112,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
     constructor(
         private apiService: ApiService,
         private authService: AuthService,
+        private translate: TranslateService,
         private cd: ChangeDetectorRef
     ) { }
 
@@ -165,7 +167,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
                 labels: Object.keys(this.stats.userGrowth),
                 datasets: [{
                     data: Object.values(this.stats.userGrowth) as number[],
-                    label: 'New Travelers',
+                    label: this.translate.instant('DASHBOARD.CHARTS.USER_GROWTH_LABEL'),
                     fill: true,
                     tension: 0.4,
                     borderColor: '#4facfe',
@@ -198,7 +200,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
                 labels: Object.keys(this.stats.eventStats),
                 datasets: [{
                     data: Object.values(this.stats.eventStats) as number[],
-                    label: 'Duration (Days)',
+                    label: this.translate.instant('DASHBOARD.CHARTS.DURATION_LABEL'),
                     backgroundColor: '#43e97b',
                     borderRadius: 4,
                     barThickness: 20

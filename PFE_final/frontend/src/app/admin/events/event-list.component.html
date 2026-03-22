@@ -1,11 +1,11 @@
 <div class="admin-page-wrapper fade-in">
     <div class="d-flex justify-content-between align-items-center mb-5">
         <div>
-            <h1 class="fw-800 text-main mb-1">Event Management</h1>
-            <p class="text-muted mb-0">Curate and organize platform events</p>
+            <h1 class="fw-800 text-main mb-1">{{ 'ADMIN.EVENTS_MANAGEMENT.TITLE' | translate }}</h1>
+            <p class="text-muted mb-0">{{ 'ADMIN.EVENTS_MANAGEMENT.SUBTITLE' | translate }}</p>
         </div>
         <button class="btn btn-primary rounded-pill px-4 fw-800" (click)="openDialog()">
-            <i class="bi bi-plus-lg me-2"></i> Create Event
+            <i class="bi bi-plus-lg me-2"></i> {{ 'ADMIN.EVENTS_MANAGEMENT.CREATE_EVENT' | translate }}
         </button>
     </div>
 
@@ -14,7 +14,7 @@
             <div class="search-wrapper position-relative w-100" style="max-width: 400px;">
                 <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 opacity-50"></i>
                 <input type="text" class="form-control ps-5 rounded-pill border-light bg-light fw-600"
-                    (keyup)="applyFilter($event)" placeholder="Search events...">
+                    (keyup)="applyFilter($event)" [placeholder]="'ADMIN.EVENTS_MANAGEMENT.SEARCH_PLACEHOLDER' | translate">
             </div>
         </div>
 
@@ -23,7 +23,7 @@
 
                 <!-- Image Column -->
                 <ng-container matColumnDef="image">
-                    <th mat-header-cell *matHeaderCellDef class="ps-4"> Cover </th>
+                    <th mat-header-cell *matHeaderCellDef class="ps-4"> {{ 'ADMIN.EVENTS_MANAGEMENT.COLS.COVER' | translate }} </th>
                     <td mat-cell *matCellDef="let row" class="ps-4">
                         <img [src]="row.imageUrl" class="table-img shadow-sm" alt="event"
                             onerror="this.src='assets/placeholder.jpg'">
@@ -32,7 +32,7 @@
 
                 <!-- Title Column -->
                 <ng-container matColumnDef="title">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'ADMIN.EVENTS_MANAGEMENT.COLS.TITLE' | translate }} </th>
                     <td mat-cell *matCellDef="let row">
                         <span class="fw-800 text-main">{{row.nom}}</span>
                     </td>
@@ -40,7 +40,7 @@
 
                 <!-- Date Column -->
                 <ng-container matColumnDef="date">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Duration </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'ADMIN.EVENTS_MANAGEMENT.COLS.DURATION' | translate }} </th>
                     <td mat-cell *matCellDef="let row">
                         <div class="small fw-700 opacity-75">
                             {{row.dateDebut | date:'mediumDate'}} <i class="bi bi-arrow-right mx-1"></i> {{row.dateFin |
@@ -51,13 +51,13 @@
 
                 <!-- Location Column -->
                 <ng-container matColumnDef="location">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Venue </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'ADMIN.EVENTS_MANAGEMENT.COLS.VENUE' | translate }} </th>
                     <td mat-cell *matCellDef="let row" class="fw-600"> {{row.lieu}} </td>
                 </ng-container>
 
                 <!-- Price Column -->
                 <ng-container matColumnDef="price">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'ADMIN.EVENTS_MANAGEMENT.COLS.TYPE' | translate }} </th>
                     <td mat-cell *matCellDef="let row">
                         <span class="price-pill">{{row.typeEvenement}}</span>
                     </td>
@@ -65,7 +65,7 @@
 
                 <!-- Actions Column -->
                 <ng-container matColumnDef="actions">
-                    <th mat-header-cell *matHeaderCellDef class="pe-4 text-end"> Actions </th>
+                    <th mat-header-cell *matHeaderCellDef class="pe-4 text-end"> {{ 'ADMIN.EVENTS_MANAGEMENT.COLS.ACTIONS' | translate }} </th>
                     <td mat-cell *matCellDef="let row" class="pe-4 text-end">
                         <button class="btn btn-icon-soft me-2" (click)="openDialog(row)" title="Edit">
                             <i class="bi bi-pencil-square"></i>
@@ -83,7 +83,7 @@
                     <td class="mat-cell p-5 text-center" colspan="6">
                         <div class="opacity-50">
                             <i class="bi bi-calendar2-x fs-1"></i>
-                            <p class="mt-2">No matching events found</p>
+                            <p class="mt-2">{{ 'ADMIN.EVENTS_MANAGEMENT.NO_DATA' | translate }}</p>
                         </div>
                     </td>
                 </tr>

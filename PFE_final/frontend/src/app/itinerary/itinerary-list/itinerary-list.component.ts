@@ -57,9 +57,11 @@ export class ItineraryListComponent implements OnInit {
             },
             error: (err) => {
                 console.error('🔍 Error loading itineraries:', err);
-                this.snackBar.open('Erreur lors du chargement des itinéraires', 'Fermer', {
-                    duration: 3000
-                });
+                this.snackBar.open(
+                    this.translateService.instant('ITINERARY.NOTIFICATIONS.LOAD_ERROR'),
+                    this.translateService.instant('COMMON.CLOSE'),
+                    { duration: 3000 }
+                );
                 this.loading = false;
                 this.cdr.detectChanges();
             }
@@ -84,14 +86,11 @@ export class ItineraryListComponent implements OnInit {
         return match ? match[0] : '';
     }
 
-    getDurationUnitKey(duration: string): string {
-        if (!duration) return 'ITINERARY.NOT_SPECIFIED';
-        duration = duration.toLowerCase();
-        if (duration.includes('heures') || duration.includes('hours')) return 'ITINERARY.HOURS';
-        if (duration.includes('heure') || duration.includes('hour')) return 'ITINERARY.HOUR';
-        if (duration.includes('jours') || duration.includes('days')) return 'ITINERARY.DAYS';
-        if (duration.includes('jour') || duration.includes('day')) return 'ITINERARY.DAY';
-        return 'ITINERARY.NOT_SPECIFIED';
+    getDurationUnitKey(duree: string): string {
+        if (!duree) return '';
+        if (duree.includes('jour')) return duree.includes('s') ? 'ITINERARY.UNITS.DAYS' : 'ITINERARY.UNITS.DAY';
+        if (duree.includes('heure')) return duree.includes('s') ? 'ITINERARY.UNITS.HOURS' : 'ITINERARY.UNITS.HOUR';
+        return 'ITINERARY.UNITS.MIN';
     }
 
     formatDate(dateValue: any): Date | string {

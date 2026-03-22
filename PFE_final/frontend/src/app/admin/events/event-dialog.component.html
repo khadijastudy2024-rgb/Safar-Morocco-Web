@@ -1,24 +1,24 @@
-<h2 mat-dialog-title>{{ data.id ? 'Edit' : 'Add' }} Event</h2>
+<h2 mat-dialog-title>{{ data.id ? ('ADMIN.EVENTS_MANAGEMENT.DIALOG.EDIT_TITLE' | translate) : ('ADMIN.EVENTS_MANAGEMENT.DIALOG.ADD_TITLE' | translate) }}</h2>
 <mat-dialog-content class="dialog-content">
     <form [formGroup]="form">
         <div class="row">
             <mat-form-field appearance="outline" class="half-width">
-                <mat-label>Name</mat-label>
+                <mat-label>{{ 'ADMIN.EVENTS_MANAGEMENT.DIALOG.NAME' | translate }}</mat-label>
                 <i matPrefix class="bi bi-calendar-event input-icon"></i>
                 <input matInput formControlName="nom" placeholder="Ex: Jazz Festival">
-                <mat-error *ngIf="form.get('nom')?.hasError('required')">Name is required</mat-error>
+                <mat-error *ngIf="form.get('nom')?.hasError('required')">{{ 'ADMIN.EVENTS_MANAGEMENT.DIALOG.NAME_REQ' | translate }}</mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline" class="half-width">
-                <mat-label>Location</mat-label>
+                <mat-label>{{ 'ADMIN.EVENTS_MANAGEMENT.DIALOG.LOCATION' | translate }}</mat-label>
                 <i matPrefix class="bi bi-geo-alt input-icon"></i>
                 <input matInput formControlName="lieu" placeholder="Ex: Casablanca">
-                <mat-error *ngIf="form.get('lieu')?.hasError('required')">Location is required</mat-error>
+                <mat-error *ngIf="form.get('lieu')?.hasError('required')">{{ 'ADMIN.EVENTS_MANAGEMENT.DIALOG.LOCATION_REQ' | translate }}</mat-error>
             </mat-form-field>
         </div>
 
         <div class="row">
             <mat-form-field appearance="outline" class="half-width">
-                <mat-label>Start Date</mat-label>
+                <mat-label>{{ 'ADMIN.EVENTS_MANAGEMENT.DIALOG.START_DATE' | translate }}</mat-label>
                 <input matInput [matDatepicker]="startPicker" formControlName="dateDebut">
                 <mat-datepicker-toggle matIconSuffix [for]="startPicker">
                     <i matDatepickerToggleIcon class="bi bi-calendar-check"></i>
@@ -27,7 +27,7 @@
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="half-width">
-                <mat-label>End Date</mat-label>
+                <mat-label>{{ 'ADMIN.EVENTS_MANAGEMENT.DIALOG.END_DATE' | translate }}</mat-label>
                 <input matInput [matDatepicker]="endPicker" formControlName="dateFin">
                 <mat-datepicker-toggle matIconSuffix [for]="endPicker">
                     <i matDatepickerToggleIcon class="bi bi-calendar-x"></i>
@@ -37,10 +37,10 @@
         </div>
 
         <div class="upload-section">
-            <label>Event Image</label>
+            <label>{{ 'ADMIN.EVENTS_MANAGEMENT.DIALOG.IMAGE' | translate }}</label>
             <div class="file-upload-wrapper">
                 <button type="button" mat-stroked-button (click)="fileInput.click()" [disabled]="isUploading">
-                    <i class="bi bi-cloud-upload-fill"></i> {{ isUploading ? 'Uploading...' : 'Choose Image' }}
+                    <i class="bi bi-cloud-upload-fill"></i> {{ isUploading ? ('ADMIN.EVENTS_MANAGEMENT.DIALOG.UPLOADING' | translate) : ('ADMIN.EVENTS_MANAGEMENT.DIALOG.CHOOSE_IMAGE' | translate) }}
                 </button>
                 <input #fileInput type="file" (change)="onFileSelected($event)" style="display: none" accept="image/*">
             </div>
@@ -52,41 +52,42 @@
 
         <!-- Fallback if upload fails or manual entry needed -->
         <mat-form-field appearance="outline" class="full-width">
-            <mat-label>Image URL (Manual)</mat-label>
+            <mat-label>{{ 'ADMIN.EVENTS_MANAGEMENT.DIALOG.IMAGE_URL_MANUAL' | translate }}</mat-label>
             <i matPrefix class="bi bi-link-45deg input-icon"></i>
             <input matInput formControlName="imageUrl">
         </mat-form-field>
 
         <div class="row">
             <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Event Type</mat-label>
+                <mat-label>{{ 'ADMIN.EVENTS_MANAGEMENT.DIALOG.TYPE' | translate }}</mat-label>
                 <i matPrefix class="bi bi-tag input-icon"></i>
                 <mat-select formControlName="eventType">
                     <mat-option *ngFor="let type of eventTypes" [value]="type">
                         {{ type | titlecase }}
                     </mat-option>
                 </mat-select>
-                <mat-error *ngIf="form.get('eventType')?.hasError('required')">Event type is required</mat-error>
+                <mat-error *ngIf="form.get('eventType')?.hasError('required')">{{ 'ADMIN.EVENTS_MANAGEMENT.DIALOG.TYPE_REQ' | translate }}</mat-error>
             </mat-form-field>
         </div>
 
         <mat-form-field appearance="outline" class="full-width">
-            <mat-label>Description</mat-label>
+            <mat-label>{{ 'ADMIN.EVENTS_MANAGEMENT.DIALOG.DESCRIPTION' | translate }}</mat-label>
             <textarea matInput formControlName="description" rows="3"></textarea>
-            <mat-error *ngIf="form.get('description')?.hasError('required')">Description is required</mat-error>
+            <mat-error *ngIf="form.get('description')?.hasError('required')">{{ 'ADMIN.EVENTS_MANAGEMENT.DIALOG.DESCRIPTION_REQ' | translate }}</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
-            <mat-label>Historique (Origines &amp; Histoire)</mat-label>
+            <mat-label>{{ 'ADMIN.EVENTS_MANAGEMENT.DIALOG.HISTORY' | translate }}</mat-label>
             <i matPrefix class="bi bi-book-half input-icon"></i>
-            <textarea matInput formControlName="historique" rows="4" placeholder="Ex: Né en 2001, ce festival..."></textarea>
+            <textarea matInput formControlName="historique" rows="4" [placeholder]="'ADMIN.EVENTS_MANAGEMENT.DIALOG.HISTORY_HINT' | translate"></textarea>
         </mat-form-field>
     </form>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button mat-dialog-close>{{ 'ADMIN.EVENTS_MANAGEMENT.DIALOG.CANCEL' | translate }}</button>
     <button mat-raised-button color="primary" (click)="save()" [disabled]="form.invalid">
-        <i class="bi bi-check-lg"></i> Save
+        <i class="bi bi-check-lg"></i> {{ 'ADMIN.EVENTS_MANAGEMENT.DIALOG.SAVE' | translate }}
     </button>
 </mat-dialog-actions>
+>

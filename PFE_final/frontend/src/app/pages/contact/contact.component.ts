@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     standalone: false,
@@ -14,7 +15,8 @@ export class ContactComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
+        private translate: TranslateService
     ) { }
 
     ngOnInit(): void {
@@ -36,7 +38,9 @@ export class ContactComponent implements OnInit {
             
             // Simuler un appel API
             setTimeout(() => {
-                this.snackBar.open('Message envoyé avec succès ! Nous vous répondrons bientôt.', 'Fermer', {
+                const msg = this.translate.instant('CONTACT_PAGE.SUCCESS_MESSAGE');
+                const close = this.translate.instant('COMMON.CLOSE');
+                this.snackBar.open(msg, close, {
                     duration: 5000,
                     horizontalPosition: 'center',
                     verticalPosition: 'bottom',

@@ -13,6 +13,7 @@ import { OfferService }  from '../../core/services/offer.service';
 import { ReservationService }  from '../../core/services/reservation.service';
 import { Offer }  from '../../core/models/offer.model';
 import { ReservationDialogComponent }  from '../dialog/reservation-dialog.component';
+import { TranslateService } from '@ngx-translate/core';
 import * as L from 'leaflet';
 
 @Component({
@@ -58,7 +59,8 @@ export class DestinationDetailComponent implements OnInit, AfterViewInit {
         private dialog: MatDialog,
         private sanitizer: DomSanitizer,
         private ngZone: NgZone,
-        private cdr: ChangeDetectorRef
+        private cdr: ChangeDetectorRef,
+        private translate: TranslateService
     ) {
         // INSTANT LOAD LOGIC: Check if data was passed via state
         this.ngZone.run(() => {
@@ -116,7 +118,11 @@ export class DestinationDetailComponent implements OnInit, AfterViewInit {
                     console.error('Error loading destination:', err);
                     this.loading = false;
                     if (!this.destination) {
-                        this.snackBar.open('Failed to load destination details.', 'Close', { duration: 5000 });
+                        this.snackBar.open(
+                            this.translate.instant('DESTINATIONS.DETAIL.NOTIFICATIONS.LOAD_ERROR'),
+                            this.translate.instant('COMMON.CLOSE'),
+                            { duration: 5000 }
+                        );
                     }
                     this.cdr.detectChanges();
                 });
@@ -245,12 +251,20 @@ export class DestinationDetailComponent implements OnInit, AfterViewInit {
                 this.reviews.push(review);
                 this.newReview = { note: 5, commentaire: '' };
                 this.showReviewForm = false;
-                this.snackBar.open('Review added!', 'Close', { duration: 3000 });
+                this.snackBar.open(
+                    this.translate.instant('DESTINATIONS.DETAIL.NOTIFICATIONS.REVIEW_SUCCESS'),
+                    this.translate.instant('COMMON.CLOSE'),
+                    { duration: 3000 }
+                );
                 this.loadReviews(this.destination.id);
             },
             error: (err: any) => {
                 console.error('Error adding review:', err);
-                this.snackBar.open('Failed to add review', 'Close', { duration: 3000 });
+                this.snackBar.open(
+                    this.translate.instant('DESTINATIONS.DETAIL.NOTIFICATIONS.REVIEW_ERROR'),
+                    this.translate.instant('COMMON.CLOSE'),
+                    { duration: 3000 }
+                );
             }
         });
     }
@@ -265,7 +279,11 @@ export class DestinationDetailComponent implements OnInit, AfterViewInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 this.destination = result;
-                this.snackBar.open('Destination updated successfully', 'Close', { duration: 3000 });
+                this.snackBar.open(
+                    this.translate.instant('DESTINATIONS.DETAIL.NOTIFICATIONS.UPDATE_SUCCESS'),
+                    this.translate.instant('COMMON.CLOSE'),
+                    { duration: 3000 }
+                );
                 this.initMap();
                 this.loadWeather(); // Reload weather in case coords changed
             }
@@ -274,13 +292,21 @@ export class DestinationDetailComponent implements OnInit, AfterViewInit {
 
     deleteDestination() {
         if (!this.authService.isAdmin) return;
-        if (confirm('Are you sure you want to delete this destination? This cannot be undone.')) {
+        if (confirm(this.translate.instant('DESTINATIONS.DETAIL.NOTIFICATIONS.DELETE_CONFIRM'))) {
             this.destinationService.deleteDestination(this.destination.id).subscribe({
                 next: () => {
-                    this.snackBar.open('Destination deleted', 'Close', { duration: 3000 });
+                    this.snackBar.open(
+                        this.translate.instant('DESTINATIONS.DETAIL.NOTIFICATIONS.DELETE_SUCCESS'),
+                        this.translate.instant('COMMON.CLOSE'),
+                        { duration: 3000 }
+                    );
                     this.router.navigate(['/destinations']);
                 },
-                error: () => this.snackBar.open('Failed to delete', 'Close', { duration: 3000 })
+                error: () => this.snackBar.open(
+                    this.translate.instant('DESTINATIONS.DETAIL.NOTIFICATIONS.DELETE_ERROR'),
+                    this.translate.instant('COMMON.CLOSE'),
+                    { duration: 3000 }
+                )
             });
         }
     }
@@ -337,16 +363,28 @@ export class DestinationDetailComponent implements OnInit, AfterViewInit {
     }
 
     private uploadImage(file: File) {
-        this.snackBar.open('Uploading image...', 'Close', { duration: 2000 });
+        this.snackBar.open(
+            this.translate.instant('DESTINATIONS.DETAIL.NOTIFICATIONS.UPLOADING'),
+            this.translate.instant('COMMON.CLOSE'),
+            { duration: 2000 }
+        );
         this.apiService.uploadFile(this.destination.id, file).subscribe({
             next: (response) => {
-                this.snackBar.open('Photo added to gallery!', 'Close', { duration: 3000 });
+                this.snackBar.open(
+                    this.translate.instant('DESTINATIONS.DETAIL.NOTIFICATIONS.UPLOAD_SUCCESS'),
+                    this.translate.instant('COMMON.CLOSE'),
+                    { duration: 3000 }
+                );
                 // Reload destination to see new image
                 this.loadDestination(this.destination.id, false);
             },
             error: (err) => {
                 console.error('Upload failed:', err);
-                this.snackBar.open('Failed to upload image. Please try again.', 'Close', { duration: 5000 });
+                this.snackBar.open(
+                    this.translate.instant('DESTINATIONS.DETAIL.NOTIFICATIONS.UPLOAD_ERROR'),
+                    this.translate.instant('COMMON.CLOSE'),
+                    { duration: 5000 }
+                );
             }
         });
     }
@@ -379,7 +417,11 @@ export class DestinationDetailComponent implements OnInit, AfterViewInit {
         // Vérifier que l'utilisateur est connecté
         if (!this.authService.isLoggedIn) {
             console.log('🔍 User not logged in, redirecting to login');
-            this.snackBar.open('⚠️ Veuillez vous connecter pour planifier un voyage', 'Fermer', { duration: 5000 });
+            this.snackBar.open(
+                this.translate.instant('DESTINATIONS.DETAIL.NOTIFICATIONS.LOGIN_REQUIRED_PLAN'),
+                this.translate.instant('COMMON.CLOSE'),
+                { duration: 5000 }
+            );
             this.router.navigate(['/auth/login']);
             return;
         }
@@ -387,7 +429,11 @@ export class DestinationDetailComponent implements OnInit, AfterViewInit {
         // Vérifier que la destination existe
         if (!this.destination || !this.destination.id) {
             console.log('🔍 No destination found');
-            this.snackBar.open('Erreur: Destination non trouvée', 'Fermer', { duration: 3000 });
+            this.snackBar.open(
+                this.translate.instant('DESTINATIONS.DETAIL.NOTIFICATIONS.DEST_NOT_FOUND'),
+                this.translate.instant('COMMON.CLOSE'),
+                { duration: 3000 }
+            );
             return;
         }
 
@@ -402,13 +448,21 @@ export class DestinationDetailComponent implements OnInit, AfterViewInit {
             console.log('🔍 Navigation successful:', nav);
         }).catch(err => {
             console.error('🔍 Navigation error:', err);
-            this.snackBar.open('Erreur lors de la navigation', 'Fermer', { duration: 3000 });
+            this.snackBar.open(
+                this.translate.instant('DESTINATIONS.DETAIL.NOTIFICATIONS.NAV_ERROR'),
+                this.translate.instant('COMMON.CLOSE'),
+                { duration: 3000 }
+            );
         });
     }
 
     openReservationMenu(offer: Offer) {
         if (!this.authService.isLoggedIn) {
-            this.snackBar.open('Please log in to make a reservation.', 'Close', { duration: 5000 });
+            this.snackBar.open(
+                this.translate.instant('DESTINATIONS.DETAIL.NOTIFICATIONS.LOGIN_REQUIRED_RESERVE'),
+                this.translate.instant('COMMON.CLOSE'),
+                { duration: 5000 }
+            );
             this.router.navigate(['/auth/login']);
             return;
         }
@@ -421,7 +475,11 @@ export class DestinationDetailComponent implements OnInit, AfterViewInit {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result && result.success && result.itineraryId) {
-                this.snackBar.open('Reservation submitted! Waiting for admin approval.', 'Close', { duration: 5000 });
+                this.snackBar.open(
+                    this.translate.instant('DESTINATIONS.DETAIL.NOTIFICATIONS.RESERVATION_SUCCESS'),
+                    this.translate.instant('COMMON.CLOSE'),
+                    { duration: 5000 }
+                );
                 // Redirect user to the itinerary page where they can see their reservations and generate invoices
                 this.router.navigate(['/itineraires/detail', result.itineraryId]);
             }

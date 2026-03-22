@@ -92,7 +92,9 @@ export class ItineraryDetailComponent implements OnInit, AfterViewInit, OnDestro
                 error: (err) => {
                     console.error('Error loading itinerary:', err);
                     this.loading = false;
-                    this.snackBar.open('Erreur lors du chargement de l\'itinéraire', 'Fermer', {
+                    const msg = this.translate.instant('ITINERARY.NOTIFICATIONS.LOAD_ERROR');
+                    const close = this.translate.instant('COMMON.CLOSE');
+                    this.snackBar.open(msg, close, {
                         duration: 3000
                     });
                 }
@@ -196,14 +198,18 @@ export class ItineraryDetailComponent implements OnInit, AfterViewInit, OnDestro
         }
 
         console.log('Starting optimization...');
-        this.snackBar.open('Optimisation en cours...', 'Fermer', {
+        const optMsg = this.translate.instant('ITINERARY.NOTIFICATIONS.OPTIMIZING');
+        const close = this.translate.instant('COMMON.CLOSE');
+        this.snackBar.open(optMsg, close, {
             duration: 2000
         });
 
         this.itineraryService.optimiserItineraire(this.itinerary.id, this.itinerary.proprietaire.id).subscribe({
             next: (data) => {
                 console.log('Optimization successful:', data);
-                this.snackBar.open('Itinéraire optimisé avec succès!', 'Fermer', {
+                const successMsg = this.translate.instant('ITINERARY.NOTIFICATIONS.OPTIMIZE_SUCCESS');
+                const close = this.translate.instant('COMMON.CLOSE');
+                this.snackBar.open(successMsg, close, {
                     duration: 3000
                 });
                 // Reload itinerary to show updated data
@@ -211,7 +217,9 @@ export class ItineraryDetailComponent implements OnInit, AfterViewInit, OnDestro
             },
             error: (err) => {
                 console.error('Error optimizing itinerary:', err);
-                this.snackBar.open('Erreur lors de l\'optimisation de l\'itinéraire', 'Fermer', {
+                const errorMsg = this.translate.instant('ITINERARY.NOTIFICATIONS.OPTIMIZE_ERROR');
+                const close = this.translate.instant('COMMON.CLOSE');
+                this.snackBar.open(errorMsg, close, {
                     duration: 3000
                 });
             }
@@ -248,7 +256,9 @@ export class ItineraryDetailComponent implements OnInit, AfterViewInit, OnDestro
 
     refreshItinerary(): void {
         console.log('Refresh button clicked');
-        this.snackBar.open('Actualisation en cours...', 'Fermer', {
+        const refreshMsg = this.translate.instant('ITINERARY.NOTIFICATIONS.REFRESHING');
+        const close = this.translate.instant('COMMON.CLOSE');
+        this.snackBar.open(refreshMsg, close, {
             duration: 1000
         });
         this.loadItinerary();
@@ -275,17 +285,22 @@ export class ItineraryDetailComponent implements OnInit, AfterViewInit, OnDestro
         
         console.log('Delete itinerary clicked');
         
-        if (confirm('Êtes-vous sûr de vouloir supprimer cet itinéraire ? Cette action est irreversible.')) {
+        const confirmMsg = this.translate.instant('ITINERARY.NOTIFICATIONS.DELETE_CONFIRM');
+        if (confirm(confirmMsg)) {
             this.itineraryService.supprimerItineraire(this.itinerary.id, this.itinerary.proprietaire.id).subscribe({
                 next: () => {
-                    this.snackBar.open('Itinéraire supprimé avec succès', 'Fermer', {
+                    const delMsg = this.translate.instant('ITINERARY.NOTIFICATIONS.DELETE_SUCCESS');
+                    const close = this.translate.instant('COMMON.CLOSE');
+                    this.snackBar.open(delMsg, close, {
                         duration: 3000
                     });
                     this.router.navigate(['/itineraries']);
                 },
                 error: (err) => {
                     console.error('Error deleting itinerary:', err);
-                    this.snackBar.open('Erreur lors de la suppression de l\'itinéraire', 'Fermer', {
+                    const delErrorMsg = this.translate.instant('ITINERARY.NOTIFICATIONS.DELETE_ERROR');
+                    const close = this.translate.instant('COMMON.CLOSE');
+                    this.snackBar.open(delErrorMsg, close, {
                         duration: 3000
                     });
                 }
@@ -312,13 +327,13 @@ export class ItineraryDetailComponent implements OnInit, AfterViewInit, OnDestro
     }
 
     getDurationUnitKey(duration: string): string {
-        if (!duration) return 'ITINERARY.NOT_SPECIFIED';
+        if (!duration) return 'ITINERARY.UNITS.MIN';
         duration = duration.toLowerCase();
-        if (duration.includes('heures') || duration.includes('hours')) return 'ITINERARY.HOURS';
-        if (duration.includes('heure') || duration.includes('hour')) return 'ITINERARY.HOUR';
-        if (duration.includes('jours') || duration.includes('days')) return 'ITINERARY.DAYS';
-        if (duration.includes('jour') || duration.includes('day')) return 'ITINERARY.DAY';
-        return 'ITINERARY.NOT_SPECIFIED';
+        if (duration.includes('heures') || duration.includes('hours')) return 'ITINERARY.UNITS.HOURS';
+        if (duration.includes('heure') || duration.includes('hour')) return 'ITINERARY.UNITS.HOUR';
+        if (duration.includes('jours') || duration.includes('days')) return 'ITINERARY.UNITS.DAYS';
+        if (duration.includes('jour') || duration.includes('day')) return 'ITINERARY.UNITS.DAY';
+        return 'ITINERARY.UNITS.MIN';
     }
 
     getDestinationTypeIcon(type: string): string {
@@ -337,7 +352,9 @@ export class ItineraryDetailComponent implements OnInit, AfterViewInit, OnDestro
     }
 
     downloadReservationPDF(reservationId: number): void {
-        this.snackBar.open('Génération du PDF...', 'Fermer', {
+        const pdfGenMsg = this.translate.instant('ITINERARY.NOTIFICATIONS.PDF_GENERATING');
+        const close = this.translate.instant('COMMON.CLOSE');
+        this.snackBar.open(pdfGenMsg, close, {
             duration: 2000
         });
 
@@ -351,19 +368,25 @@ export class ItineraryDetailComponent implements OnInit, AfterViewInit, OnDestro
                     const downloadUrl = `/uploads/invoices/${fileName}`;
                     window.open(downloadUrl, '_blank');
                     
-                    this.snackBar.open('PDF généré avec succès!', 'Fermer', {
+                    const pdfSuccessMsg = this.translate.instant('ITINERARY.NOTIFICATIONS.PDF_SUCCESS');
+                    const close = this.translate.instant('COMMON.CLOSE');
+                    this.snackBar.open(pdfSuccessMsg, close, {
                         duration: 3000
                     });
                 } else {
-                    this.snackBar.open('Erreur: Chemin du PDF non trouvé', 'Fermer', {
-                        duration: 3000
-                    });
+                    this.snackBar.open(
+                        this.translate.instant('ITINERARY.NOTIFICATIONS.PDF_NOT_FOUND'),
+                        this.translate.instant('COMMON.CLOSE'),
+                        { duration: 3000 }
+                    );
                 }
             },
             error: (err) => {
                 console.error('Error generating PDF:', err);
-                const errorMessage = err.error?.message || 'Erreur lors de la génération du PDF';
-                this.snackBar.open(errorMessage, 'Fermer', {
+                const pdfErrorDefault = this.translate.instant('ITINERARY.NOTIFICATIONS.PDF_ERROR');
+                const errorMessage = err.error?.message || pdfErrorDefault;
+                const close = this.translate.instant('COMMON.CLOSE');
+                this.snackBar.open(errorMessage, close, {
                     duration: 3000
                 });
             }

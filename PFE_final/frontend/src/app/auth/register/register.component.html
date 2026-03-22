@@ -2,10 +2,10 @@
     <mat-card class="auth-card fade-in">
         <!-- Visual Panel -->
         <div class="visual-panel">
-            <h1>Let's get started!</h1>
+            <h1>{{ 'AUTH.REGISTER.WELCOME' | translate }}</h1>
             <p>{{ 'AUTH.REGISTER.SUBTITLE' | translate }}</p>
             <div class="mt-auto opacity-75 small">
-                Join our community and explore the wonders of Morocco.
+                {{ 'FOOTER.COPYRIGHT' | translate }}
             </div>
         </div>
 
@@ -13,7 +13,7 @@
         <div class="form-panel">
             <div class="auth-header">
                 <h2 class="fw-800">{{ 'AUTH.REGISTER.TITLE' | translate }}</h2>
-                <p class="text-muted small">Create your account to start your journey</p>
+                <p class="text-muted small">{{ 'AUTH.REGISTER.DESC' | translate }}</p>
             </div>
 
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="d-flex flex-column gap-2">

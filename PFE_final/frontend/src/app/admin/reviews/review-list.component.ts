@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from '../../core/services/api.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     standalone: false,
@@ -18,7 +19,11 @@ export class ReviewListComponent implements OnInit {
     @ViewChild(MatPaginator) paginator!: MatPaginator;
     @ViewChild(MatSort) sort!: MatSort;
 
-    constructor(private apiService: ApiService, private snackBar: MatSnackBar) {
+    constructor(
+        private apiService: ApiService,
+        private snackBar: MatSnackBar,
+        private translate: TranslateService
+    ) {
         this.dataSource = new MatTableDataSource();
     }
 
@@ -43,13 +48,21 @@ export class ReviewListComponent implements OnInit {
     }
 
     deleteReview(id: number) {
-        if (confirm('Are you sure you want to delete this review?')) {
+        if (confirm(this.translate.instant('ADMIN.REVIEWS.DELETE_CONFIRM'))) {
             this.apiService.deleteReview(id).subscribe({
                 next: () => {
-                    this.snackBar.open('Review deleted', 'Close', { duration: 3000 });
+                    this.snackBar.open(
+                        this.translate.instant('ADMIN.REVIEWS.DELETE_SUCCESS'),
+                        this.translate.instant('COMMON.CLOSE'),
+                        { duration: 3000 }
+                    );
                     this.loadReviews();
                 },
-                error: () => this.snackBar.open('Error deleting review', 'Close', { duration: 3000 })
+                error: () => this.snackBar.open(
+                    this.translate.instant('ADMIN.REVIEWS.DELETE_ERROR'),
+                    this.translate.instant('COMMON.CLOSE'),
+                    { duration: 3000 }
+                )
             });
         }
     }
@@ -57,10 +70,19 @@ export class ReviewListComponent implements OnInit {
     moderateReview(id: number, status: string) {
         this.apiService.moderateReview(id, status).subscribe({
             next: () => {
-                this.snackBar.open(`Review ${status.toLowerCase()}`, 'Close', { duration: 3000 });
+                const statusLabel = status === 'APPROVED' ? 'Approved' : 'Rejected'; // We could localize labels too
+                this.snackBar.open(
+                    this.translate.instant('ADMIN.REVIEWS.UPDATE_SUCCESS'),
+                    this.translate.instant('COMMON.CLOSE'),
+                    { duration: 3000 }
+                );
                 this.loadReviews();
             },
-            error: () => this.snackBar.open('Error updating review status', 'Close', { duration: 3000 })
+            error: () => this.snackBar.open(
+                this.translate.instant('ADMIN.REVIEWS.UPDATE_ERROR'),
+                this.translate.instant('COMMON.CLOSE'),
+                { duration: 3000 }
+            )
         });
     }
 }

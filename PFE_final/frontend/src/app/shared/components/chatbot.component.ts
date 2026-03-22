@@ -15,19 +15,19 @@ import { Router } from '@angular/router';
       <div class="chatbot-header">
         <span (click)="toggle()">{{ 'CHATBOT.HEADER' | translate }}</span>
         <div class="header-actions d-flex gap-3 align-items-center">
-          <i class="bi bi-clock-history" *ngIf="currentUser" (click)="toggleSidebar()" title="Chat History" style="cursor:pointer;"></i>
+          <i class="bi bi-clock-history" *ngIf="currentUser" (click)="toggleSidebar()" [title]="'CHATBOT.HISTORY_TOOLTIP' | translate" style="cursor:pointer;"></i>
           <i class="bi bi-x-lg" (click)="toggle()" style="cursor:pointer;"></i>
         </div>
       </div>
       <div class="chatbot-body" *ngIf="isOpen">
         <div class="chatbot-sidebar" *ngIf="showSidebar">
           <button class="new-chat-btn" (click)="startNewChat()">
-            <i class="bi bi-plus-lg me-2"></i> New Chat
+            <i class="bi bi-plus-lg me-2"></i> {{ 'CHATBOT.NEW_CHAT' | translate }}
           </button>
           
           <div class="history-list mt-3">
              <div *ngIf="conversations.length === 0" class="text-muted small text-center mt-4">
-                 No previous conversations
+                 {{ 'CHATBOT.NO_HISTORY' | translate }}
              </div>
              <div class="history-item" *ngFor="let conv of conversations" 
                   [class.active]="conv.id === sessionId"
@@ -316,16 +316,9 @@ export class ChatbotComponent implements AfterViewChecked {
   }
 
   addInitialMessage() {
-    const lang = this.translate.currentLang || 'en';
-    let welcomeText = "Hello 👋 I am Safar Assistant. How can I help you explore Morocco today?";
-
-    if (lang === 'fr') {
-      welcomeText = "Bonjour 👋 Je suis l'assistant Safar. Comment puis-je vous aider ?";
-    } else if (lang === 'en') {
-      welcomeText = "Hello 👋 I am Safar Assistant. How can I help you?";
-    }
-
-    this.messages = [{ text: welcomeText, sender: 'bot' }];
+    this.translate.get('CHATBOT.WELCOME').subscribe((welcomeText: string) => {
+      this.messages = [{ text: welcomeText, sender: 'bot' }];
+    });
   }
 
   // generateSessionId removed as it's handled by DB now

@@ -73,6 +73,217 @@
       "PROFILE": "Mi Perfil",
       "SETTINGS": "Ajustes",
       "LOGOUT": "Cerrar sesión"
+    },
+    "USERS": {
+      "DELETE_CONFIRM": "¿Estás seguro de que quieres eliminar a este usuario?",
+      "DELETE_SUCCESS": "Usuario eliminado",
+      "DELETE_ERROR": "Error al eliminar al usuario",
+      "CHANGE_ROLE_CONFIRM": "¿Cambiar el rol de {{name}} a {{role}}?",
+      "ROLE_CHANGED_SUCCESS": "Rol cambiado a {{role}}",
+      "ROLE_CHANGED_ERROR": "Error al actualizar el rol",
+      "TITLE": "Gestión de Usuarios",
+      "SUBTITLE": "Gestionar el acceso a la plataforma y los roles de los miembros",
+      "SEARCH_PLACEHOLDER": "Buscar usuarios por nombre o correo electrónico...",
+      "COLS": {
+        "ID": "ID",
+        "USERNAME": "Nombre de usuario",
+        "EMAIL": "Correo electrónico",
+        "ROLE": "Rol de la cuenta",
+        "ACTIONS": "Acciones"
+      },
+      "NO_DATA": "No se encontraron usuarios que coincidan con tus criterios"
+    },
+    "RESERVATIONS": {
+      "ERROR_LOADING": "Error al cargar las reservas",
+      "UNKNOWN_USER": "Usuario desconocido",
+      "APPROVE_CONFIRM": "¿Aprobar la reserva para {{name}}?",
+      "APPROVE_SUCCESS": "Reserva aprobada con éxito",
+      "APPROVE_ERROR": "Error al aprobar la reserva",
+      "REJECT_CONFIRM": "¿Rechazar la reserva para {{name}}?",
+      "REJECT_SUCCESS": "Reserva rechazada con éxito",
+      "REJECT_ERROR": "Error al rechazar la reserva",
+      "TITLE": "Reservas Pendientes",
+      "SUBTITLE": "Aprobar o rechazar las reservas de ofertas entrantes.",
+      "COLS": {
+        "OFFER": "Nombre de la Oferta",
+        "USER": "Usuario",
+        "DATES": "Fechas",
+        "QTY": "Cant/Invitados",
+        "TOTAL": "Total",
+        "STATUS": "Estado",
+        "ACTIONS": "Acciones"
+      },
+      "APPROVE": "Aprobar",
+      "REJECT": "Rechazar",
+      "TO": "a",
+      "NA": "N/A",
+      "NO_DATA": "No se encontraron reservas."
+    },
+    "DESTINATIONS": {
+      "TITLE": "Destinos",
+      "SUBTITLE": "Gestionar todas las ubicaciones visualizables en la plataforma",
+      "CREATE_NEW": "Crear Nuevo",
+      "SEARCH_PLACEHOLDER": "Buscar destinos...",
+      "FILTER": "Filtrar",
+      "EXPORT": "Exportar",
+      "COLS": {
+        "ID": "ID",
+        "COVER": "Portada",
+        "NAME": "Nombre",
+        "REGION": "Región",
+        "CATEGORY": "Categoría",
+        "STATUS": "Estado",
+        "ACTIONS": "Acciones"
+      },
+      "STATUS_ACTIVE": "Activo",
+      "NO_DATA": "No se encontraron destinos coincidentes"
+    },
+    "OFFERS": {
+      "ERROR_LOADING": "Error al cargar las ofertas",
+      "UPDATE_SUCCESS": "Oferta actualizada con éxito",
+      "CREATE_SUCCESS": "Oferta creada con éxito",
+      "UPDATE_ERROR": "Error al actualizar la oferta",
+      "CREATE_ERROR": "Error al crear la oferta",
+      "DELETE_CONFIRM": "¿Estás seguro de que quieres eliminar {{name}}?",
+      "DELETE_SUCCESS": "Oferta eliminada con éxito",
+      "DELETE_ERROR": "Error al eliminar la oferta",
+      "TITLE": "Gestionar Ofertas",
+      "SUBTITLE": "Añadir, actualizar y gestionar ofertas de destinos.",
+      "ADD_OFFER": "Añadir Oferta",
+      "COLS": {
+        "NAME": "Nombre de la Oferta",
+        "TYPE": "Tipo",
+        "DESTINATION": "Destino",
+        "PRICE": "Precio",
+        "STATUS": "Estado",
+        "ACTIONS": "Acciones"
+      },
+      "FILTER": {
+        "DESTINATION": "Destino",
+        "ALL_DESTINATIONS": "Todos los Destinos",
+        "TYPE": "Tipo de Oferta",
+        "ALL_TYPES": "Todos los Tipos",
+        "STATUS": "Estado",
+        "ALL_STATUSES": "Todos los Estados",
+        "ACTIVE": "Activo",
+        "DELETED": "Eliminado (Soft)",
+        "RESET": "Restablecer Filtros"
+      },
+      "STATUS": {
+        "ARCHIVED": "Archivado",
+        "ACTIVE": "Activo"
+      },
+      "NO_DATA": "No se encontraron ofertas que coincidan con tus filtros.",
+      "DIALOG": {
+        "EDIT_TITLE": "Editar Oferta",
+        "CREATE_TITLE": "Crear Nueva Oferta",
+        "NAME": "Nombre de la Oferta",
+        "NAME_HINT": "Ej: Riad Yasmine",
+        "NAME_REQ": "El nombre es obligatorio",
+        "TYPE": "Tipo",
+        "TYPE_REQ": "El tipo es obligatorio",
+        "TYPES": {
+          "HOTEL": "Hotel",
+          "RESTAURANT": "Restaurante",
+          "ACTIVITY": "Actividad"
+        },
+        "PRICE": "Precio (MAD)",
+        "PRICE_HINT": "Ej: 500",
+        "PRICE_NIGHT": "Precio por Noche (MAD)",
+        "PRICE_NIGHT_HINT": "Ej: 1000",
+        "PRICE_AVG": "Precio Medio (MAD)",
+        "PRICE_AVG_HINT": "Ej: 300",
+        "STARS": "Estrellas",
+        "STAR_COUNT": "{{count}} Estrella",
+        "STARS_COUNT": "{{count}} Estrellas",
+        "ROOM_TYPE": "Tipo de Habitación",
+        "ROOM_TYPE_HINT": "Ej: Suite Deluxe",
+        "CUISINE_TYPE": "Tipo de Cocina",
+        "CUISINE_TYPE_HINT": "Ej: Marroquí Tradicional",
+        "DURATION": "Duración",
+        "DURATION_HINT": "Ej: 2 horas",
+        "ACTIVITY_TYPE": "Tipo de Actividad",
+        "ACTIVITY_TYPE_HINT": "Ej: Visita Guiada",
+        "DESTINATION": "Destino",
+        "DESTINATION_REQ": "El destino es obligatorio",
+        "LOADING_DESTINATIONS": "Cargando destinos...",
+        "CANCEL": "Cancelar",
+        "SAVE_CHANGES": "Guardar Cambios",
+        "CREATE_OFFER": "Crear Oferta"
+      }
+    },
+    "REVIEWS": {
+      "DELETE_CONFIRM": "¿Estás seguro de que quieres eliminar este comentario?",
+      "DELETE_SUCCESS": "Comentario eliminado",
+      "DELETE_ERROR": "Error al eliminar el comentario",
+      "UPDATE_SUCCESS": "Estado del comentario actualizado",
+      "UPDATE_ERROR": "Error al actualizar el estado del comentario",
+      "TITLE": "Gestión de Comentarios",
+      "SUBTITLE": "Monitorear y moderar los comentarios de los viajeros",
+      "SEARCH_PLACEHOLDER": "Buscar comentarios...",
+      "COLS": {
+        "ID": "ID",
+        "TRAVELER": "Viajero",
+        "DESTINATION": "Destino",
+        "RATING": "Calificación",
+        "COMMENT": "Comentario",
+        "STATUS": "Estado",
+        "ACTIONS": "Acciones"
+      },
+      "NO_DATA": "No se encontraron comentarios coincidentes"
+    },
+    "EVENTS_MANAGEMENT": {
+      "TITLE": "Gestión de Eventos",
+      "SUBTITLE": "Organizar eventos de la plataforma",
+      "CREATE_EVENT": "Crear Evento",
+      "SEARCH_PLACEHOLDER": "Buscar eventos...",
+      "COLS": {
+        "COVER": "Portada",
+        "TITLE": "Título",
+        "DURATION": "Duración",
+        "VENUE": "Lugar",
+        "TYPE": "Tipo",
+        "ACTIONS": "Acciones"
+      },
+      "NO_DATA": "No se encontraron eventos coincidentes",
+      "DIALOG": {
+        "EDIT_TITLE": "Editar Evento",
+        "ADD_TITLE": "Agregar Evento",
+        "NAME": "Nombre",
+        "NAME_REQ": "El nombre es obligatorio",
+        "LOCATION": "Ubicación",
+        "LOCATION_REQ": "La ubicación es obligatoria",
+        "START_DATE": "Fecha de Inicio",
+        "END_DATE": "Fecha de Finalización",
+        "IMAGE": "Imagen del Evento",
+        "UPLOADING": "Subiendo...",
+        "CHOOSE_IMAGE": "Elegir Imagen",
+        "IMAGE_URL_MANUAL": "URL de la Imagen (Manual)",
+        "TYPE": "Tipo de Evento",
+        "TYPE_REQ": "El tipo de evento es obligatorio",
+        "DESCRIPTION": "Descripción",
+        "DESCRIPTION_REQ": "La descripción es obligatoria",
+        "HISTORY": "Historia (Orígenes y Antecedentes)",
+        "HISTORY_HINT": "Ej: Nacido en 2001, este festival...",
+        "CANCEL": "Cancelar",
+        "SAVE": "Guardar"
+      }
+    },
+    "LOGS": {
+      "TITLE": "Registros de Auditoría",
+      "SUBTITLE": "Seguimiento de todas las acciones administrativas y actualizaciones del sistema",
+      "SEARCH_PLACEHOLDER": "Buscar pistas de auditoría...",
+      "DATE_RANGE": "Rango de Fechas",
+      "COLS": {
+        "TIMESTAMP": "Fecha y Hora",
+        "ACTION": "Acción",
+        "ENTITY": "Entidad",
+        "INITIATOR": "Iniciador",
+        "STATUS": "Estado",
+        "DETAILS": "Detalles"
+      },
+      "SYSTEM": "Sistema",
+      "NO_DATA": "No se encontraron registros de auditoría"
     }
   },
   "ITINERARY": {
@@ -118,7 +329,15 @@
       "DELETE_ERROR": "Error durante la eliminación",
       "PDF_GENERATING": "Generando PDF...",
       "PDF_SUCCESS": "¡PDF generado con éxito!",
-      "PDF_ERROR": "Error durante la generación del PDF"
+      "PDF_ERROR": "Error durante la generación del PDF",
+      "PDF_NOT_FOUND": "Error: No se encontró la ruta del PDF",
+      "SELECT_AT_LEAST_ONE": "Por favor, selecciona al menos un destino",
+      "NAME_ERROR": "Por favor, introduce un nombre válido (mín. 3 caracteres)",
+      "LOGIN_REQUIRED": "Por favor, inicia sesión para continuar",
+      "UPDATE_SUCCESS": "¡Itinerario actualizado con éxito!",
+      "UPDATE_ERROR": "Error al actualizar el itinerario",
+      "CREATE_SUCCESS": "¡Itinerario creado con éxito!",
+      "CREATE_ERROR": "Error al crear el itinerario"
     }
   },
   "ITINERARIES": {
@@ -274,7 +493,46 @@
         "HUMIDITY": "Humedad",
         "WIND": "Viento",
         "FORECAST": "Pronóstico de 5 Días"
+      },
+      "NOTIFICATIONS": {
+        "LOAD_ERROR": "Error al cargar los detalles del destino.",
+        "REVIEW_SUCCESS": "¡Reseña añadida!",
+        "REVIEW_ERROR": "Error al añadir la reseña",
+        "UPDATE_SUCCESS": "Destino actualizado con éxito",
+        "DELETE_CONFIRM": "¿Estás seguro de que deseas eliminar este destino? Esta acción es irreversible.",
+        "DELETE_SUCCESS": "Destino eliminado con éxito",
+        "DELETE_ERROR": "Error durante la eliminación",
+        "UPLOADING": "Cargando imagen...",
+        "UPLOAD_SUCCESS": "¡Foto añadida a la galería!",
+        "UPLOAD_ERROR": "Error al cargar la imagen. Por favor, inténtalo de nuevo.",
+        "LOGIN_REQUIRED_PLAN": "Por favor, inicia sesión para planificar un viaje",
+        "LOGIN_REQUIRED_RESERVE": "Por favor, inicia sesión para realizar una reserva.",
+        "RESERVATION_SUCCESS": "¡Reserva enviada! Esperando la aprobación del administrador.",
+        "DEST_NOT_FOUND": "Error: Destino no encontrado",
+        "NAV_ERROR": "Error durante la navegación"
       }
+    },
+    "DIALOG": {
+      "EDIT_TITLE": "Editar Destino",
+      "ADD_TITLE": "Agregar Destino",
+      "NAME": "Nombre del Destino",
+      "NAME_REQ": "El nombre es obligatorio",
+      "REGION": "Región/Ciudad",
+      "REGION_REQ": "La región es obligatoria",
+      "CATEGORY": "Categoría",
+      "LATITUDE": "Latitud",
+      "LONGITUDE": "Longitud",
+      "SEARCH_LOCATION": "Buscar ubicación",
+      "SEARCH": "Buscar",
+      "VIDEO_URL": "URL del Video (Opcional)",
+      "IMAGES": "Imágenes del Destino",
+      "CHOOSE_IMAGES": "Elegir Imágenes",
+      "PASTE_URL": "O pegar URL de imagen",
+      "NEW_BADGE": "Nuevo",
+      "DESCRIPTION": "Descripción",
+      "DESCRIPTION_REQ": "La descripción es obligatoria",
+      "UPDATE": "Actualizar",
+      "CREATE": "Crear"
     }
   },
   "CATEGORIES": {
@@ -423,7 +681,10 @@
       "MINUTES": "Min",
       "SECONDS": "Seg",
       "BOOKING_SUCCESS": "¡Reserva exitosa!",
-      "BOOKING_ERROR": "Error durante la reserva."
+      "BOOKING_ERROR": "Error al realizar la reserva.",
+      "DELETE_CONFIRM": "¿Estás seguro de que quieres eliminar este evento?",
+      "DELETE_SUCCESS": "Evento eliminado",
+      "DELETE_ERROR": "Error al eliminar el evento"
     }
   },
   "COMMON": {
@@ -551,7 +812,9 @@
       "CREATING": "Creando cuenta...",
       "ALREADY_MEMBER": "¿Ya es miembro?",
       "LOG_IN": "Iniciar sesión",
-      "GOOGLE": "Registrarse con Google"
+      "GOOGLE": "Registrarse con Google",
+      "SUCCESS": "¡Registro exitoso! Por favor, revisa tu correo electrónico para activar tu cuenta.",
+      "ERROR": "El registro falló. Por favor, comprueba tu conexión o inténtalo de nuevo."
     },
     "FORGOT_PASSWORD": {
       "TITLE": "Olvidé mi contraseña",
@@ -578,7 +841,8 @@
       "SUBMIT": "Guardar",
       "SUCCESS": "Contraseña cambiada con éxito.",
       "GO_TO_LOGIN": "Iniciar sesión",
-      "REQUEST_NEW_LINK": "Solicitar nuevo enlace"
+      "REQUEST_NEW_LINK": "Solicitar nuevo enlace",
+      "ERROR_GENERIC": "Error al restablecer la contraseña."
     },
     "VERIFIED": {
       "PENDING_TITLE": "Verificando...",

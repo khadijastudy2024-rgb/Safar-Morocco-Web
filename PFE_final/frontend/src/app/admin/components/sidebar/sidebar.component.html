@@ -12,54 +12,54 @@
     </div>
 
     <div class="sidebar-menu">
-        <div class="menu-label">Main Menu</div>
+        <div class="menu-label">{{ 'ADMIN.SIDEBAR.MAIN_MENU' | translate }}</div>
         <nav class="nav-links">
             <a routerLink="/admin/dashboard" routerLinkActive="active" class="nav-link">
                 <i class="bi bi-grid-1x2"></i>
-                <span>Dashboard</span>
+                <span>{{ 'ADMIN.SIDEBAR.DASHBOARD' | translate }}</span>
             </a>
             <a routerLink="/admin/users" routerLinkActive="active" class="nav-link">
                 <i class="bi bi-people"></i>
-                <span>User Management</span>
+                <span>{{ 'ADMIN.SIDEBAR.USERS' | translate }}</span>
             </a>
             <a routerLink="/admin/destinations" routerLinkActive="active" class="nav-link">
                 <i class="bi bi-geo-alt"></i>
-                <span>Destinations</span>
+                <span>{{ 'ADMIN.SIDEBAR.DESTINATIONS' | translate }}</span>
             </a>
             <a routerLink="/admin/offers" routerLinkActive="active" class="nav-link">
                 <i class="bi bi-tags"></i>
-                <span>Offers</span>
+                <span>{{ 'ADMIN.SIDEBAR.OFFERS' | translate }}</span>
             </a>
             <a routerLink="/admin/reservations" routerLinkActive="active" class="nav-link">
                 <i class="bi bi-calendar-check"></i>
-                <span>Reservations</span>
+                <span>{{ 'ADMIN.SIDEBAR.RESERVATIONS' | translate }}</span>
             </a>
             <a routerLink="/admin/events" routerLinkActive="active" class="nav-link">
                 <i class="bi bi-calendar-event"></i>
-                <span>Events</span>
+                <span>{{ 'ADMIN.SIDEBAR.EVENTS' | translate }}</span>
             </a>
             <a routerLink="/admin/reviews" routerLinkActive="active" class="nav-link">
                 <i class="bi bi-chat-right-text"></i>
-                <span>Reviews</span>
+                <span>{{ 'ADMIN.SIDEBAR.REVIEWS' | translate }}</span>
             </a>
         </nav>
 
-        <div class="menu-label">System</div>
+        <div class="menu-label">{{ 'ADMIN.SIDEBAR.SYSTEM' | translate }}</div>
         <nav class="nav-links">
             <a routerLink="/admin/logs" routerLinkActive="active" class="nav-link">
                 <i class="bi bi-journal-text"></i>
-                <span>Activity Logs</span>
+                <span>{{ 'ADMIN.SIDEBAR.LOGS' | translate }}</span>
             </a>
             <a routerLink="/settings" routerLinkActive="active" class="nav-link">
                 <i class="bi bi-gear"></i>
-                <span>Settings</span>
+                <span>{{ 'ADMIN.SIDEBAR.SETTINGS' | translate }}</span>
             </a>
         </nav>
 
         <div class="sidebar-footer">
             <button class="logout-btn" (click)="logout()">
                 <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
+                <span>{{ 'ADMIN.SIDEBAR.SIGNOUT' | translate }}</span>
             </button>
         </div>
     </div>

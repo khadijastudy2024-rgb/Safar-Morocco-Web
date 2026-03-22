@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ReservationService } from '../../core/services/reservation.service';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     standalone: false,
@@ -56,7 +57,8 @@ export class ProfileComponent implements OnInit {
         private snackBar: MatSnackBar,
         private cdr: ChangeDetectorRef,
         private http: HttpClient,
-        private router: Router
+        private router: Router,
+        private translate: TranslateService
     ) { }
 
     ngOnInit(): void {
@@ -161,29 +163,29 @@ export class ProfileComponent implements OnInit {
     }
 
     cancelEvent(reservation: any) {
-        if (confirm('Etes-vous sûr de vouloir annuler cette réservation ?')) {
+        if (confirm(this.translate.instant('COMMON.CANCEL_CONFIRM'))) {
             this.apiService.cancelEventReservation(reservation.id).subscribe({
                 next: () => {
                     reservation.status = 'CANCELLED';
-                    this.snackBar.open('Réservation annulée.', 'Fermer', { duration: 3000 });
+                    this.snackBar.open(this.translate.instant('COMMON.CANCEL_SUCCESS'), this.translate.instant('COMMON.CLOSE'), { duration: 3000 });
                     this.cdr.detectChanges();
                 },
-                error: (err) => this.snackBar.open('Erreur lors de l\'annulation.', 'Fermer', { duration: 3000 })
+                error: (err) => this.snackBar.open(this.translate.instant('COMMON.CANCEL_ERROR'), this.translate.instant('COMMON.CLOSE'), { duration: 3000 })
             });
         }
     }
 
     cancelOffer(reservation: any) {
-        if (confirm('Etes-vous sûr de vouloir annuler cette réservation ?')) {
+        if (confirm(this.translate.instant('COMMON.CANCEL_CONFIRM'))) {
             this.http.put(`/api/reservations/${reservation.id}/status?status=CANCELLED`, {}).subscribe({
                 next: () => {
                     reservation.status = 'CANCELLED';
-                    this.snackBar.open('Réservation annulée.', 'Fermer', { duration: 3000 });
+                    this.snackBar.open(this.translate.instant('COMMON.CANCEL_SUCCESS'), this.translate.instant('COMMON.CLOSE'), { duration: 3000 });
                     this.cdr.detectChanges();
                 },
                 error: (err) => {
                     console.error('Failed to cancel offer reservation', err);
-                    this.snackBar.open('Erreur lors de l\'annulation.', 'Fermer', { duration: 3000 });
+                    this.snackBar.open(this.translate.instant('COMMON.CANCEL_ERROR'), this.translate.instant('COMMON.CLOSE'), { duration: 3000 });
                 }
             });
         }
@@ -220,7 +222,7 @@ export class ProfileComponent implements OnInit {
             next: (res) => {
                 this.user.photoUrl = res.photoUrl;
                 this.uploadingPhoto = false;
-                this.snackBar.open('Photo updated!', 'Close', { duration: 2000 });
+                this.snackBar.open(this.translate.instant('COMMON.PHOTO_UPDATED'), this.translate.instant('COMMON.CLOSE'), { duration: 2000 });
                 // If not editing, also update local storage user
                 if (!this.isEditing) {
                     const localUser = JSON.parse(localStorage.getItem('user') || '{}');
@@ -232,7 +234,7 @@ export class ProfileComponent implements OnInit {
             error: (err) => {
                 console.error('❌ Photo upload failed', err);
                 this.uploadingPhoto = false;
-                this.snackBar.open('Failed to upload photo', 'Close', { duration: 3000 });
+                this.snackBar.open(this.translate.instant('COMMON.PHOTO_ERROR'), this.translate.instant('COMMON.CLOSE'), { duration: 3000 });
             }
         });
     }
@@ -257,10 +259,10 @@ export class ProfileComponent implements OnInit {
                 this.user = updatedUser;
                 this.authService.updateUser(updatedUser); // Update local storage too
                 this.isEditing = false;
-                this.snackBar.open('Profile updated successfully!', 'Close', { duration: 3000 });
+                this.snackBar.open(this.translate.instant('COMMON.UPDATE_SUCCESS'), this.translate.instant('COMMON.CLOSE'), { duration: 3000 });
             },
             error: (err: any) => {
-                this.snackBar.open('Failed to update profile', 'Close', { duration: 3000 });
+                this.snackBar.open(this.translate.instant('COMMON.UPDATE_ERROR'), this.translate.instant('COMMON.CLOSE'), { duration: 3000 });
                 console.error('❌ Profile update error:', err);
                 if (err.error && err.error.message) {
                     console.error('Error details:', err.error.message);

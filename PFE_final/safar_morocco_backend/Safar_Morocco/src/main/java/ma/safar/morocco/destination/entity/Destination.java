@@ -26,19 +26,64 @@ public class Destination {
     private Long id;
 
     @Column(nullable = false, length = 200)
-    private String nom;
+    private String nomEn;
+
+    @Column(length = 200)
+    private String nomFr;
+
+    @Column(length = 200)
+    private String nomAr;
+
+    @Column(length = 200)
+    private String nomEs;
 
     @Column(columnDefinition = "TEXT")
-    private String description;
+    private String descriptionEn;
 
     @Column(columnDefinition = "TEXT")
-    private String histoire;
+    private String descriptionFr;
 
-    @Column(columnDefinition = "TEXT", name = "historical_description")
-    private String historicalDescription;
+    @Column(columnDefinition = "TEXT")
+    private String descriptionAr;
+
+    @Column(columnDefinition = "TEXT")
+    private String descriptionEs;
+
+    @Column(columnDefinition = "TEXT")
+    private String histoireEn;
+
+    @Column(columnDefinition = "TEXT")
+    private String histoireFr;
+
+    @Column(columnDefinition = "TEXT")
+    private String histoireAr;
+
+    @Column(columnDefinition = "TEXT")
+    private String histoireEs;
+
+    @Column(columnDefinition = "TEXT", name = "historical_description_en")
+    private String historicalDescriptionEn;
+
+    @Column(columnDefinition = "TEXT", name = "historical_description_fr")
+    private String historicalDescriptionFr;
+
+    @Column(columnDefinition = "TEXT", name = "historical_description_ar")
+    private String historicalDescriptionAr;
+
+    @Column(columnDefinition = "TEXT", name = "historical_description_es")
+    private String historicalDescriptionEs;
 
     @Column(length = 100)
-    private String type;
+    private String typeEn;
+
+    @Column(length = 100)
+    private String typeFr;
+
+    @Column(length = 100)
+    private String typeAr;
+
+    @Column(length = 100)
+    private String typeEs;
 
     private Double latitude;
 
@@ -71,11 +116,29 @@ public class Destination {
     @JsonIgnore
     private List<Offer> offers = new ArrayList<>();
 
-    @Column(name = "best_time")
-    private String bestTime;
+    @Column(name = "best_time_en")
+    private String bestTimeEn;
 
-    @Column(name = "languages")
-    private String languages;
+    @Column(name = "best_time_fr")
+    private String bestTimeFr;
+
+    @Column(name = "best_time_ar")
+    private String bestTimeAr;
+
+    @Column(name = "best_time_es")
+    private String bestTimeEs;
+
+    @Column(name = "languages_en")
+    private String languagesEn;
+
+    @Column(name = "languages_fr")
+    private String languagesFr;
+
+    @Column(name = "languages_ar")
+    private String languagesAr;
+
+    @Column(name = "languages_es")
+    private String languagesEs;
 
     @Column(name = "average_cost")
     private Double averageCost;
@@ -83,4 +146,19 @@ public class Destination {
     @Column(name = "video_url", length = 500)
     private String videoUrl;
 
+    // Helper methods for backward compatibility or easy access
+    public String getNom() { return nomEn; } // Fallback or default
+    public void setNom(String nom) { this.nomEn = nom; }
+    public String getDescription() { return descriptionEn; }
+    public void setDescription(String description) { this.descriptionEn = description; }
+    public String getHistoire() { return histoireEn; }
+    public void setHistoire(String histoire) { this.histoireEn = histoire; }
+    public String getHistoricalDescription() { return historicalDescriptionEn; }
+    public void setHistoricalDescription(String historicalDescription) { this.historicalDescriptionEn = historicalDescription; }
+    public String getBestTime() { return bestTimeEn; }
+    public void setBestTime(String bestTime) { this.bestTimeEn = bestTime; }
+    public String getLanguages() { return languagesEn; }
+    public void setLanguages(String languages) { this.languagesEn = languages; }
+    public String getType() { return typeEn; }
+    public void setType(String type) { this.typeEn = type; }
 }

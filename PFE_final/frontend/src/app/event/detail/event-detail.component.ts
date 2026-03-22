@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../core/services/api.service';
 import { AuthService } from '../../core/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     standalone: false,
@@ -29,7 +30,8 @@ export class EventDetailComponent implements OnInit, OnDestroy {
         private authService: AuthService,
         private snackBar: MatSnackBar,
         private ngZone: NgZone,
-        private cdr: ChangeDetectorRef
+        private cdr: ChangeDetectorRef,
+        private translateService: TranslateService
     ) {
         this.ngZone.run(() => {
             const nav = this.router.getCurrentNavigation();
@@ -126,13 +128,17 @@ export class EventDetailComponent implements OnInit, OnDestroy {
             next: () => {
                 this.booking = false;
                 this.alreadyReserved = true;
-                this.snackBar.open('Réservation réussie!', 'Fermer', { duration: 3000 });
+                const successMsg = this.translateService.instant('EVENTS.DETAIL.BOOKING_SUCCESS');
+                const closeBtn = this.translateService.instant('COMMON.CLOSE');
+                this.snackBar.open(successMsg, closeBtn, { duration: 3000 });
                 this.cdr.detectChanges();
             },
             error: (err: any) => {
                 this.booking = false;
-                const msg = err.error?.message || 'Erreur lors de la réservation.';
-                this.snackBar.open(msg, 'Fermer', { duration: 3000 });
+                const defaultMsg = this.translateService.instant('EVENTS.DETAIL.BOOKING_ERROR');
+                const msg = err.error?.message || defaultMsg;
+                const closeBtn = this.translateService.instant('COMMON.CLOSE');
+                this.snackBar.open(msg, closeBtn, { duration: 3000 });
                 this.cdr.detectChanges();
             }
         });
@@ -184,26 +190,20 @@ export class EventDetailComponent implements OnInit, OnDestroy {
 
     /** Returns tags based on eventType */
     getEventTags(): string[] {
-        const baseTags = ['#Maroc', '#Culture', '#Voyage'];
+        const baseTags = ['TAGS.MOROCCO', 'TAGS.CULTURE', 'TAGS.TRAVEL'];
         const typeMap: { [key: string]: string[] } = {
-            'FESTIVAL': ['#Festival', '#Fête', '#Animation'],
-            'CULTURAL': ['#Culturel', '#Patrimoine', '#Art'],
-            'MUSIC': ['#Musique', '#Concert', '#Live'],
-            'TRADITIONAL': ['#Tradition', '#Folklore', '#Artisanat'],
+            'FESTIVAL': ['TAGS.FESTIVAL', 'TAGS.PARTY', 'TAGS.ANIMATION'],
+            'CULTURAL': ['TAGS.HERITAGE', 'TAGS.CULTURE', 'TAGS.ART'],
+            'MUSIC': ['TAGS.MUSIC', 'TAGS.CONCERT', 'TAGS.LIVE'],
+            'TRADITIONAL': ['TAGS.TRADITION', 'TAGS.FOLKLORE', 'TAGS.CRAFTS'],
         };
         const type = (this.event?.eventType || '').toUpperCase();
-        return [...(typeMap[type] || ['#Événement']), ...baseTags];
+        return [...(typeMap[type] || ['TAGS.EVENT']), ...baseTags];
     }
 
     /** Event type display label */
     getEventTypeLabel(): string {
-        const map: { [k: string]: string } = {
-            'FESTIVAL': 'Festival',
-            'CULTURAL': 'Culturel',
-            'MUSIC': 'Musique',
-            'TRADITIONAL': 'Traditionnel',
-        };
-        return map[(this.event?.eventType || '').toUpperCase()] || this.event?.eventType || 'Événement';
+        return (this.event?.eventType || 'EVENT').toUpperCase();
     }
 
     /** Event type icon class */

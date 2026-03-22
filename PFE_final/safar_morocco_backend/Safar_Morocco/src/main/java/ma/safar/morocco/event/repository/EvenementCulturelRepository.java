@@ -19,9 +19,8 @@ public interface EvenementCulturelRepository extends JpaRepository<EvenementCult
 
     List<EvenementCulturel> findByDestinationId(Long destinationId);
 
-    boolean existsByNom(String nom);
-
-    Optional<EvenementCulturel> findByNom(String nom);
+    boolean existsByNomEn(String nomEn);
+    Optional<EvenementCulturel> findByNomEn(String nomEn);
 
     @Query("SELECT e FROM EvenementCulturel e WHERE e.dateDebut > CURRENT_TIMESTAMP ORDER BY e.dateDebut ASC")
     List<EvenementCulturel> findUpcomingEvents();
@@ -32,9 +31,9 @@ public interface EvenementCulturelRepository extends JpaRepository<EvenementCult
     @Query("SELECT e FROM EvenementCulturel e WHERE e.dateFin < CURRENT_TIMESTAMP ORDER BY e.dateDebut DESC")
     List<EvenementCulturel> findPastEvents();
 
-    List<EvenementCulturel> findByEventType(String eventType);
+    List<EvenementCulturel> findByEventTypeEn(String eventType);
 
-    List<EvenementCulturel> findByLieu(String lieu);
+    List<EvenementCulturel> findByLieuEn(String lieuEn);
 
     @Query("SELECT e FROM EvenementCulturel e WHERE e.dateDebut BETWEEN :dateDebut AND :dateFin ORDER BY e.dateDebut ASC")
     List<EvenementCulturel> findByDateRange(@Param("dateDebut") LocalDateTime dateDebut,
@@ -42,5 +41,5 @@ public interface EvenementCulturelRepository extends JpaRepository<EvenementCult
 
     Long countByDestinationId(Long destinationId);
 
-    Long countByEventType(String eventType);
+    Long countByEventTypeEn(String eventType);
 }

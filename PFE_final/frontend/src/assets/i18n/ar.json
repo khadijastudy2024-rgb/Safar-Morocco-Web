@@ -73,6 +73,217 @@
       "PROFILE": "ملفي الشخصي",
       "SETTINGS": "الإعدادات",
       "LOGOUT": "تسجيل الخروج"
+    },
+    "USERS": {
+      "DELETE_CONFIRM": "هل أنت متأكد من أنك تريد حذف هذا المستخدم؟",
+      "DELETE_SUCCESS": "تم حذف المستخدم",
+      "DELETE_ERROR": "خطأ أثناء حذف المستخدم",
+      "CHANGE_ROLE_CONFIRM": "تغيير دور {{name}} إلى {{role}}؟",
+      "ROLE_CHANGED_SUCCESS": "تم تغيير الدور إلى {{role}}",
+      "ROLE_CHANGED_ERROR": "خطأ في تحديث الدور",
+      "TITLE": "إدارة المستخدمين",
+      "SUBTITLE": "إدارة الوصول إلى المنصة وأدوار الأعضاء",
+      "SEARCH_PLACEHOLDER": "البحث عن المستخدمين بالاسم أو البريد الإلكتروني...",
+      "COLS": {
+        "ID": "المعرف",
+        "USERNAME": "اسم المستخدم",
+        "EMAIL": "البريد الإلكتروني",
+        "ROLE": "دور الحساب",
+        "ACTIONS": "الإجراءات"
+      },
+      "NO_DATA": "لم يتم العثور على مستخدمين يطابقون معاييرك"
+    },
+    "RESERVATIONS": {
+      "ERROR_LOADING": "خطأ في تحميل الحجوزات",
+      "UNKNOWN_USER": "مستخدم غير معروف",
+      "APPROVE_CONFIRM": "هل توافق على الحجز لـ {{name}}؟",
+      "APPROVE_SUCCESS": "تمت الموافقة على الحجز بنجاح",
+      "APPROVE_ERROR": "خطأ في الموافقة على الحجز",
+      "REJECT_CONFIRM": "هل ترفض الحجز لـ {{name}}؟",
+      "REJECT_SUCCESS": "تم رفض الحجز بنجاح",
+      "REJECT_ERROR": "خطأ في رفض الحجز",
+      "TITLE": "الحجوزات المعلقة",
+      "SUBTITLE": "الموافقة على أو رفض حجوزات العروض الواردة.",
+      "COLS": {
+        "OFFER": "اسم العرض",
+        "USER": "المستخدم",
+        "DATES": "التواريخ",
+        "QTY": "الكمية/الضيوف",
+        "TOTAL": "الإجمالي",
+        "STATUS": "الحالة",
+        "ACTIONS": "الإجراءات"
+      },
+      "APPROVE": "موافقة",
+      "REJECT": "رفض",
+      "TO": "إلى",
+      "NA": "غير متاح",
+      "NO_DATA": "لم يتم العثور على حجوزات."
+    },
+    "DESTINATIONS": {
+      "TITLE": "الوجهات",
+      "SUBTITLE": "إدارة جميع المواقع القابلة للعرض على المنصة",
+      "CREATE_NEW": "إنشاء جديد",
+      "SEARCH_PLACEHOLDER": "البحث في الوجهات...",
+      "FILTER": "تصفية",
+      "EXPORT": "تصدير",
+      "COLS": {
+        "ID": "المعرف",
+        "COVER": "الغلاف",
+        "NAME": "الاسم",
+        "REGION": "المنطقة",
+        "CATEGORY": "الفئة",
+        "STATUS": "الحالة",
+        "ACTIONS": "الإجراءات"
+      },
+      "STATUS_ACTIVE": "نشط",
+      "NO_DATA": "لم يتم العثور على وجهات مطابقة"
+    },
+    "OFFERS": {
+      "ERROR_LOADING": "خطأ في تحميل العروض",
+      "UPDATE_SUCCESS": "تم تحديث العرض بنجاح",
+      "CREATE_SUCCESS": "تم إنشاء العرض بنجاح",
+      "UPDATE_ERROR": "خطأ في تحديث العرض",
+      "CREATE_ERROR": "خطأ في إنشاء العرض",
+      "DELETE_CONFIRM": "هل أنت متأكد من أنك تريد حذف {{name}}؟",
+      "DELETE_SUCCESS": "تم حذف العرض بنجاح",
+      "DELETE_ERROR": "خطأ في حذف العرض",
+      "TITLE": "إدارة العروض",
+      "SUBTITLE": "إضافة وتحديث وإدارة عروض الوجهات.",
+      "ADD_OFFER": "إضافة عرض",
+      "COLS": {
+        "NAME": "اسم العرض",
+        "TYPE": "النوع",
+        "DESTINATION": "الوجهة",
+        "PRICE": "السعر",
+        "STATUS": "الحالة",
+        "ACTIONS": "الإجراءات"
+      },
+      "FILTER": {
+        "DESTINATION": "الوجهة",
+        "ALL_DESTINATIONS": "جميع الوجهات",
+        "TYPE": "نوع العرض",
+        "ALL_TYPES": "جميع الأنواع",
+        "STATUS": "الحالة",
+        "ALL_STATUSES": "جميع الحالات",
+        "ACTIVE": "نشط",
+        "DELETED": "محذوف (ناعم)",
+        "RESET": "إعادة تعيين المرشحات"
+      },
+      "STATUS": {
+        "ARCHIVED": "مؤرشف",
+        "ACTIVE": "نشط"
+      },
+      "NO_DATA": "لم يتم العثور على عروض تطابق مرشحاتك.",
+      "DIALOG": {
+        "EDIT_TITLE": "تعديل العرض",
+        "CREATE_TITLE": "إنشاء عرض جديد",
+        "NAME": "اسم العرض",
+        "NAME_HINT": "مثال: رياض ياسمين",
+        "NAME_REQ": "الاسم مطلوب",
+        "TYPE": "النوع",
+        "TYPE_REQ": "النوع مطلوب",
+        "TYPES": {
+          "HOTEL": "فندق",
+          "RESTAURANT": "مطعم",
+          "ACTIVITY": "نشاط"
+        },
+        "PRICE": "السعر (درهم)",
+        "PRICE_HINT": "مثال: 500",
+        "PRICE_NIGHT": "السعر لليلة (درهم)",
+        "PRICE_NIGHT_HINT": "مثال: 1000",
+        "PRICE_AVG": "متوسط السعر (درهم)",
+        "PRICE_AVG_HINT": "مثال: 300",
+        "STARS": "النجوم",
+        "STAR_COUNT": "نجمة {{count}}",
+        "STARS_COUNT": "{{count}} نجوم",
+        "ROOM_TYPE": "نوع الغرفة",
+        "ROOM_TYPE_HINT": "مثال: جناح ديلوكس",
+        "CUISINE_TYPE": "نوع المطبخ",
+        "CUISINE_TYPE_HINT": "مثال: مغربي تقليدي",
+        "DURATION": "المدة",
+        "DURATION_HINT": "مثال: ساعتان",
+        "ACTIVITY_TYPE": "نوع النشاط",
+        "ACTIVITY_TYPE_HINT": "مثال: جولة إرشادية",
+        "DESTINATION": "الوجهة",
+        "DESTINATION_REQ": "الوجهة مطلوبة",
+        "LOADING_DESTINATIONS": "جاري تحميل الوجهات...",
+        "CANCEL": "إلغاء",
+        "SAVE_CHANGES": "حفظ التغييرات",
+        "CREATE_OFFER": "إنشاء عرض"
+      }
+    },
+    "REVIEWS": {
+      "DELETE_CONFIRM": "هل أنت متأكد من أنك تريد حذف هذا التقييم؟",
+      "DELETE_SUCCESS": "تم حذف التقييم",
+      "DELETE_ERROR": "خطأ في حذف التقييم",
+      "UPDATE_SUCCESS": "تم تحديث حالة التقييم",
+      "UPDATE_ERROR": "خطأ في تحديث حالة التقييم",
+      "TITLE": "إدارة التقييمات",
+      "SUBTITLE": "مراقبة وإدارة تعليقات المسافرين",
+      "SEARCH_PLACEHOLDER": "البحث في التقييمات...",
+      "COLS": {
+        "ID": "المعرف",
+        "TRAVELER": "المسافر",
+        "DESTINATION": "الوجهة",
+        "RATING": "التقييم",
+        "COMMENT": "التعليق",
+        "STATUS": "الحالة",
+        "ACTIONS": "الإجراءات"
+      },
+      "NO_DATA": "لم يتم العثور على تقييمات مطابقة"
+    },
+    "EVENTS_MANAGEMENT": {
+      "TITLE": "إدارة الفعاليات",
+      "SUBTITLE": "تنظيم فعاليات المنصة",
+      "CREATE_EVENT": "إنشاء فعالية",
+      "SEARCH_PLACEHOLDER": "البحث في الفعاليات...",
+      "COLS": {
+        "COVER": "الغلاف",
+        "TITLE": "العنوان",
+        "DURATION": "المدة",
+        "VENUE": "المكان",
+        "TYPE": "النوع",
+        "ACTIONS": "الإجراءات"
+      },
+      "NO_DATA": "لم يتم العثور على فعاليات مطابقة",
+      "DIALOG": {
+        "EDIT_TITLE": "تعديل الفعالية",
+        "ADD_TITLE": "إضافة فعالية",
+        "NAME": "الاسم",
+        "NAME_REQ": "الاسم مطلوب",
+        "LOCATION": "الموقع",
+        "LOCATION_REQ": "الموقع مطلوب",
+        "START_DATE": "تاريخ البدء",
+        "END_DATE": "تاريخ الانتهاء",
+        "IMAGE": "صورة الفعالية",
+        "UPLOADING": "جاري الرفع...",
+        "CHOOSE_IMAGE": "اختر صورة",
+        "IMAGE_URL_MANUAL": "رابط الصورة (يدوي)",
+        "TYPE": "نوع الفعالية",
+        "TYPE_REQ": "نوع الفعالية مطلوب",
+        "DESCRIPTION": "الوصف",
+        "DESCRIPTION_REQ": "الوصف مطلوب",
+        "HISTORY": "التاريخ (الأصول والخلفية)",
+        "HISTORY_HINT": "مثال: ولد في عام 2001، هذا المهرجان...",
+        "CANCEL": "إلغاء",
+        "SAVE": "حفظ"
+      }
+    },
+    "LOGS": {
+      "TITLE": "سجلات التدقيق",
+      "SUBTITLE": "تتبع جميع الإجراءات الإدارية وتحديثات النظام",
+      "SEARCH_PLACEHOLDER": "البحث في مسارات التدقيق...",
+      "DATE_RANGE": "نطاق التاريخ",
+      "COLS": {
+        "TIMESTAMP": "التاريخ والوقت",
+        "ACTION": "الإجراء",
+        "ENTITY": "الكيان",
+        "INITIATOR": "المبادر",
+        "STATUS": "الحالة",
+        "DETAILS": "التفاصيل"
+      },
+      "SYSTEM": "النظام",
+      "NO_DATA": "لم يتم العثور على سجلات تدقيق"
     }
   },
   "ITINERARY": {
@@ -118,7 +329,15 @@
       "DELETE_ERROR": "خطأ أثناء الحذف",
       "PDF_GENERATING": "جاري إنشاء PDF...",
       "PDF_SUCCESS": "تم إنشاء PDF بنجاح!",
-      "PDF_ERROR": "خطأ أثناء إنشاء PDF"
+      "PDF_ERROR": "خطأ أثناء إنشاء PDF",
+      "PDF_NOT_FOUND": "خطأ: لم يتم العثور على مسار PDF",
+      "SELECT_AT_LEAST_ONE": "يرجى اختيار وجهة واحدة على الأقل",
+      "NAME_ERROR": "يرجى إدخال اسم صالح (3 أحرف على الأقل)",
+      "LOGIN_REQUIRED": "يرجى تسجيل الدخول للمتابعة",
+      "UPDATE_SUCCESS": "تم تحديث المسار بنجاح!",
+      "UPDATE_ERROR": "خطأ أثناء تحديث المسار",
+      "CREATE_SUCCESS": "تم إنشاء المسار بنجاح!",
+      "CREATE_ERROR": "خطأ أثناء إنشاء المسار"
     }
   },
   "ITINERARIES": {
@@ -274,7 +493,46 @@
         "HUMIDITY": "الرطوبة",
         "WIND": "الرياح",
         "FORECAST": "توقعات 5 أيام"
+      },
+      "NOTIFICATIONS": {
+        "LOAD_ERROR": "فشل تحميل تفاصيل الوجهة.",
+        "REVIEW_SUCCESS": "تم إضافة التقييم بنجاح!",
+        "REVIEW_ERROR": "فشل إضافة التقييم",
+        "UPDATE_SUCCESS": "تم تحديث الوجهة بنجاح",
+        "DELETE_CONFIRM": "هل أنت متأكد من حذف هذه الوجهة؟ لا يمكن التراجع عن هذا الإجراء.",
+        "DELETE_SUCCESS": "تم حذف الوجهة",
+        "DELETE_ERROR": "فشل الحذف",
+        "UPLOADING": "جاري رفع الصورة...",
+        "UPLOAD_SUCCESS": "تم إضافة الصورة إلى المعرض!",
+        "UPLOAD_ERROR": "فشل رفع الصورة. يرجى المحاولة مرة أخرى.",
+        "LOGIN_REQUIRED_PLAN": "يرجى تسجيل الدخول لتخطيط رحلة",
+        "LOGIN_REQUIRED_RESERVE": "يرجى تسجيل الدخول لإجراء حجز.",
+        "RESERVATION_SUCCESS": "تم إرسال الحجز! في انتظار موافقة المسؤول.",
+        "DEST_NOT_FOUND": "خطأ: الوجهة غير موجودة",
+        "NAV_ERROR": "خطأ أثناء التنقل"
       }
+    },
+    "DIALOG": {
+      "EDIT_TITLE": "تعديل الوجهة",
+      "ADD_TITLE": "إضافة وجهة",
+      "NAME": "اسم الوجهة",
+      "NAME_REQ": "الاسم مطلوب",
+      "REGION": "المنطقة/المدينة",
+      "REGION_REQ": "المنطقة مطلوبة",
+      "CATEGORY": "الفئة",
+      "LATITUDE": "خط العرض",
+      "LONGITUDE": "خط الطول",
+      "SEARCH_LOCATION": "البحث عن موقع",
+      "SEARCH": "بحث",
+      "VIDEO_URL": "رابط الفيديو (اختياري)",
+      "IMAGES": "صور الوجهة",
+      "CHOOSE_IMAGES": "اختر صوراً",
+      "PASTE_URL": "أو ألصق رابط الصورة",
+      "NEW_BADGE": "جديد",
+      "DESCRIPTION": "الوصف",
+      "DESCRIPTION_REQ": "الوصف مطلوب",
+      "UPDATE": "تحديث",
+      "CREATE": "إنشاء"
     }
   },
   "CATEGORIES": {
@@ -423,7 +681,10 @@
       "MINUTES": "دقيقة",
       "SECONDS": "ثانية",
       "BOOKING_SUCCESS": "تم الحجز بنجاح!",
-      "BOOKING_ERROR": "خطأ أثناء الحجز."
+      "BOOKING_ERROR": "خطأ أثناء الحجز.",
+      "DELETE_CONFIRM": "هل أنت متأكد من أنك تريد حذف هذه الفعالية؟",
+      "DELETE_SUCCESS": "تم حذف الفعالية",
+      "DELETE_ERROR": "فشل حذف الفعالية"
     }
   },
   "COMMON": {
@@ -551,7 +812,9 @@
       "CREATING": "جاري إنشاء الحساب...",
       "ALREADY_MEMBER": "هل أنت عضو بالفعل؟",
       "LOG_IN": "تسجيل الدخول",
-      "GOOGLE": "الاشتراك باستخدام جوجل"
+      "GOOGLE": "الاشتراك باستخدام جوجل",
+      "SUCCESS": "تم التسجيل بنجاح! يرجى التحقق من بريدك الإلكتروني لتفعيل حسابك.",
+      "ERROR": "فشل التسجيل. يرجى التحقق من اتصالك أو المحاولة مرة أخرى."
     },
     "FORGOT_PASSWORD": {
       "TITLE": "نسيت كلمة المرور",
@@ -578,7 +841,8 @@
       "SUBMIT": "حفظ",
       "SUCCESS": "تم تغيير كلمة المرور بنجاح.",
       "GO_TO_LOGIN": "تسجيل الدخول",
-      "REQUEST_NEW_LINK": "طلب رابط جديد"
+      "REQUEST_NEW_LINK": "طلب رابط جديد",
+      "ERROR_GENERIC": "خطأ أثناء إعادة تعيين كلمة المرور."
     },
     "VERIFIED": {
       "PENDING_TITLE": "جاري التحقق...",

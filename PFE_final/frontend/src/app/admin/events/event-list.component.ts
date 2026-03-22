@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from '../../core/services/api.service';
 import { EventDialogComponent } from './event-dialog.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     standalone: false,
@@ -23,7 +24,8 @@ export class AdminEventListComponent implements OnInit {
     constructor(
         private apiService: ApiService,
         private dialog: MatDialog,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
+        private translate: TranslateService
     ) {
         this.dataSource = new MatTableDataSource();
     }
@@ -63,10 +65,23 @@ export class AdminEventListComponent implements OnInit {
     }
 
     deleteEvent(id: number) {
-        if (confirm('Are you sure you want to delete this event?')) {
-            this.apiService.deleteEvent(id).subscribe(() => {
-                this.snackBar.open('Event deleted', 'Close', { duration: 3000 });
-                this.loadEvents();
+        if (confirm(this.translate.instant('EVENTS.DETAIL.DELETE_CONFIRM'))) {
+            this.apiService.deleteEvent(id).subscribe({
+                next: () => {
+                    this.snackBar.open(
+                        this.translate.instant('EVENTS.DETAIL.DELETE_SUCCESS'),
+                        this.translate.instant('COMMON.CLOSE'),
+                        { duration: 3000 }
+                    );
+                    this.loadEvents();
+                },
+                error: (err) => {
+                    this.snackBar.open(
+                        this.translate.instant('EVENTS.DETAIL.DELETE_ERROR'),
+                        this.translate.instant('COMMON.CLOSE'),
+                        { duration: 3000 }
+                    );
+                }
             });
         }
     }

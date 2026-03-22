@@ -63,14 +63,13 @@
             <div
                 class="section-header text-center text-md-start d-md-flex align-items-end justify-content-between mb-5">
                 <div>
-                    <span class="section-tag">Festivals & Culture</span>
-                    <h2 class="section-title">Upcoming Events</h2>
-                    <p class="section-subtitle">Experience the magic of Morocco through its unique festivals and
-                        cultural gatherings.</p>
+                    <span class="section-tag">{{ 'HOME.EVENTS.TAG' | translate }}</span>
+                    <h2 class="section-title">{{ 'HOME.EVENTS.TITLE' | translate }}</h2>
+                    <p class="section-subtitle">{{ 'HOME.EVENTS.SUBTITLE' | translate }}</p>
                 </div>
                 <a routerLink="/events"
                     class="btn btn-primary mt-3 mt-md-0 d-inline-flex align-items-center rounded-pill px-4">
-                    Explore All Events <i class="bi bi-calendar-event ms-2"></i>
+                    {{ 'HOME.EVENTS.EXPLORE_ALL' | translate }} <i class="bi bi-calendar-event ms-2"></i>
                 </a>
             </div>
 
@@ -92,8 +91,7 @@
                                 <span class="text-muted small fw-600">{{ event.lieu }}</span>
                             </div>
                             <h3 class="h5 fw-800 mb-2">{{ event.nom }}</h3>
-                            <p class="text-muted small mb-0 line-clamp-2">{{ event.description || 'Join us for this
-                                amazing cultural experience in Morocco.' }}</p>
+                            <p class="text-muted small mb-0 line-clamp-2">{{ event.description || ('HOME.EVENTS.DEFAULT_DESC' | translate) }}</p>
                         </div>
                     </a>
                 </div>
@@ -102,8 +100,8 @@
             <div *ngIf="!loading && upcomingEvents.length === 0"
                 class="text-center py-5 border rounded-4 bg-white border-dashed">
                 <i class="bi bi-calendar-x display-4 text-muted mb-3 d-block"></i>
-                <h4 class="text-secondary">No upcoming events at the moment</h4>
-                <p class="text-muted">Check back later for new cultural gatherings and festivals.</p>
+                <h4 class="text-secondary">{{ 'HOME.EVENTS.EMPTY_TITLE' | translate }}</h4>
+                <p class="text-muted">{{ 'HOME.EVENTS.EMPTY_DESC' | translate }}</p>
             </div>
         </div>
     </section>

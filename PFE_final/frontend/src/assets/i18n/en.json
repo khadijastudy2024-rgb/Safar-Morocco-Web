@@ -73,6 +73,217 @@
       "PROFILE": "My Profile",
       "SETTINGS": "Settings",
       "LOGOUT": "Logout"
+    },
+    "USERS": {
+      "DELETE_CONFIRM": "Are you sure you want to delete this user?",
+      "DELETE_SUCCESS": "User deleted",
+      "DELETE_ERROR": "Error deleting user",
+      "CHANGE_ROLE_CONFIRM": "Change role of {{name}} to {{role}}?",
+      "ROLE_CHANGED_SUCCESS": "Role changed to {{role}}",
+      "ROLE_CHANGED_ERROR": "Error updating role",
+      "TITLE": "User Management",
+      "SUBTITLE": "Manage platform access and member roles",
+      "SEARCH_PLACEHOLDER": "Search users by name or email...",
+      "COLS": {
+        "ID": "ID",
+        "USERNAME": "Username",
+        "EMAIL": "Email Address",
+        "ROLE": "Account Role",
+        "ACTIONS": "Actions"
+      },
+      "NO_DATA": "No users found matching your criteria"
+    },
+    "RESERVATIONS": {
+      "ERROR_LOADING": "Error loading reservations",
+      "UNKNOWN_USER": "Unknown User",
+      "APPROVE_CONFIRM": "Approve reservation for {{name}}?",
+      "APPROVE_SUCCESS": "Reservation approved successfully",
+      "APPROVE_ERROR": "Error approving reservation",
+      "REJECT_CONFIRM": "Reject reservation for {{name}}?",
+      "REJECT_SUCCESS": "Reservation rejected successfully",
+      "REJECT_ERROR": "Error rejecting reservation",
+      "TITLE": "Pending Reservations",
+      "SUBTITLE": "Approve or reject incoming offer reservations.",
+      "COLS": {
+        "OFFER": "Offer Name",
+        "USER": "User",
+        "DATES": "Dates",
+        "QTY": "Qty/Guests",
+        "TOTAL": "Total",
+        "STATUS": "Status",
+        "ACTIONS": "Actions"
+      },
+      "APPROVE": "Approve",
+      "REJECT": "Reject",
+      "TO": "to",
+      "NA": "N/A",
+      "NO_DATA": "No reservations found."
+    },
+    "DESTINATIONS": {
+      "TITLE": "Destinations",
+      "SUBTITLE": "Manage all displayable locations on the platform",
+      "CREATE_NEW": "Create New",
+      "SEARCH_PLACEHOLDER": "Search destinations...",
+      "FILTER": "Filter",
+      "EXPORT": "Export",
+      "COLS": {
+        "ID": "ID",
+        "COVER": "Cover",
+        "NAME": "Name",
+        "REGION": "Region",
+        "CATEGORY": "Category",
+        "STATUS": "Status",
+        "ACTIONS": "Actions"
+      },
+      "STATUS_ACTIVE": "Active",
+      "NO_DATA": "No matching destinations found"
+    },
+    "OFFERS": {
+      "ERROR_LOADING": "Error loading offers",
+      "UPDATE_SUCCESS": "Offer updated successfully",
+      "CREATE_SUCCESS": "Offer created successfully",
+      "UPDATE_ERROR": "Error updating offer",
+      "CREATE_ERROR": "Error creating offer",
+      "DELETE_CONFIRM": "Are you sure you want to delete {{name}}?",
+      "DELETE_SUCCESS": "Offer deleted successfully",
+      "DELETE_ERROR": "Error deleting offer",
+      "TITLE": "Manage Offers",
+      "SUBTITLE": "Add, update, and manage destination offers.",
+      "ADD_OFFER": "Add Offer",
+      "COLS": {
+        "NAME": "Offer Name",
+        "TYPE": "Type",
+        "DESTINATION": "Destination",
+        "PRICE": "Price",
+        "STATUS": "Status",
+        "ACTIONS": "Actions"
+      },
+      "FILTER": {
+        "DESTINATION": "Destination",
+        "ALL_DESTINATIONS": "All Destinations",
+        "TYPE": "Offer Type",
+        "ALL_TYPES": "All Types",
+        "STATUS": "Status",
+        "ALL_STATUSES": "All Statuses",
+        "ACTIVE": "Active",
+        "DELETED": "Deleted (Soft)",
+        "RESET": "Reset Filters"
+      },
+      "STATUS": {
+        "ARCHIVED": "Archived",
+        "ACTIVE": "Active"
+      },
+      "NO_DATA": "No offers found matching your filters.",
+      "DIALOG": {
+        "EDIT_TITLE": "Edit Offer",
+        "CREATE_TITLE": "Create New Offer",
+        "NAME": "Offer Name",
+        "NAME_HINT": "E.g., Riad Yasmine",
+        "NAME_REQ": "Name is required",
+        "TYPE": "Type",
+        "TYPE_REQ": "Type is required",
+        "TYPES": {
+          "HOTEL": "Hotel",
+          "RESTAURANT": "Restaurant",
+          "ACTIVITY": "Activity"
+        },
+        "PRICE": "Price (MAD)",
+        "PRICE_HINT": "E.g., 500",
+        "PRICE_NIGHT": "Price Per Night (MAD)",
+        "PRICE_NIGHT_HINT": "E.g., 1000",
+        "PRICE_AVG": "Average Price (MAD)",
+        "PRICE_AVG_HINT": "E.g., 300",
+        "STARS": "Stars",
+        "STAR_COUNT": "{{count}} Star",
+        "STARS_COUNT": "{{count}} Stars",
+        "ROOM_TYPE": "Room Type",
+        "ROOM_TYPE_HINT": "E.g., Deluxe Suite",
+        "CUISINE_TYPE": "Cuisine Type",
+        "CUISINE_TYPE_HINT": "E.g., Traditional Moroccan",
+        "DURATION": "Duration",
+        "DURATION_HINT": "E.g., 2 hours",
+        "ACTIVITY_TYPE": "Activity Type",
+        "ACTIVITY_TYPE_HINT": "E.g., Guided Tour",
+        "DESTINATION": "Destination",
+        "DESTINATION_REQ": "Destination is required",
+        "LOADING_DESTINATIONS": "Loading destinations...",
+        "CANCEL": "Cancel",
+        "SAVE_CHANGES": "Save Changes",
+        "CREATE_OFFER": "Create Offer"
+      }
+    },
+    "REVIEWS": {
+      "DELETE_CONFIRM": "Are you sure you want to delete this review?",
+      "DELETE_SUCCESS": "Review deleted",
+      "DELETE_ERROR": "Error deleting review",
+      "UPDATE_SUCCESS": "Review status updated",
+      "UPDATE_ERROR": "Error updating review status",
+      "TITLE": "Review Management",
+      "SUBTITLE": "Monitor and moderate traveler feedback",
+      "SEARCH_PLACEHOLDER": "Search reviews...",
+      "COLS": {
+        "ID": "ID",
+        "TRAVELER": "Traveler",
+        "DESTINATION": "Destination",
+        "RATING": "Rating",
+        "COMMENT": "Comment",
+        "STATUS": "Status",
+        "ACTIONS": "Actions"
+      },
+      "NO_DATA": "No matching reviews found"
+    },
+    "EVENTS_MANAGEMENT": {
+      "TITLE": "Event Management",
+      "SUBTITLE": "Curate and organize platform events",
+      "CREATE_EVENT": "Create Event",
+      "SEARCH_PLACEHOLDER": "Search events...",
+      "COLS": {
+        "COVER": "Cover",
+        "TITLE": "Title",
+        "DURATION": "Duration",
+        "VENUE": "Venue",
+        "TYPE": "Type",
+        "ACTIONS": "Actions"
+      },
+      "NO_DATA": "No matching events found",
+      "DIALOG": {
+        "EDIT_TITLE": "Edit Event",
+        "ADD_TITLE": "Add Event",
+        "NAME": "Name",
+        "NAME_REQ": "Name is required",
+        "LOCATION": "Location",
+        "LOCATION_REQ": "Location is required",
+        "START_DATE": "Start Date",
+        "END_DATE": "End Date",
+        "IMAGE": "Event Image",
+        "UPLOADING": "Uploading...",
+        "CHOOSE_IMAGE": "Choose Image",
+        "IMAGE_URL_MANUAL": "Image URL (Manual)",
+        "TYPE": "Event Type",
+        "TYPE_REQ": "Event type is required",
+        "DESCRIPTION": "Description",
+        "DESCRIPTION_REQ": "Description is required",
+        "HISTORY": "History (Origins & Background)",
+        "HISTORY_HINT": "Ex: Born in 2001, this festival...",
+        "CANCEL": "Cancel",
+        "SAVE": "Save"
+      }
+    },
+    "LOGS": {
+      "TITLE": "Audit Logs",
+      "SUBTITLE": "Track all administrative actions and system updates",
+      "SEARCH_PLACEHOLDER": "Search audit trails...",
+      "DATE_RANGE": "Date Range",
+      "COLS": {
+        "TIMESTAMP": "Date & Time",
+        "ACTION": "Action",
+        "ENTITY": "Entity",
+        "INITIATOR": "Initiator",
+        "STATUS": "Status",
+        "DETAILS": "Details"
+      },
+      "SYSTEM": "System",
+      "NO_DATA": "No audit logs found"
     }
   },
   "ITINERARY": {
@@ -118,7 +329,15 @@
       "DELETE_ERROR": "Error during deletion",
       "PDF_GENERATING": "Generating PDF...",
       "PDF_SUCCESS": "PDF generated successfully!",
-      "PDF_ERROR": "Error during PDF generation"
+      "PDF_ERROR": "Error during PDF generation",
+      "PDF_NOT_FOUND": "Error: PDF path not found",
+      "SELECT_AT_LEAST_ONE": "Please select at least one destination",
+      "NAME_ERROR": "Please enter a valid name (min 3 characters)",
+      "LOGIN_REQUIRED": "Please log in to continue",
+      "UPDATE_SUCCESS": "Itinerary updated successfully!",
+      "UPDATE_ERROR": "Error updating itinerary",
+      "CREATE_SUCCESS": "Itinerary created successfully!",
+      "CREATE_ERROR": "Error creating itinerary"
     }
   },
   "ITINERARIES": {
@@ -274,7 +493,46 @@
         "HUMIDITY": "Humidity",
         "WIND": "Wind",
         "FORECAST": "5-Day Forecast"
+      },
+      "NOTIFICATIONS": {
+        "LOAD_ERROR": "Failed to load destination details.",
+        "REVIEW_SUCCESS": "Review added!",
+        "REVIEW_ERROR": "Failed to add review",
+        "UPDATE_SUCCESS": "Destination updated successfully",
+        "DELETE_CONFIRM": "Are you sure you want to delete this destination? This cannot be undone.",
+        "DELETE_SUCCESS": "Destination deleted",
+        "DELETE_ERROR": "Failed to delete",
+        "UPLOADING": "Uploading image...",
+        "UPLOAD_SUCCESS": "Photo added to gallery!",
+        "UPLOAD_ERROR": "Failed to upload image. Please try again.",
+        "LOGIN_REQUIRED_PLAN": "Please log in to plan a trip",
+        "LOGIN_REQUIRED_RESERVE": "Please log in to make a reservation.",
+        "RESERVATION_SUCCESS": "Reservation submitted! Waiting for admin approval.",
+        "DEST_NOT_FOUND": "Error: Destination not found",
+        "NAV_ERROR": "Error during navigation"
       }
+    },
+    "DIALOG": {
+      "EDIT_TITLE": "Edit Destination",
+      "ADD_TITLE": "Add Destination",
+      "NAME": "Destination Name",
+      "NAME_REQ": "Name is required",
+      "REGION": "Region/City",
+      "REGION_REQ": "Region is required",
+      "CATEGORY": "Category",
+      "LATITUDE": "Latitude",
+      "LONGITUDE": "Longitude",
+      "SEARCH_LOCATION": "Search Location",
+      "SEARCH": "Search",
+      "VIDEO_URL": "Video URL (Optional)",
+      "IMAGES": "Destination Images",
+      "CHOOSE_IMAGES": "Choose Images",
+      "PASTE_URL": "Or paste image URL",
+      "NEW_BADGE": "New",
+      "DESCRIPTION": "Description",
+      "DESCRIPTION_REQ": "Description is required",
+      "UPDATE": "Update",
+      "CREATE": "Create"
     }
   },
   "CATEGORIES": {
@@ -423,13 +681,25 @@
       "MINUTES": "Min",
       "SECONDS": "Sec",
       "BOOKING_SUCCESS": "Booking successful!",
-      "BOOKING_ERROR": "Error during booking."
+      "BOOKING_ERROR": "Error during booking.",
+      "DELETE_CONFIRM": "Are you sure you want to delete this event?",
+      "DELETE_SUCCESS": "Event deleted",
+      "DELETE_ERROR": "Failed to delete event"
     }
   },
   "COMMON": {
     "DAY": "day",
     "DAYS": "days",
     "CLOSE": "Close",
+    "NOTIFICATIONS": {
+      "LOADING": "Loading...",
+      "SUCCESS": "Success",
+      "ERROR": "An error occurred",
+      "SAVE_SUCCESS": "Changes saved successfully!",
+      "DELETE_CONFIRM": "Are you sure you want to delete this?",
+      "DELETE_SUCCESS": "Deleted successfully",
+      "LOGIN_REQUIRED": "Please log in to continue"
+    },
     "READ_MORE": "Read More",
     "VIEW_MORE": "View More",
     "VIEW_ALL": "View All",
@@ -556,7 +826,9 @@
       "CREATING": "Creating Account...",
       "ALREADY_MEMBER": "Already a member?",
       "LOG_IN": "Log In",
-      "GOOGLE": "Sign up with Google"
+      "GOOGLE": "Sign up with Google",
+      "SUCCESS": "Registration successful! Please check your email to activate your account.",
+      "ERROR": "Registration failed. Please check your network or try again."
     },
     "FORGOT_PASSWORD": {
       "TITLE": "Forgot Password",
@@ -583,7 +855,8 @@
       "SUBMIT": "Save",
       "SUCCESS": "Password changed successfully.",
       "GO_TO_LOGIN": "Log In",
-      "REQUEST_NEW_LINK": "Request new link"
+      "REQUEST_NEW_LINK": "Request new link",
+      "ERROR_GENERIC": "Error while resetting password."
     },
     "VERIFIED": {
       "PENDING_TITLE": "Verifying...",

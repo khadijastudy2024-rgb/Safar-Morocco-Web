@@ -1,24 +1,24 @@
-<h2 mat-dialog-title>{{ data.id ? 'Edit' : 'Add' }} Destination</h2>
+<h2 mat-dialog-title>{{ data.id ? ('DESTINATIONS.DIALOG.EDIT_TITLE' | translate) : ('DESTINATIONS.DIALOG.ADD_TITLE' | translate) }}</h2>
 <mat-dialog-content class="dialog-content">
     <form [formGroup]="form">
         <div class="row">
             <mat-form-field appearance="outline" class="half-width">
-                <mat-label>Destination Name</mat-label>
+                <mat-label>{{ 'DESTINATIONS.DIALOG.NAME' | translate }}</mat-label>
                 <i matPrefix class="bi bi-geo-alt-fill input-icon"></i>
                 <input matInput formControlName="nom" placeholder="Ex: Chefchaouen">
-                <mat-error *ngIf="form.get('nom')?.hasError('required')">Name is required</mat-error>
+                <mat-error *ngIf="form.get('nom')?.hasError('required')">{{ 'DESTINATIONS.DIALOG.NAME_REQ' | translate }}</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="half-width">
-                <mat-label>Region/City</mat-label>
+                <mat-label>{{ 'DESTINATIONS.DIALOG.REGION' | translate }}</mat-label>
                 <i matPrefix class="bi bi-building input-icon"></i>
                 <input matInput formControlName="type" placeholder="Ex: Marrakech">
-                <mat-error *ngIf="form.get('type')?.hasError('required')">Region is required</mat-error>
+                <mat-error *ngIf="form.get('type')?.hasError('required')">{{ 'DESTINATIONS.DIALOG.REGION_REQ' | translate }}</mat-error>
             </mat-form-field>
         </div>
 
         <mat-form-field appearance="outline" class="full-width">
-            <mat-label>Category</mat-label>
+            <mat-label>{{ 'DESTINATIONS.DIALOG.CATEGORY' | translate }}</mat-label>
             <i matPrefix class="bi bi-tag-fill input-icon"></i>
             <mat-select formControlName="categorie">
                 <mat-option value="Cultural">Cultural</mat-option>
@@ -31,40 +31,40 @@
 
         <div class="row">
             <mat-form-field appearance="outline" class="half-width">
-                <mat-label>Latitude</mat-label>
+                <mat-label>{{ 'DESTINATIONS.DIALOG.LATITUDE' | translate }}</mat-label>
                 <input matInput type="number" formControlName="latitude" placeholder="31.6295" step="0.0001">
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="half-width">
-                <mat-label>Longitude</mat-label>
+                <mat-label>{{ 'DESTINATIONS.DIALOG.LONGITUDE' | translate }}</mat-label>
                 <input matInput type="number" formControlName="longitude" placeholder="-7.9811" step="0.0001">
             </mat-form-field>
         </div>
 
         <div class="map-search-wrapper" style="margin-bottom: 10px; display: flex; gap: 10px;">
             <mat-form-field appearance="outline" style="flex: 1; margin-bottom: 0;">
-                <mat-label>Search Location</mat-label>
+                <mat-label>{{ 'DESTINATIONS.DIALOG.SEARCH_LOCATION' | translate }}</mat-label>
                 <i matPrefix class="bi bi-search input-icon"></i>
                 <input matInput #locationSearch (keyup.enter)="searchLocation(locationSearch.value)">
             </mat-form-field>
             <button type="button" mat-stroked-button (click)="searchLocation(locationSearch.value)">
-                Search
+                {{ 'DESTINATIONS.DIALOG.SEARCH' | translate }}
             </button>
         </div>
 
         <div id="map" class="map-container"></div>
 
         <mat-form-field appearance="outline" class="full-width">
-            <mat-label>Video URL (Optional)</mat-label>
+            <mat-label>{{ 'DESTINATIONS.DIALOG.VIDEO_URL' | translate }}</mat-label>
             <i matPrefix class="bi bi-youtube input-icon"></i>
             <input matInput formControlName="videoUrl">
         </mat-form-field>
 
         <div class="upload-section">
-            <label>Destination Images</label>
+            <label>{{ 'DESTINATIONS.DIALOG.IMAGES' | translate }}</label>
             <div class="file-upload-wrapper">
                 <button type="button" mat-stroked-button (click)="fileInput.click()" [disabled]="isUploading">
-                    <i class="bi bi-cloud-upload-fill"></i> {{ isUploading ? 'Uploading...' : 'Choose Images' }}
+                    <i class="bi bi-cloud-upload-fill"></i> {{ isUploading ? ('ADMIN.EVENTS_MANAGEMENT.DIALOG.UPLOADING' | translate) : ('DESTINATIONS.DIALOG.CHOOSE_IMAGES' | translate) }}
                 </button>
                 <input #fileInput type="file" (change)="onFileSelected($event)" style="display: none" accept="image/*"
                     multiple>
@@ -73,7 +73,7 @@
             <!-- URL Input -->
             <div style="margin-top: 10px; display: flex; gap: 10px; align-items: center;">
                 <mat-form-field appearance="outline" style="flex: 1; margin-bottom: 0;">
-                    <mat-label>Or paste image URL</mat-label>
+                    <mat-label>{{ 'DESTINATIONS.DIALOG.PASTE_URL' | translate }}</mat-label>
                     <input matInput #urlInput>
                 </mat-form-field>
                 <button type="button" mat-icon-button (click)="addImageUrl(urlInput.value); urlInput.value=''"
@@ -85,15 +85,15 @@
             <div class="image-preview-grid" *ngIf="existingImages.length > 0 || newFiles.length > 0">
                 <!-- Existing Images -->
                 <div *ngFor="let img of existingImages; let i = index" class="preview-item">
-                    <img [src]="img" class="preview-img">
+                    <img [src]="img" class="preview-img" alt="destination image">
                     <button type="button" class="remove-img-btn" (click)="removeExistingImage(i)">
                         <i class="bi bi-x"></i>
                     </button>
                 </div>
                 <!-- New Files -->
                 <div *ngFor="let item of newFiles; let i = index" class="preview-item new-file">
-                    <img [src]="item.preview" class="preview-img">
-                    <div class="new-badge">New</div>
+                    <img [src]="item.preview" class="preview-img" alt="new image">
+                    <div class="new-badge">{{ 'DESTINATIONS.DIALOG.NEW_BADGE' | translate }}</div>
                     <button type="button" class="remove-img-btn" (click)="removeNewFile(i)">
                         <i class="bi bi-x"></i>
                     </button>
@@ -102,16 +102,16 @@
         </div>
 
         <mat-form-field appearance="outline" class="full-width">
-            <mat-label>Description</mat-label>
+            <mat-label>{{ 'DESTINATIONS.DIALOG.DESCRIPTION' | translate }}</mat-label>
             <textarea matInput formControlName="description" rows="5"></textarea>
-            <mat-error *ngIf="form.get('description')?.hasError('required')">Description is required</mat-error>
+            <mat-error *ngIf="form.get('description')?.hasError('required')">{{ 'DESTINATIONS.DIALOG.DESCRIPTION_REQ' | translate }}</mat-error>
         </mat-form-field>
     </form>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button (click)="onCancel()">{{ 'ADMIN.EVENTS_MANAGEMENT.DIALOG.CANCEL' | translate }}</button>
     <button mat-raised-button color="primary" [disabled]="form.invalid || loading" (click)="onSave()">
-        <i class="bi bi-check-lg"></i> {{ data.id ? 'Update' : 'Create' }}
+        <i class="bi bi-check-lg"></i> {{ data.id ? ('DESTINATIONS.DIALOG.UPDATE' | translate) : ('DESTINATIONS.DIALOG.CREATE' | translate) }}
     </button>
 </mat-dialog-actions>

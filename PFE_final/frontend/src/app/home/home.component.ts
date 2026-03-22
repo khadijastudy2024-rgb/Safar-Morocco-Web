@@ -5,6 +5,7 @@ import { DestinationService } from '../core/services/destination.service';
 import { ApiService } from '../core/services/api.service';
 import { AuthService } from '../core/services/auth.service';
 import { Destination } from '../core/models/destination.model';
+import { TranslateService } from '@ngx-translate/core';
 import * as L from 'leaflet';
 
 @Component({
@@ -31,7 +32,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
         private router: Router,
         private snackBar: MatSnackBar,
         private ngZone: NgZone,
-        private cdr: ChangeDetectorRef
+        private cdr: ChangeDetectorRef,
+        private translate: TranslateService
     ) { }
 
     ngOnInit(): void {
@@ -146,9 +148,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
      * Rediriger vers la création d'itinéraire
      * Appelé depuis le bouton "Planifier un voyage" sur la homepage
      */
-    startPlanning() {
+    planItinerary() {
         if (!this.authService.isLoggedIn) {
-            this.snackBar.open('Veuillez vous connecter pour planifier un voyage', 'Fermer', { duration: 5000 });
+            this.snackBar.open(
+                this.translate.instant('DESTINATIONS.DETAIL.NOTIFICATIONS.LOGIN_REQUIRED_PLAN'),
+                this.translate.instant('COMMON.CLOSE'),
+                { duration: 5000 }
+            );
             this.router.navigate(['/auth/login']);
             return;
         }

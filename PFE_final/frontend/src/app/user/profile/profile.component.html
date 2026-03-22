@@ -77,7 +77,7 @@
                                     <i class="bi bi-clipboard-check"></i>
                                 </div>
                                 <h3 class="mb-0 fw-800">{{totalReservationsCount}}</h3>
-                                <p class="text-muted small fw-600 mb-0">Total Reservations</p>
+                                <p class="text-muted small fw-600 mb-0">{{ 'PROFILE.TOTAL_RESERVATIONS' | translate }}</p>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-lg-4">
@@ -88,7 +88,7 @@
                                     <i class="bi bi-star-fill"></i>
                                 </div>
                                 <h3 class="mb-0 fw-800">{{upcomingEventsCount}}</h3>
-                                <p class="text-muted small fw-600 mb-0">Upcoming Events</p>
+                                <p class="text-muted small fw-600 mb-0">{{ 'PROFILE.UPCOMING_EVENTS' | translate }}</p>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-lg-4">
@@ -99,7 +99,7 @@
                                     <i class="bi bi-suitcase-lg-fill"></i>
                                 </div>
                                 <h3 class="mb-0 fw-800">{{createdItineraries.length}}</h3>
-                                <p class="text-muted small fw-600 mb-0">Itineraries Created</p>
+                                <p class="text-muted small fw-600 mb-0">{{ 'PROFILE.ITINERARIES_CREATED' | translate }}</p>
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
 
                     <!-- 1) TOTAL RESERVATIONS -->
                     <div *ngIf="selectedSection === 'reservations'" class="fade-in section-margin-custom">
-                        <h4 class="mb-4 fw-800"><i class="bi bi-calendar-check text-primary me-2"></i>All Reservations
+                        <h4 class="mb-4 fw-800"><i class="bi bi-calendar-check text-primary me-2"></i>{{ 'PROFILE.ALL_RESERVATIONS' | translate }}
                         </h4>
 
                         <div *ngIf="reservationsLoading" class="text-center py-5">
@@ -120,8 +120,8 @@
                             <div *ngIf="offerReservations.length === 0 && eventReservations.length === 0"
                                 class="empty-state text-center py-5 bg-white shadow-sm rounded-4">
                                 <div class="empty-icon-box mb-3"><i class="bi bi-calendar-x text-muted fs-1"></i></div>
-                                <h5 class="fw-800">No reservations found.</h5>
-                                <p class="text-muted">Start booking events, hotels, and activities to see them here.</p>
+                                <h5 class="fw-800">{{ 'PROFILE.NO_RESERVATIONS' | translate }}</h5>
+                                <p class="text-muted">{{ 'PROFILE.NO_RESERVATIONS_DESC' | translate }}</p>
                             </div>
 
                             <div class="row g-4">
@@ -134,7 +134,7 @@
                                         <div
                                             class="d-flex justify-content-between align-items-start mb-3 position-relative z-1">
                                             <div>
-                                                <span class="badge bg-warning text-dark fw-700 mb-2">EVENT</span>
+                                                <span class="badge bg-warning text-dark fw-700 mb-2">{{ 'PROFILE.TYPE_EVENT' | translate }}</span>
                                                 <h6 class="fw-800 mb-0 text-dark">{{ res.evenement?.nom }}</h6>
                                             </div>
                                             <span class="badge rounded-pill fw-700"
@@ -153,7 +153,7 @@
                                         <div class="mt-auto position-relative z-1 text-end"
                                             *ngIf="res.status === 'CONFIRMED'">
                                             <button class="btn btn-sm btn-outline-danger fw-700 rounded-pill px-3"
-                                                (click)="cancelEvent(res)">Cancel</button>
+                                                (click)="cancelEvent(res)">{{ 'PROFILE.CANCEL' | translate }}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -168,11 +168,11 @@
                                             class="d-flex justify-content-between align-items-start mb-3 position-relative z-1">
                                             <div>
                                                 <span class="badge bg-primary text-white fw-700 mb-2"
-                                                    *ngIf="res.offer?.type === 'HOTEL'">HOTEL</span>
+                                                    *ngIf="res.offer?.type === 'HOTEL'">{{ 'PROFILE.TYPE_HOTEL' | translate }}</span>
                                                 <span class="badge bg-danger text-white fw-700 mb-2"
-                                                    *ngIf="res.offer?.type === 'RESTO'">RESTAURANT</span>
+                                                    *ngIf="res.offer?.type === 'RESTO'">{{ 'PROFILE.TYPE_RESTO' | translate }}</span>
                                                 <span class="badge bg-success text-white fw-700 mb-2"
-                                                    *ngIf="res.offer?.type === 'ACTIVITE' || res.offer?.type === 'ACTIVITY'">ACTIVITY</span>
+                                                    *ngIf="res.offer?.type === 'ACTIVITE' || res.offer?.type === 'ACTIVITY'">{{ 'PROFILE.TYPE_ACTIVITY' | translate }}</span>
                                                 <h6 class="fw-800 mb-0 text-dark">{{ res.offer?.name || ('Offer #' +
                                                     res.offer?.id) }}</h6>
                                             </div>
@@ -193,7 +193,7 @@
                                         <div class="mt-auto position-relative z-1 text-end"
                                             *ngIf="res.status === 'CONFIRMED' || res.status === 'APPROVED' || res.status === 'PENDING'">
                                             <button class="btn btn-sm btn-outline-danger fw-700 rounded-pill px-3"
-                                                (click)="cancelOffer(res)">Cancel</button>
+                                                (click)="cancelOffer(res)">{{ 'PROFILE.CANCEL' | translate }}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -203,13 +203,13 @@
 
                     <!-- 2) UPCOMING EVENTS -->
                     <div *ngIf="selectedSection === 'events'" class="fade-in section-margin-custom">
-                        <h4 class="mb-4 fw-800"><i class="bi bi-star-fill text-warning me-2"></i>Upcoming Events</h4>
+                        <h4 class="mb-4 fw-800"><i class="bi bi-star-fill text-warning me-2"></i>{{ 'PROFILE.UPCOMING_EVENTS' | translate }}</h4>
 
                         <div *ngIf="upcomingEvents.length === 0"
                             class="empty-state text-center py-5 bg-white shadow-sm rounded-4">
                             <div class="empty-icon-box mb-3"><i class="bi bi-calendar-x text-muted fs-1"></i></div>
-                            <h5 class="fw-800">No upcoming events.</h5>
-                            <p class="text-muted">Browse our events catalogue to find exciting activities!</p>
+                            <h5 class="fw-800">{{ 'PROFILE.NO_UPCOMING' | translate }}</h5>
+                            <p class="text-muted">{{ 'PROFILE.NO_UPCOMING_DESC' | translate }}</p>
                         </div>
 
                         <div class="row g-4">
@@ -217,7 +217,7 @@
                                 <div class="card reservation-card border-0 rounded-4 h-100">
                                     <div class="d-flex justify-content-between align-items-start mb-3">
                                         <div>
-                                            <span class="badge bg-warning text-dark fw-700 mb-2">EVENT</span>
+                                            <span class="badge bg-warning text-dark fw-700 mb-2">{{ 'PROFILE.TYPE_EVENT' | translate }}</span>
                                             <h6 class="fw-800 mb-0 text-dark">{{ res.evenement?.nom }}</h6>
                                         </div>
                                         <span class="badge bg-success rounded-pill fw-700">{{ res.status }}</span>
@@ -232,7 +232,7 @@
                                     </div>
                                     <div class="mt-auto text-end">
                                         <button class="btn btn-sm btn-outline-danger fw-700 rounded-pill px-3"
-                                            (click)="cancelEvent(res)">Cancel</button>
+                                            (click)="cancelEvent(res)">{{ 'PROFILE.CANCEL' | translate }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -241,14 +241,13 @@
 
                     <!-- 3) ITINERARIES CREATED -->
                     <div *ngIf="selectedSection === 'itineraries'" class="fade-in section-margin-custom">
-                        <h4 class="mb-4 fw-800"><i class="bi bi-suitcase-lg-fill text-success me-2"></i>Itineraries
-                            Created</h4>
+                        <h4 class="mb-4 fw-800"><i class="bi bi-suitcase-lg-fill text-success me-2"></i>{{ 'PROFILE.ITINERARIES_CREATED' | translate }}</h4>
 
                         <div *ngIf="createdItineraries.length === 0"
                             class="empty-state text-center py-5 bg-white shadow-sm rounded-4">
                             <div class="empty-icon-box mb-3"><i class="bi bi-suitcase text-muted fs-1"></i></div>
-                            <h5 class="fw-800">No itineraries created.</h5>
-                            <p class="text-muted">Create your first itinerary and start exploring!</p>
+                            <h5 class="fw-800">{{ 'PROFILE.NO_ITINERARIES' | translate }}</h5>
+                            <p class="text-muted">{{ 'PROFILE.NO_ITINERARIES_DESC' | translate }}</p>
                         </div>
 
                         <div class="row g-4">
@@ -266,11 +265,11 @@
                                             date:'MMM d, y' }}</small>
                                         <small class="text-muted fw-600"><i
                                                 class="bi bi-geo-alt me-2 text-primary"></i>{{ it.destinations ?
-                                            it.destinations.length : 0 }} Destinations</small>
+                                            it.destinations.length : 0 }} {{ 'PROFILE.DESTINATIONS_LABEL' | translate }}</small>
                                     </div>
                                     <div class="mt-auto d-flex gap-2 justify-content-end">
                                         <button (click)="viewItinerary(it.id); $event.stopPropagation()"
-                                            class="btn btn-sm btn-primary fw-700 rounded-pill px-3">View</button>
+                                            class="btn btn-sm btn-primary fw-700 rounded-pill px-3">{{ 'PROFILE.VIEW' | translate }}</button>
                                     </div>
                                 </div>
                             </div>

@@ -23,7 +23,7 @@
                         <div class="col-lg-6">
                             <div class="search-input-group">
                                 <i class="bi bi-geo-alt search-icon"></i>
-                                <input type="text" class="form-control-custom" [placeholder]="'Location'"
+                                <input type="text" class="form-control-custom" [placeholder]="'EVENTS.LIST.LOCATION_PLACEHOLDER' | translate"
                                     [(ngModel)]="locationTerm" (ngModelChange)="onSearch()">
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                             | translate) }}</p>
 
                         <div class="event-footer-meta d-flex justify-content-between align-items-center">
-                            <span class="price-tag" *ngIf="event.price">From {{ event.price | number:'1.0-0' }}
+                            <span class="price-tag" *ngIf="event.price">{{ 'COMMON.FROM' | translate }} {{ event.price | number:'1.0-0' }}
                                 MAD</span>
                             <span class="price-tag text-teal" *ngIf="!event.price">{{ 'EVENTS.DETAIL.PRICE_FREE' |
                                 translate }}</span>

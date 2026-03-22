@@ -1,8 +1,8 @@
 <div class="admin-page-wrapper fade-in">
     <div class="d-flex justify-content-between align-items-center mb-5">
         <div>
-            <h1 class="fw-800 text-main mb-1">Review Management</h1>
-            <p class="text-muted mb-0">Monitor and moderate traveler feedback</p>
+            <h1 class="fw-800 text-main mb-1">{{ 'ADMIN.REVIEWS.TITLE' | translate }}</h1>
+            <p class="text-muted mb-0">{{ 'ADMIN.REVIEWS.SUBTITLE' | translate }}</p>
         </div>
     </div>
 
@@ -11,7 +11,7 @@
             <div class="search-wrapper position-relative w-100" style="max-width: 400px;">
                 <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 opacity-50"></i>
                 <input type="text" class="form-control ps-5 rounded-pill border-light bg-light fw-600"
-                    (keyup)="applyFilter($event)" placeholder="Search reviews...">
+                    (keyup)="applyFilter($event)" [placeholder]="'ADMIN.REVIEWS.SEARCH_PLACEHOLDER' | translate">
             </div>
         </div>
 
@@ -20,13 +20,13 @@
 
                 <!-- ID Column -->
                 <ng-container matColumnDef="id">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="ps-4"> ID </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="ps-4"> {{ 'ADMIN.REVIEWS.COLS.ID' | translate }} </th>
                     <td mat-cell *matCellDef="let row" class="ps-4 text-muted small fw-700"> #{{row.id}} </td>
                 </ng-container>
 
                 <!-- User Column -->
                 <ng-container matColumnDef="user">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Traveler </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'ADMIN.REVIEWS.COLS.TRAVELER' | translate }} </th>
                     <td mat-cell *matCellDef="let row">
                         <div class="d-flex align-items-center gap-2">
                             <span class="avatar-sm shadow-sm bg-primary-soft text-primary">{{row.travelerName?.charAt(0)
@@ -38,13 +38,13 @@
 
                 <!-- Destination Column -->
                 <ng-container matColumnDef="destination">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Destination </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'ADMIN.REVIEWS.COLS.DESTINATION' | translate }} </th>
                     <td mat-cell *matCellDef="let row" class="fw-600"> {{row.destinationName}} </td>
                 </ng-container>
 
                 <!-- Rating Column -->
                 <ng-container matColumnDef="note">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'ADMIN.REVIEWS.COLS.RATING' | translate }} </th>
                     <td mat-cell *matCellDef="let row">
                         <div class="rating-badge">
                             <i class="bi bi-star-fill text-warning"></i>
@@ -55,14 +55,14 @@
 
                 <!-- Comment Column -->
                 <ng-container matColumnDef="commentaire">
-                    <th mat-header-cell *matHeaderCellDef> Comment </th>
+                    <th mat-header-cell *matHeaderCellDef> {{ 'ADMIN.REVIEWS.COLS.COMMENT' | translate }} </th>
                     <td mat-cell *matCellDef="let row" class="comment-cell opacity-75"> {{row.commentaire |
                         slice:0:60}}{{row.commentaire.length > 60 ? '...' : ''}} </td>
                 </ng-container>
 
                 <!-- Status Column -->
                 <ng-container matColumnDef="status">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'ADMIN.REVIEWS.COLS.STATUS' | translate }} </th>
                     <td mat-cell *matCellDef="let row">
                         <span class="badge rounded-pill" [ngClass]="{
                             'bg-warning-soft text-warning': row.status === 'PENDING',
@@ -76,7 +76,7 @@
 
                 <!-- Actions Column -->
                 <ng-container matColumnDef="actions">
-                    <th mat-header-cell *matHeaderCellDef class="pe-4 text-end"> Actions </th>
+                    <th mat-header-cell *matHeaderCellDef class="pe-4 text-end"> {{ 'ADMIN.REVIEWS.COLS.ACTIONS' | translate }} </th>
                     <td mat-cell *matCellDef="let row" class="pe-4 text-end">
                         <div class="d-flex justify-content-end gap-1">
                             <button *ngIf="row.status !== 'APPROVED'" class="btn btn-icon-soft text-success"
@@ -101,7 +101,7 @@
                     <td class="mat-cell p-5 text-center" [attr.colspan]="displayedColumns.length">
                         <div class="opacity-50">
                             <i class="bi bi-chat-square-dots fs-1"></i>
-                            <p class="mt-2">No matching reviews found</p>
+                            <p class="mt-2">{{ 'ADMIN.REVIEWS.NO_DATA' | translate }}</p>
                         </div>
                     </td>
                 </tr>

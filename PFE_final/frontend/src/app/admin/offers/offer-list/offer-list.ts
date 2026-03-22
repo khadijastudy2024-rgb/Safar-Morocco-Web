@@ -9,6 +9,7 @@ import { DestinationService } from '../../../core/services/destination.service';
 import { Offer } from '../../../core/models/offer.model';
 import { Destination } from '../../../core/models/destination.model';
 import { OfferDialogComponent } from '../offer-dialog/offer-dialog';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-offer-list',
@@ -33,7 +34,8 @@ export class OfferList implements OnInit {
     private offerService: OfferService,
     private destinationService: DestinationService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -71,7 +73,11 @@ export class OfferList implements OnInit {
         };
       },
       error: (err: any) => {
-        this.snackBar.open('Error loading offers', 'Close', { duration: 3000 });
+        this.snackBar.open(
+          this.translate.instant('ADMIN.OFFERS.ERROR_LOADING'),
+          this.translate.instant('COMMON.CLOSE'),
+          { duration: 3000 }
+        );
       }
     });
   }
@@ -107,23 +113,39 @@ export class OfferList implements OnInit {
         if (offer && offer.id) {
           this.offerService.updateOffer(offer.id, result).subscribe({
             next: () => {
-              this.snackBar.open('Offer updated successfully', 'Close', { duration: 3000 });
+              this.snackBar.open(
+                this.translate.instant('ADMIN.OFFERS.UPDATE_SUCCESS'),
+                this.translate.instant('COMMON.CLOSE'),
+                { duration: 3000 }
+              );
               this.loadOffers();
             },
             error: (err: any) => {
               console.error('Update Offer Error:', err);
-              this.snackBar.open('Error updating offer', 'Close', { duration: 3000 });
+              this.snackBar.open(
+                this.translate.instant('ADMIN.OFFERS.UPDATE_ERROR'),
+                this.translate.instant('COMMON.CLOSE'),
+                { duration: 3000 }
+              );
             }
           });
         } else {
           this.offerService.createOffer(result).subscribe({
             next: () => {
-              this.snackBar.open('Offer created successfully', 'Close', { duration: 3000 });
+              this.snackBar.open(
+                this.translate.instant('ADMIN.OFFERS.CREATE_SUCCESS'),
+                this.translate.instant('COMMON.CLOSE'),
+                { duration: 3000 }
+              );
               this.loadOffers();
             },
             error: (err: any) => {
               console.error('Create Offer Error:', err);
-              this.snackBar.open('Error creating offer', 'Close', { duration: 3000 });
+              this.snackBar.open(
+                this.translate.instant('ADMIN.OFFERS.CREATE_ERROR'),
+                this.translate.instant('COMMON.CLOSE'),
+                { duration: 3000 }
+              );
             }
           });
         }
@@ -132,14 +154,23 @@ export class OfferList implements OnInit {
   }
 
   deleteOffer(offer: Offer) {
-    if (confirm(`Are you sure you want to delete ${offer.name}?`)) {
+    const confirmMsg = this.translate.instant('ADMIN.OFFERS.DELETE_CONFIRM', { name: offer.name });
+    if (confirm(confirmMsg)) {
       this.offerService.deleteOffer(offer.id!).subscribe({
         next: () => {
-          this.snackBar.open('Offer deleted successfully', 'Close', { duration: 3000 });
+          this.snackBar.open(
+            this.translate.instant('ADMIN.OFFERS.DELETE_SUCCESS'),
+            this.translate.instant('COMMON.CLOSE'),
+            { duration: 3000 }
+          );
           this.loadOffers();
         },
         error: (err: any) => {
-          this.snackBar.open('Error deleting offer', 'Close', { duration: 3000 });
+          this.snackBar.open(
+            this.translate.instant('ADMIN.OFFERS.DELETE_ERROR'),
+            this.translate.instant('COMMON.CLOSE'),
+            { duration: 3000 }
+          );
         }
       });
     }

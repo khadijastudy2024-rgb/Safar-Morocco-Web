@@ -1,8 +1,8 @@
 <div class="admin-page-container">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <h4 class="mb-1 fw-bold text-dark">Pending Reservations</h4>
-            <p class="text-muted mb-0 small">Approve or reject incoming offer reservations.</p>
+            <h4 class="mb-1 fw-bold text-dark">{{ 'ADMIN.RESERVATIONS.TITLE' | translate }}</h4>
+            <p class="text-muted mb-0 small">{{ 'ADMIN.RESERVATIONS.SUBTITLE' | translate }}</p>
         </div>
     </div>
 
@@ -12,14 +12,14 @@
             <table mat-table [dataSource]="dataSource" matSort class="w-100">
 
                 <ng-container matColumnDef="offerName">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Offer Name </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'ADMIN.RESERVATIONS.COLS.OFFER' | translate }} </th>
                     <td mat-cell *matCellDef="let element" class="fw-medium">
-                        {{ element.offer?.name || 'Unknown Offer' }}
+                        {{ element.offer?.name || ('ADMIN.RESERVATIONS.NA' | translate) }}
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="userName">
-                    <th mat-header-cell *matHeaderCellDef> User </th>
+                    <th mat-header-cell *matHeaderCellDef> {{ 'ADMIN.RESERVATIONS.COLS.USER' | translate }} </th>
                     <td mat-cell *matCellDef="let element">
                         <i class="bi bi-person-fill text-muted me-1"></i>
                         {{ getUserName(element.userId) }}
@@ -27,35 +27,35 @@
                 </ng-container>
 
                 <ng-container matColumnDef="dates">
-                    <th mat-header-cell *matHeaderCellDef> Dates </th>
+                    <th mat-header-cell *matHeaderCellDef> {{ 'ADMIN.RESERVATIONS.COLS.DATES' | translate }} </th>
                     <td mat-cell *matCellDef="let element" class="small">
                         <ng-container *ngIf="element.startDate || element.endDate; else none">
                             {{ element.startDate | date:'shortDate' }} <br>
-                            <span class="text-muted" *ngIf="element.endDate">to {{ element.endDate | date:'shortDate'
+                            <span class="text-muted" *ngIf="element.endDate">{{ 'ADMIN.RESERVATIONS.TO' | translate }} {{ element.endDate | date:'shortDate'
                                 }}</span>
                         </ng-container>
                         <ng-template #none>
-                            <span class="text-muted fst-italic">N/A</span>
+                            <span class="text-muted fst-italic">{{ 'ADMIN.RESERVATIONS.NA' | translate }}</span>
                         </ng-template>
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="quantity">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Qty/Guests </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'ADMIN.RESERVATIONS.COLS.QTY' | translate }} </th>
                     <td mat-cell *matCellDef="let element">
                         {{ element.quantity || 1 }}
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="totalPrice">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Total </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'ADMIN.RESERVATIONS.COLS.TOTAL' | translate }} </th>
                     <td mat-cell *matCellDef="let element" class="fw-bold text-primary">
                         {{ element.totalPrice | currency:'MAD':'symbol':'1.0-0' }}
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="status">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'ADMIN.RESERVATIONS.COLS.STATUS' | translate }} </th>
                     <td mat-cell *matCellDef="let element">
                         <span class="badge rounded-pill" [ngClass]="{
                                 'bg-warning text-dark': element.status === 'PENDING',
@@ -68,15 +68,15 @@
                 </ng-container>
 
                 <ng-container matColumnDef="actions">
-                    <th mat-header-cell *matHeaderCellDef class="text-end"> Actions </th>
+                    <th mat-header-cell *matHeaderCellDef class="text-end"> {{ 'ADMIN.RESERVATIONS.COLS.ACTIONS' | translate }} </th>
                     <td mat-cell *matCellDef="let element" class="text-end">
                         <button mat-stroked-button color="primary" class="me-2 btn-sm rounded-pill"
                             *ngIf="element.status === 'PENDING'" (click)="approveReservation(element)">
-                            Approve
+                            {{ 'ADMIN.RESERVATIONS.APPROVE' | translate }}
                         </button>
                         <button mat-stroked-button color="warn" class="btn-sm rounded-pill"
                             *ngIf="element.status === 'PENDING'" (click)="rejectReservation(element)">
-                            Reject
+                            {{ 'ADMIN.RESERVATIONS.REJECT' | translate }}
                         </button>
                     </td>
                 </ng-container>
@@ -88,7 +88,7 @@
                 <tr class="mat-row" *matNoDataRow>
                     <td class="mat-cell text-center py-5 text-muted" colspan="7">
                         <i class="bi bi-inbox fs-1 d-block mb-2 text-primary opacity-50"></i>
-                        No reservations found.
+                        {{ 'ADMIN.RESERVATIONS.NO_DATA' | translate }}
                     </td>
                 </tr>
             </table>

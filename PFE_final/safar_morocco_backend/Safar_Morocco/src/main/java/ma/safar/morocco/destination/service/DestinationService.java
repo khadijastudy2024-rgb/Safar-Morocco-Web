@@ -6,6 +6,7 @@ import ma.safar.morocco.destination.entity.Destination;
 import ma.safar.morocco.destination.repository.DestinationRepository;
 import ma.safar.morocco.review.repository.AvisRepository;
 import ma.safar.morocco.security.service.AuditService;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,13 +52,45 @@ public class DestinationService {
     public Destination update(Long id, Destination updated) {
         Destination existing = destinationRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Destination non trouvée"));
-        existing.setNom(updated.getNom());
-        existing.setDescription(updated.getDescription());
+        existing.setNomEn(updated.getNomEn());
+        existing.setNomFr(updated.getNomFr());
+        existing.setNomAr(updated.getNomAr());
+        existing.setNomEs(updated.getNomEs());
+        
+        existing.setDescriptionEn(updated.getDescriptionEn());
+        existing.setDescriptionFr(updated.getDescriptionFr());
+        existing.setDescriptionAr(updated.getDescriptionAr());
+        existing.setDescriptionEs(updated.getDescriptionEs());
+        
+        existing.setHistoireEn(updated.getHistoireEn());
+        existing.setHistoireFr(updated.getHistoireFr());
+        existing.setHistoireAr(updated.getHistoireAr());
+        existing.setHistoireEs(updated.getHistoireEs());
+        
+        existing.setHistoricalDescriptionEn(updated.getHistoricalDescriptionEn());
+        existing.setHistoricalDescriptionFr(updated.getHistoricalDescriptionFr());
+        existing.setHistoricalDescriptionAr(updated.getHistoricalDescriptionAr());
+        existing.setHistoricalDescriptionEs(updated.getHistoricalDescriptionEs());
+        
+        existing.setTypeEn(updated.getTypeEn());
+        existing.setTypeFr(updated.getTypeFr());
+        existing.setTypeAr(updated.getTypeAr());
+        existing.setTypeEs(updated.getTypeEs());
+
         existing.setLatitude(updated.getLatitude());
         existing.setLongitude(updated.getLongitude());
         existing.setCategorie(updated.getCategorie());
-        existing.setBestTime(updated.getBestTime());
-        existing.setLanguages(updated.getLanguages());
+        
+        existing.setBestTimeEn(updated.getBestTimeEn());
+        existing.setBestTimeFr(updated.getBestTimeFr());
+        existing.setBestTimeAr(updated.getBestTimeAr());
+        existing.setBestTimeEs(updated.getBestTimeEs());
+        
+        existing.setLanguagesEn(updated.getLanguagesEn());
+        existing.setLanguagesFr(updated.getLanguagesFr());
+        existing.setLanguagesAr(updated.getLanguagesAr());
+        existing.setLanguagesEs(updated.getLanguagesEs());
+        
         existing.setAverageCost(updated.getAverageCost());
         existing.setVideoUrl(updated.getVideoUrl());
         Destination result = destinationRepository.save(existing);
@@ -99,13 +132,69 @@ public class DestinationService {
         Double avgRating = avisRepository.getAverageRating(d.getId());
         Long reviewCount = avisRepository.getReviewCount(d.getId());
 
+        String lang = LocaleContextHolder.getLocale().getLanguage();
+
+        String nom = d.getNomEn();
+        String desc = d.getDescriptionEn();
+        String hist = d.getHistoireEn();
+        String hDesc = d.getHistoricalDescriptionEn();
+        String type = d.getTypeEn();
+        String bestTime = d.getBestTimeEn();
+        String languages = d.getLanguagesEn();
+
+        if ("fr".equals(lang)) {
+            if (d.getNomFr() != null) nom = d.getNomFr();
+            if (d.getDescriptionFr() != null) desc = d.getDescriptionFr();
+            if (d.getHistoireFr() != null) hist = d.getHistoireFr();
+            if (d.getHistoricalDescriptionFr() != null) hDesc = d.getHistoricalDescriptionFr();
+            if (d.getTypeFr() != null) type = d.getTypeFr();
+            if (d.getBestTimeFr() != null) bestTime = d.getBestTimeFr();
+            if (d.getLanguagesFr() != null) languages = d.getLanguagesFr();
+        } else if ("ar".equals(lang)) {
+            if (d.getNomAr() != null) nom = d.getNomAr();
+            if (d.getDescriptionAr() != null) desc = d.getDescriptionAr();
+            if (d.getHistoireAr() != null) hist = d.getHistoireAr();
+            if (d.getHistoricalDescriptionAr() != null) hDesc = d.getHistoricalDescriptionAr();
+            if (d.getTypeAr() != null) type = d.getTypeAr();
+            if (d.getBestTimeAr() != null) bestTime = d.getBestTimeAr();
+            if (d.getLanguagesAr() != null) languages = d.getLanguagesAr();
+        } else if ("es".equals(lang)) {
+            if (d.getNomEs() != null) nom = d.getNomEs();
+            if (d.getDescriptionEs() != null) desc = d.getDescriptionEs();
+            if (d.getHistoireEs() != null) hist = d.getHistoireEs();
+            if (d.getHistoricalDescriptionEs() != null) hDesc = d.getHistoricalDescriptionEs();
+            if (d.getTypeEs() != null) type = d.getTypeEs();
+            if (d.getBestTimeEs() != null) bestTime = d.getBestTimeEs();
+            if (d.getLanguagesEs() != null) languages = d.getLanguagesEs();
+        }
+
         return DestinationResponseDTO.builder()
                 .id(d.getId())
-                .nom(d.getNom())
-                .description(d.getDescription())
-                .histoire(d.getHistoire())
-                .historicalDescription(d.getHistoricalDescription())
-                .type(d.getType())
+                .nom(nom)
+                .nomEn(d.getNomEn())
+                .nomFr(d.getNomFr())
+                .nomAr(d.getNomAr())
+                .nomEs(d.getNomEs())
+                .description(desc)
+                .descriptionEn(d.getDescriptionEn())
+                .descriptionFr(d.getDescriptionFr())
+                .descriptionAr(d.getDescriptionAr())
+                .descriptionEs(d.getDescriptionEs())
+                .histoire(hist)
+                .histoireEn(d.getHistoireEn())
+                .histoireFr(d.getHistoireFr())
+                .histoireAr(d.getHistoireAr())
+                .histoireEs(d.getHistoireEs())
+                .historicalDescription(hDesc)
+                .historicalDescriptionEn(d.getHistoricalDescriptionEn())
+                .historicalDescriptionFr(d.getHistoricalDescriptionFr())
+                .historicalDescriptionAr(d.getHistoricalDescriptionAr())
+                .historicalDescriptionEs(d.getHistoricalDescriptionEs())
+                .type(type)
+                .typeEn(d.getTypeEn())
+                .typeFr(d.getTypeFr())
+                .typeAr(d.getTypeAr())
+                .typeEs(d.getTypeEs())
                 .latitude(d.getLatitude())
                 .longitude(d.getLongitude())
                 .categorie(d.getCategorie())
@@ -124,8 +213,16 @@ public class DestinationService {
                         d.getMedias() != null ? d.getMedias().stream().map(ma.safar.morocco.media.entity.Media::getUrl)
                                 .toList()
                                 : java.util.Collections.emptyList())
-                .bestTime(d.getBestTime())
-                .languages(d.getLanguages())
+                .bestTime(bestTime)
+                .bestTimeEn(d.getBestTimeEn())
+                .bestTimeFr(d.getBestTimeFr())
+                .bestTimeAr(d.getBestTimeAr())
+                .bestTimeEs(d.getBestTimeEs())
+                .languages(languages)
+                .languagesEn(d.getLanguagesEn())
+                .languagesFr(d.getLanguagesFr())
+                .languagesAr(d.getLanguagesAr())
+                .languagesEs(d.getLanguagesEs())
                 .averageCost(d.getAverageCost())
                 .videoUrl(d.getVideoUrl())
                 .build();

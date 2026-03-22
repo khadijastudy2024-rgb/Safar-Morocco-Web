@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     standalone: false,
@@ -19,7 +20,8 @@ export class RegisterComponent {
         private fb: FormBuilder,
         private authService: AuthService,
         private router: Router,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
+        private translate: TranslateService
     ) {
         this.registerForm = this.fb.group({
             firstName: ['', Validators.required],
@@ -41,18 +43,27 @@ export class RegisterComponent {
 
         this.authService.register(userToRegister).subscribe({
             next: () => {
-                this.snackBar.open('Inscription réussie ! Veuillez vérifier votre boîte email pour activer votre compte.', 'Ok', { duration: 6000 });
+                this.snackBar.open(
+                    this.translate.instant('AUTH.REGISTER.SUCCESS'),
+                    this.translate.instant('COMMON.CLOSE'),
+                    { duration: 6000 }
+                );
                 this.router.navigate(['/auth/login']);
             },
             error: (err: any) => {
                 this.loading = false;
                 console.error('Registration error:', err);
+                const defaultError = this.translate.instant('AUTH.REGISTER.ERROR');
                 const errorMessage = err.error && typeof err.error === 'string'
                     ? err.error
                     : err.error && err.error.message
                         ? err.error.message
-                        : 'Registration failed. Please check your network or try again.';
-                this.snackBar.open(errorMessage, 'Close', { duration: 5000 });
+                        : defaultError;
+                this.snackBar.open(
+                    errorMessage,
+                    this.translate.instant('COMMON.CLOSE'),
+                    { duration: 5000 }
+                );
             }
         });
     }

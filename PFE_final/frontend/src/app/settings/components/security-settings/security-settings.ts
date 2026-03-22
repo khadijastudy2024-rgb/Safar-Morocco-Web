@@ -91,7 +91,7 @@ export class SecuritySettings implements OnInit {
       error: (err) => {
         console.error(err);
         this.loading2FA = false;
-        this.error = 'Erreur lors de la configuration 2FA.';
+        this.error = this.translate.instant('SETTINGS.TWO_FACTOR.ERROR_CONFIG');
         this.cdr.detectChanges();
       }
     });
@@ -110,7 +110,7 @@ export class SecuritySettings implements OnInit {
       },
       error: (err) => {
         console.error('2FA Verify Error:', err);
-        this.error = err.error?.message || (typeof err.error === 'string' ? err.error : 'Code invalide ou erreur de connexion.');
+        this.error = err.error?.message || (typeof err.error === 'string' ? err.error : this.translate.instant('SETTINGS.TWO_FACTOR.INVALID_CODE'));
       }
     });
   }

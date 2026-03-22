@@ -1,11 +1,11 @@
 <div class="admin-page-container">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <h4 class="mb-1 fw-bold text-dark">Manage Offers</h4>
-            <p class="text-muted mb-0 small">Add, update, and manage destination offers.</p>
+            <h4 class="mb-1 fw-bold text-dark">{{ 'ADMIN.OFFERS.TITLE' | translate }}</h4>
+            <p class="text-muted mb-0 small">{{ 'ADMIN.OFFERS.SUBTITLE' | translate }}</p>
         </div>
         <button mat-flat-button color="primary" class="rounded-pill px-4" (click)="openDialog()">
-            <i class="bi bi-plus-lg me-2"></i> Add Offer
+            <i class="bi bi-plus-lg me-2"></i> {{ 'ADMIN.OFFERS.ADD_OFFER' | translate }}
         </button>
     </div>
 
@@ -15,9 +15,9 @@
             <div class="row g-3 align-items-center">
                 <div class="col-md-4">
                     <mat-form-field appearance="outline" class="w-100 dense-form-field mb-0">
-                        <mat-label>Destination</mat-label>
+                        <mat-label>{{ 'ADMIN.OFFERS.FILTER.DESTINATION' | translate }}</mat-label>
                         <mat-select [(ngModel)]="selectedDestination" (selectionChange)="applyFilters()">
-                            <mat-option [value]="null">All Destinations</mat-option>
+                            <mat-option [value]="null">{{ 'ADMIN.OFFERS.FILTER.ALL_DESTINATIONS' | translate }}</mat-option>
                             <mat-option *ngFor="let dest of destinations" [value]="dest.id">
                                 {{ dest.nom }}
                             </mat-option>
@@ -27,9 +27,9 @@
 
                 <div class="col-md-3">
                     <mat-form-field appearance="outline" class="w-100 dense-form-field mb-0">
-                        <mat-label>Offer Type</mat-label>
+                        <mat-label>{{ 'ADMIN.OFFERS.FILTER.TYPE' | translate }}</mat-label>
                         <mat-select [(ngModel)]="selectedType" (selectionChange)="applyFilters()">
-                            <mat-option value="">All Types</mat-option>
+                            <mat-option value="">{{ 'ADMIN.OFFERS.FILTER.ALL_TYPES' | translate }}</mat-option>
                             <mat-option value="HOTEL">Hotel</mat-option>
                             <mat-option value="RESTAURANT">Restaurant</mat-option>
                             <mat-option value="ACTIVITY">Activity</mat-option>
@@ -39,18 +39,18 @@
 
                 <div class="col-md-3">
                     <mat-form-field appearance="outline" class="w-100 dense-form-field mb-0">
-                        <mat-label>Status</mat-label>
+                        <mat-label>{{ 'ADMIN.OFFERS.FILTER.STATUS' | translate }}</mat-label>
                         <mat-select [(ngModel)]="selectedStatus" (selectionChange)="applyFilters()">
-                            <mat-option value="">All Statuses</mat-option>
-                            <mat-option value="active">Active</mat-option>
-                            <mat-option value="deleted">Deleted (Soft)</mat-option>
+                            <mat-option value="">{{ 'ADMIN.OFFERS.FILTER.ALL_STATUSES' | translate }}</mat-option>
+                            <mat-option value="active">{{ 'ADMIN.OFFERS.FILTER.ACTIVE' | translate }}</mat-option>
+                            <mat-option value="deleted">{{ 'ADMIN.OFFERS.FILTER.DELETED' | translate }}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
 
                 <div class="col-md-2 text-end">
                     <button mat-stroked-button color="warn" (click)="resetFilters()" class="w-100 py-2">
-                        Reset Filters
+                        {{ 'ADMIN.OFFERS.FILTER.RESET' | translate }}
                     </button>
                 </div>
             </div>
@@ -63,12 +63,12 @@
             <table mat-table [dataSource]="dataSource" matSort class="w-100">
 
                 <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Offer Name </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'ADMIN.OFFERS.COLS.NAME' | translate }} </th>
                     <td mat-cell *matCellDef="let element" class="fw-medium"> {{element.name}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="type">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'ADMIN.OFFERS.COLS.TYPE' | translate }} </th>
                     <td mat-cell *matCellDef="let element">
                         <span class="badge rounded-pill" [ngClass]="{
                                 'bg-primary-subtle text-primary': element.type === 'HOTEL',
@@ -81,7 +81,7 @@
                 </ng-container>
 
                 <ng-container matColumnDef="destination">
-                    <th mat-header-cell *matHeaderCellDef> Destination </th>
+                    <th mat-header-cell *matHeaderCellDef> {{ 'ADMIN.OFFERS.COLS.DESTINATION' | translate }} </th>
                     <td mat-cell *matCellDef="let element" class="text-muted text-truncate" style="max-width: 150px;">
                         <i class="bi bi-geo-alt-fill text-primary me-1"></i>
                         {{ getDestinationName(element.destinationId) }}
@@ -89,23 +89,23 @@
                 </ng-container>
 
                 <ng-container matColumnDef="price">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'ADMIN.OFFERS.COLS.PRICE' | translate }} </th>
                     <td mat-cell *matCellDef="let element" class="fw-bold">
                         {{ element.displayPrice | currency:'MAD':'symbol':'1.0-0' }}
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="status">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'ADMIN.OFFERS.COLS.STATUS' | translate }} </th>
                     <td mat-cell *matCellDef="let element">
                         <span class="badge rounded-pill" [ngClass]="element.deleted ? 'bg-danger' : 'bg-success'">
-                            {{ element.deleted ? 'Archived' : 'Active' }}
+                            {{ (element.deleted ? 'ADMIN.OFFERS.STATUS.ARCHIVED' : 'ADMIN.OFFERS.STATUS.ACTIVE') | translate }}
                         </span>
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="actions">
-                    <th mat-header-cell *matHeaderCellDef class="text-center"> Actions </th>
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> {{ 'ADMIN.OFFERS.COLS.ACTIONS' | translate }} </th>
                     <td mat-cell *matCellDef="let element">
                         <div class="action-buttons-container">
                             <button class="action-btn edit" (click)="openDialog(element)" title="Edit Offer">
@@ -125,7 +125,7 @@
                 <tr class="mat-row" *matNoDataRow>
                     <td class="mat-cell text-center py-5 text-muted" colspan="6">
                         <i class="bi bi-inbox fs-1 d-block mb-2 text-primary opacity-50"></i>
-                        No offers found matching your filters.
+                        {{ 'ADMIN.OFFERS.NO_DATA' | translate }}
                     </td>
                 </tr>
             </table>

@@ -7,6 +7,7 @@ import { ReservationService } from '../../../core/services/reservation.service';
 import { ApiService } from '../../../core/services/api.service';
 import { OfferReservation, ReservationStatus } from '../../../core/models/reservation.model';
 import { User } from '../../../core/models/user.model';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-reservation-list',
@@ -25,7 +26,8 @@ export class ReservationList implements OnInit {
   constructor(
     private reservationService: ReservationService,
     private apiService: ApiService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -53,38 +55,64 @@ export class ReservationList implements OnInit {
         this.dataSource.sort = this.sort;
       },
       error: (err: any) => {
-        this.snackBar.open('Error loading reservations', 'Close', { duration: 3000 });
+        this.snackBar.open(
+          this.translate.instant('ADMIN.RESERVATIONS.ERROR_LOADING'),
+          this.translate.instant('COMMON.CLOSE'),
+          { duration: 3000 }
+        );
       }
     });
   }
 
   getUserName(userId: number): string {
-    return this.users.get(userId) || 'Unknown User';
+    return this.users.get(userId) || this.translate.instant('ADMIN.RESERVATIONS.UNKNOWN_USER');
   }
 
   approveReservation(reservation: OfferReservation): void {
-    if (confirm(`Approve reservation for ${this.getUserName(reservation.userId)}?`)) {
+    const confirmMsg = this.translate.instant('ADMIN.RESERVATIONS.APPROVE_CONFIRM', {
+      name: this.getUserName(reservation.userId)
+    });
+    if (confirm(confirmMsg)) {
       this.reservationService.updateReservationStatus(reservation.id!, ReservationStatus.APPROVED).subscribe({
         next: () => {
-          this.snackBar.open('Reservation approved successfully', 'Close', { duration: 3000 });
+          this.snackBar.open(
+            this.translate.instant('ADMIN.RESERVATIONS.APPROVE_SUCCESS'),
+            this.translate.instant('COMMON.CLOSE'),
+            { duration: 3000 }
+          );
           this.loadReservations();
         },
         error: (err: any) => {
-          this.snackBar.open('Error approving reservation', 'Close', { duration: 3000 });
+          this.snackBar.open(
+            this.translate.instant('ADMIN.RESERVATIONS.APPROVE_ERROR'),
+            this.translate.instant('COMMON.CLOSE'),
+            { duration: 3000 }
+          );
         }
       });
     }
   }
 
   rejectReservation(reservation: OfferReservation): void {
-    if (confirm(`Reject reservation for ${this.getUserName(reservation.userId)}?`)) {
+    const confirmMsg = this.translate.instant('ADMIN.RESERVATIONS.REJECT_CONFIRM', {
+      name: this.getUserName(reservation.userId)
+    });
+    if (confirm(confirmMsg)) {
       this.reservationService.updateReservationStatus(reservation.id!, ReservationStatus.REJECTED).subscribe({
         next: () => {
-          this.snackBar.open('Reservation rejected successfully', 'Close', { duration: 3000 });
+          this.snackBar.open(
+            this.translate.instant('ADMIN.RESERVATIONS.REJECT_SUCCESS'),
+            this.translate.instant('COMMON.CLOSE'),
+            { duration: 3000 }
+          );
           this.loadReservations();
         },
         error: (err: any) => {
-          this.snackBar.open('Error rejecting reservation', 'Close', { duration: 3000 });
+          this.snackBar.open(
+            this.translate.instant('ADMIN.RESERVATIONS.REJECT_ERROR'),
+            this.translate.instant('COMMON.CLOSE'),
+            { duration: 3000 }
+          );
         }
       });
     }

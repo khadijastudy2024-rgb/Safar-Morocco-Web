@@ -11,9 +11,8 @@ import java.util.List;
 public interface DestinationRepository extends JpaRepository<Destination, Long> {
     List<Destination> findByCategorie(String categorie);
 
-    boolean existsByNom(String nom);
-
-    java.util.Optional<Destination> findByNom(String nom);
+    boolean existsByNomEn(String nomEn);
+    java.util.Optional<Destination> findByNomEn(String nomEn);
 
     @EntityGraph(attributePaths = { "medias" })
     @org.springframework.data.jpa.repository.Query("SELECT d FROM Destination d")

@@ -8,7 +8,7 @@
         <ol class="breadcrumb mb-0">
           <li class="breadcrumb-item">
             <a routerLink="/events" class="text-white opacity-75">
-              <i class="bi bi-calendar-event me-1"></i>Toutes les Événements
+              <i class="bi bi-calendar-event me-1"></i>{{ 'EVENTS.DETAIL.BREADCRUMB' | translate }}
             </a>
           </li>
           <li class="breadcrumb-item active text-white" aria-current="page">{{ event.nom }}</li>
@@ -16,13 +16,13 @@
       </nav>
       <span class="ed-type-badge">
         <i class="bi" [ngClass]="getEventTypeIcon()"></i>
-        {{ getEventTypeLabel() }}
+        {{ getEventTypeLabel() | categoryName }}
       </span>
       <h1 class="ed-hero__title">{{ event.nom }}</h1>
       <div class="ed-hero__badges">
         <span class="ed-badge"><i class="bi bi-calendar-event"></i> {{ event.dateDebut | date:'MMM d, y' }}</span>
         <span class="ed-badge"><i class="bi bi-geo-alt-fill"></i> {{ event.lieu }}</span>
-        <span class="ed-badge"><i class="bi bi-clock"></i> {{ getEventDuration() }} jour{{ getEventDuration() > 1 ? 's' : '' }}</span>
+        <span class="ed-badge"><i class="bi bi-clock"></i> {{ getEventDuration() }} {{ (getEventDuration() > 1 ? 'COMMON.DAYS' : 'COMMON.DAY') | translate }}</span>
       </div>
     </div>
   </section>
@@ -60,7 +60,7 @@
           <div class="ed-infobar__item">
             <div class="ed-infobar__icon"><i class="bi bi-ticket-perforated"></i></div>
             <div>
-              <span class="ed-infobar__label">Entrée</span>
+              <span class="ed-infobar__label">{{ 'EVENTS.DETAIL.ENTRY' | translate }}</span>
               <span class="ed-infobar__value" style="color:#16a34a">{{ 'EVENTS.DETAIL.PRICE_FREE' | translate }}</span>
             </div>
           </div>
@@ -72,7 +72,7 @@
           <p class="ed-card__body" *ngIf="event.historique">{{ event.historique }}</p>
           <p class="ed-card__body" *ngIf="!event.historique">{{ event.description }}</p>
           <div class="ed-tags">
-            <span class="ed-tag" *ngFor="let tag of getEventTags()">{{ tag }}</span>
+            <span class="ed-tag" *ngFor="let tag of getEventTags()">{{ tag | translate }}</span>
           </div>
 
         </section>
@@ -80,7 +80,7 @@
 
         <!-- ═══════════════════════ TIMELINE ══════════════════════════ -->
         <section class="ed-card" *ngIf="getEventDays().length > 1">
-          <h2 class="ed-card__title"><i class="bi bi-calendar3"></i> Programme &amp; Calendrier</h2>
+          <h2 class="ed-card__title"><i class="bi bi-calendar3"></i> {{ 'EVENTS.DETAIL.PROGRAM' | translate }}</h2>
           <div class="ed-timeline">
             <div class="ed-timeline__item" *ngFor="let day of getEventDays(); let i = index">
               <div class="ed-timeline__dot"
@@ -98,22 +98,22 @@
 
         <!-- ═══════════════════════ INFOS PRATIQUES ═══════════════════ -->
         <section class="ed-card">
-          <h2 class="ed-card__title"><i class="bi bi-info-square-fill"></i> Informations Pratiques</h2>
+          <h2 class="ed-card__title"><i class="bi bi-info-square-fill"></i> {{ 'EVENTS.DETAIL.PRACTICAL' | translate }}</h2>
           <div class="ed-practical">
             <div class="ed-practical__card">
               <div class="ed-practical__icon ed-practical__icon--blue"><i class="bi bi-bus-front-fill"></i></div>
-              <h4>Accès &amp; Transport</h4>
-              <p>Accessible en transport public. Bus et tramway à proximité du site.</p>
+              <h4>{{ 'EVENTS.DETAIL.TRANSPORT' | translate }}</h4>
+              <p>{{ 'EVENTS.DETAIL.TRANSPORT_DESC' | translate }}</p>
             </div>
             <div class="ed-practical__card">
               <div class="ed-practical__icon ed-practical__icon--green"><i class="bi bi-universal-access"></i></div>
-              <h4>Accessibilité</h4>
-              <p>Site accessible aux personnes à mobilité réduite (PMR). Parking spécial disponible.</p>
+              <h4>{{ 'EVENTS.DETAIL.ACCESSIBILITY' | translate }}</h4>
+              <p>{{ 'EVENTS.DETAIL.ACCESSIBILITY_DESC' | translate }}</p>
             </div>
             <div class="ed-practical__card">
               <div class="ed-practical__icon ed-practical__icon--orange"><i class="bi bi-ticket-perforated-fill"></i></div>
-              <h4>Politique d'Entrée</h4>
-              <p>Entrée libre. Réservation en ligne recommandée pour garantir votre place.</p>
+              <h4>{{ 'EVENTS.DETAIL.ENTRY_POLICY' | translate }}</h4>
+              <p>{{ 'EVENTS.DETAIL.ENTRY_POLICY_DESC' | translate }}</p>
             </div>
           </div>
         </section>
@@ -121,19 +121,19 @@
         <!-- ═══════════════════════ CTA COUNTDOWN ═════════════════════ -->
         <section class="ed-cta">
           <div class="ed-cta__left">
-            <span class="ed-cta__eyebrow" *ngIf="!eventPast"><i class="bi bi-alarm-fill"></i> Ne manquez pas !</span>
-            <span class="ed-cta__eyebrow ed-cta__eyebrow--past" *ngIf="eventPast"><i class="bi bi-calendar-x-fill"></i> Événement terminé</span>
+            <span class="ed-cta__eyebrow" *ngIf="!eventPast"><i class="bi bi-alarm-fill"></i> {{ 'EVENTS.DETAIL.DONT_MISS' | translate }}</span>
+            <span class="ed-cta__eyebrow ed-cta__eyebrow--past" *ngIf="eventPast"><i class="bi bi-calendar-x-fill"></i> {{ 'EVENTS.DETAIL.FINISHED' | translate }}</span>
             <h3 class="ed-cta__title">{{ event.nom }}</h3>
-            <p class="ed-cta__sub">Réservez dès maintenant et vivez une expérience inoubliable à {{ event.lieu }}.</p>
+            <p class="ed-cta__sub">{{ 'EVENTS.DETAIL.RESERVE_DESC' | translate }} {{ event.lieu }}.</p>
             <button class="ed-btn-primary mt-3" (click)="bookSpot()" [disabled]="alreadyReserved || booking || eventStarted || eventPast">
               <span *ngIf="booking" class="spinner-border spinner-border-sm"></span>
               <i *ngIf="!booking && !alreadyReserved && !eventStarted && !eventPast" class="bi bi-bookmark-plus"></i>
               <i *ngIf="!booking && alreadyReserved" class="bi bi-check-circle-fill"></i>
               <i *ngIf="!booking && eventPast && !alreadyReserved" class="bi bi-x-circle-fill"></i>
-              <span *ngIf="alreadyReserved">Déjà réservé</span>
+              <span *ngIf="alreadyReserved">{{ 'EVENTS.DETAIL.ALREADY_RESERVED' | translate }}</span>
               <span *ngIf="!alreadyReserved && !eventStarted && !eventPast">{{ 'EVENTS.DETAIL.JOIN' | translate }}</span>
-              <span *ngIf="!alreadyReserved && eventStarted">Événement en cours</span>
-              <span *ngIf="!alreadyReserved && eventPast">Événement terminé</span>
+              <span *ngIf="!alreadyReserved && eventStarted">{{ 'EVENTS.DETAIL.ONGOING' | translate }}</span>
+              <span *ngIf="!alreadyReserved && eventPast">{{ 'EVENTS.DETAIL.FINISHED' | translate }}</span>
             </button>
             <div class="ed-share mt-4">
               <span>{{ 'COMMON.SHARE' | translate }} :</span>
@@ -143,36 +143,36 @@
             </div>
           </div>
           <div class="ed-cta__right" *ngIf="!eventStarted && !eventPast">
-            <p class="ed-countdown__label">L'événement commence dans</p>
+            <p class="ed-countdown__label">{{ 'EVENTS.DETAIL.STARTS_IN' | translate }}</p>
             <div class="ed-countdown">
               <div class="ed-countdown__unit">
                 <div class="ed-countdown__val">{{ countdown.days }}</div>
-                <div class="ed-countdown__name">Jours</div>
+                <div class="ed-countdown__name">{{ 'EVENTS.DETAIL.DAYS' | translate }}</div>
               </div>
               <div class="ed-countdown__sep">:</div>
               <div class="ed-countdown__unit">
                 <div class="ed-countdown__val">{{ countdown.hours | number:'2.0-0' }}</div>
-                <div class="ed-countdown__name">Heures</div>
+                <div class="ed-countdown__name">{{ 'EVENTS.DETAIL.HOURS' | translate }}</div>
               </div>
               <div class="ed-countdown__sep">:</div>
               <div class="ed-countdown__unit">
                 <div class="ed-countdown__val">{{ countdown.minutes | number:'2.0-0' }}</div>
-                <div class="ed-countdown__name">Min</div>
+                <div class="ed-countdown__name">{{ 'EVENTS.DETAIL.MINUTES' | translate }}</div>
               </div>
               <div class="ed-countdown__sep">:</div>
               <div class="ed-countdown__unit">
                 <div class="ed-countdown__val">{{ countdown.seconds | number:'2.0-0' }}</div>
-                <div class="ed-countdown__name">Sec</div>
+                <div class="ed-countdown__name">{{ 'EVENTS.DETAIL.SECONDS' | translate }}</div>
               </div>
             </div>
           </div>
           <div class="ed-cta__right ed-cta__ongoing" *ngIf="eventStarted && !eventPast">
             <i class="bi bi-broadcast-pin"></i>
-            <span>Événement<br>en cours !</span>
+            <span>{{ 'EVENTS.DETAIL.ONGOING' | translate }}</span>
           </div>
           <div class="ed-cta__right ed-cta__past" *ngIf="eventPast">
             <i class="bi bi-calendar-check"></i>
-            <span>Cet événement<br>est terminé</span>
+            <span>{{ 'EVENTS.DETAIL.FINISHED' | translate }}</span>
           </div>
         </section>
 

@@ -1,10 +1,11 @@
-﻿import { Component, OnInit, ViewChild }  from '@angular/core';
-import { MatPaginator }  from '@angular/material/paginator';
-import { MatSort }  from '@angular/material/sort';
-import { MatTableDataSource }  from '@angular/material/table';
-import { MatSnackBar }  from '@angular/material/snack-bar';
-import { ApiService }  from '../../core/services/api.service';
-import { AuthService }  from '../../core/services/auth.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ApiService } from '../../core/services/api.service';
+import { AuthService } from '../../core/services/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     standalone: false,
@@ -22,7 +23,8 @@ export class UserListComponent implements OnInit {
     constructor(
         private apiService: ApiService,
         private snackBar: MatSnackBar,
-        public authService: AuthService
+        public authService: AuthService,
+        private translate: TranslateService
     ) {
         this.dataSource = new MatTableDataSource();
     }
@@ -58,13 +60,21 @@ export class UserListComponent implements OnInit {
     }
 
     deleteUser(id: number) {
-        if (confirm('Are you sure you want to delete this user?')) {
+        if (confirm(this.translate.instant('ADMIN.USERS.DELETE_CONFIRM'))) {
             this.apiService.deleteUser(id).subscribe({
                 next: () => {
-                    this.snackBar.open('User deleted', 'Close', { duration: 3000 });
+                    this.snackBar.open(
+                        this.translate.instant('ADMIN.USERS.DELETE_SUCCESS'),
+                        this.translate.instant('COMMON.CLOSE'),
+                        { duration: 3000 }
+                    );
                     this.loadUsers();
                 },
-                error: () => this.snackBar.open('Error deleting user', 'Close', { duration: 3000 })
+                error: () => this.snackBar.open(
+                    this.translate.instant('ADMIN.USERS.DELETE_ERROR'),
+                    this.translate.instant('COMMON.CLOSE'),
+                    { duration: 3000 }
+                )
             });
         }
     }
@@ -72,13 +82,25 @@ export class UserListComponent implements OnInit {
     toggleRole(user: any) {
         // ADMIN can switch any user between USER and ADMIN roles
         const newRole = user.role === 'ADMIN' ? 'USER' : 'ADMIN';
-        if (confirm(`Change role of ${user.nom || user.email} to ${newRole}?`)) {
+        const confirmMsg = this.translate.instant('ADMIN.USERS.CHANGE_ROLE_CONFIRM', {
+            name: user.nom || user.email,
+            role: newRole
+        });
+        if (confirm(confirmMsg)) {
             this.apiService.updateUserRole(user.id, newRole).subscribe({
                 next: () => {
-                    this.snackBar.open(`Role changed to ${newRole}`, 'Close', { duration: 3000 });
+                    this.snackBar.open(
+                        this.translate.instant('ADMIN.USERS.ROLE_CHANGED_SUCCESS', { role: newRole }),
+                        this.translate.instant('COMMON.CLOSE'),
+                        { duration: 3000 }
+                    );
                     this.loadUsers();
                 },
-                error: () => this.snackBar.open('Error updating role', 'Close', { duration: 3000 })
+                error: () => this.snackBar.open(
+                    this.translate.instant('ADMIN.USERS.ROLE_CHANGED_ERROR'),
+                    this.translate.instant('COMMON.CLOSE'),
+                    { duration: 3000 }
+                )
             });
         }
     }
