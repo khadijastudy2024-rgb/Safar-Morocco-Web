@@ -1,0 +1,153 @@
+.admin-container {
+    height: 100vh;
+}
+
+.admin-sidebar {
+    width: 280px;
+    background: #1e293b;
+    color: #fff;
+    border-right: none;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-content {
+    background: #f8fafc;
+}
+
+/* Modern Top Bar */
+.top-bar {
+    height: 70px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.top-bar-left, .top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.toggle-btn {
+    color: #64748b;
+}
+
+.breadcrumb {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.breadcrumb .text-muted {
+    color: #94a3b8 !important;
+}
+
+/* Profile Section */
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.profile-section:hover {
+    background: #f1f5f9;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.profile-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1e293b;
+    line-height: 1.2;
+}
+
+.profile-role {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.avatar-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--safar-terracotta);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+}
+
+.avatar-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dropdown-icon {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+/* Dropdown Menu Styles */
+::ng-deep .profile-dropdown, ::ng-deep .notif-dropdown {
+    border-radius: 16px !important;
+    padding: 8px !important;
+    margin-top: 8px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+    min-width: 200px !important;
+}
+
+.menu-header {
+    padding: 12px 16px;
+}
+
+.menu-header .name {
+    margin: 0;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.menu-header .email {
+    margin: 0;
+}
+
+/* Content Area */
+.content-area {
+    min-height: calc(100vh - 70px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 991px) {
+    .admin-sidebar {
+        width: 260px !important;
+        position: fixed !important;
+        z-index: 1100;
+    }
+
+    .desktop-only {
+        display: none !important;
+    }
+
+    .top-bar {
+        padding: 0 1rem;
+    }
+}
+
+

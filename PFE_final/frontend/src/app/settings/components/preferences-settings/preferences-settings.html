@@ -1,0 +1,34 @@
+<div class="container-fluid p-0">
+    <h4 class="mb-4">{{ 'SETTINGS.PREFERENCES' | translate }}</h4>
+
+    <div *ngIf="message" class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" (click)="message = ''"></button>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <form (ngSubmit)="savePreferences()">
+
+                <!-- Language -->
+                <div class="mb-4">
+                    <label class="form-label fw-bold">{{ 'SETTINGS.LANGUAGE_LABEL' | translate }}</label>
+                    <p class="text-muted small">{{ 'SETTINGS.LANGUAGE_DESC' | translate }}</p>
+                    <select class="form-select w-50" [(ngModel)]="settings.language" name="language">
+                        <option value="EN">{{ 'LANG.EN' | translate }}</option>
+                        <option value="FR">{{ 'LANG.FR' | translate }}</option>
+                        <option value="AR">{{ 'LANG.AR' | translate }}</option>
+                        <option value="ES">{{ 'LANG.ES' | translate }}</option>
+                    </select>
+                </div>
+
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary">
+                        {{ 'SETTINGS.SAVE_PREFERENCES' | translate }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

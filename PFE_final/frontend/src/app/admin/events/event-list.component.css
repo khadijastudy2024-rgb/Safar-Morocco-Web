@@ -1,0 +1,84 @@
+.admin-page-wrapper {
+    padding: 2.5rem;
+    background: #f8fafc;
+    min-height: calc(100vh - var(--navbar-height));
+}
+
+.table-card {
+    border-radius: 20px;
+    border: none;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    background: white;
+}
+
+.custom-table {
+    background: transparent !important;
+}
+
+.custom-table th.mat-header-cell {
+    background: #f8fafc;
+    color: var(--text-muted);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    padding: 1.25rem 1rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.custom-table td.mat-cell {
+    padding: 1rem;
+    border-bottom: 1px solid #f8fafc;
+    vertical-align: middle;
+}
+
+.table-img {
+    width: 60px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: var(--transition-base);
+}
+
+.table-img:hover {
+    transform: scale(1.1);
+}
+
+.price-pill {
+    background: #f0fdf4;
+    color: #16a34a;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 800;
+}
+
+.btn-icon-soft {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    color: var(--text-main);
+    border: none;
+    transition: var(--transition-base);
+}
+
+.btn-icon-soft:hover {
+    background: #e2e8f0;
+    transform: translateY(-2px);
+}
+
+.btn-icon-soft.text-danger:hover {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+@media (max-width: 767.98px) {
+    .admin-page-wrapper {
+        padding: 1.5rem;
+    }
+}

@@ -1,0 +1,136 @@
+<div class="admin-page-container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h4 class="mb-1 fw-bold text-dark">Manage Offers</h4>
+            <p class="text-muted mb-0 small">Add, update, and manage destination offers.</p>
+        </div>
+        <button mat-flat-button color="primary" class="rounded-pill px-4" (click)="openDialog()">
+            <i class="bi bi-plus-lg me-2"></i> Add Offer
+        </button>
+    </div>
+
+    <!-- Filters Section -->
+    <mat-card class="mb-4 search-card mat-elevation-z2 rounded-4">
+        <mat-card-content class="p-3">
+            <div class="row g-3 align-items-center">
+                <div class="col-md-4">
+                    <mat-form-field appearance="outline" class="w-100 dense-form-field mb-0">
+                        <mat-label>Destination</mat-label>
+                        <mat-select [(ngModel)]="selectedDestination" (selectionChange)="applyFilters()">
+                            <mat-option [value]="null">All Destinations</mat-option>
+                            <mat-option *ngFor="let dest of destinations" [value]="dest.id">
+                                {{ dest.nom }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-3">
+                    <mat-form-field appearance="outline" class="w-100 dense-form-field mb-0">
+                        <mat-label>Offer Type</mat-label>
+                        <mat-select [(ngModel)]="selectedType" (selectionChange)="applyFilters()">
+                            <mat-option value="">All Types</mat-option>
+                            <mat-option value="HOTEL">Hotel</mat-option>
+                            <mat-option value="RESTAURANT">Restaurant</mat-option>
+                            <mat-option value="ACTIVITY">Activity</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-3">
+                    <mat-form-field appearance="outline" class="w-100 dense-form-field mb-0">
+                        <mat-label>Status</mat-label>
+                        <mat-select [(ngModel)]="selectedStatus" (selectionChange)="applyFilters()">
+                            <mat-option value="">All Statuses</mat-option>
+                            <mat-option value="active">Active</mat-option>
+                            <mat-option value="deleted">Deleted (Soft)</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-2 text-end">
+                    <button mat-stroked-button color="warn" (click)="resetFilters()" class="w-100 py-2">
+                        Reset Filters
+                    </button>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <!-- Data Table -->
+    <mat-card class="mat-elevation-z2 rounded-4 overflow-hidden">
+        <div class="table-container">
+            <table mat-table [dataSource]="dataSource" matSort class="w-100">
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Offer Name </th>
+                    <td mat-cell *matCellDef="let element" class="fw-medium"> {{element.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span class="badge rounded-pill" [ngClass]="{
+                                'bg-primary-subtle text-primary': element.type === 'HOTEL',
+                                'bg-success-subtle text-success': element.type === 'RESTAURANT',
+                                'bg-info-subtle text-info': element.type === 'ACTIVITY'
+                              }">
+                            {{element.type}}
+                        </span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="destination">
+                    <th mat-header-cell *matHeaderCellDef> Destination </th>
+                    <td mat-cell *matCellDef="let element" class="text-muted text-truncate" style="max-width: 150px;">
+                        <i class="bi bi-geo-alt-fill text-primary me-1"></i>
+                        {{ getDestinationName(element.destinationId) }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+                    <td mat-cell *matCellDef="let element" class="fw-bold">
+                        {{ element.displayPrice | currency:'MAD':'symbol':'1.0-0' }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span class="badge rounded-pill" [ngClass]="element.deleted ? 'bg-danger' : 'bg-success'">
+                            {{ element.deleted ? 'Archived' : 'Active' }}
+                        </span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Actions </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="action-buttons-container">
+                            <button class="action-btn edit" (click)="openDialog(element)" title="Edit Offer">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button class="action-btn delete" (click)="deleteOffer(element)"
+                                [disabled]="element.deleted" title="Soft Delete">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="bg-light"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="element-row"></tr>
+
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell text-center py-5 text-muted" colspan="6">
+                        <i class="bi bi-inbox fs-1 d-block mb-2 text-primary opacity-50"></i>
+                        No offers found matching your filters.
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <mat-paginator [pageSizeOptions]="[10, 25, 50]" showFirstLastButtons aria-label="Select page"></mat-paginator>
+    </mat-card>
+</div>

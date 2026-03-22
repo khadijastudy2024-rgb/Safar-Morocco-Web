@@ -1,0 +1,456 @@
+<div class="main-content fade-in" *ngIf="destination; else loadingTpl">
+    <!-- Full-Width Premium Hero -->
+    <!-- Hero Section - Redesigned like Events -->
+    <section class="hero-details"
+        [style.backgroundImage]="'url(' + ((destination.thumbnailUrl || destination.medias?.[0]?.url) | imageUrl) + ')'">
+        <div class="hero-overlay-dark"></div>
+        <div class="container-xl hero-container">
+            <div class="hero-text-content fade-in-up">
+                <nav aria-label="breadcrumb" class="mb-3">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item">
+                            <a routerLink="/destinations" class="text-white opacity-75 text-decoration-none">
+                                <i class="bi bi-geo-alt me-1"></i>{{ 'DESTINATIONS.DETAIL.BREADCRUMB' | translate }}
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active text-white" aria-current="page">{{ destination.nom | translateValue }}</li>
+                    </ol>
+                </nav>
+
+                <span class="badge-type-glass mb-3">
+                    <i class="bi bi-tags-fill me-2"></i> {{ destination.categorie | categoryName }}
+                </span>
+
+                <h1 class="display-2 fw-800 text-white mb-4 font-display">{{ destination.nom | translateValue }}</h1>
+
+                <div class="hero-meta-badges mb-4">
+                    <span class="hero-glass-badge">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        {{ (destination.averageRating || 0) | number:'1.1-1' }}
+                        <small class="opacity-70 ms-1">({{ destination.reviewCount || 0 }})</small>
+                    </span>
+                    <span class="hero-glass-badge">
+                        <i class="bi bi-geo-alt-fill"></i> {{ destination.type | translateValue }}
+                    </span>
+                    <span class="hero-glass-badge">
+                        <i class="bi bi-eye-fill"></i> {{ destination.viewCount || 0 | number }} {{ 'DESTINATIONS.DETAIL.GLANCE.VIEWS' | translate }}
+                    </span>
+                </div>
+
+                <div class="hero-actions">
+                    <button class="btn btn-primary rounded-pill px-5 py-3 fw-800 shadow-lg glow-on-hover d-flex align-items-center gap-2"
+                        (click)="planTrip()">
+                        <i class="bi bi-calendar-plus-fill"></i>
+                        {{ 'DESTINATIONS.DETAIL.PLAN_TRIP' | translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-xl position-relative">
+        <!-- Floating Info Bar - Modernized -->
+        <div class="destination-infobar shadow-lg fade-in-up">
+            <div class="info-item">
+                <div class="info-icon bg-orange-soft"><i class="bi bi-cash-coin"></i></div>
+                <div class="info-text">
+                    <span class="info-label">{{ 'DESTINATIONS.DETAIL.GLANCE.COST' | translate }}</span>
+                    <span class="info-value">{{ 'DESTINATIONS.DETAIL.GLANCE.CURRENCY' | translate }} {{ (destination.averageCost || '50') | number:'1.0-0' }}</span>
+                </div>
+            </div>
+            <div class="info-sep"></div>
+            <div class="info-item">
+                <div class="info-icon bg-teal-soft"><i class="bi bi-calendar-check"></i></div>
+                <div class="info-text">
+                    <span class="info-label">{{ 'DESTINATIONS.DETAIL.GLANCE.BEST_TIME' | translate }}</span>
+                    <span class="info-value">{{ destination.bestTime | translateValue:'DESTINATIONS.DETAIL.GLANCE.BEST_TIME_VAL' }}</span>
+                </div>
+            </div>
+            <div class="info-sep"></div>
+            <div class="info-item">
+                <div class="info-icon bg-primary-soft"><i class="bi bi-translate"></i></div>
+                <div class="info-text">
+                    <span class="info-label">{{ 'DESTINATIONS.DETAIL.GLANCE.LANGS' | translate }}</span>
+                    <span class="info-value">{{ destination.languages | translateValue:'DESTINATIONS.DETAIL.GLANCE.LANGS_VAL' }}</span>
+                </div>
+            </div>
+            <div class="info-sep"></div>
+            <div class="info-item">
+                <div class="info-icon bg-secondary-soft"><i class="bi bi-graph-up-arrow"></i></div>
+                <div class="info-text">
+                    <span class="info-label">{{ 'DESTINATIONS.DETAIL.GLANCE.POPULARITY' | translate }}</span>
+                    <span class="info-value">
+                        {{ destination.viewCount || 0 | number }} {{ 'DESTINATIONS.DETAIL.GLANCE.VIEWS' | translate }}
+                        <span class="live-status ms-2 shadow-sm" [class.status-busy]="(destination.viewCount || 0) > 1000">
+                             <span class="status-dot"></span>
+                             {{ (destination.viewCount || 0) > 1000 ? ('DESTINATIONS.DETAIL.STATUS_HIGH_DEMAND' | translate) : ('DESTINATIONS.DETAIL.STATUS_STANDARD' | translate) }}
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pt-5 mt-4">
+            <!-- Full Width Content -->
+            <div class="col-lg-12">
+                <div class="content-wrapper-refined">
+                    <mat-tab-group class="modern-tabs" (selectedTabChange)="onTabChange($event)">
+                        <!-- Overview -->
+                        <mat-tab [label]="'DESTINATIONS.DETAIL.TABS.OVERVIEW' | translate">
+                            <div class="details-section py-5">
+                                <h2 class="fw-800 text-secondary mb-4 align-items-center d-flex gap-2">
+                                    <i class="bi bi-info-circle-fill text-primary"></i> 
+                                    {{ 'DESTINATIONS.DETAIL.ABOUT' | translate }}
+                                </h2>
+                                <p class="description-large mb-5">{{destination.description}}</p>
+
+                                <div class="row g-4 mb-5">
+                                    <!-- Highlights (Points Forts) -->
+                                    <div class="col-lg-12">
+                                        <h4 class="fw-800 text-secondary mb-4">{{ 'DESTINATIONS.DETAIL.HIGHLIGHTS' | translate }}</h4>
+                                        <div class="highlights-grid">
+                                            <div class="highlight-item shadow-sm">
+                                                <div class="highlight-icon bg-orange-soft"><i class="bi bi-star-fill"></i></div>
+                                                <div class="highlight-text">
+                                                    <span class="highlight-title">{{ 'DESTINATIONS.DETAIL.HIGHLIGHT_BEST_EXP' | translate }}</span>
+                                                    <span class="highlight-desc">{{ 'DESTINATIONS.DETAIL.HIGHLIGHT_BEST_EXP_DESC' | translate }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="highlight-item shadow-sm">
+                                                <div class="highlight-icon bg-teal-soft"><i class="bi bi-camera-fill"></i></div>
+                                                <div class="highlight-text">
+                                                    <span class="highlight-title">{{ 'DESTINATIONS.DETAIL.HIGHLIGHT_PHOTO' | translate }}</span>
+                                                    <span class="highlight-desc">{{ 'DESTINATIONS.DETAIL.HIGHLIGHT_PHOTO_DESC' | translate }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="highlight-item shadow-sm" *ngIf="destination.categorie === 'Nature'">
+                                                <div class="highlight-icon bg-primary-soft"><i class="bi bi-tree-fill"></i></div>
+                                                <div class="highlight-text">
+                                                    <span class="highlight-title">{{ 'DESTINATIONS.DETAIL.HIGHLIGHT_ECO' | translate }}</span>
+                                                    <span class="highlight-desc">{{ 'DESTINATIONS.DETAIL.HIGHLIGHT_ECO_DESC' | translate }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="highlight-item shadow-sm" *ngIf="destination.categorie === 'Cultural'">
+                                                <div class="highlight-icon bg-primary-soft"><i class="bi bi-bank"></i></div>
+                                                <div class="highlight-text">
+                                                    <span class="highlight-title">{{ 'DESTINATIONS.DETAIL.HIGHLIGHT_HERITAGE' | translate }}</span>
+                                                    <span class="highlight-desc">{{ 'DESTINATIONS.DETAIL.HIGHLIGHT_HERITAGE_DESC' | translate }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row g-4">
+                                    <!-- Facilities -->
+                                    <div class="col-md-7">
+                                        <h4 class="fw-800 text-secondary mb-4">{{ 'DESTINATIONS.DETAIL.FACILITIES' | translate }}</h4>
+                                        <div class="facilities-grid-new d-flex flex-wrap gap-3">
+                                            <ng-container *ngIf="destination.facilities?.length; else defaultFacilities">
+                                                <div class="facility-pill shadow-sm" *ngFor="let facility of destination.facilities">
+                                                    <i class="bi bi-check-circle-fill text-teal"></i> {{facility}}
+                                                </div>
+                                            </ng-container>
+                                            <ng-template #defaultFacilities>
+                                                <div class="facility-pill shadow-sm">
+                                                    <i class="bi bi-info-circle-fill text-muted"></i> {{ 'DESTINATIONS.DETAIL.STANDARD_AMENITIES' | translate }}
+                                                </div>
+                                            </ng-template>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Weather Snippet (Moved from sidebar) -->
+                                    <div class="col-md-5" *ngIf="weather">
+                                        <div class="weather-mini-card p-4 rounded-4 bg-light h-100 shadow-sm border">
+                                            <h4 class="fw-800 text-secondary mb-3">{{ 'DESTINATIONS.DETAIL.WEATHER.TITLE' | translate }}</h4>
+                                            <div class="d-flex align-items-center mb-3">
+                                                <img [src]="weather.iconeUrl || 'http://openweathermap.org/img/wn/' + weather.iconeCode + '@2x.png'"
+                                                     alt="icon" style="width: 50px;">
+                                                <div class="ms-3">
+                                                    <h3 class="fw-800 mb-0">{{weather.temperature | number:'1.0-0'}}°C</h3>
+                                                    <p class="mb-0 text-muted small">{{weather.description}}</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex justify-content-between text-muted small mb-3 py-2 border-top border-bottom">
+                                                <span><i class="bi bi-droplet-fill text-info me-1"></i> {{weather.humidite}}% 
+                                                    {{ 'DESTINATIONS.DETAIL.WEATHER.HUMIDITY' | translate }}</span>
+                                                <span><i class="bi bi-wind text-secondary me-1"></i> {{weather.vitesseVent}} m/s 
+                                                    {{ 'DESTINATIONS.DETAIL.WEATHER.WIND' | translate }}</span>
+                                            </div>
+
+                                            <!-- Forecast Preview -->
+                                            <div class="forecast-preview mt-3" *ngIf="forecast?.length">
+                                                <h6 class="fw-700 text-secondary mb-2 small text-uppercase letter-spacing-1">{{ 'DESTINATIONS.DETAIL.WEATHER.FORECAST' | translate }}</h6>
+                                                <div class="d-flex justify-content-between overflow-auto gap-2">
+                                                    <div class="text-center" *ngFor="let day of forecast">
+                                                        <p class="mb-0 smallest text-muted">{{day.datePrevision | date:'E'}}</p>
+                                                        <img [src]="day.iconeUrl || 'http://openweathermap.org/img/wn/' + day.iconeCode + '.png'"
+                                                            alt="icon" style="width: 25px;">
+                                                        <p class="mb-0 smallest fw-bold">{{day.temperature | number:'1.0-0'}}°</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-tab>
+
+                        <!-- Gallery -->
+                        <mat-tab [label]="'DESTINATIONS.DETAIL.TABS.GALLERY' | translate">
+                            <div class="details-section py-5">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h2 class="fw-800 text-secondary mb-0 align-items-center d-flex gap-2">
+                                        <i class="bi bi-images text-primary"></i>
+                                        {{ 'DESTINATIONS.DETAIL.VISUAL_EXPLORER' | translate }}
+                                    </h2>
+                                    <div *ngIf="authService.isLoggedIn">
+                                        <button class="btn btn-primary rounded-pill px-4 shadow-sm" (click)="fileInput.click()">
+                                            <i class="bi bi-plus-circle me-2"></i> {{ 'DESTINATIONS.DETAIL.ADD_PHOTO' | translate }}
+                                        </button>
+                                        <input #fileInput type="file" class="d-none" (change)="onFileSelected($event)" accept="image/*">
+                                    </div>
+                                </div>
+                                <div class="masonry-gallery" *ngIf="destination.medias?.length; else noImages">
+                                    <div class="gallery-card" *ngFor="let media of destination.medias; let i = index"
+                                        (click)="openLightbox(i)">
+                                        <img [src]="media | imageUrl" class="img-fluid rounded-4 shadow-sm"
+                                            alt="Gallery image" loading="lazy">
+                                        <div class="gallery-hover-overlay">
+                                            <i class="bi bi-zoom-in text-white fs-1"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ng-template #noImages>
+                                    <div class="text-center py-5 bg-light rounded-4">
+                                        <i class="bi bi-camera text-muted display-4"></i>
+                                        <p class="mt-3">{{ 'DESTINATIONS.DETAIL.NO_PHOTOS' | translate }}</p>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </mat-tab>
+
+                        <!-- Video -->
+                        <mat-tab [label]="'DESTINATIONS.DETAIL.TABS.VIDEO' | translate" *ngIf="destination.videoUrl">
+                            <div class="details-section py-5">
+                                <h2 class="fw-800 text-secondary mb-4 align-items-center d-flex gap-2">
+                                    <i class="bi bi-play-circle-fill text-primary"></i>
+                                    {{ 'DESTINATIONS.DETAIL.EXPERIENCE_VIBE' | translate }}
+                                </h2>
+                                <div class="video-container shadow-lg rounded-4 overflow-hidden border">
+                                    <iframe [src]="getSafeVideoUrl(destination.videoUrl)" width="100%" height="500"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </mat-tab>
+
+                        <!-- Map -->
+                        <mat-tab [label]="'DESTINATIONS.DETAIL.TABS.MAP' | translate">
+                            <div class="details-section py-5">
+                                <h2 class="fw-800 text-secondary mb-4 align-items-center d-flex gap-2">
+                                    <i class="bi bi-geo-alt-fill text-primary"></i>
+                                    {{ 'DESTINATIONS.DETAIL.INTERACTIVE_LOCATION' | translate }}
+                                </h2>
+                                <div id="map" class="map-detail-frame shadow-sm rounded-4"
+                                    style="height: 550px; width: 100%;"></div>
+                            </div>
+                        </mat-tab>
+
+                        <!-- Offers -->
+                        <mat-tab [label]="'DESTINATIONS.DETAIL.TABS.OFFERS' | translate">
+                            <div class="details-section py-5">
+                                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-5 gap-3">
+                                    <h2 class="fw-800 text-secondary mb-0 align-items-center d-flex gap-2">
+                                        <i class="bi bi-tag-fill text-primary"></i>
+                                        {{ 'DESTINATIONS.DETAIL.TABS.OFFERS' | translate }}
+                                    </h2>
+                                    
+                                    <!-- Category Filters -->
+                                    <div class="category-filters-wrapper d-flex gap-2 overflow-auto pb-1">
+                                        <button class="filter-pill" [class.active]="selectedOfferCategory === 'ALL'" (click)="selectedOfferCategory = 'ALL'">
+                                            {{ 'DESTINATIONS.DETAIL.OFFER_ALL' | translate }}
+                                        </button>
+                                        <button class="filter-pill" [class.active]="selectedOfferCategory === 'HOTEL'" (click)="selectedOfferCategory = 'HOTEL'">
+                                            <i class="bi bi-house-door me-1"></i>{{ 'DESTINATIONS.DETAIL.OFFER_HOTELS' | translate }}
+                                        </button>
+                                        <button class="filter-pill" [class.active]="selectedOfferCategory === 'RESTAURANT'" (click)="selectedOfferCategory = 'RESTAURANT'">
+                                            <i class="bi bi-egg-fried me-1"></i>{{ 'DESTINATIONS.DETAIL.OFFER_RESTAURANTS' | translate }}
+                                        </button>
+                                        <button class="filter-pill" [class.active]="selectedOfferCategory === 'ACTIVITY'" (click)="selectedOfferCategory = 'ACTIVITY'">
+                                            <i class="bi bi-bicycle me-1"></i>{{ 'DESTINATIONS.DETAIL.OFFER_ACTIVITIES' | translate }}
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="row g-4" *ngIf="filteredOffers.length; else noOffers">
+                                    <div class="col-md-4" *ngFor="let offer of filteredOffers">
+                                        <div class="card h-100 shadow-sm border-0 rounded-4 offer-card-modern overflow-hidden">
+                                            <div class="offer-type-banner" [ngClass]="offer.type.toLowerCase()">
+                                                <i class="bi" [ngClass]="{
+                                                    'bi-house-door': offer.type === 'HOTEL',
+                                                    'bi-egg-fried': offer.type === 'RESTAURANT',
+                                                    'bi-bicycle': offer.type === 'ACTIVITY'
+                                                }"></i>
+                                                <ng-container [ngSwitch]="offer.type">
+                                                    <span *ngSwitchCase="'HOTEL'">{{ 'DESTINATIONS.DETAIL.OFFER_TYPE_HOTEL' | translate }}</span>
+                                                    <span *ngSwitchCase="'RESTAURANT'">{{ 'DESTINATIONS.DETAIL.OFFER_TYPE_RESTAURANT' | translate }}</span>
+                                                    <span *ngSwitchCase="'ACTIVITY'">{{ 'DESTINATIONS.DETAIL.OFFER_TYPE_ACTIVITY' | translate }}</span>
+                                                    <span *ngSwitchDefault>{{ offer.type }}</span>
+                                                </ng-container>
+                                            </div>
+                                            <div class="card-body p-4 d-flex flex-column">
+                                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                                    <h4 class="fw-800 mb-0 flex-grow-1">{{offer.name}}</h4>
+                                                    <div class="price-tag ms-2">
+                                                        <span class="price-val">{{ (offer.displayPrice || offer.price || 0) | number:'1.0-0'}}</span>
+                                                        <span class="price-unit">MAD</span>
+                                                        <small class="price-sub" *ngIf="offer.type === 'HOTEL'">{{ 'DESTINATIONS.DETAIL.OFFER_NIGHT' | translate }}</small>
+                                                    </div>
+                                                </div>
+                                                
+                                                <p class="text-muted small mb-4 line-clamp-3">{{offer.description}}</p>
+                                                
+                                                <div class="offer-specs mb-4 mt-auto">
+                                                    <div class="spec-item" *ngIf="offer.stars">
+                                                        <i class="bi bi-star-fill text-warning"></i> {{offer.stars}} {{ 'DESTINATIONS.DETAIL.OFFER_STARS' | translate }}
+                                                    </div>
+                                                    <div class="spec-item" *ngIf="offer.roomType">
+                                                        <i class="bi bi-door-open"></i> {{offer.roomType}}
+                                                    </div>
+                                                    <div class="spec-item" *ngIf="offer.cuisineType">
+                                                        <i class="bi bi-cup-hot"></i> {{offer.cuisineType}}
+                                                    </div>
+                                                    <div class="spec-item" *ngIf="offer.duration">
+                                                        <i class="bi bi-clock"></i> {{offer.duration}}
+                                                    </div>
+                                                    <div class="spec-item" *ngIf="offer.activityType">
+                                                        <i class="bi bi-info-circle"></i> {{offer.activityType}}
+                                                    </div>
+                                                </div>
+
+                                                <button class="btn btn-primary w-100 rounded-pill py-2 fw-700 shadow-sm reserve-btn"
+                                                    (click)="openReservationMenu(offer)">
+                                                    {{ 'COMMON.RESERVE' | translate }}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ng-template #noOffers>
+                                    <div class="text-center py-5 bg-white shadow-sm border rounded-4">
+                                        <i class="bi bi-tag-fill text-muted display-4 opacity-25"></i>
+                                        <p class="mt-3 text-secondary fw-600">{{ 'DESTINATIONS.DETAIL.OFFER_NO_RESULTS' | translate }}</p>
+                                        <button class="btn btn-outline-primary rounded-pill px-4 mt-2" (click)="selectedOfferCategory = 'ALL'">
+                                            {{ 'DESTINATIONS.DETAIL.OFFER_CLEAR_FILTERS' | translate }}
+                                        </button>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </mat-tab>
+
+                        <!-- Reviews -->
+                        <mat-tab [label]="'DESTINATIONS.DETAIL.TABS.REVIEWS' | translate">
+                            <div class="details-section py-5">
+                <div class="d-flex justify-content-between align-items-center mb-5">
+                    <h2 class="fw-800 text-secondary mb-0">{{ 'DESTINATIONS.DETAIL.VISITOR_REVIEWS' | translate }}</h2>
+                    <button class="btn btn-primary rounded-pill px-4 shadow-sm"
+                        *ngIf="authService.isLoggedIn && !showReviewForm" (click)="showReviewForm = true">
+                        {{ 'DESTINATIONS.DETAIL.WRITE_REVIEW' | translate }}
+                    </button>
+                </div>
+
+                <!-- Hidden Review Form -->
+                <div class="review-form-card p-4 rounded-4 shadow-sm bg-white border mb-5" *ngIf="showReviewForm">
+                    <h4 class="fw-800 mb-3">{{ 'DESTINATIONS.DETAIL.WRITE_REVIEW' | translate }}</h4>
+                    <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">{{ 'DESTINATIONS.DETAIL.REVIEW_RATING_LABEL' | translate }}</label>
+                        <div class="d-flex gap-2">
+                            <i class="bi fs-4 cursor-pointer" 
+                               [class.bi-star-fill]="newReview.note >= i" 
+                               [class.bi-star]="newReview.note < i"
+                               [class.text-warning]="newReview.note >= i"
+                               *ngFor="let i of [1,2,3,4,5]" (click)="newReview.note = i"></i>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label text-muted small fw-bold">{{ 'DESTINATIONS.DETAIL.REVIEW_COMMENT_LABEL' | translate }}</label>
+                        <textarea class="form-control form-control-lg border-light bg-light" rows="4" 
+                            [(ngModel)]="newReview.commentaire" [placeholder]="'DESTINATIONS.DETAIL.SHARE_EXP' | translate"></textarea>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-primary rounded-pill px-4" (click)="submitReview()" [disabled]="!newReview.commentaire">
+                            {{ 'DESTINATIONS.DETAIL.POST' | translate }}
+                        </button>
+                        <button class="btn btn-outline-secondary rounded-pill px-4" (click)="showReviewForm = false">
+                            {{ 'COMMON.CANCEL' | translate }}
+                        </button>
+                    </div>
+                </div>
+
+                <div class="review-grid">
+                                    <div class="review-card-modern p-4 rounded-4 shadow-sm bg-white mb-4 border"
+                                        *ngFor="let review of reviews">
+                                        <div class="d-flex align-items-center gap-3 mb-3">
+                                            <img [src]="review.travelerPhotoUrl | imageUrl:'assets/default-avatar.png'"
+                                                class="reviewer-img">
+                                            <div>
+                                                <h6 class="fw-800 text-secondary mb-0">{{review.travelerName}}</h6>
+                                                <div class="star-rating text-warning small">
+                                                    <i class="bi bi-star-fill me-1"
+                                                        *ngFor="let s of [1,2,3,4,5]; let i = index"
+                                                        [hidden]="i >= review.note"></i>
+                                                </div>
+                                            </div>
+                                            <span class="ms-auto text-muted small">{{review.datePublication | date}}</span>
+                                        </div>
+                                        <p class="review-body mb-0">{{review.commentaire}}</p>
+                                    </div>
+                                    <p *ngIf="!reviews.length" class="text-muted text-center">
+                                        {{ 'DESTINATIONS.DETAIL.NO_REVIEWS' | translate }}
+                                    </p>
+                                </div>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Loading Skeleton -->
+<ng-template #loadingTpl>
+    <div class="container-xl py-5" style="margin-top: 80px;">
+        <app-skeleton-loader width="100%" height="400px"></app-skeleton-loader>
+        <div class="row g-5 mt-4">
+            <div class="col-lg-8">
+                <app-skeleton-loader width="40%" height="40px" class="mb-4 d-block"></app-skeleton-loader>
+                <app-skeleton-loader width="100%" height="20px" [count]="5"></app-skeleton-loader>
+            </div>
+            <div class="col-lg-4">
+                <app-skeleton-loader width="100%" height="300px"></app-skeleton-loader>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- Lightbox Overlay -->
+<div class="lightbox" *ngIf="lightboxImage" (click)="closeLightbox()">
+    <span class="close-btn" (click)="closeLightbox()">&times;</span>
+
+    <button class="nav-btn prev-btn" *ngIf="destination?.medias && currentImageIndex > 0" (click)="prevImage($event)">
+        <i class="bi bi-chevron-left"></i>
+    </button>
+
+    <div class="lightbox-img-wrapper">
+        <img [src]="lightboxImage | imageUrl" class="lightbox-content img-fluid" (click)="$event.stopPropagation()">
+    </div>
+
+    <button class="nav-btn next-btn" *ngIf="destination?.medias && currentImageIndex < destination.medias.length - 1"
+        (click)="nextImage($event)">
+        <i class="bi bi-chevron-right"></i>
+    </button>
+</div>

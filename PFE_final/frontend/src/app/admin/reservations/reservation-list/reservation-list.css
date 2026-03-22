@@ -1,0 +1,33 @@
+.admin-page-container {
+    padding: 24px;
+    height: 100%;
+    background-color: var(--safar-sand);
+}
+
+.table-container {
+    max-height: calc(100vh - 250px);
+    overflow: auto;
+}
+
+.element-row {
+    transition: background-color 0.2s ease;
+}
+
+.element-row:hover {
+    background-color: var(--safar-sand-dark);
+}
+
+.badge {
+    font-weight: 500;
+    padding: 0.5em 0.8em;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+::ng-deep .mat-mdc-table {
+    background: transparent !important;
+}
+
+::ng-deep .mat-mdc-header-row {
+    background-color: white !important;
+}

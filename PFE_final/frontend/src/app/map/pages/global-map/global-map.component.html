@@ -1,0 +1,63 @@
+<div class="container-fluid p-0 overflow-hidden">
+    <div class="row g-0 flex-row-reverse flex-lg-row">
+        <!-- Sidebar -->
+        <aside class="col-lg-4 col-md-12 map-sidebar shadow-lg">
+            <div class="sidebar-header">
+                <h2 class="fw-800 text-secondary mb-3">{{ 'MAP_PAGE.EXPLORE' | translate }}</h2>
+
+                <!-- Search -->
+                <div class="search-container mb-4">
+                    <i class="bi bi-search"></i>
+                    <input type="text" [(ngModel)]="searchQuery" (input)="applyFilters()"
+                        [placeholder]="'MAP_PAGE.SEARCH_PLACEHOLDER' | translate">
+                </div>
+
+                <!-- Categories -->
+                <div class="category-pills mb-4">
+                    <button *ngFor="let cat of categories" [class.active]="selectedCategory === cat.id"
+                        (click)="setCategory(cat.id)" class="cat-pill">
+                        <i class="bi" [ngClass]="cat.icon"></i>
+                        {{ 'CATEGORIES.' + cat.id | translate }}
+                    </button>
+                </div>
+            </div>
+
+            <!-- Destination List -->
+            <div class="sidebar-content" [class.loading]="isLoading">
+                <div *ngIf="isLoading" class="p-4 text-center">
+                    <div class="spinner-border text-primary" role="status"></div>
+                </div>
+
+                <div *ngIf="!isLoading && filteredDestinations.length === 0" class="empty-results">
+                    <i class="bi bi-geo-alt text-muted"></i>
+                    <p>{{ 'MAP_PAGE.NO_RESULTS' | translate }}</p>
+                </div>
+
+                <div class="destination-scroll-list" *ngIf="!isLoading">
+                    <div *ngFor="let dest of filteredDestinations" class="dest-item-card"
+                        [class.selected]="selectedDestination?.id === dest.id" (click)="selectDestination(dest)">
+                        <img [src]="(dest.thumbnailUrl || dest.medias?.[0]) | imageUrl" class="item-img">
+                        <div class="item-info">
+                            <h6>{{ dest.nom }}</h6>
+                            <span class="badge-cat">{{ dest.categorie | categoryName }}</span>
+                            <p class="mb-0 small text-muted"><i class="bi bi-star-fill text-warning me-1"></i> {{
+                                dest.averageRating || '0.0' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Map Main -->
+        <main class="col-lg-8 col-md-12 map-container position-relative">
+            <div id="global-map"></div>
+
+            <!-- Floating Actions -->
+            <div class="map-actions">
+                <button class="btn-action shadow-sm" (click)="locateUser()" title="My Location">
+                    <i class="bi bi-crosshair"></i>
+                </button>
+            </div>
+        </main>
+    </div>
+</div>

@@ -1,0 +1,480 @@
+{
+    "rtl": true,
+    "NAV": {
+        "HOME": "الرئيسية",
+        "DESTINATIONS": "الوجهات",
+        "MAP": "الخريطة",
+        "EVENTS": "الأحداث",
+        "ADMIN": "مسؤل",
+        "PROFILE": "الملف الشخصي",
+        "SETTINGS": "الإعدادات",
+        "LOGOUT": "تسجيل الخروج",
+        "LOGIN": "تسجيل الدخول",
+        "SIGNUP": "إنشاء حساب",
+        "ITINERAIRES": "المسارات"
+    },
+    "CATEGORIES": {
+        "ALL": "الكل",
+        "CULTURAL": "ثقافي",
+        "NATURE": "طبيعة",
+        "HISTORICAL": "تاريخي",
+        "RELIGIOUS": "ديني",
+        "URBAN": "حضري",
+        "FOOD": "فن الطبخ",
+        "ADVENTURE": "مغامرة",
+        "BEACH": "شاطئ",
+        "CRAFT": "حرف يدوية"
+    },
+    "DESTINATIONS": {
+        "RESERVATION": {
+            "TITLE": "حجز: {{name}}",
+            "LOADING_ITINERARIES": "جاري تحميل مساراتك...",
+            "SELECT_ITINERARY": "اختر مسارًا",
+            "CHOOSE_ITINERARY": "اختر مسارًا...",
+            "START_DATE": "تاريخ البداية",
+            "END_DATE": "تاريخ النهاية",
+            "QUANTITY": "الكمية (أشخاص / وحدات)",
+            "NO_ITINERARIES": "ليس لديك أي مسارات بعد. يرجى إنشاء مسار أولاً قبل إجراء حجز!",
+            "CONFIRM": "تأكيد الحجز",
+            "CONFIRMING": "جاري التأكيد...",
+            "ERROR_SELECT_ITINERARY": "يرجى اختيار مسار لربط هذا الحجز.",
+            "ERROR_HOTEL_DATES": "تواريخ البداية والنهاية مطلوبة للفندق.",
+            "ERROR_DATE_ORDER": "يجب أن يكون تاريخ البداية قبل تاريخ النهاية.",
+            "ERROR_GENERIC": "فشل الحجز. يرجى التحقق من بياناتك.",
+            "CREATE_ITINERARY_LINK": "إنشاء مسار الآن"
+        },
+        "LIST": {
+            "HERO_SUBTITLE": "اكتشف المغرب",
+            "HERO_TITLE": "اكتشف أماكن مذهلة",
+            "HERO_DESC": "من المدن القديمة إلى المناظر الطبيعية الخلابة",
+            "SEARCH_PLACEHOLDER": "البحث عن الوجهات...",
+            "LOAD_MORE": "تحميل المزيد",
+            "EMPTY_TITLE": "لم يتم العلمور على وجهات",
+            "EMPTY_DESC": "حاول تعديل البحث أو الفلاتر",
+            "RESET": "إعادة تعيين الفلاتر",
+            "ADD_TOOLTIP": "إضافة وجهة جديدة"
+        },
+        "DETAIL": {
+            "BREADCRUMB": "جميع الوجهات",
+            "REVIEWS": "المراجعات",
+            "RECOMMENDED": "الأكثر توصية",
+            "PLAN_TRIP": "خطط لرحلتي",
+            "EDIT": "تعديل الوجهة",
+            "DELETE": "حذف",
+            "ABOUT": "عن المكان",
+            "HISTORICAL": "الأهمية التاريخية",
+            "HISTORICAL_DESC": "اكتشف التاريخ العريق والمعالم المعمارية التي تميز {{name}}.",
+            "FACILITIES": "المرافق والخدمات",
+            "STANDARD_AMENITIES": "المرافق القياسية",
+            "LOCAL_TRANSPORT": "نقل عام نظيف",
+            "VISUAL_EXPLORER": "المستكشف البصري",
+            "NO_PHOTOS": "لا توجد صور متاحة لهذه الوجهة حالياً.",
+            "EXPERIENCE_VIBE": "عش التجربة",
+            "VIDEO_INFO": "شاهد جولة فيديو لهذا الموقع الجميل.",
+            "INTERACTIVE_LOCATION": "الموقع التفاعلي",
+            "VISITOR_REVIEWS": "تجارب الزوار",
+            "WRITE_REVIEW": "اكتب مراجعة",
+            "SHARE_EXP": "شارك تجربتك...",
+            "POST": "نشر المراجعة",
+            "NO_REVIEWS": "لا توجد مراجعات",
+            "WEATHER": {
+                "TITLE": "الطقس المحلي",
+                "HUMIDITY": "الرطوبة",
+                "WIND": "سرعة الرياح",
+                "FORECAST": "توقعات 7 أيام"
+            },
+            "GLANCE": {
+                "TITLE": "نظرة سريعة",
+                "COST": "متوسط التكلفة",
+                "PER_PERSON": "للشخص الواحد",
+                "BEST_TIME": "أفضل وقت للزيارة",
+                "BEST_TIME_VAL": "أكتوبر - مايو",
+                "LANGS": "اللغات الرسمية",
+                "LANGS_VAL": "العربية، الفرنسية، تشلحيت",
+                "POPULARITY": "الشعبية",
+                "VIEWS": "مشاهدة",
+                "CURRENCY": "درهم"
+            },
+            "TABS": {
+                "OVERVIEW": "نظرة عامة",
+                "REVIEWS": "المراجعات",
+                "GALLERY": "المعرض",
+                "EVENTS": "الأحداث",
+                "VIDEO": "فيديو",
+                "MAP": "الخريطة",
+                "OFFERS": "العروض"
+            },
+            "ADD_PHOTO": "إضافة صورة",
+            "HIGHLIGHTS": "مميزات رئيسية",
+            "HIGHLIGHT_BEST_EXP": "أفضل تجربة",
+            "HIGHLIGHT_BEST_EXP_DESC": "مصنّف عالياً من قبل الزوار الأخيرين",
+            "HIGHLIGHT_PHOTO": "وجهة تصوير",
+            "HIGHLIGHT_PHOTO_DESC": "مثالي لتصوير السفر",
+            "HIGHLIGHT_ECO": "صديق للبيئة",
+            "HIGHLIGHT_ECO_DESC": "سياحة مستدامة",
+            "HIGHLIGHT_HERITAGE": "تراث",
+            "HIGHLIGHT_HERITAGE_DESC": "جذور تاريخية عميقة",
+            "OFFER_ALL": "الكل",
+            "OFFER_HOTELS": "فنادق",
+            "OFFER_RESTAURANTS": "مطاعم",
+            "OFFER_ACTIVITIES": "أنشطة",
+            "OFFER_TYPE_HOTEL": "فندق",
+            "OFFER_TYPE_RESTAURANT": "مطعم",
+            "OFFER_TYPE_ACTIVITY": "نشاط",
+            "OFFER_NIGHT": "/ليلة",
+            "OFFER_STARS": "نجوم",
+            "OFFER_NO_RESULTS": "لا توجد عروض لهذه الفئة.",
+            "OFFER_CLEAR_FILTERS": "إلغاء التصفية",
+            "REVIEW_RATING_LABEL": "التقييم",
+            "REVIEW_COMMENT_LABEL": "التعليق",
+            "STATUS_HIGH_DEMAND": "طلب عالي",
+            "STATUS_STANDARD": "عادي"
+        }
+    },
+    "EVENTS": {
+        "LIST": {
+            "HERO_SUBTITLE": "أحداث ثقافية",
+            "HERO_TITLE": "الأحداث القادمة",
+            "HERO_DESC": "جرب ثقافة المغرب النابضة بالحياة",
+            "SEARCH_PLACEHOLDER": "البحث عن الأحداث...",
+            "LOAD_MORE": "تحميل المزيد",
+            "EMPTY_TITLE": "لم يتم العثور على أحداث",
+            "EMPTY_DESC": "حاول تعديل البحث أو الفلاتر",
+            "RESET": "إعادة تعيين الفلاتر",
+            "UPCOMING": "قادم",
+            "NO_EVENTS": "لا توجد أحداث متاحة حاليًا."
+        },
+        "DETAIL": {
+            "DATE": "التاريخ والوقت",
+            "LOCATION": "الموقع",
+            "STATUS": "الحالة",
+            "ABOUT": "عن الحدث",
+            "JOIN": "احجز مكانك",
+            "PRICE_FREE": "دخول مجاني"
+        }
+    },
+    "AUTH": {
+        "LOGIN": {
+            "WELCOME": "مرحبا بكم",
+            "SUBTITLE": "سجل الدخول لمواصلة رحلتك",
+            "PASSWORD": "كلمة المرور",
+            "PASSWORD_REQ": "كلمة المرور مطلوبة",
+            "REMEMBER": "تذكرني",
+            "FORGOT": "هل نسيت كلمة المرور؟",
+            "SIGN_IN": "تسجيل الدخول",
+            "SIGNING_IN": "جاري تسجيل الدخول...",
+            "OR_CONTINUE": "أو المتابعة عبر",
+            "GOOGLE": "تسجيل الدخول عبر جوجل",
+            "NO_ACCOUNT": "ليس لديك حساب؟",
+            "CREATE": "إنشاء حساب",
+            "TWO_FACTOR": {
+                "TITLE": "التحقق بخطوتين",
+                "DESC": "أدخل الرمز المكون من 6 أرقام من تطبيق المصادقة الخاص بك.",
+                "LABEL": "رمز 2FA",
+                "VERIFY": "تحقق",
+                "BACK": "رجوع"
+            }
+        },
+        "REGISTER": {
+            "TITLE": "انضم إلى المستكشفين",
+            "SUBTITLE": "أنشئ حساباً لتبدأ مغامرتك",
+            "FIRST_NAME": "الاسم الأول",
+            "LAST_NAME": "الاسم الأخير",
+            "EMAIL": "البريد الإلكتروني",
+            "EMAIL_REQ": "البريد الإلكتروني مطلوب",
+            "EMAIL_INV": "صيغة البريد الإلكتروني غير صحيحة",
+            "PASS_MIN": "يجب أن تكون كلمة المرور 6 أحرف على الألاف",
+            "AGREE": "أوافق على",
+            "TERMS": "الشروط والأحكام",
+            "GET_STARTED": "ابدأ الآن",
+            "CREATING": "جاري إنشاء الحساب...",
+            "ALREADY_MEMBER": "هل لديك حساب بالفعل؟",
+            "LOG_IN": "تسجيل الدخول"
+        }
+    },
+    "PROFILE": {
+        "EMAIL": "البريد الإلكتروني",
+        "PHONE": "الهاتف",
+        "EDIT": "تعديل الملف الشخصي",
+        "CANCEL": "إلغاء",
+        "SAVE": "حفظ التغييرات",
+        "EDIT_INFO": "تعديل المعلومات الشخصية",
+        "FULL_NAME": "الاسم الكامل",
+        "LANGUAGE": "اللغة المفضلة",
+        "BIO": "نبذة عني",
+        "BIO_PLACEHOLDER": "أخبرنا عن أسلوب سفرك...",
+        "ACTIVITY": "النشاط الأخير",
+        "NO_ACTIVITY": "لا توجد أنشطة بعد",
+        "LOADING": "جاري تحميل الملف الشخصي..."
+    },
+    "SETTINGS": {
+        "TITLE": "إعدادات الحساب",
+        "PREFERENCES": "التفضيلات",
+        "SECURITY": "الأمان",
+        "NOTIFICATIONS": "التنبيهات",
+        "PRIVACY": "الخصوصية",
+        "DANGER_ZONE": "منطقة الخطر",
+        "SECURITY_TITLE": "إعدادات الأمان",
+        "CHANGE_PASS": {
+            "TITLE": "تغيير كلمة المرور",
+            "CURRENT": "كلمة المرور الحالية",
+            "NEW": "كلمة المرور الجديدة",
+            "MIN_LENGTH": "8 أحرف على الأقل",
+            "CONFIRM": "تأكيد كلمة المرور الجديدة",
+            "MISMATCH": "كلمات المرور غير متطابقة",
+            "UPDATE_BTN": "تحديث كلمة المرور"
+        },
+        "TWO_FACTOR": {
+            "TITLE": "المصادقة الثنائية (2FA)",
+            "DESC": "إضافة طبقة حماية إضافية لحسابك.",
+            "ENABLE_BTN": "تفعيل 2FA",
+            "DISABLE_BTN": "إيقاف 2FA",
+            "SCAN_INSTRUCTIONS": "امسح رمز QR هذا باستخدام تطبيق Google Authenticator:",
+            "MANUAL_SECRET": "أو أدخل هذا الرمز السري يدوياً:",
+            "PLACEHOLDER": "رمز من 6 أرقام",
+            "ENABLED_MSG": "تم تفعيل المصادقة الثنائية في حسابك.",
+            "DISABLED_MSG": "تم إيقاف المصادقة الثنائية."
+        },
+        "LANGUAGE_LABEL": "لغة الواجهة",
+        "LANGUAGE_DESC": "اختر لغتك المفضلة لواجهة التطبيق.",
+        "THEME": {
+            "LABEL": "وضع المظهر",
+            "DESC": "اختر بين الوضع الفاتح، الداكن، أو الافتراضي للنظام.",
+            "LIGHT": "الوضع الفاتح",
+            "DARK": "الوضع الداكن",
+            "SYSTEM": "افتراضي النظام"
+        },
+        "SAVE_PREFERENCES": "حفظ التفضيلات",
+        "NOTIFICATIONS_TITLE": "التنبيهات",
+        "NOTIFICATIONS_DESC": "إدارة كيفية تلقي التنبيهات والتحديثات.",
+        "EMAIL_NOTIF": {
+            "TITLE": "تنبيهات البريد الإلكتروني",
+            "DESC": "تلقي التحديثات والنشرات الإخبارية عبر البريد الإلكتروني."
+        },
+        "SMS_NOTIF": {
+            "TITLE": "تنبيهات SMS",
+            "DESC": "احصل على التنبيهات المهمة مباشرة على هاتفك."
+        },
+        "EVENT_REMINDERS": {
+            "TITLE": "تذكيرات الأحداث",
+            "DESC": "احصل على تنبيه قبل بدء أحداثك المحفوظة."
+        },
+        "PRIVACY_TITLE": "الخصوصية والظهور",
+        "PRIVACY_DESC": "التحكم في المعلومات التي يمكن للآخرين رؤيتها.",
+        "PUBLIC_PROFILE": {
+            "TITLE": "الملف الشخصي العام",
+            "DESC": "السماح للآخرين برؤية ملفك الشخصي ومراجعاتك."
+        },
+        "SHOW_EMAIL": {
+            "TITLE": "إظهار البريد الإلكتروني",
+            "DESC": "عرض عنوان بريدك الإلكتروني في ملفك الشخصي العام."
+        },
+        "MAP_PERMISSIONS": {
+            "TITLE": "موقع الخريطة",
+            "DESC": "السماح للتطبيق باستخدام موقعك لتحسين التنقل."
+        },
+        "DANGER": {
+            "TITLE": "منطقة الخطر",
+            "DESC": "إجراءات لا يمكن التراجع عنها لحسابك.",
+            "DELETE_ACCOUNT": {
+                "TITLE": "حذف الحساب",
+                "DESC": "حذف حسابك وجميع بياناتك نهائياً. لا يمكن التراجع عن هذا الإجراء.",
+                "CONFIRM": "هل أنت متأكد من رغبتك في حذف حسابك نهائياً؟",
+                "BTN": "حذف حسابي"
+            }
+        }
+    },
+    "MAP_PAGE": {
+        "SEARCH_PLACEHOLDER": "البحث عن مكان...",
+        "GO": "انطلق",
+        "CALCULATING": "جاري حساب المسار...",
+        "EXPLORE": "استكشف المغرب"
+    },
+    "COMMON": {
+        "SEARCH": "بحث",
+        "LOADING": "جار التحميل...",
+        "SAVE": "حفظ",
+        "CANCEL": "إلغاء",
+        "DELETE": "حذف",
+        "EDIT": "تعديل",
+        "VIEW": "عرض",
+        "VIEW_MORE": "عرض المزيد",
+        "CLOSE": "إغلاق",
+        "SHARE": "مشاركة",
+        "REQUIRED": "مطلوب",
+        "VERIFY": "تحقق",
+        "MOROCCO": "المغرب",
+        "RESERVE": "احجز"
+    },
+    "LANG": {
+        "EN": "الإنجليزية",
+        "FR": "الفرنسية",
+        "AR": "العربية",
+        "ES": "الإسبانية"
+    },
+    "FOOTER": {
+        "DESC": "دليلك النهائي لاكتشاف جمال وثقافة وأحداث المغرب.",
+        "QUICK_LINKS": "روابط سريعة",
+        "EXPLORE": "استكشاف",
+        "SUPPORT": "الدعم",
+        "HELP": "مركز المساعدة",
+        "CONTACT": "اتصل بنا",
+        "TERMS": "شروط الخدمة",
+        "PRIVACY": "سياسة الخصوصية",
+        "COPYRIGHT": "© 2026 سفر المغرب. جميع الحقوق محفوظة.",
+        "MADE_WITH": "صنع بـ",
+        "CULTURAL": "ثقافة",
+        "NATURE": "طبيعة",
+        "HISTORICAL": "تاريخ",
+        "RELIGIOUS": "ديني"
+    },
+    "DASHBOARD": {
+        "TITLE": "لوحة القيادة",
+        "SUBTITLE": "مرحبًا بك مرة أخرى، المسؤول",
+        "METRICS": {
+            "USERS": "إجمالي المسافرين",
+            "DESTINATIONS": "الوجهات النشطة",
+            "EVENTS": "الأحداث القادمة",
+            "REVIEWS": "المراجعات المعلقة"
+        },
+        "CHARTS": {
+            "GROWTH": "تحليلات النمو",
+            "LAST_24H": "آخر 24 ساعة",
+            "CATEGORIES": "الفئات",
+            "DURATION": "مدة الأحداث الأخيرة"
+        },
+        "ACTIVITY": {
+            "TITLE": "النشاط الأخير",
+            "USER": "المستخدم",
+            "ACTION": "الإجراء",
+            "DATE": "التاريخ",
+            "EMPTY": "لا يوجد نشاط حديث",
+            "GUEST": "زائر"
+        }
+    },
+    "HOME": {
+        "HERO": {
+            "SUBTITLE": "مرحبًا بكم في سفر المغرب",
+            "TITLE": "رفيق سفرك المثالي",
+            "DESC": "اكتشف أجمل الأماكن والأحداث وثقافة المغرب.",
+            "SEARCH_PLACEHOLDER": "إلى أين تريد الذهاب؟"
+        },
+        "FEATURED": {
+            "TAG": "الوجهات",
+            "TITLE": "أماكن مميزة",
+            "SUBTITLE": "وجهات مختارة بعناية لمغامرتك القادمة",
+            "EXPLORE_ALL": "استكشف الكل"
+        },
+        "WHY": {
+            "TAG": "المميزات",
+            "TITLE": "لماذا تختار سفر المغرب",
+            "DESC": "نحن نقدم أفضل الأدوات لجعل رحلتك لا تُنسى.",
+            "VERIFIED": {
+                "TITLE": "أماكن موثوقة",
+                "DESC": "تتم مراجعة جميع الوجهات والتحقق منها من قبل فريقنا."
+            },
+            "EVENTS": {
+                "TITLE": "أحداث ثقافية",
+                "DESC": "لا تفوت أبدًا مهرجانًا أو حفلة موسيقية أو حدثًا محليًا."
+            },
+            "AI": {
+                "TITLE": "رفيق الذكاء الاصطناعي",
+                "DESC": "احصل على توصيات مخصصة من روبوت الدردشة الخاص بنا."
+            },
+            "MAPPED": {
+                "TITLE": "خريطة تفاعلية",
+                "DESC": "تنقل بسهولة من خلال خريطتنا التفاعلية المفصلة."
+            },
+            "COMPANION": "رفيق سفرك المثالي"
+        },
+        "MAP_PREVIEW": {
+            "TITLE": "استكشف على الخريطة",
+            "DESC": "تصور جميع الوجهات وخطط لمسارك في مكان واحد.",
+            "FULLSCREEN": "فتح الخريطة التفاعلية"
+        },
+        "AI_BANNER": {
+            "TITLE": "هل تحتاج لنصيحة سفر؟",
+            "DESC": "خبير السفر المدعوم بالذكاء الاصطناعي جاهز لمساعدتك في التخطيط لرحلتك المثالية إلى المغرب.",
+            "START": "تحدث مع الذكاء الاصطناعي"
+        }
+    },
+    "ITINERARY": {
+        "HERO_SUBTITLE": "مساراتي",
+        "HERO_TITLE": "مسارات سفري",
+        "HERO_DESC": "ابحث وقم بإدارة رحلاتك",
+        "STATS_ITINERARIES": "إجمالي المسارات",
+        "STATS_OPTIMIZED": "المسارات المحسنة",
+        "STATS_DISTANCE": "المسافة الإجمالية",
+        "NEW_ITINERARY": "مسار جديد",
+        "LOADING": "جاري التحميل...",
+        "NO_ITINERARY": "لم يتم العثور على أي مسارات",
+        "START_CREATING": "ابدأ بإنشاء مسارك الأول",
+        "CREATE_ITINERARY": "إنشاء مسار",
+        "HERO_DESC_CREATE": "خطط لرحلتك عن طريق اختيار وجهاتك المفضلة في المغرب.",
+        "UNNAMED_ITINERARY": "مسار بدون اسم",
+        "OPTIMIZED": "مُحسّن",
+        "NOT_OPTIMIZED": "غير مُحسّن",
+        "DESTINATIONS_COUNT": "وجهات",
+        "CREATED_ON": "تم الإنشاء في",
+        "EDIT": "تعديل المسار",
+        "CREATE": "إنشاء مسار",
+        "NAME": "اسم المسار",
+        "NAME_PLACEHOLDER": "مثال: رحلة إلى الشمال",
+        "NAME_ERROR": "اسم المسار مطلوب.",
+        "SELECTED_DESTINATIONS": "الوجهات المحددة",
+        "NO_DESTINATION_SELECTED": "الرجاء تحديد وجهة واحدة على الأقل من القائمة أدناه.",
+        "AVAILABLE_DESTINATIONS": "الوجهات المتاحة",
+        "SELECTED": "محدد",
+        "SAVE": "حفظ المسار",
+        "UPDATING": "جاري التحديث...",
+        "CREATING": "جاري الإنشاء...",
+        "CANCEL": "إلغاء",
+        "BACK": "رجوع",
+        "DETAILS": "تفاصيل المسار",
+        "EDIT_PARAMS": "تعديل الإعدادات",
+        "DELETE_ITINERARY": "حذف المسار",
+        "DURATION": "المدة المقدرة",
+        "DISTANCE": "المسافة الإجمالية",
+        "ALREADY_OPTIMIZED": "المسار مُحسّن مسبقاً",
+        "OPTIMIZE": "تحسين المسار",
+        "MAP_TITLE": "خريطة المسار",
+        "START_NAVIGATION": "بدء الملاحة",
+        "VIEW_DETAILS": "عرض تفاصيل {{name}}",
+        "REFRESH": "تحديث",
+        "KM_UNIT": "كم",
+        "HOURS_UNIT": "ساعة"
+    },
+    "CONTACT_PAGE": {
+        "HERO_TITLE": "اتصل بنا",
+        "HERO_SUBTITLE": "نحن هنا لمساعدتك في التخطيط لرحلتك المثالية.",
+        "FORM_TITLE": "أرسل لنا رسالة",
+        "LABEL_NAME": "الاسم الكامل",
+        "LABEL_EMAIL": "البريد الإلكتروني",
+        "LABEL_SUBJECT": "الموضوع",
+        "LABEL_MESSAGE": "رسالتك",
+        "BTN_SEND": "إرسال الرسالة",
+        "ERROR_NAME": "يجب أن يكون الاسم 3 أحرف على الأقل.",
+        "ERROR_EMAIL": "يرجى إدخال بريد إلكتروني صحيح.",
+        "ERROR_SUBJECT": "الموضوع مطلوب.",
+        "ERROR_MESSAGE": "يجب أن تكون الرسالة 10 أحرف على الأقل.",
+        "INFO_LOCATION_TITLE": "زرنا",
+        "INFO_PHONE_TITLE": "اتصل بنا",
+        "INFO_EMAIL_TITLE": "راسلنا",
+        "INFO_SOCIAL_TITLE": "تابعنا",
+        "INTERACTIVE_MAP": "خريطة تفاعلية"
+    },
+    "ITINERARIES": {
+        "DETAIL": {
+            "OVERVIEW": "نظرة عامة",
+            "LOADING": "جاري التحميل...",
+            "YOUR_DESTINATIONS": "وجهاتك",
+            "YOUR_RESERVATIONS": "حجوزاتك",
+            "FROM": "من :",
+            "TO": "إلى :",
+            "QUANTITY": "الكمية :",
+            "TOTAL_PRICE": "السعر الإجمالي",
+            "PDF_INVOICE": "فاتورة PDF",
+            "OFFER_LABEL": "عرض"
+        }
+    }
+}

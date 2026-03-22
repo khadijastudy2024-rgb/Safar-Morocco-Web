@@ -1,0 +1,309 @@
+.container-fluid {
+    background: #f8fafc;
+}
+
+.map-container {
+    height: calc(100vh - 80px);
+}
+
+/* Sidebar Styling */
+.map-sidebar {
+    height: calc(100vh - 80px);
+    background: white;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-header {
+    padding: 24px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-container i {
+    position: absolute;
+    left: 16px;
+    color: #64748b;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 12px 12px 12px 45px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.search-container input:focus {
+    outline: none;
+    border-color: var(--safar-majorelle);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Category Pills */
+.category-pills {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+}
+
+.category-pills::-webkit-scrollbar {
+    display: none;
+}
+
+.cat-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: #f1f5f9;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.cat-pill i {
+    font-size: 1rem;
+}
+
+.cat-pill.active {
+    background: var(--safar-majorelle);
+    color: white;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.cat-pill:hover:not(.active) {
+    background: #e2e8f0;
+}
+
+/* Destination List */
+.sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    background: #f8fafc;
+}
+
+.destination-scroll-list {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dest-item-card {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    background: white;
+    border: 1px solid #f1f5f9;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dest-item-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-color: var(--safar-majorelle);
+}
+
+.dest-item-card.selected {
+    border-color: var(--safar-majorelle);
+    background: rgba(59, 130, 246, 0.02);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
+}
+
+.item-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-info h6 {
+    margin: 0 0 4px 0;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.badge-cat {
+    display: inline-block;
+    padding: 2px 8px;
+    background: #f1f5f9;
+    color: #64748b;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+/* Map Main Styling */
+.map-main {
+    flex: 1;
+    position: relative;
+    background: #e2e8f0;
+}
+
+#global-map {
+    width: 100%;
+    height: 100%;
+}
+
+.map-actions {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-action {
+    width: 45px;
+    height: 45px;
+    background: white;
+    border: none;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: #1e293b;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-action:hover {
+    background: #f8fafc;
+    color: var(--safar-majorelle);
+    transform: scale(1.05);
+}
+
+/* Custom Popup & Markers */
+::ng-deep .custom-popup .leaflet-popup-content-wrapper {
+    padding: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+::ng-deep .custom-popup .leaflet-popup-content {
+    margin: 0;
+    width: 250px !important;
+}
+
+::ng-deep .map-popup-card {
+    text-align: left;
+}
+
+::ng-deep .popup-img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+::ng-deep .popup-info {
+    padding: 12px;
+}
+
+::ng-deep .popup-info h6 {
+    margin: 0 0 4px 0;
+    font-weight: 800;
+}
+
+::ng-deep .popup-info p {
+    margin: 0 0 10px 0;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+::ng-deep .btn-detail {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    background: var(--safar-majorelle);
+    color: white !important;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border: none;
+    cursor: pointer;
+}
+
+/* Marker Pins */
+::ng-deep .custom-marker {
+    background: none;
+    border: none;
+}
+
+::ng-deep .marker-pin {
+    width: 30px;
+    height: 30px;
+    border-radius: 50% 50% 50% 0;
+    background: var(--safar-majorelle);
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 50%;
+    top: 50%;
+    margin: -15px 0 0 -15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid white;
+}
+
+::ng-deep .marker-pin i {
+    transform: rotate(45deg);
+    color: white;
+    font-size: 0.9rem;
+}
+
+::ng-deep .marker-pin.nature {
+    background: #10b981;
+}
+
+::ng-deep .marker-pin.cultural {
+    background: #f59e0b;
+}
+
+::ng-deep .marker-pin.historical {
+    background: #8b5cf6;
+}
+
+::ng-deep .marker-pin.religious {
+    background: #0ea5e9;
+}
+
+/* Mobile Support */
+@media (max-width: 991px) {
+    .map-container {
+        height: 60vh;
+    }
+
+    .map-sidebar {
+        height: 40vh;
+    }
+}

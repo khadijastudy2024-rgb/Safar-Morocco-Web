@@ -1,0 +1,26 @@
+<div class="auth-required-container d-flex align-items-center justify-content-center min-vh-100 bg-soft-light">
+    <div class="card shadow-lg border-0 rounded-4 p-5 text-center auth-card">
+        <div class="icon-container mb-4 mx-auto">
+            <i class="bi bi-shield-lock-fill text-primary" style="font-size: 3.5rem;"></i>
+        </div>
+        <h2 class="fw-bold mb-3 text-dark">Authentication Required</h2>
+        <p class="text-muted mb-4 fs-5 px-md-3">
+            You need to log in or create an account to access this content.
+        </p>
+        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center mt-4">
+            <a routerLink="/auth/login" [queryParams]="{returnUrl: returnUrl}"
+                class="btn btn-primary btn-lg px-4 rounded-pill shadow-sm d-flex align-items-center justify-content-center">
+                <i class="bi bi-box-arrow-in-right me-2"></i> Log In
+            </a>
+            <a routerLink="/auth/register"
+                class="btn btn-outline-primary btn-lg px-4 rounded-pill d-flex align-items-center justify-content-center">
+                <i class="bi bi-person-plus me-2"></i> Create Account
+            </a>
+        </div>
+        <div class="mt-4 pt-3 border-top">
+            <a routerLink="/" class="text-decoration-none text-muted small">
+                <i class="bi bi-arrow-left me-1"></i> Return to Home
+            </a>
+        </div>
+    </div>
+</div>

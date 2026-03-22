@@ -1,0 +1,439 @@
+.profile-wrapper {
+    background: #f8fafc;
+    min-height: 100vh;
+}
+
+.profile-cover {
+    height: 220px;
+    background: linear-gradient(135deg, #1A4D8F 0%, #C05621 100%);
+    /* Majorelle blue to Terracotta */
+    border-radius: 20px;
+    margin-bottom: -110px;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-card {
+    background: #FAF6ED !important;
+    /* Warm Sand */
+    border-radius: 20px !important;
+    overflow: visible;
+    z-index: 10;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+    /* Updated Modern Shadow */
+    border-top: 5px solid #C05621 !important;
+    /* Decorative Terracotta Border */
+}
+
+.profile-header {
+    text-align: center;
+}
+
+.avatar-container {
+    width: 140px;
+    height: 140px;
+    margin: -70px auto 1.5rem;
+    position: relative;
+    border-radius: 50%;
+    padding: 6px;
+    background: white;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.avatar-container:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    background: #f1f5f9;
+}
+
+.avatar-upload-overlay {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 38px;
+    height: 38px;
+    background: #C05621;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(192, 86, 33, 0.3);
+    border: 3px solid white;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+/* Ensure content stays above cover on large screens */
+.fade-in {
+    position: relative;
+    z-index: 2;
+}
+
+.avatar-upload-overlay:hover {
+    transform: scale(1.1);
+    background: #1A4D8F;
+    box-shadow: 0 6px 15px rgba(26, 77, 143, 0.4);
+}
+
+.avatar-loader {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    backdrop-filter: blur(2px);
+}
+
+.profile-header h2 {
+    font-family: 'Playfair Display', serif;
+    color: #1A4D8F;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.profile-header .username-handle {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #64748b;
+    opacity: 0.8;
+}
+
+.role-badge {
+    background: #1A4D8F;
+    color: white;
+    padding: 6px 20px;
+    border-radius: 50px;
+    /* Pill */
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(26, 77, 143, 0.3);
+}
+
+.upload-badge {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: var(--primary-color);
+    color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-base);
+    border: 3px solid white;
+}
+
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.info-item-row {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+}
+
+.info-icon-box {
+    width: 44px;
+    height: 44px;
+    background: #f1f5f9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.info-text-box label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.info-text-box p {
+    margin: 0;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.card-header-premium {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.card-header-premium h4 {
+    font-weight: 800;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Activities Section (Right) */
+.timeline-card {
+    background: #FAF6ED !important;
+    /* Warm Sand matching left side */
+    border-radius: 20px !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l2.5 7.5L40 10l-7.5 2.5L30 20l-2.5-7.5L20 10l7.5-2.5z' fill='%23C05621' fill-opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+}
+
+.activity-timeline {
+    z-index: 1;
+    position: relative;
+}
+
+.activity-node {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.node-content {
+    background: rgba(255, 255, 255, 0.7) !important;
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(192, 86, 33, 0.1);
+    flex: 1;
+}
+
+.empty-state {
+    padding: 3rem 1rem;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    border: 1px dashed rgba(192, 86, 33, 0.2);
+}
+
+.empty-icon-box {
+    font-size: 3rem;
+    color: #C05621;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* Edit Button & Pill Badges */
+.btn-terracotta {
+    background: #C05621 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 50px !important;
+    /* Rounded Pill */
+    padding: 10px 25px !important;
+    font-weight: 800 !important;
+    box-shadow: 0 4px 15px rgba(192, 86, 33, 0.2) !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-terracotta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(192, 86, 33, 0.3) !important;
+    background-color: #a3491c !important;
+    /* Slightly darker */
+}
+
+.btn-terracotta:active {
+    transform: translateY(-1px);
+}
+
+@media (max-width: 991.98px) {
+    .profile-cover {
+        height: 160px;
+        margin-bottom: -80px;
+    }
+
+    .avatar-container {
+        width: 120px;
+        height: 120px;
+        margin: -60px auto 1.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .profile-wrapper {
+        padding: 0;
+    }
+
+    .profile-cover {
+        height: 140px;
+        margin-bottom: -70px;
+        border-radius: 0;
+    }
+
+    .avatar-container {
+        width: 100px;
+        height: 100px;
+        margin: -50px auto 1rem;
+    }
+
+    .profile-avatar {
+        border-radius: 25px;
+    }
+
+    .upload-badge {
+        width: 32px;
+        height: 32px;
+        border-radius: 10px;
+    }
+
+    .card-header-premium {
+        padding: 1rem;
+    }
+
+    .info-list {
+        gap: 1rem;
+    }
+
+    .info-item-row {
+        gap: 1rem;
+    }
+
+    .info-icon-box {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .activity-timeline {
+        padding-left: 0.5rem;
+    }
+
+    .activity-node {
+        gap: 1rem;
+    }
+
+    .node-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .node-content {
+        padding: 0.75rem 1rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .profile-cover {
+        height: 120px;
+        margin-bottom: -60px;
+    }
+
+    .avatar-container {
+        width: 90px;
+        height: 90px;
+        margin: -45px auto 1rem;
+    }
+
+    .card-header-premium h4 {
+        font-size: 1rem;
+    }
+
+    .info-text-box label {
+        font-size: 0.7rem;
+    }
+
+    .info-text-box p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Profile Stat Cards Responsive Fix */
+.stat-card,
+.reservation-card {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 24px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+    transition: all 0.25s ease !important;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12) !important;
+}
+
+.section-margin-custom {
+    margin-top: 32px;
+}
+
+.reservation-card i {
+    font-size: 1.1rem;
+    vertical-align: middle;
+    display: inline-block;
+    opacity: 1 !important;
+}
+
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-icon {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 10px;
+}
+
+.stat-icon i {
+    display: block;
+    font-size: 28px;
+}
+
+.stat-blue i {
+    color: #3b82f6;
+}
+
+.stat-yellow i {
+    color: #f59e0b;
+}
+
+.stat-green i {
+    color: #10b981;
+}

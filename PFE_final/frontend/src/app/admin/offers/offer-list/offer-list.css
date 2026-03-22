@@ -1,0 +1,95 @@
+.admin-page-container {
+    padding: 24px;
+    height: 100%;
+    background-color: var(--safar-sand);
+}
+
+.dense-form-field {
+    margin-bottom: -1.25em;
+    /* removes bottom padding of mat-form-field */
+}
+
+.table-container {
+    max-height: calc(100vh - 350px);
+    overflow: auto;
+}
+
+.element-row {
+    transition: background-color 0.2s ease;
+}
+
+.element-row:hover {
+    background-color: var(--safar-sand-dark);
+}
+
+.search-card {
+    border-top: 4px solid var(--safar-terracotta);
+}
+
+/* Custom Badges */
+.badge {
+    font-weight: 500;
+    padding: 0.5em 0.8em;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+::ng-deep .mat-mdc-table {
+    background: transparent !important;
+}
+
+::ng-deep .mat-mdc-header-row {
+    background-color: white !important;
+}
+
+/* Action Buttons Styling */
+.action-buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.action-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.action-btn i {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit {
+    color: var(--safar-majorelle);
+}
+
+.edit:hover {
+    background-color: rgba(99, 102, 241, 0.1);
+    transform: translateY(-2px);
+}
+
+.delete {
+    color: var(--safar-terracotta);
+}
+
+.delete:hover:not(:disabled) {
+    background-color: rgba(220, 38, 38, 0.1);
+    transform: translateY(-2px);
+}
+
+.delete:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}

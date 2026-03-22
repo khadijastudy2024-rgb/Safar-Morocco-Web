@@ -1,0 +1,32 @@
+<a [routerLink]="['/destinations', destination.id]" [state]="{ data: destination }" class="destination-card">
+    <div class="card-img-wrapper">
+        <img [src]="(destination.thumbnailUrl || destination.medias?.[0]?.url) | imageUrl" alt="{{destination.nom | translateValue}}"
+            loading="lazy" (error)="handleImageError($event)">
+
+        <!-- Badges - Modernized -->
+        <div class="badge-rating-glass">
+            <i class="bi bi-star-fill text-warning me-1"></i>
+            <span>{{(destination.averageRating || 0) | number:'1.1-1'}}</span>
+            <span class="ms-1 opacity-70 small">({{destination.reviewCount || 0}})</span>
+        </div>
+        
+        <span class="badge-category-modern">{{ destination.categorie | categoryName }}</span>
+    </div>
+
+    <div class="card-content">
+        <div class="location-label mb-2">
+            <i class="bi bi-geo-alt-fill"></i>
+            <span>{{destination.type | translateValue}}</span>
+        </div>
+
+        <h3 class="destination-title">{{destination.nom | translateValue}}</h3>
+
+        <p class="destination-description">{{ (destination.description || '') | slice:0:100 }}...</p>
+
+        <div class="card-footer-action">
+            <span class="view-details-link">
+                {{ 'COMMON.VIEW_MORE' | translate }} <i class="bi bi-arrow-right"></i>
+            </span>
+        </div>
+    </div>
+</a>

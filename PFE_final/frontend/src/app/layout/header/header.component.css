@@ -1,0 +1,548 @@
+/* ===================================
+   MODERN PROFESSIONAL NAVBAR STYLES
+   =================================== */
+
+:host {
+    display: block;
+}
+
+/* Main Navbar Container */
+.modern-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--navbar-height);
+    background: var(--bg-white, #ffffff);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    z-index: 1100;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap !important;
+}
+
+.modern-navbar .container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100%;
+    height: 100%;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    flex-wrap: nowrap !important;
+}
+
+.modern-navbar.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: var(--shadow-md);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu {
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-120%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1050;
+    max-height: calc(100vh - var(--navbar-height));
+    overflow-y: auto;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.mobile-menu.open {
+    transform: translateY(0);
+}
+
+.mobile-menu-content {
+    background: white;
+}
+
+.lang-chip {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-light);
+    border-radius: 50px;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.lang-chip.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.mobile-user-info {
+    background: var(--safar-sand-light);
+    border-radius: 16px;
+    padding: 1rem;
+}
+
+.navbar-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ===================================
+   BRAND LOGO SECTION
+   =================================== */
+
+.brand-logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0 !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+}
+
+.brand-info {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    line-height: 1.1 !important;
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--safar-terracotta);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(211, 84, 0, 0.25);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    flex-shrink: 0;
+}
+
+.brand-text {
+    font-family: var(--font-display, serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+
+.brand-text-sm {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--safar-majorelle);
+    text-transform: uppercase;
+}
+
+/* Mobile Toggle Button (Overriding Bootstrap Default for Style) */
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+    color: var(--text-primary);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+/* ===================================
+   NAVIGATION CONTENT
+   =================================== */
+
+.navbar-collapse {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    margin-left: 0.75rem;
+    /* Reclaimed more space */
+    flex-wrap: nowrap;
+}
+
+/* ===================================
+   CENTER NAVIGATION MENU
+   =================================== */
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    /* Compressed gap */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    /* Compressed internal gap */
+    padding: 0.4rem 0.5rem;
+    /* Compressed side padding */
+    height: 38px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    /* Slightly smaller font */
+    border-radius: 10px;
+    transition: var(--transition-base);
+    position: relative;
+}
+
+.nav-link i {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+    background: rgba(211, 84, 0, 0.05);
+    /* Terracotta subtle */
+}
+
+.nav-link.active-link {
+    color: var(--primary-color);
+    background: rgba(211, 84, 0, 0.1);
+    font-weight: 700;
+}
+
+/* ===================================
+   RIGHT ACTIONS SECTION
+   =================================== */
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    /* Compressed gap */
+    margin-left: auto;
+}
+
+.auth-btns {
+    display: flex;
+    gap: 0.3rem !important;
+}
+
+.auth-btns .btn {
+    padding: 0 0.75rem !important;
+    font-size: 0.85rem !important;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Admin Button Specifics */
+.admin-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 0.8rem;
+    height: 38px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    text-decoration: none;
+    background: rgba(15, 118, 110, 0.1);
+    /* Oasis light */
+    color: var(--safar-oasis);
+    transition: var(--transition-base);
+}
+
+.admin-btn:hover {
+    background: var(--safar-oasis);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
+}
+
+/* ===================================
+   LANGUAGE SELECTOR
+   =================================== */
+
+.lang-dropdown {
+    position: relative;
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 0.75rem;
+    height: 38px;
+    background: transparent;
+    border: 1px solid var(--border-light);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition-base);
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.8rem;
+}
+
+.lang-btn:hover {
+    background: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.lang-flag {
+    font-size: 1.1rem;
+}
+
+.lang-code {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    margin-right: 0.25rem;
+}
+
+.lang-dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.flag-icon {
+    font-size: 1.25rem;
+}
+
+.active-check {
+    margin-left: auto;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.dropdown-item.active {
+    background: rgba(211, 84, 0, 0.05);
+    color: var(--primary-color);
+}
+
+/* RTL Specific Styles for Header */
+[dir="rtl"] .navbar-collapse {
+    margin-left: 0;
+    margin-right: 3rem;
+}
+
+[dir="rtl"] .nav-actions {
+    margin-left: 0;
+    margin-right: auto;
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .dropdown-menu-end {
+    right: auto;
+    left: 0;
+}
+
+[dir="rtl"] .brand-logo {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-link,
+[dir="rtl"] .admin-btn,
+[dir="rtl"] .user-btn,
+[dir="rtl"] .lang-btn {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .active-check {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* ===================================
+   USER DROPDOWN
+   =================================== */
+
+.user-dropdown {
+    position: relative;
+    padding-bottom: 10px;
+    /* Helper to keep hover zone connected */
+    margin-bottom: -10px;
+}
+
+.user-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0 0.8rem;
+    height: 38px;
+    background: transparent;
+    border: 1px solid var(--border-light);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition-base);
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.profile-menu {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.user-btn:hover {
+    background: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.profile-avatar {
+    width: 30px;
+    height: 30px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+}
+
+.profile-avatar img,
+.profile-avatar i {
+    width: 18px;
+    height: 18px;
+    font-size: 16px;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover-based Dropdown Menu */
+.user-dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    margin-top: 0 !important;
+    /* Overriding Bootstrap */
+
+    border: 1px solid var(--border-light) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--shadow-xl) !important;
+    padding: 0.5rem !important;
+    width: 100%;
+    max-width: 280px;
+    background: white;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: var(--transition-base);
+}
+
+.dropdown-item:hover {
+    background: var(--safar-sand-light);
+    color: var(--primary-color);
+}
+
+.logout-item {
+    color: #DC2626 !important;
+}
+
+.logout-item:hover {
+    background: rgba(220, 38, 38, 0.05) !important;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 991px) {
+    .modern-navbar {
+        height: calc(var(--navbar-height) - 10px);
+        min-height: calc(var(--navbar-height) - 10px);
+    }
+
+    .container {
+        padding: 0 1rem;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .brand-text {
+        font-size: 1.2rem;
+    }
+
+    .logo-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
+    }
+
+    .navbar-toggler {
+        padding: 0.25rem;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-container {
+        padding: 0 1.5rem;
+    }
+
+    .nav-link {
+        font-size: 0.95rem;
+        padding: 0.875rem 1rem;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 575px) {
+    .navbar-container {
+        padding: 0 0.75rem;
+    }
+
+    .brand-text-sm {
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+    }
+
+    .user-name {
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

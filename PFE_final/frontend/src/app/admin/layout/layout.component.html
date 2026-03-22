@@ -1,0 +1,63 @@
+<mat-sidenav-container class="admin-container">
+    <mat-sidenav mode="side" [opened]="isSidebarOpen" class="admin-sidebar" #sidenav>
+        <app-admin-sidebar></app-admin-sidebar>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="admin-content">
+        <!-- New Modern Top Bar -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <button mat-icon-button (click)="toggleSidebar()" class="toggle-btn">
+                    <i class="bi" [class.bi-list]="!isSidebarOpen" [class.bi-text-indent-left]="isSidebarOpen"></i>
+                </button>
+                <div class="breadcrumb desktop-only">
+                    <span class="text-muted">Pages</span> / <span>Dashboard</span>
+                </div>
+            </div>
+
+            <div class="top-bar-right">
+                <!-- Admin Profile Section -->
+                <div class="profile-section" [matMenuTriggerFor]="profileMenu">
+                    <div class="profile-info desktop-only">
+                        <span class="profile-name">{{ adminUser?.nom || 'Administrator' }}</span>
+                        <span class="profile-role">Admin</span>
+                    </div>
+                    <div class="avatar-wrapper">
+                        <img *ngIf="adminUser?.photo" [src]="adminUser.photo" alt="Admin">
+                        <div *ngIf="!adminUser?.photo" class="avatar-placeholder">
+                            {{ (adminUser?.nom || 'A')[0].toUpperCase() }}
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-down dropdown-icon desktop-only"></i>
+                </div>
+
+                <mat-menu #profileMenu="matMenu" class="profile-dropdown">
+                    <div class="menu-header">
+                        <p class="name">{{ adminUser?.nom || 'Administrator' }}</p>
+                        <p class="email text-muted small">{{ adminUser?.email }}</p>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <button mat-menu-item (click)="viewProfile()">
+                        <i class="bi bi-person me-2"></i>
+                        <span>My Profile</span>
+                    </button>
+                    <button mat-menu-item (click)="openSettings()">
+                        <i class="bi bi-gear me-2"></i>
+                        <span>Settings</span>
+                    </button>
+                    <mat-divider></mat-divider>
+                    <button mat-menu-item (click)="logout()" class="text-danger">
+                        <i class="bi bi-box-arrow-right me-2"></i>
+                        <span>Logout</span>
+                    </button>
+                </mat-menu>
+            </div>
+        </header>
+
+        <main class="content-area" [class.sidebar-collapsed]="!isSidebarOpen">
+            <div class="container-fluid py-4">
+                <router-outlet></router-outlet>
+            </div>
+        </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>

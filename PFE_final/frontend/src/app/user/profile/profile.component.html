@@ -1,0 +1,340 @@
+<div class="profile-wrapper fade-in section-py">
+    <div class="container" *ngIf="!loading">
+        <!-- Cover Section -->
+        <div class="profile-cover shadow-sm"></div>
+
+        <div class="row g-4">
+            <!-- Sidebar Profile Card -->
+            <div class="col-lg-4">
+                <mat-card class="profile-card border-0 shadow-lg">
+                    <div class="profile-header">
+                        <div class="avatar-container" [class.uploading]="uploadingPhoto">
+                            <img [src]="imagePreview || user.photoUrl || 'assets/default-avatar.png'"
+                                alt="Profile Photo" class="profile-avatar shadow-lg">
+                            <div class="avatar-upload-overlay" (click)="fileInput.click()" title="Change Photo">
+                                <i class="bi bi-camera-fill"></i>
+                            </div>
+                            <div class="avatar-loader" *ngIf="uploadingPhoto">
+                                <div class="spinner-border text-white" role="status"></div>
+                            </div>
+                            <input #fileInput type="file" (change)="onFileSelected($event)" style="display: none"
+                                accept="image/*">
+                        </div>
+                        <h2 class="mb-1 text-center">{{user.nom}}</h2>
+                        <p class="username-handle mb-3 text-center">@{{user.email.split('@')[0]}}</p>
+                        <div class="mb-2">
+                            <span class="role-badge">{{user.role}}</span>
+                        </div>
+                    </div>
+
+                    <mat-card-content class="px-4 pb-4 mt-5">
+                        <div class="info-list">
+                            <div class="info-item-row">
+                                <span class="info-icon-box"><i class="bi bi-envelope-fill"></i></span>
+                                <div class="info-text-box">
+                                    <label>{{ 'PROFILE.EMAIL' | translate }}</label>
+                                    <p>{{user.email}}</p>
+                                </div>
+                            </div>
+                            <div class="info-item-row" *ngIf="user.telephone">
+                                <span class="info-icon-box"><i class="bi bi-telephone-fill"></i></span>
+                                <div class="info-text-box">
+                                    <label>{{ 'PROFILE.PHONE' | translate }}</label>
+                                    <p>{{user.telephone}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-actions pt-4 mt-4 border-top">
+                            <button class="btn btn-terracotta w-100 py-3 fw-800" *ngIf="!isEditing"
+                                (click)="editProfile()">
+                                <i class="bi bi-pencil-fill me-2"></i> {{ 'PROFILE.EDIT' | translate }}
+                            </button>
+
+                            <div class="d-flex gap-2" *ngIf="isEditing">
+                                <button class="btn btn-outline-secondary flex-grow-1 fw-800" (click)="cancelEdit()">{{
+                                    'PROFILE.CANCEL' | translate }}</button>
+                                <button class="btn btn-primary flex-grow-1 fw-800" (click)="saveProfile()">
+                                    <i class="bi bi-check-lg me-1"></i> {{ 'PROFILE.SAVE' | translate }}
+                                </button>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- VIEW MODE -->
+                <div *ngIf="!isEditing" class="fade-in">
+                    <!-- Stats Cards (Clickable) -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="card border-0 text-center rounded-4 stat-card cursor-pointer"
+                                [ngClass]="selectedSection === 'reservations' ? 'bg-primary-soft border-primary' : 'bg-white'"
+                                (click)="selectedSection = 'reservations'">
+                                <div class="stat-icon stat-blue mb-2">
+                                    <i class="bi bi-clipboard-check"></i>
+                                </div>
+                                <h3 class="mb-0 fw-800">{{totalReservationsCount}}</h3>
+                                <p class="text-muted small fw-600 mb-0">Total Reservations</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="card border-0 text-center rounded-4 stat-card cursor-pointer"
+                                [ngClass]="selectedSection === 'events' ? 'bg-warning-soft border-warning' : 'bg-white'"
+                                (click)="selectedSection = 'events'">
+                                <div class="stat-icon stat-yellow mb-2">
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <h3 class="mb-0 fw-800">{{upcomingEventsCount}}</h3>
+                                <p class="text-muted small fw-600 mb-0">Upcoming Events</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="card border-0 text-center rounded-4 stat-card cursor-pointer"
+                                [ngClass]="selectedSection === 'itineraries' ? 'bg-success-soft border-success' : 'bg-white'"
+                                (click)="selectedSection = 'itineraries'">
+                                <div class="stat-icon stat-green mb-2">
+                                    <i class="bi bi-suitcase-lg-fill"></i>
+                                </div>
+                                <h3 class="mb-0 fw-800">{{createdItineraries.length}}</h3>
+                                <p class="text-muted small fw-600 mb-0">Itineraries Created</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DYNAMIC CONTENT SECTIONS -->
+
+                    <!-- 1) TOTAL RESERVATIONS -->
+                    <div *ngIf="selectedSection === 'reservations'" class="fade-in section-margin-custom">
+                        <h4 class="mb-4 fw-800"><i class="bi bi-calendar-check text-primary me-2"></i>All Reservations
+                        </h4>
+
+                        <div *ngIf="reservationsLoading" class="text-center py-5">
+                            <div class="spinner-border text-primary" role="status"></div>
+                        </div>
+
+                        <div *ngIf="!reservationsLoading">
+                            <!-- Empty State -->
+                            <div *ngIf="offerReservations.length === 0 && eventReservations.length === 0"
+                                class="empty-state text-center py-5 bg-white shadow-sm rounded-4">
+                                <div class="empty-icon-box mb-3"><i class="bi bi-calendar-x text-muted fs-1"></i></div>
+                                <h5 class="fw-800">No reservations found.</h5>
+                                <p class="text-muted">Start booking events, hotels, and activities to see them here.</p>
+                            </div>
+
+                            <div class="row g-4">
+                                <!-- Events -->
+                                <div class="col-12 col-md-6 col-xl-4" *ngFor="let res of eventReservations">
+                                    <div
+                                        class="card reservation-card border-0 rounded-4 h-100 position-relative overflow-hidden">
+                                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary opacity-10"
+                                            *ngIf="res.status === 'CANCELLED'"></div>
+                                        <div
+                                            class="d-flex justify-content-between align-items-start mb-3 position-relative z-1">
+                                            <div>
+                                                <span class="badge bg-warning text-dark fw-700 mb-2">EVENT</span>
+                                                <h6 class="fw-800 mb-0 text-dark">{{ res.evenement?.nom }}</h6>
+                                            </div>
+                                            <span class="badge rounded-pill fw-700"
+                                                [ngClass]="{'bg-success': res.status === 'CONFIRMED', 'bg-danger': res.status === 'CANCELLED'}">
+                                                {{ res.status }}
+                                            </span>
+                                        </div>
+                                        <div class="d-flex flex-column gap-2 mb-3 position-relative z-1">
+                                            <small class="text-muted fw-600"><i
+                                                    class="bi bi-geo-alt-fill me-2 text-primary"></i>{{
+                                                res.evenement?.lieu }}</small>
+                                            <small class="text-muted fw-600"><i
+                                                    class="bi bi-calendar-event me-2 text-primary"></i>{{
+                                                res.evenement?.dateDebut | date:'MMM d, y' }}</small>
+                                        </div>
+                                        <div class="mt-auto position-relative z-1 text-end"
+                                            *ngIf="res.status === 'CONFIRMED'">
+                                            <button class="btn btn-sm btn-outline-danger fw-700 rounded-pill px-3"
+                                                (click)="cancelEvent(res)">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Offers -->
+                                <div class="col-12 col-md-6 col-xl-4" *ngFor="let res of offerReservations">
+                                    <div
+                                        class="card reservation-card border-0 rounded-4 h-100 position-relative overflow-hidden">
+                                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary opacity-10"
+                                            *ngIf="res.status === 'CANCELLED' || res.status === 'REJECTED'"></div>
+                                        <div
+                                            class="d-flex justify-content-between align-items-start mb-3 position-relative z-1">
+                                            <div>
+                                                <span class="badge bg-primary text-white fw-700 mb-2"
+                                                    *ngIf="res.offer?.type === 'HOTEL'">HOTEL</span>
+                                                <span class="badge bg-danger text-white fw-700 mb-2"
+                                                    *ngIf="res.offer?.type === 'RESTO'">RESTAURANT</span>
+                                                <span class="badge bg-success text-white fw-700 mb-2"
+                                                    *ngIf="res.offer?.type === 'ACTIVITE' || res.offer?.type === 'ACTIVITY'">ACTIVITY</span>
+                                                <h6 class="fw-800 mb-0 text-dark">{{ res.offer?.name || ('Offer #' +
+                                                    res.offer?.id) }}</h6>
+                                            </div>
+                                            <span class="badge rounded-pill fw-700"
+                                                [ngClass]="{'bg-success': res.status === 'CONFIRMED' || res.status === 'APPROVED', 'bg-warning text-dark': res.status === 'PENDING', 'bg-danger': res.status === 'CANCELLED' || res.status === 'REJECTED'}">
+                                                {{ res.status }}
+                                            </span>
+                                        </div>
+                                        <div class="d-flex flex-column gap-2 mb-3 position-relative z-1">
+                                            <small class="text-muted fw-600" *ngIf="res.offer?.destination?.nom"><i
+                                                    class="bi bi-geo-alt-fill me-2 text-primary"></i>{{
+                                                res.offer?.destination?.nom }}</small>
+                                            <small class="text-muted fw-600"><i
+                                                    class="bi bi-calendar-event me-2 text-primary"></i>{{ res.startDate
+                                                | date:'MMM d, y' }} <span *ngIf="res.endDate"> - {{ res.endDate |
+                                                    date:'MMM d, y' }}</span></small>
+                                        </div>
+                                        <div class="mt-auto position-relative z-1 text-end"
+                                            *ngIf="res.status === 'CONFIRMED' || res.status === 'APPROVED' || res.status === 'PENDING'">
+                                            <button class="btn btn-sm btn-outline-danger fw-700 rounded-pill px-3"
+                                                (click)="cancelOffer(res)">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2) UPCOMING EVENTS -->
+                    <div *ngIf="selectedSection === 'events'" class="fade-in section-margin-custom">
+                        <h4 class="mb-4 fw-800"><i class="bi bi-star-fill text-warning me-2"></i>Upcoming Events</h4>
+
+                        <div *ngIf="upcomingEvents.length === 0"
+                            class="empty-state text-center py-5 bg-white shadow-sm rounded-4">
+                            <div class="empty-icon-box mb-3"><i class="bi bi-calendar-x text-muted fs-1"></i></div>
+                            <h5 class="fw-800">No upcoming events.</h5>
+                            <p class="text-muted">Browse our events catalogue to find exciting activities!</p>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-12 col-md-6 col-xl-4" *ngFor="let res of upcomingEvents">
+                                <div class="card reservation-card border-0 rounded-4 h-100">
+                                    <div class="d-flex justify-content-between align-items-start mb-3">
+                                        <div>
+                                            <span class="badge bg-warning text-dark fw-700 mb-2">EVENT</span>
+                                            <h6 class="fw-800 mb-0 text-dark">{{ res.evenement?.nom }}</h6>
+                                        </div>
+                                        <span class="badge bg-success rounded-pill fw-700">{{ res.status }}</span>
+                                    </div>
+                                    <div class="d-flex flex-column gap-2 mb-3">
+                                        <small class="text-muted fw-600"><i
+                                                class="bi bi-geo-alt-fill me-2 text-primary"></i>{{ res.evenement?.lieu
+                                            }}</small>
+                                        <small class="text-muted fw-600"><i
+                                                class="bi bi-calendar-event me-2 text-primary"></i>{{
+                                            res.evenement?.dateDebut | date:'MMM d, y' }}</small>
+                                    </div>
+                                    <div class="mt-auto text-end">
+                                        <button class="btn btn-sm btn-outline-danger fw-700 rounded-pill px-3"
+                                            (click)="cancelEvent(res)">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3) ITINERARIES CREATED -->
+                    <div *ngIf="selectedSection === 'itineraries'" class="fade-in section-margin-custom">
+                        <h4 class="mb-4 fw-800"><i class="bi bi-suitcase-lg-fill text-success me-2"></i>Itineraries
+                            Created</h4>
+
+                        <div *ngIf="createdItineraries.length === 0"
+                            class="empty-state text-center py-5 bg-white shadow-sm rounded-4">
+                            <div class="empty-icon-box mb-3"><i class="bi bi-suitcase text-muted fs-1"></i></div>
+                            <h5 class="fw-800">No itineraries created.</h5>
+                            <p class="text-muted">Create your first itinerary and start exploring!</p>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-12 col-md-6 col-xl-4" *ngFor="let it of createdItineraries">
+                                <div class="card reservation-card border-0 rounded-4 h-100 cursor-pointer"
+                                     (click)="viewItinerary(it.id)">
+                                    <div class="d-flex justify-content-between align-items-start mb-3">
+                                        <div>
+                                            <h6 class="fw-800 mb-0 text-dark">{{ it.nom }}</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-column gap-2 mb-3">
+                                        <small class="text-muted fw-600"><i
+                                                class="bi bi-calendar-check me-2 text-primary"></i>{{ it.dateCreation |
+                                            date:'MMM d, y' }}</small>
+                                        <small class="text-muted fw-600"><i
+                                                class="bi bi-geo-alt me-2 text-primary"></i>{{ it.destinations ?
+                                            it.destinations.length : 0 }} Destinations</small>
+                                    </div>
+                                    <div class="mt-auto d-flex gap-2 justify-content-end">
+                                        <button (click)="viewItinerary(it.id); $event.stopPropagation()"
+                                            class="btn btn-sm btn-primary fw-700 rounded-pill px-3">View</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EDIT MODE (Settings) -->
+                <div *ngIf="isEditing" class="fade-in">
+                    <mat-card class="edit-card border-0 mb-4 shadow-sm">
+                        <div class="card-header-premium">
+                            <h4 class="mb-0"><i class="bi bi-person-gear me-2"></i>{{ 'PROFILE.EDIT_INFO' | translate }}
+                            </h4>
+                        </div>
+                        <mat-card-content class="p-4">
+                            <form class="row g-4">
+                                <div class="col-md-12">
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <mat-label>{{ 'PROFILE.FULL_NAME' | translate }}</mat-label>
+                                        <input matInput [(ngModel)]="user.nom" name="nom">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <mat-label>{{ 'PROFILE.PHONE' | translate }}</mat-label>
+                                        <input matInput [(ngModel)]="user.telephone" name="telephone">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <mat-label>{{ 'PROFILE.LANGUAGE' | translate }}</mat-label>
+                                        <mat-select [(ngModel)]="user.langue" name="langue">
+                                            <mat-option value="fr">Français</mat-option>
+                                            <mat-option value="en">English</mat-option>
+                                            <mat-option value="ar">العربية</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-12">
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <mat-label>{{ 'PROFILE.BIO' | translate }}</mat-label>
+                                        <textarea matInput [(ngModel)]="user.description" name="description" rows="4"
+                                            [placeholder]="'PROFILE.BIO_PLACEHOLDER' | translate"></textarea>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-12 mt-4 text-end border-top pt-4">
+                                    <button class="btn btn-primary px-5 py-2 fw-800" (click)="saveProfile()">
+                                        <i class="bi bi-check-lg me-1"></i> {{ 'PROFILE.SAVE' | translate }}
+                                    </button>
+                                </div>
+                            </form>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loader -->
+    <div class="loading-overlay" *ngIf="loading">
+        <div class="loading-box text-center">
+            <div class="spinner-grow text-primary mb-3" role="status"></div>
+            <p class="fw-800 text-uppercase tracking-widest small">{{ 'PROFILE.LOADING' | translate }}</p>
+        </div>
+    </div>
+
+</div>

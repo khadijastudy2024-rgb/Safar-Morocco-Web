@@ -1,0 +1,13 @@
+/* Ensure app-root takes full height for sticky footer */
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Offset for fixed navbar */
+.content-container {
+    padding-top: var(--navbar-height);
+    flex: 1;
+    /* Pushes footer down */
+}

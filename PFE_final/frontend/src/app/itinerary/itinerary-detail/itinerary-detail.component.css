@@ -1,0 +1,102 @@
+/* Hero Section - Matched to Destinations */
+/* Hero Section - Matched to Destinations */
+.hero-bg-itinerary-detail {
+    background: url('https://best-itinerary.com/wp-content/uploads/2019/06/maroc-itineraire-voyage1-carte.jpg') center center/cover no-repeat;
+}
+
+/* Shared styles handled by styles.css */
+
+.font-display {
+    font-family: var(--font-display, 'Playfair Display', serif);
+}
+
+/* Shared styles handled by styles.css */
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 0.2rem;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.rounded-4 {
+    border-radius: 1rem !important;
+}
+
+.rounded-xxl {
+    border-radius: 2rem !important;
+}
+
+.bg-primary-subtle {
+    background-color: rgba(211, 84, 0, 0.1) !important;
+    color: var(--primary-color, #d35400) !important;
+}
+
+.min-width-0 {
+    min-width: 0;
+}
+
+.destination-item {
+    border-left: 4px solid transparent !important;
+}
+
+.destination-item:hover {
+    background-color: #f8f9fa !important;
+    border-left-color: var(--primary-color, #d35400) !important;
+    transform: translateX(4px);
+}
+
+.destination-item:hover .icon-btn {
+    background-color: var(--primary-color, #d35400) !important;
+    color: white !important;
+}
+
+.dropdown-toggle-no-caret::after {
+    display: none;
+}
+
+@media (max-width: 991.98px) {
+    .hero-small {
+        min-height: 450px;
+    }
+    .hero-stats {
+        gap: 1.5rem;
+    }
+    .stat-value {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-small {
+        min-height: 550px;
+        padding-top: 100px;
+    }
+    .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .menu-actions {
+        top: 20px;
+    }
+}

@@ -1,0 +1,136 @@
+<div class="map-explorer-viewport fade-in">
+    <!-- Overlay UI Tools -->
+    <div class="map-ui-overlay">
+
+        <!-- Top Bar: Back & Search -->
+        <div class="map-top-bar d-flex align-items-center justify-content-between w-100 gap-3">
+            <div class="floating-back">
+                <a routerLink="/destinations" class="glass-btn btn-round-pill">
+                    <i class="bi bi-arrow-left"></i>
+                    <span class="ms-2 d-none d-sm-inline">Gallery</span>
+                </a>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="floating-search flex-grow-1 mx-auto" style="max-width: 400px;">
+                <div class="glass-search-container">
+                    <i class="bi bi-search text-white opacity-75"></i>
+                    <input type="text" class="form-control glass-input" placeholder="Search destination or city..."
+                        [ngModel]="searchQuery" (ngModelChange)="onSearch($event)">
+                </div>
+            </div>
+
+            <!-- Placeholder for spacing -->
+            <div style="width: 100px;" class="d-none d-md-block"></div>
+        </div>
+
+        <!-- Filter Pills (Desktop & Mobile Scrollable) -->
+        <div class="floating-filters">
+            <div class="glass-pills-container">
+                <button class="pill-tag" *ngFor="let cat of categories" [class.active]="selectedCategory === cat.id"
+                    (click)="toggleCategory(cat.id)"
+                    [style.background]="selectedCategory === cat.id ? cat.color : 'transparent'"
+                    [style.borderColor]="selectedCategory === cat.id ? cat.color : 'rgba(255,255,255,0.2)'">
+                    <i class="bi {{cat.icon}} me-1"></i>
+                    {{cat.label}}
+                </button>
+            </div>
+        </div>
+
+        <!-- Controls (Right Side) -->
+        <div class="map-controls">
+            <button class="control-btn locate-btn" (click)="locateMe()" title="Locate Me">
+                <i class="bi bi-crosshair" [class.spin-animation]="isLocating"></i>
+            </button>
+            <div class="control-btn legend-toggle" title="Legend">
+                <i class="bi bi-info-circle"></i>
+                <div class="legend-tooltip">
+                    <div class="legend-item" *ngFor="let cat of categories">
+                        <span class="legend-dot" [style.backgroundColor]="cat.color"></span>
+                        <span>{{cat.label}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Preview Card (Bottom Center/Left) -->
+        <div class="destination-preview-card glass-card" *ngIf="selectedDestination">
+            <div class="card-close-btn" (click)="closePreview()">
+                <i class="bi bi-x-lg"></i>
+            </div>
+            <div class="row g-0 h-100">
+                <div class="col-4 preview-img-col">
+                    <img [src]="selectedDestination.thumbnailUrl || selectedDestination.medias?.[0]?.url || 'assets/placeholder.jpg'"
+                        class="preview-img" alt="Destination">
+                    <span class="category-badge" [style.backgroundColor]="categories[0].color">
+                        {{selectedDestination.categorie}}
+                    </span>
+                </div>
+                <div class="col-8">
+                    <div class="preview-body p-3 d-flex flex-column h-100 justify-content-between">
+                        <div>
+                            <h5 class="fw-800 mb-1 text-truncate">{{selectedDestination.nom}}</h5>
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <span class="badge bg-light text-dark border"><i
+                                        class="bi bi-geo-alt me-1"></i>{{selectedDestination.type}}</span>
+                                <div class="d-flex align-items-center text-warning small">
+                                    <i class="bi bi-star-fill"></i>
+                                    <span class="fw-bold ms-1">{{(selectedDestination.averageRating || 0) |
+                                        number:'1.1-1'}}</span>
+                                </div>
+                            </div>
+                            <p class="small text-muted mb-0 preview-desc">{{selectedDestination.description |
+                                slice:0:80}}...</p>
+                        </div>
+
+                        <div class="d-flex gap-2 mt-2">
+                            <a [routerLink]="['/destinations', selectedDestination.id]"
+                                class="btn btn-primary btn-sm rounded-pill flex-grow-1 fw-bold">
+                                View Details
+                            </a>
+                            <button class="btn btn-warning btn-sm rounded-pill flex-grow-1 fw-bold text-white"
+                                (click)="getDirections()">
+                                <i class="bi bi-sign-turn-right-fill me-1"></i> Route
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Route Info Panel -->
+        <div class="route-info-card glass-card fade-in-up" *ngIf="routeInfo">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <h6 class="fw-800 mb-0 text-primary"><i class="bi bi-cursor-fill me-2"></i>Route Found</h6>
+                <button class="btn-close btn-sm"
+                    (click)="routeInfo = null; routingControl?.spliceWaypoints(0, 2);"></button>
+            </div>
+            <div class="d-flex justify-content-around text-center">
+                <div>
+                    <div class="small text-muted text-uppercase fw-bold">Distance</div>
+                    <div class="h5 fw-800 mb-0">{{routeInfo.distance}}</div>
+                </div>
+                <div class="vr"></div>
+                <div>
+                    <div class="small text-muted text-uppercase fw-bold">Est. Time</div>
+                    <div class="h5 fw-800 mb-0">{{routeInfo.time}}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Brand Watermark -->
+        <div class="map-watermark d-none d-lg-block">
+            <h4 class="fw-800 text-white mb-0">Safar Explorer</h4>
+        </div>
+    </div>
+
+    <!-- The Map Entity -->
+    <div id="global-map" class="fullscreen-map"></div>
+
+    <!-- Loading Spinner Overlay -->
+    <div class="loading-overlay" *ngIf="isLoading">
+        <div class="spinner-border text-light" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>

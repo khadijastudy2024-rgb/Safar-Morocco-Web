@@ -1,0 +1,95 @@
+<footer class="modern-footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+            <!-- About Section -->
+            <div class="footer-section">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="bi bi-compass-fill"></i>
+                    </div>
+                    <span class="footer-brand-text">Safar<span
+                            style="color: var(--safar-terracotta);">Morocco</span></span>
+                </div>
+                <p class="footer-description">
+                    {{ 'FOOTER.DESC' | translate }}
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="bi bi-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h6 class="footer-title">{{ 'FOOTER.QUICK_LINKS' | translate }}</h6>
+                <ul class="footer-links">
+                    <li><a routerLink="/">{{ 'NAV.HOME' | translate }}</a></li>
+                    <li><a routerLink="/destinations">{{ 'NAV.DESTINATIONS' | translate }}</a></li>
+                    <li><a routerLink="/events">{{ 'NAV.EVENTS' | translate }}</a></li>
+                    <li><a routerLink="/map">{{ 'NAV.MAP' | translate }}</a></li>
+                    <li><a routerLink="/itineraries">{{ 'NAV.ITINERARIES' | translate }}</a></li>
+                </ul>
+            </div>
+
+            <!-- Explore -->
+            <div class="footer-section">
+                <h6 class="footer-title">{{ 'FOOTER.EXPLORE' | translate }}</h6>
+                <ul class="footer-links">
+                    <li><a [routerLink]="['/destinations']" [queryParams]="{ type: 'culture' }">{{ 'FOOTER.CULTURAL' |
+                            translate }}</a></li>
+                    <li><a [routerLink]="['/destinations']" [queryParams]="{ type: 'nature' }">{{ 'FOOTER.NATURE' |
+                            translate }}</a></li>
+                    <li><a [routerLink]="['/destinations']" [queryParams]="{ type: 'historical' }">{{
+                            'FOOTER.HISTORICAL' | translate }}</a></li>
+                    <li><a [routerLink]="['/destinations']" [queryParams]="{ type: 'religious' }">{{ 'FOOTER.RELIGIOUS'
+                            | translate }}</a></li>
+                </ul>
+            </div>
+
+            <!-- Support -->
+            <div class="footer-section">
+                <h6 class="footer-title">{{ 'FOOTER.SUPPORT' | translate }}</h6>
+                <ul class="footer-links">
+                    <li><a routerLink="/help-center">{{ 'FOOTER.HELP' | translate }}</a></li>
+                    <li><a routerLink="/contact">{{ 'FOOTER.CONTACT' | translate }}</a></li>
+                    <li><a routerLink="/terms">{{ 'FOOTER.TERMS' | translate }}</a></li>
+                    <li><a routerLink="/privacy-policy">{{ 'FOOTER.PRIVACY' | translate }}</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-section">
+                <h6 class="footer-title">{{ 'FOOTER.CONTACT' | translate }}</h6>
+                <ul class="footer-contact">
+                    <li>
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>Nador, Morocco</span>
+                    </li>
+                    <li>
+                        <i class="bi bi-telephone-fill"></i>
+                        <span>+212 633 725 965</span>
+                    </li>
+                    <li>
+                        <i class="bi bi-envelope-fill"></i>
+                        <span>mynameisossama@gmail.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copyright">{{ 'FOOTER.COPYRIGHT' | translate }}</p>
+            <p class="footer-made-with">{{ 'FOOTER.MADE_WITH' | translate }} <i class="bi bi-heart-fill"></i></p>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,15 @@
+.verified-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  background-color: #f8f9fa;
+}
+
+.result-card {
+  background: white;
+  padding: 3rem;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+}

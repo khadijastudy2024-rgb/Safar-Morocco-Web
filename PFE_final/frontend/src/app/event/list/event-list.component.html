@@ -1,0 +1,119 @@
+<div class="events-page-wrapper fade-in">
+    <!-- Hero Section - Redesigned -->
+    <section class="hero-small hero-bg-events text-center text-white">
+        <div class="hero-overlay-dark"></div>
+        <div class="container position-relative z-2">
+            <div class="fade-in-up">
+                <span class="badge bg-white-glass text-white px-4 py-2 rounded-pill mb-4 fw-800 letter-spacing-2">
+                    {{ 'EVENTS.LIST.HERO_SUBTITLE' | translate | uppercase }}
+                </span>
+                <h1 class="display-3 fw-800 mb-3 font-display" style="color: white !important;">{{ 'EVENTS.LIST.HERO_TITLE' | translate }}</h1>
+                <p class="lead opacity-90 mx-auto mb-5" style="max-width: 700px;">{{ 'EVENTS.LIST.HERO_DESC' | translate }}</p>
+
+                <!-- Search Bar Moved Inside Hero -->
+                <div class="hero-search-wrapper mb-5">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="search-input-group">
+                                <i class="bi bi-search search-icon"></i>
+                                <input type="text" class="form-control-custom" [placeholder]="'COMMON.SEARCH' | translate"
+                                    [(ngModel)]="searchTerm" (ngModelChange)="onSearch()">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="search-input-group">
+                                <i class="bi bi-geo-alt search-icon"></i>
+                                <input type="text" class="form-control-custom" [placeholder]="'Location'"
+                                    [(ngModel)]="locationTerm" (ngModelChange)="onSearch()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container-xl">
+        <!-- Category Filters - Redesigned -->
+        <div class="filters-container text-center mb-5">
+            <div class="filter-pills gap-2">
+                <button class="pill-btn"
+                    [class.active]="selectedCategory === category" *ngFor="let category of categories"
+                    (click)="filterCategory(category)">
+                    {{ category | categoryName }}
+                </button>
+            </div>
+        </div>
+
+        <!-- Events Grid -->
+        <div class="row g-5" *ngIf="!loading">
+            <div class="col-lg-4 col-md-6" *ngFor="let event of filteredEvents">
+                <a class="event-card-modern" [routerLink]="['/events', event.id]" [state]="{ data: event }">
+                    <div class="event-img-wrapper">
+                        <img [src]="event.imageUrl | imageUrl" alt="{{event.nom}}">
+                        <div class="event-date-pill">
+                            <span class="pill-day">{{ event.dateDebut | date:'dd' }}</span>
+                            <span class="pill-month">{{ event.dateDebut | date:'MMM' }}</span>
+                        </div>
+                        <span class="event-category-tag">{{ (event.eventType || 'Cultural') | categoryName }}</span>
+                    </div>
+                    <div class="event-body">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <i class="bi bi-geo-alt-fill text-primary small"></i>
+                            <span class="location-text">{{ event.lieu }}</span>
+                        </div>
+                        <h3 class="event-title">{{ event.nom }}</h3>
+                        <p class="event-desc">{{ event.description ? (event.description | slice:0:100) + '...' : ('JOIN'
+                            | translate) }}</p>
+
+                        <div class="event-footer-meta d-flex justify-content-between align-items-center">
+                            <span class="price-tag" *ngIf="event.price">From {{ event.price | number:'1.0-0' }}
+                                MAD</span>
+                            <span class="price-tag text-teal" *ngIf="!event.price">{{ 'EVENTS.DETAIL.PRICE_FREE' |
+                                translate }}</span>
+                            <span class="details-link">
+                                {{ 'DESTINATIONS.DETAIL.TABS.OVERVIEW' | translate }} <i
+                                    class="bi bi-arrow-right ms-1"></i>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Skeleton Loader -->
+        <div class="row g-5" *ngIf="loading">
+            <div class="col-lg-4 col-md-6" *ngFor="let i of [1,2,3,4,5,6]">
+                <div class="card h-100 border-0 shadow-sm rounded-xxl overflow-hidden">
+                    <app-skeleton-loader [height]="'220px'"></app-skeleton-loader>
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <app-skeleton-loader [height]="'16px'" [width]="'20px'"></app-skeleton-loader>
+                            <app-skeleton-loader [height]="'16px'" [width]="'100px'"></app-skeleton-loader>
+                        </div>
+                        <app-skeleton-loader [height]="'24px'" class="mb-3"></app-skeleton-loader>
+                        <app-skeleton-loader [height]="'14px'" [count]="2" class="mb-3"></app-skeleton-loader>
+                        <div class="d-flex justify-content-between mt-3">
+                            <app-skeleton-loader [height]="'20px'" [width]="'80px'"></app-skeleton-loader>
+                            <app-skeleton-loader [height]="'20px'" [width]="'60px'"></app-skeleton-loader>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div *ngIf="!loading && filteredEvents.length === 0"
+            class="empty-state-card text-center py-5 shadow-sm rounded-xxl bg-white">
+            <div class="empty-icon-box mb-4">
+                <i class="bi bi-calendar-event text-muted display-1"></i>
+            </div>
+            <h3 class="fw-800 text-secondary">{{ 'EVENTS.LIST.NO_EVENTS' | translate }}</h3>
+            <p class="text-muted mb-4 px-4">{{ 'EVENTS.LIST.EMPTY_DESC' | translate }}</p>
+            <button class="btn btn-primary rounded-pill px-4" (click)="resetFilters()">
+                <i class="bi bi-x-circle me-2"></i> {{ 'EVENTS.LIST.RESET' | translate }}
+            </button>
+        </div>
+    </div>
+</div>

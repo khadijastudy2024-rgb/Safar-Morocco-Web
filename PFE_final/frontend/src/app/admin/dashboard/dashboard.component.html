@@ -1,0 +1,182 @@
+<div class="dashboard-wrapper">
+    <!-- Dashboard Header -->
+    <div class="dashboard-header-modern animate-fade-in">
+        <div class="header-left">
+            <h1 class="page-title">Dashboard Overview</h1>
+            <p class="page-subtitle text-muted">Welcome back, {{ adminUser?.nom || 'Admin' }}. Here's what's happening today.</p>
+        </div>
+        <div class="header-right desktop-only">
+            <div class="date-picker-button">
+                <i class="bi bi-calendar3"></i>
+                <span>{{ currentDate | date:'MMMM dd, yyyy' }}</span>
+            </div>
+            <button class="btn-refresh" (click)="loadDashboardData()" [class.spinning]="isLoading">
+                <i class="bi bi-arrow-clockwise"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <div *ngIf="!isLoading">
+        <!-- Statistics Overview -->
+        <div class="stats-grid-modern">
+            <!-- Users Card -->
+            <div class="modern-stat-card card-terracotta animate-slide-up" style="animation-delay: 0.1s">
+                <div class="card-body">
+                    <div class="stat-icon bg-terracotta-subtle">
+                        <i class="bi bi-people text-terracotta"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Total Users</p>
+                        <h3 class="stat-value" [appCountUp]="stats.totalUsers">0</h3>
+                        <div class="stat-trend trend-up">
+                            <i class="bi bi-arrow-up-short"></i>
+                            <span>12.5%</span>
+                            <span class="trend-label">vs last month</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destinations Card -->
+            <div class="modern-stat-card card-majorelle animate-slide-up" style="animation-delay: 0.2s">
+                <div class="card-body">
+                    <div class="stat-icon bg-majorelle-subtle">
+                        <i class="bi bi-geo-alt text-majorelle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Destinations</p>
+                        <h3 class="stat-value" [appCountUp]="stats.totalDestinations">0</h3>
+                        <div class="stat-trend trend-up">
+                            <i class="bi bi-arrow-up-short"></i>
+                            <span>5.2%</span>
+                            <span class="trend-label">vs last month</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Events Card -->
+            <div class="modern-stat-card card-oasis animate-slide-up" style="animation-delay: 0.3s">
+                <div class="card-body">
+                    <div class="stat-icon bg-oasis-subtle">
+                        <i class="bi bi-calendar-event text-oasis"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Upcoming Events</p>
+                        <h3 class="stat-value" [appCountUp]="stats.upcomingEvents">0</h3>
+                        <div class="stat-trend trend-down">
+                            <i class="bi bi-arrow-down-short"></i>
+                            <span>2.1%</span>
+                            <span class="trend-label">vs last month</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviews Card -->
+            <div class="modern-stat-card card-orange animate-slide-up" style="animation-delay: 0.4s">
+                <div class="card-body">
+                    <div class="stat-icon bg-orange-subtle">
+                        <i class="bi bi-star text-orange"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Pending Reviews</p>
+                        <h3 class="stat-value" [appCountUp]="stats.pendingReviews">0</h3>
+                        <div class="stat-trend trend-neutral">
+                            <i class="bi bi-dash"></i>
+                            <span>Steady</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="dashboard-grid-main">
+            <!-- Main Growth Chart -->
+            <div class="modern-card chart-card-main animate-slide-up" style="animation-delay: 0.5s">
+                <div class="card-header-modern">
+                    <h3 class="card-title">Reservation & User Growth</h3>
+                </div>
+                <div class="card-content chart-wrapper">
+                    <canvas baseChart [data]="lineChartData" [options]="lineChartOptions" [type]="'line'">
+                    </canvas>
+                </div>
+            </div>
+
+            <!-- Doughnut Chart -->
+            <div class="modern-card chart-card-side animate-slide-up" style="animation-delay: 0.6s">
+                <div class="card-header-modern">
+                    <h3 class="card-title">Destinations by Category</h3>
+                </div>
+                <div class="card-content chart-wrapper-doughnut">
+                    <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions" [type]="'doughnut'">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Section: Logs & Recent Activity -->
+        <div class="dashboard-grid-bottom">
+            <!-- Recent Activity Logs -->
+            <div class="modern-card scrollable-card animate-slide-up" style="animation-delay: 0.7s">
+                <div class="card-header-modern">
+                    <h3 class="card-title">System Activity Logs</h3>
+                    <a routerLink="/admin/logs" class="btn-link">View All</a>
+                </div>
+                <div class="card-content p-0">
+                    <div class="table-responsive-modern">
+                        <table class="modern-table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Action</th>
+                                    <th>Status</th>
+                                    <th>Timestamp</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let log of logs">
+                                    <td>
+                                        <div class="user-info-cell">
+                                            <div class="user-avatar-small bg-sand-dark">
+                                                {{ (log.user?.username || 'G')[0].toUpperCase() }}
+                                            </div>
+                                            <span class="user-name">{{ log.user?.username || 'Guest System' }}</span>
+                                        </div>
+                                    </td>
+                                    <td>{{ log.action }}</td>
+                                    <td>
+                                        <span class="status-pill pill-success">Completed</span>
+                                    </td>
+                                    <td class="text-muted">{{ log.timestamp | date:'MMM dd, HH:mm' }}</td>
+                                </tr>
+                                <tr *ngIf="logs.length === 0">
+                                    <td colspan="4" class="text-center py-4 text-muted">No recent activity logs found.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics/Bar Chart -->
+            <div class="modern-card animate-slide-up" style="animation-delay: 0.8s">
+                <div class="card-header-modern">
+                    <h3 class="card-title">Popular Destinations Engagement</h3>
+                </div>
+                <div class="card-content chart-wrapper-bar">
+                    <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="'bar'">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+.settings-container {
+    min-height: calc(100vh - 60px);
+    /* Adjust based on navbar height */
+}
+
+.settings-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    border-right: 1px solid #eee;
+}
+
+.settings-content {
+    overflow-y: auto;
+}
+
+.list-group-item {
+    color: #555;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+    color: #000;
+}
+
+.list-group-item.active {
+    background-color: var(--safar-terracotta-subtle);
+    color: var(--safar-terracotta);
+    font-weight: 600;
+    border-left: 3px solid var(--safar-terracotta);
+}
+
+.list-group-item i {
+    font-size: 1.1rem;
+}
+
+.list-group-item.text-danger:hover {
+    background-color: #fee2e2;
+    color: #dc3545;
+}
+
+.list-group-item.text-danger.active {
+    background-color: #fee2e2;
+    color: #dc3545;
+    border-left-color: #dc3545;
+}

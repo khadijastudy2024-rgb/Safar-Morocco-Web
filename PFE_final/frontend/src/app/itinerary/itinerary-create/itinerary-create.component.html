@@ -1,0 +1,119 @@
+<!-- Hero Section -->
+<section class="hero-small d-flex align-items-center justify-content-center text-center text-white">
+    <div class="hero-overlay-dark"></div>
+    <div class="container position-relative z-2">
+        <div class="fade-in-up">
+            <span class="badge bg-white-glass text-white px-4 py-2 rounded-pill mb-4 fw-800 letter-spacing-2">
+                {{ editMode ? ('ITINERARY.EDIT' | translate) : ('ITINERARY.CREATE_ITINERARY' | translate) }}
+            </span>
+            <h1 class="display-3 fw-800 mb-3 font-display" style="color: white !important;">
+                {{ editMode ? ('ITINERARY.EDIT' | translate) : ('ITINERARY.CREATE_ITINERARY' | translate) }}
+            </h1>
+            <p class="lead opacity-90 mx-auto" style="max-width: 700px; color: white !important;">
+                {{ 'ITINERARY.HERO_DESC_CREATE' | translate }}
+            </p>
+        </div>
+    </div>
+</section>
+
+<div class="container-xl mt-5 pb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <!-- Form Card -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-body p-4 p-md-5">
+                    <form [formGroup]="itineraryForm">
+                        <div class="mb-4">
+                            <label for="nom" class="form-label fw-bold text-dark mb-2">{{ 'ITINERARY.NAME' | translate }}</label>
+                            <input type="text" class="form-control form-control-lg rounded-pill px-4 bg-light border-0" id="nom" formControlName="nom" [placeholder]="'ITINERARY.NAME_PLACEHOLDER' | translate">
+                            <div *ngIf="itineraryForm.get('nom')?.invalid && itineraryForm.get('nom')?.touched" class="text-danger mt-2 ms-3 small fw-medium">
+                                <i class="bi bi-exclamation-circle me-1"></i> {{ 'ITINERARY.NAME_ERROR' | translate }}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Selected Destinations Card -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-transparent border-bottom px-4 py-4 d-flex justify-content-between align-items-center">
+                    <h4 class="fw-bold mb-0 text-dark d-flex align-items-center">
+                        <i class="bi bi-pin-map text-primary me-2"></i> {{ 'ITINERARY.SELECTED_DESTINATIONS' | translate }} ({{ selectedDestinations.length }})
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <div *ngIf="selectedDestinations.length === 0" class="empty-state-card text-center py-4 rounded-4 bg-light">
+                        <div class="empty-icon-box mb-3">
+                            <i class="bi bi-map text-muted opacity-50" style="font-size: 3rem;"></i>
+                        </div>
+                        <h6 class="fw-bold text-secondary">{{ 'ITINERARY.NO_DESTINATION_SELECTED' | translate }}</h6>
+                    </div>
+                    
+                    <div *ngIf="selectedDestinations.length > 0" class="d-flex flex-wrap gap-2">
+                        <div *ngFor="let dest of selectedDestinations; let i = index" class="badge rounded-pill bg-primary-subtle text-primary border border-primary border-opacity-25 px-3 py-2 fs-6 d-flex align-items-center gap-2 shadow-sm" style="font-weight: 600;">
+                            <span class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 24px; height: 24px; font-size: 0.8rem;">{{ i + 1 }}</span>
+                            {{ dest.nom | translateValue }}
+                            <button type="button" class="btn-close btn-close-white ms-1" style="filter: invert(1) grayscale(100%) brightness(100%); font-size: 0.6rem;" (click)="removeDestination(dest)" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Available Destinations -->
+            <div class="card border-0 shadow-sm rounded-4 mb-5">
+                <div class="card-header bg-transparent border-bottom px-4 py-4">
+                    <h4 class="fw-bold mb-0 text-dark d-flex align-items-center">
+                        <i class="bi bi-geo-alt text-info me-2"></i> {{ 'ITINERARY.AVAILABLE_DESTINATIONS' | translate }}
+                    </h4>
+                </div>
+                <div class="card-body p-4 bg-light rounded-bottom-4">
+                    <div class="row g-3">
+                        <div *ngFor="let destination of availableDestinations" class="col-md-6 col-lg-4">
+                            <div class="card destination-card h-100 border-0 shadow-sm rounded-4 overflow-hidden" 
+                                 [class.border-success]="isDestinationSelected(destination)"
+                                 [class.selected-card]="isDestinationSelected(destination)"
+                                 (click)="addDestination(destination)"
+                                 style="cursor: pointer; transition: all 0.2s;">
+                                <div class="card-body p-3 d-flex flex-column justify-content-center position-relative">
+                                    <h6 class="fw-bold mb-1 text-dark pe-4">{{ destination.nom | translateValue }}</h6>
+                                    <small class="text-muted d-flex align-items-center">
+                                        <i class="bi bi-tag-fill me-1 opacity-50 text-secondary"></i>
+                                        {{ destination.categorie || destination.type || 'Destination' }}
+                                    </small>
+                                    
+                                    <div class="position-absolute top-50 end-0 translate-middle-y me-3">
+                                        <div *ngIf="isDestinationSelected(destination)" class="badge bg-success rounded-pill d-flex align-items-center gap-1 shadow-sm px-2 py-1">
+                                            <i class="bi bi-check2"></i> <span style="font-size: 0.8rem;">Sélectionnée</span>
+                                        </div>
+                                        <div *ngIf="!isDestinationSelected(destination)" class="text-primary opacity-50 hover-opacity-100 transition-all">
+                                            <i class="bi bi-plus-circle fs-4"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-end gap-3 mb-5">
+                <button type="button" class="btn btn-light rounded-pill px-5 py-3 fw-bold shadow-sm" (click)="goBack()">
+                    {{ 'ITINERARY.CANCEL' | translate }}
+                </button>
+                <button type="button" class="btn btn-primary rounded-pill px-5 py-3 fw-bold shadow-sm d-flex align-items-center" 
+                        (click)="onCreateItinerary()" 
+                        [disabled]="itineraryForm.invalid || selectedDestinations.length === 0 || loading">
+                    <ng-container *ngIf="!loading">
+                        {{ editMode ? ('ITINERARY.SAVE' | translate) : ('ITINERARY.CREATE_ITINERARY' | translate) }}
+                    </ng-container>
+                    <ng-container *ngIf="loading">
+                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                        {{ editMode ? ('ITINERARY.UPDATING' | translate) : ('ITINERARY.CREATING' | translate) }}
+                    </ng-container>
+                </button>
+            </div>
+            
+        </div>
+    </div>
+</div>

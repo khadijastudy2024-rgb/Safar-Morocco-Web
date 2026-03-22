@@ -1,0 +1,120 @@
+<section class="contact-hero">
+    <div class="hero-content fade-in-up">
+        <h1 class="display-3 fw-800 mb-3 font-display" style="color: white !important;">{{ 'CONTACT_PAGE.HERO_TITLE' | translate }}</h1>
+        <p>{{ 'CONTACT_PAGE.HERO_SUBTITLE' | translate }}</p>
+    </div>
+</section>
+
+<div class="container contact-section">
+    <div class="row g-4">
+        <!-- Left Column: Contact Form -->
+        <div class="col-lg-8">
+            <div class="contact-card fade-in-up">
+                <div class="form-container">
+                    <h3 class="mb-4">{{ 'CONTACT_PAGE.FORM_TITLE' | translate }}</h3>
+                    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="name" placeholder="Nom complet"
+                                    formControlName="name"
+                                    [class.is-invalid]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+                                <label for="name">{{ 'CONTACT_PAGE.LABEL_NAME' | translate }}</label>
+                                <div class="invalid-feedback">{{ 'CONTACT_PAGE.ERROR_NAME' | translate }}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="email" placeholder="Email"
+                                    formControlName="email"
+                                    [class.is-invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+                                <label for="email">{{ 'CONTACT_PAGE.LABEL_EMAIL' | translate }}</label>
+                                <div class="invalid-feedback">{{ 'CONTACT_PAGE.ERROR_EMAIL' | translate }}</div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="subject" placeholder="Sujet"
+                                    formControlName="subject"
+                                    [class.is-invalid]="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched">
+                                <label for="subject">{{ 'CONTACT_PAGE.LABEL_SUBJECT' | translate }}</label>
+                                <div class="invalid-feedback">{{ 'CONTACT_PAGE.ERROR_SUBJECT' | translate }}</div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" placeholder="Message" id="message" style="height: 150px"
+                                    formControlName="message"
+                                    [class.is-invalid]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"></textarea>
+                                <label for="message">{{ 'CONTACT_PAGE.LABEL_MESSAGE' | translate }}</label>
+                                <div class="invalid-feedback">{{ 'CONTACT_PAGE.ERROR_MESSAGE' | translate }}</div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-send w-100" [disabled]="isSubmitting">
+                                <span *ngIf="!isSubmitting">
+                                    <i class="bi bi-send-fill me-2"></i> {{ 'CONTACT_PAGE.BTN_SEND' | translate }}
+                                </span>
+                                <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2"></span>
+                                <span *ngIf="isSubmitting">Envoi en cours...</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Contact Info Cards -->
+        <div class="col-lg-4">
+            <div class="contact-info-grid">
+                <!-- Location -->
+                <div class="info-item-card fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="info-icon-wrapper">
+                        <i class="bi bi-geo-alt-fill"></i>
+                    </div>
+                    <div class="info-content">
+                        <h5>{{ 'CONTACT_PAGE.INFO_LOCATION_TITLE' | translate }}</h5>
+                        <p>Nador, Morocco</p>
+                    </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="info-item-card fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="info-icon-wrapper">
+                        <i class="bi bi-telephone-fill"></i>
+                    </div>
+                    <div class="info-content">
+                        <h5>{{ 'CONTACT_PAGE.INFO_PHONE_TITLE' | translate }}</h5>
+                        <p>+212 633 725 965</p>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="info-item-card fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="info-icon-wrapper">
+                        <i class="bi bi-envelope-fill"></i>
+                    </div>
+                    <div class="info-content">
+                        <h5>{{ 'CONTACT_PAGE.INFO_EMAIL_TITLE' | translate }}</h5>
+                        <p>mynameisossama@gmail.com</p>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div class="info-item-card fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="info-icon-wrapper">
+                        <i class="bi bi-share-fill"></i>
+                    </div>
+                    <div class="info-content">
+                        <h5>{{ 'CONTACT_PAGE.INFO_SOCIAL_TITLE' | translate }}</h5>
+                        <div class="d-flex gap-3 justify-content-center mt-2">
+                            <a href="#" class="text-terracotta fs-5"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="text-terracotta fs-5"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="text-terracotta fs-5"><i class="bi bi-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

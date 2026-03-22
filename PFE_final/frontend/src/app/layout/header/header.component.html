@@ -1,0 +1,231 @@
+<nav class="navbar fixed-top modern-navbar" [class.scrolled]="isScrolled">
+    <div class="container d-flex justify-content-between align-items-center">
+        <!-- Logo Section -->
+        <a class="navbar-brand brand-logo logo" routerLink="/">
+            <div class="logo-icon">
+                <i class="bi bi-compass-fill"></i>
+            </div>
+            <div class="brand-info">
+                <span class="brand-text">Safar</span>
+                <span class="brand-text-sm">Morocco</span>
+            </div>
+        </a>
+
+        <!-- Desktop Navigation Content -->
+        <div class="d-none d-lg-flex align-items-center flex-grow-1 justify-content-between ms-5">
+            <ul class="navbar-nav flex-row gap-3 nav-menu">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/" routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{exact: true}">
+                        <i class="bi bi-house-door"></i>
+                        <span>{{ 'NAV.HOME' | translate }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/destinations" routerLinkActive="active-link">
+                        <i class="bi bi-geo-alt"></i>
+                        <span>{{ 'NAV.DESTINATIONS' | translate }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/itineraires" routerLinkActive="active-link">
+                        <i class="bi bi-compass"></i>
+                        <span>{{ 'NAV.ITINERAIRES' | translate }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/map" routerLinkActive="active-link">
+                        <i class="bi bi-map"></i>
+                        <span>{{ 'NAV.MAP' | translate }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/events" routerLinkActive="active-link">
+                        <i class="bi bi-calendar-event"></i>
+                        <span>{{ 'NAV.EVENTS' | translate }}</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-actions d-flex align-items-center gap-3">
+                <!-- Language Selector -->
+                <div class="dropdown lang-dropdown">
+                    <button class="lang-btn" type="button" (click)="toggleDropdown($event, 'lang-dropdown')">
+                        <span class="lang-flag">{{ currentLanguage?.flag }}</span>
+                        <span class="lang-code">{{ currentLanguage?.code | uppercase }}</span>
+                        <i class="bi bi-chevron-down dropdown-icon"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end modern-dropdown">
+                        <li *ngFor="let lang of languages">
+                            <a class="dropdown-item" (click)="changeLanguage(lang.code)"
+                                [class.active]="lang.code === currentLanguage?.code">
+                                <span class="flag-icon">{{ lang.flag }}</span>
+                                <span class="lang-name">{{ 'LANG.' + lang.code.toUpperCase() | translate }}</span>
+                                <i class="bi bi-check2 active-check" *ngIf="lang.code === currentLanguage?.code"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ng-container *ngIf="isUserLoggedIn">
+                    <a class="admin-btn" *ngIf="isUserAdmin" routerLink="/admin">
+                        <i class="bi bi-shield-check"></i>
+                        <span>{{ 'NAV.ADMIN' | translate }}</span>
+                    </a>
+
+                    <div class="dropdown user-dropdown">
+                        <button class="user-btn profile-menu" type="button"
+                            (click)="toggleDropdown($event, 'user-dropdown')">
+                            <div class="profile-avatar">
+                                <i class="bi bi-person-circle"></i>
+                            </div>
+                            <i class="bi bi-chevron-down dropdown-icon"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end modern-dropdown">
+                            <li>
+                                <a class="dropdown-item" routerLink="/profile">
+                                    <i class="bi bi-person"></i>
+                                    <span>{{ 'NAV.PROFILE' | translate }}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" routerLink="/settings">
+                                    <i class="bi bi-gear"></i>
+                                    <span>{{ 'NAV.SETTINGS' | translate }}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item logout-item" (click)="logout()">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>{{ 'NAV.LOGOUT' | translate }}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="!isUserLoggedIn">
+                    <div class="auth-btns d-flex gap-2">
+                        <a class="btn btn-outline-primary" routerLink="/auth/login">
+                            <i class="bi bi-box-arrow-in-right"></i>
+                            <span>{{ 'NAV.LOGIN' | translate }}</span>
+                        </a>
+                        <a class="btn btn-primary" routerLink="/auth/register">
+                            <i class="bi bi-person-plus"></i>
+                            <span>{{ 'NAV.SIGNUP' | translate }}</span>
+                        </a>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler d-lg-none" type="button" (click)="toggleMenu()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Overlay Menu -->
+<div class="mobile-menu d-lg-none" [class.open]="menuOpen">
+    <div class="mobile-menu-content p-3">
+        <ul class="navbar-nav flex-column gap-2">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/" (click)="menuOpen = false" routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{exact: true}">
+                    <i class="bi bi-house-door"></i>
+                    <span>{{ 'NAV.HOME' | translate }}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/destinations" (click)="menuOpen = false"
+                    routerLinkActive="active-link">
+                    <i class="bi bi-geo-alt"></i>
+                    <span>{{ 'NAV.DESTINATIONS' | translate }}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/itineraires" (click)="menuOpen = false" routerLinkActive="active-link">
+                    <i class="bi bi-compass"></i>
+                    <span>{{ 'NAV.ITINERAIRES' | translate }}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/map" (click)="menuOpen = false" routerLinkActive="active-link">
+                    <i class="bi bi-map"></i>
+                    <span>{{ 'NAV.MAP' | translate }}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/events" (click)="menuOpen = false" routerLinkActive="active-link">
+                    <i class="bi bi-calendar-event"></i>
+                    <span>{{ 'NAV.EVENTS' | translate }}</span>
+                </a>
+            </li>
+        </ul>
+
+        <hr class="my-3">
+
+        <div class="mobile-actions d-flex flex-column gap-3">
+            <!-- Language Selector -->
+            <div class="mobile-lang">
+                <h6 class="text-muted mb-2 px-2">{{ 'NAV.LANGUAGE' | translate }}</h6>
+                <div class="lang-grid d-flex flex-wrap gap-2 px-2">
+                    <button *ngFor="let lang of languages" class="lang-chip"
+                        [class.active]="lang.code === currentLanguage?.code"
+                        (click)="changeLanguage(lang.code); menuOpen = false">
+                        <span class="flag">{{ lang.flag }}</span>
+                        <span class="code">{{ lang.code | uppercase }}</span>
+                    </button>
+                </div>
+            </div>
+
+            <ng-container *ngIf="isUserLoggedIn">
+                <a class="admin-btn w-100 justify-content-center" *ngIf="isUserAdmin" routerLink="/admin"
+                    (click)="menuOpen = false">
+                    <i class="bi bi-shield-check"></i>
+                    <span>{{ 'NAV.ADMIN' | translate }}</span>
+                </a>
+
+                <div class="mobile-user-info px-2">
+                    <div class="profile-menu d-flex align-items-center gap-3 mb-3">
+                        <div class="profile-avatar">
+                            <i class="bi bi-person-circle"></i>
+                        </div>
+                        <span class="user-name fw-bold">{{ currentUser?.username }}</span>
+                    </div>
+                    <div class="d-flex flex-column gap-2">
+                        <a class="nav-link" routerLink="/profile" (click)="menuOpen = false">
+                            <i class="bi bi-person"></i>
+                            <span>{{ 'NAV.PROFILE' | translate }}</span>
+                        </a>
+                        <a class="nav-link" routerLink="/settings" (click)="menuOpen = false">
+                            <i class="bi bi-gear"></i>
+                            <span>{{ 'NAV.SETTINGS' | translate }}</span>
+                        </a>
+                        <a class="nav-link logout-item" (click)="logout(); menuOpen = false">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>{{ 'NAV.LOGOUT' | translate }}</span>
+                        </a>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="!isUserLoggedIn">
+                <div class="auth-btns d-flex flex-column gap-2 px-2">
+                    <a class="btn btn-outline-primary w-100" routerLink="/auth/login" (click)="menuOpen = false">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <span>{{ 'NAV.LOGIN' | translate }}</span>
+                    </a>
+                    <a class="btn btn-primary w-100" routerLink="/auth/register" (click)="menuOpen = false">
+                        <i class="bi bi-person-plus"></i>
+                        <span>{{ 'NAV.SIGNUP' | translate }}</span>
+                    </a>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

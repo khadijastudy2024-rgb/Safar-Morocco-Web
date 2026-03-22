@@ -1,0 +1,19 @@
+{
+    "/api": {
+        "target": "http://127.0.0.1:8088",
+        "secure": false,
+        "logLevel": "debug"
+    },
+    "/uploads": {
+        "target": "http://127.0.0.1:8088",
+        "secure": false
+    },
+    "/oauth2/authorization": {
+        "target": "http://127.0.0.1:8088",
+        "secure": false
+    },
+    "/login": {
+        "target": "http://127.0.0.1:8088",
+        "secure": false
+    }
+}

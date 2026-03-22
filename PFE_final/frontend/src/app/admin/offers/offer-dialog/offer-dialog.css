@@ -1,0 +1,27 @@
+.btn-close-dialog {
+    border: none;
+    background: transparent;
+    color: var(--bs-gray-500);
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.btn-close-dialog:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--safar-terracotta);
+}
+
+.btn-close-dialog i {
+    font-size: 20px;
+    font-weight: bold !important;
+}
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+    border-radius: 1rem !important;
+}

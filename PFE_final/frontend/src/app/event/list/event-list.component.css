@@ -1,0 +1,252 @@
+/* Base styles identical to Destinations list */
+.hero-bg-events {
+    background: url('https://www.lesjardinsdelamedina.com/blog/wp-content/uploads/2019/06/festival-arts-populaires.jpg') center center/cover no-repeat;
+}
+
+.event-card-modern {
+    display: block;
+    text-decoration: none;
+    background: #FFFFFF;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 100%;
+    border: none;
+}
+
+.event-card-modern:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.12);
+}
+
+.event-img-wrapper {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: #F3F4F6;
+}
+
+.event-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.event-card-modern:hover .event-img-wrapper img {
+    transform: scale(1.1);
+}
+
+.event-date-pill {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: white;
+    padding: 0.6rem 0.9rem;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    z-index: 5;
+}
+
+.pill-day {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1;
+    margin-bottom: 2px;
+}
+
+.pill-month {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+.event-category-tag {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: rgba(15, 118, 110, 0.9);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.event-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.location-text {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.event-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--secondary-color);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.event-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0.5rem 0 1rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.event-footer-meta {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid #F9FAFB;
+}
+
+.price-tag {
+    font-weight: 800;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.details-link {
+    font-weight: 800;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    transition: gap 0.3s ease;
+}
+
+.event-card-modern:hover .details-link {
+    gap: 0.5rem;
+}
+
+/* Empty State */
+.empty-state-card {
+    border: 1px solid #F3F4F6;
+}
+
+/* Hero Search Bar */
+.hero-search-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.search-input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.5rem;
+    color: var(--text-muted);
+    font-size: 1.3rem;
+    z-index: 5;
+}
+
+.form-control-custom {
+    width: 100%;
+    padding: 1.25rem 1.25rem 1.25rem 3.8rem;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.95);
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.form-control-custom:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 15px 35px rgba(211, 84, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Filter Section */
+.filters-container {
+    margin-top: -2.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+.filter-pills {
+    background: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 100px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    display: inline-flex;
+    border: 1px solid #f1f3f5;
+}
+
+.pill-btn {
+    padding: 0.75rem 1.8rem;
+    border-radius: 50px;
+    border: none;
+    background: transparent;
+    font-weight: 800;
+    color: #475569;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.pill-btn:hover {
+    color: var(--primary-color);
+    background: var(--safar-terracotta-subtle);
+}
+
+.pill-btn.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 8px 20px rgba(211, 84, 0, 0.25);
+}
+
+@media (max-width: 991.98px) {
+    .hero-small {
+        min-height: 450px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-small {
+        min-height: 550px;
+        padding-top: 100px;
+    }
+    
+    .filter-pills {
+        padding: 0.5rem;
+        border-radius: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .pill-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+}

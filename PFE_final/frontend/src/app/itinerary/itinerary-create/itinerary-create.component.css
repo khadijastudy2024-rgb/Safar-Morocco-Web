@@ -1,0 +1,108 @@
+/* Hero Section - Matched to Destinations */
+.hero-small {
+    background: url('https://www.shutterstock.com/shutterstock/videos/3712914241/thumb/1.jpg?ip=x480') center center/cover no-repeat;
+    min-height: 500px;
+    position: relative;
+    margin-top: calc(-1 * var(--navbar-height, 80px));
+    padding-top: var(--navbar-height, 80px);
+    padding-bottom: 4rem;
+}
+
+.hero-overlay-dark {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.6));
+    backdrop-filter: blur(2px);
+}
+
+.font-display {
+    font-family: var(--font-display, 'Playfair Display', serif);
+}
+
+.letter-spacing-2 {
+    letter-spacing: 2px;
+}
+
+.bg-white-glass {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+}
+
+.rounded-4 {
+    border-radius: 1rem !important;
+}
+
+.rounded-xxl {
+    border-radius: 2rem !important;
+}
+
+.bg-primary-subtle {
+    background-color: rgba(211, 84, 0, 0.1) !important;
+    color: var(--primary-color, #d35400) !important;
+}
+
+.border-opacity-25 {
+    border-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Empty State Styling */
+.empty-state-card {
+    border: 1px dashed #e2e8f0;
+    margin: 0 auto;
+}
+
+.empty-icon-box {
+    opacity: 0.5;
+}
+
+/* Cards */
+.destination-card {
+    border: 2px solid transparent !important;
+    background-color: white;
+}
+
+.destination-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
+    border-color: var(--primary-color, #d35400) !important;
+}
+
+.destination-card.selected-card {
+    border-color: #198754 !important;
+    background-color: #f8fff9 !important;
+}
+
+.hover-opacity-100:hover {
+    opacity: 1 !important;
+}
+
+.transition-all {
+    transition: all 0.2s ease;
+}
+
+/* Form Styles */
+.form-control-lg {
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(211, 84, 0, 0.25) !important;
+    border-color: var(--primary-color, #d35400) !important;
+    background-color: #fff !important;
+}
+
+@media (max-width: 991.98px) {
+    .hero-small {
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-small {
+        min-height: 450px;
+        padding-top: 100px;
+    }
+}

@@ -1,0 +1,486 @@
+{
+    "NAV": {
+        "HOME": "Accueil",
+        "DESTINATIONS": "Destinations",
+        "MAP": "Carte",
+        "EVENTS": "Événements",
+        "ADMIN": "Admin",
+        "PROFILE": "Profil",
+        "SETTINGS": "Paramètres",
+        "LOGOUT": "Déconnexion",
+        "LOGIN": "Connexion",
+        "SIGNUP": "S'inscrire"
+    },
+    "CATEGORIES": {
+        "ALL": "Tout",
+        "CULTURAL": "Culturel",
+        "NATURE": "Nature",
+        "HISTORICAL": "Historique",
+        "RELIGIOUS": "Religieux",
+        "URBAN": "Urbain",
+        "FOOD": "Gastronomie",
+        "ADVENTURE": "Aventure",
+        "BEACH": "Plage",
+        "CRAFT": "Artisanat"
+    },
+    "DESTINATIONS": {
+        "LIST": {
+            "HERO_SUBTITLE": "Explorez le Maroc",
+            "HERO_TITLE": "Découvrez des Endroits Incroyables",
+            "HERO_DESC": "Des médinas anciennes aux paysages époustouflants",
+            "SEARCH_PLACEHOLDER": "Rechercher des destinations...",
+            "LOAD_MORE": "Charger Plus",
+            "EMPTY_TITLE": "Aucune destination trouvée",
+            "EMPTY_DESC": "Essayez d'ajuster votre recherche ou vos filtres",
+            "RESET": "Réinitialiser les Filtres",
+            "ADD_TOOLTIP": "Ajouter une Destination"
+        },
+        "RESERVATION": {
+            "TITLE": "Réserver : {{name}}",
+            "LOADING_ITINERARIES": "Chargement de vos itinéraires...",
+            "SELECT_ITINERARY": "Sélectionner un itinéraire",
+            "CHOOSE_ITINERARY": "Choisissez un itinéraire...",
+            "START_DATE": "Date de début",
+            "END_DATE": "Date de fin",
+            "QUANTITY": "Quantité (Personnes / Unités)",
+            "NO_ITINERARIES": "Vous n'avez pas encore d'itinéraires. Veuillez d'abord créer un itinéraire avant de faire une réservation !",
+            "CONFIRM": "Confirmer la réservation",
+            "CONFIRMING": "Confirmation en cours...",
+            "ERROR_SELECT_ITINERARY": "Veuillez choisir un itinéraire pour y lier cette réservation.",
+            "ERROR_HOTEL_DATES": "Les dates de début et de fin sont obligatoires pour un hôtel.",
+            "ERROR_DATE_ORDER": "La date de début doit être avant la date de fin.",
+            "ERROR_GENERIC": "Échec de la réservation. Veuillez vérifier vos données.",
+            "CREATE_ITINERARY_LINK": "Créer un itinéraire maintenant"
+        },
+        "DETAIL": {
+            "BREADCRUMB": "Toutes les Destinations",
+            "REVIEWS": "Avis",
+            "RECOMMENDED": "Le plus recommandé",
+            "PLAN_TRIP": "Planifier mon voyage",
+            "EDIT": "Modifier la destination",
+            "DELETE": "Supprimer",
+            "ADD_PHOTO": "Ajouter une photo",
+            "ABOUT": "À propos de l'endroit",
+            "HISTORICAL": "Signification historique",
+            "HISTORICAL_DESC": "Découvrez l'histoire profonde et les merveilles architecturales qui définissent {{name}}.",
+            "FACILITIES": "Équipements et installations",
+            "STANDARD_AMENITIES": "Équipements standard",
+            "LOCAL_TRANSPORT": "Transport public propre",
+            "VISUAL_EXPLORER": "Explorateur Visuel",
+            "NO_PHOTOS": "Aucune photo disponible pour cette destination pour le moment.",
+            "EXPERIENCE_VIBE": "Vivez l'Ambiance",
+            "VIDEO_INFO": "Regardez une visite vidéo de ce bel endroit.",
+            "INTERACTIVE_LOCATION": "Emplacement Interactif",
+            "VISITOR_REVIEWS": "Expériences des visiteurs",
+            "WRITE_REVIEW": "Rédiger un avis",
+            "SHARE_EXP": "Partagez votre expérience...",
+            "POST": "Publier l'avis",
+            "NO_REVIEWS": "Pas encore d'avis",
+            "WEATHER": {
+                "TITLE": "Météo Locale",
+                "HUMIDITY": "Humidité",
+                "WIND": "Vitesse du vent",
+                "FORECAST": "Prévisions sur 7 jours"
+            },
+            "GLANCE": {
+                "TITLE": "En un coup d'œil",
+                "COST": "Coût moyen",
+                "PER_PERSON": "par personne",
+                "BEST_TIME": "Meilleur moment pour visiter",
+                "BEST_TIME_VAL": "Oct - Mai",
+                "LANGS": "Langues officielles",
+                "LANGS_VAL": "Arabe, Français, Tashelhit",
+                "POPULARITY": "Popularité",
+                "VIEWS": "vues",
+                "CURRENCY": "MAD"
+            },
+            "TABS": {
+                "OVERVIEW": "Aperçu",
+                "REVIEWS": "Avis",
+                "GALLERY": "Galerie",
+                "EVENTS": "Événements",
+                "VIDEO": "Vidéo",
+                "MAP": "Carte",
+                "OFFERS": "Offres"
+            },
+            "HIGHLIGHTS": "Points Forts",
+            "HIGHLIGHT_BEST_EXP": "Meilleure Expérience",
+            "HIGHLIGHT_BEST_EXP_DESC": "Très bien noté par les visiteurs récents",
+            "HIGHLIGHT_PHOTO": "Spot Photo",
+            "HIGHLIGHT_PHOTO_DESC": "Idéal pour la photographie de voyage",
+            "HIGHLIGHT_ECO": "Écologique",
+            "HIGHLIGHT_ECO_DESC": "Tourisme durable",
+            "HIGHLIGHT_HERITAGE": "Patrimoine",
+            "HIGHLIGHT_HERITAGE_DESC": "Racines historiques profondes",
+            "OFFER_ALL": "Tout",
+            "OFFER_HOTELS": "Hôtels",
+            "OFFER_RESTAURANTS": "Restaurants",
+            "OFFER_ACTIVITIES": "Activités",
+            "OFFER_TYPE_HOTEL": "Hôtel",
+            "OFFER_TYPE_RESTAURANT": "Restaurant",
+            "OFFER_TYPE_ACTIVITY": "Activité",
+            "OFFER_NIGHT": "/nuit",
+            "OFFER_STARS": "étoiles",
+            "OFFER_NO_RESULTS": "Aucune offre disponible pour cette catégorie.",
+            "OFFER_CLEAR_FILTERS": "Effacer les filtres",
+            "REVIEW_RATING_LABEL": "Note",
+            "REVIEW_COMMENT_LABEL": "Commentaire",
+            "STATUS_HIGH_DEMAND": "Forte demande",
+            "STATUS_STANDARD": "Standard"
+        }
+    },
+    "EVENTS": {
+        "LIST": {
+            "HERO_SUBTITLE": "Événements Culturels",
+            "HERO_TITLE": "Événements à Venir",
+            "HERO_DESC": "Découvrez la culture vibrante du Maroc",
+            "SEARCH_PLACEHOLDER": "Rechercher des événements...",
+            "LOAD_MORE": "Charger Plus",
+            "EMPTY_TITLE": "Aucun événement trouvé",
+            "EMPTY_DESC": "Essayez d'ajuster votre recherche ou vos filtres",
+            "RESET": "Réinitialiser les Filtres",
+            "UPCOMING": "À venir",
+            "NO_EVENTS": "Aucun événement disponible pour le moment."
+        },
+        "DETAIL": {
+            "DATE": "Date et Heure",
+            "LOCATION": "Lieu",
+            "STATUS": "Statut",
+            "ABOUT": "À propos de l'événement",
+            "JOIN": "Réserver votre place",
+            "PRICE_FREE": "Entrée Gratuite"
+        }
+    },
+    "AUTH": {
+        "LOGIN": {
+            "WELCOME": "Bienvenue",
+            "SUBTITLE": "Connectez-vous pour continuer votre voyage",
+            "PASSWORD": "Mot de passe",
+            "PASSWORD_REQ": "Le mot de passe est requis",
+            "REMEMBER": "Se souvenir de moi",
+            "FORGOT": "Mot de passe oublié ?",
+            "SIGN_IN": "Se Connecter",
+            "SIGNING_IN": "Connexion...",
+            "OR_CONTINUE": "Ou continuer avec",
+            "GOOGLE": "Se connecter avec Google",
+            "NO_ACCOUNT": "Vous n'avez pas de compte ?",
+            "CREATE": "Créer un compte",
+            "TWO_FACTOR": {
+                "TITLE": "Validation 2FA",
+                "DESC": "Entrez le code à 6 chiffres de votre application d'authentification.",
+                "LABEL": "Code 2FA",
+                "VERIFY": "Vérifier",
+                "BACK": "Retour"
+            }
+        },
+        "REGISTER": {
+            "TITLE": "Rejoignez les Explorateurs",
+            "SUBTITLE": "Créez un compte pour commencer votre aventure",
+            "FIRST_NAME": "Prénom",
+            "LAST_NAME": "Nom",
+            "EMAIL": "Adresse e-mail",
+            "EMAIL_REQ": "L'e-mail est requis",
+            "EMAIL_INV": "Format d'e-mail invalide",
+            "PASS_MIN": "Le mot de passe doit contenir au moins 6 caractères",
+            "AGREE": "I accepte les",
+            "TERMS": "Conditions Générales",
+            "GET_STARTED": "Commencer",
+            "CREATING": "Création du compte...",
+            "ALREADY_MEMBER": "Déjà membre ?",
+            "LOG_IN": "Se connecter"
+        }
+    },
+    "PROFILE": {
+        "EMAIL": "E-mail",
+        "PHONE": "Téléphone",
+        "EDIT": "Modifier le Profil",
+        "CANCEL": "Annuler",
+        "SAVE": "Enregistrer les modifications",
+        "EDIT_INFO": "Modifier les informations",
+        "FULL_NAME": "Nom Complet",
+        "LANGUAGE": "Langue Préférée",
+        "BIO": "À propos de moi",
+        "BIO_PLACEHOLDER": "Parlez-nous de votre style de voyage...",
+        "ACTIVITY": "Activité Récente",
+        "NO_ACTIVITY": "Aucune activité trouvée",
+        "LOADING": "Chargement du profil..."
+    },
+    "SETTINGS": {
+        "TITLE": "Paramètres du Compte",
+        "PREFERENCES": "Préférences",
+        "SECURITY": "Sécurité",
+        "NOTIFICATIONS": "Notifications",
+        "PRIVACY": "Confidentialité",
+        "DANGER_ZONE": "Zone de Danger",
+        "SECURITY_TITLE": "Paramètres de Sécurité",
+        "CHANGE_PASS": {
+            "TITLE": "Changer le Mot de Passe",
+            "CURRENT": "Mot de passe actuel",
+            "NEW": "Nouveau mot de passe",
+            "MIN_LENGTH": "8 caractères minimum",
+            "CONFIRM": "Confirmer le nouveau mot de passe",
+            "MISMATCH": "Les mots de passe ne correspondent pas",
+            "UPDATE_BTN": "Mettre à jour"
+        },
+        "PASS_CHANGED": "Mot de passe modifié avec succès",
+        "PASS_FAIL": "Erreur lors de la modification du mot de passe",
+        "TWO_FACTOR": {
+            "TITLE": "Authentification à deux facteurs (2FA)",
+            "DESC": "Ajoutez une couche de sécurité supplémentaire à votre compte.",
+            "ENABLE_BTN": "Activer 2FA",
+            "DISABLE_BTN": "Désactiver 2FA",
+            "SCAN_INSTRUCTIONS": "Scannez ce QR Code avec Google Authenticator :",
+            "MANUAL_SECRET": "Ou entrez ce code secret manuellement :",
+            "PLACEHOLDER": "Code à 6 chiffres",
+            "ENABLED_MSG": "2FA est activé sur votre compte.",
+            "DISABLED_MSG": "L'authentification à deux facteurs a été désactivée."
+        },
+        "LANGUAGE_LABEL": "Langue de l'Interface",
+        "LANGUAGE_DESC": "Sélectionnez votre langue préférée pour l'interface de l'application.",
+        "THEME": {
+            "LABEL": "Mode d'Apparence",
+            "DESC": "Choisissez entre le thème Clair, Sombre ou par défaut du système.",
+            "LIGHT": "Mode Clair",
+            "DARK": "Mode Sombre",
+            "SYSTEM": "Défaut Système"
+        },
+        "SAVE_PREFERENCES": "Enregistrer les Préférences",
+        "NOTIFICATIONS_TITLE": "Notifications",
+        "NOTIFICATIONS_DESC": "Gérez la façon dont vous recevez les alertes et les mises à jour.",
+        "EMAIL_NOTIF": {
+            "TITLE": "Notifications par E-mail",
+            "DESC": "Recevez des mises à jour et des newsletters par e-mail."
+        },
+        "SMS_NOTIF": {
+            "TITLE": "Alertes SMS",
+            "DESC": "Recevez des alertes critiques directement sur votre téléphone."
+        },
+        "EVENT_REMINDERS": {
+            "TITLE": "Rappels d'Événements",
+            "DESC": "Soyez averti avant le début de vos événements enregistrés."
+        },
+        "PRIVACY_TITLE": "Confidentialité et Visibilité",
+        "PRIVACY_DESC": "Contrôlez les informations que les autres peuvent voir.",
+        "PUBLIC_PROFILE": {
+            "TITLE": "Profil Public",
+            "DESC": "Autorisez les autres à voir votre profil et vos avis."
+        },
+        "SHOW_EMAIL": {
+            "TITLE": "Afficher l'E-mail",
+            "DESC": "Affichez votre adresse e-mail sur votre profil public."
+        },
+        "MAP_PERMISSIONS": {
+            "TITLE": "Localisation sur la Carte",
+            "DESC": "Autorisez l'application à utiliser votre position pour une meilleure navigation."
+        },
+        "DANGER": {
+            "TITLE": "Zone de Danger",
+            "DESC": "Actions irréversibles pour votre compte.",
+            "DELETE_ACCOUNT": {
+                "TITLE": "Supprimer le compte",
+                "DESC": "Supprimer définitivement votre compte et toutes vos données. Cette action est irréversible.",
+                "CONFIRM": "Êtes-vous sûr de vouloir supprimer définitivement votre compte ?",
+                "BTN": "Supprimer mon compte"
+            }
+        }
+    },
+    "MAP_PAGE": {
+        "SEARCH_PLACEHOLDER": "Rechercher un lieu...",
+        "GO": "Aller",
+        "CALCULATING": "Calcul de l'itinéraire...",
+        "EXPLORE": "Explorer le Maroc"
+    },
+    "COMMON": {
+        "SEARCH": "Rechercher",
+        "LOADING": "Chargement...",
+        "SAVE": "Enregistrer",
+        "CANCEL": "Annuler",
+        "DELETE": "Supprimer",
+        "EDIT": "Modifier",
+        "VIEW": "Voir",
+        "VIEW_MORE": "Voir plus",
+        "CLOSE": "Fermer",
+        "SHARE": "Partager",
+        "REQUIRED": "Requis",
+        "VERIFY": "Vérifier",
+        "MOROCCO": "Maroc",
+        "RESERVE": "Réserver"
+    },
+    "LANG": {
+        "EN": "Anglais",
+        "FR": "Français",
+        "AR": "Arabe",
+        "ES": "Espagnol"
+    },
+    "FOOTER": {
+        "DESC": "Votre guide ultime pour découvrir la beauté, la culture et les événements du Maroc.",
+        "QUICK_LINKS": "Liens Rapides",
+        "EXPLORE": "Explorer",
+        "SUPPORT": "Support",
+        "HELP": "Centre d'Aide",
+        "CONTACT": "Contactez-nous",
+        "TERMS": "Conditions d'Utilisation",
+        "PRIVACY": "Politique de Confidentialité",
+        "COPYRIGHT": "© 2026 Safar Morocco. Tous droits réservés.",
+        "MADE_WITH": "Fait avec",
+        "CULTURAL": "Culture",
+        "NATURE": "Nature",
+        "HISTORICAL": "Historique",
+        "RELIGIOUS": "Religieux"
+    },
+    "DASHBOARD": {
+        "TITLE": "Aperçu du Tableau de Bord",
+        "SUBTITLE": "Bon retour, Admin",
+        "METRICS": {
+            "USERS": "Total Voyageurs",
+            "DESTINATIONS": "Destinations Actives",
+            "EVENTS": "Événements à Venir",
+            "REVIEWS": "Avis en Attente"
+        },
+        "CHARTS": {
+            "GROWTH": "Analyses de Croissance",
+            "LAST_24H": "Dernières 24 Heures",
+            "CATEGORIES": "Catégories",
+            "DURATION": "Durée des événements récents"
+        },
+        "ACTIVITY": {
+            "TITLE": "Activité Récente",
+            "USER": "Utilisateur",
+            "ACTION": "Action",
+            "DATE": "Date",
+            "EMPTY": "Aucune activité récente",
+            "GUEST": "Invité"
+        }
+    },
+    "HOME": {
+        "HERO": {
+            "SUBTITLE": "Bienvenue sur Safar Morocco",
+            "TITLE": "Découvrez l'expérience de voyage ultime au",
+            "DESC": "Découvrez les plus beaux endroits, événements et la culture du Maroc.",
+            "SEARCH_PLACEHOLDER": "Où voulez-vous aller ?"
+        },
+        "FEATURED": {
+            "TAG": "Destinations",
+            "TITLE": "Lieux à la Une",
+            "SUBTITLE": "Destinations sélectionnées pour votre prochaine aventure",
+            "EXPLORE_ALL": "Tout explorer"
+        },
+        "WHY": {
+            "TAG": "Fonctionnalités",
+            "TITLE": "Pourquoi choisir Safar Morocco",
+            "DESC": "Nous fournissons les meilleurs outils pour rendre votre voyage inouابل.",
+            "VERIFIED": {
+                "TITLE": "Lieux vérifiés",
+                "DESC": "Toutes les destinations sont examinées et vérifiées par notre équipe."
+            },
+            "EVENTS": {
+                "TITLE": "Événements culturels",
+                "DESC": "Ne manquez jamais un festival, un concert ou un événement local."
+            },
+            "AI": {
+                "TITLE": "Compagnon IA",
+                "DESC": "Obtenez des recommandations personnalisées de notre chatbot IA."
+            },
+            "MAPPED": {
+                "TITLE": "Carte interactive",
+                "DESC": "Naviguez facilement avec notre carte interactive détaillée."
+            },
+            "COMPANION": "Votre compagnon de voyage idéal"
+        },
+        "MAP_PREVIEW": {
+            "TITLE": "Explorer sur la carte",
+            "DESC": "Visualisez toutes les destinations et planifiez votre itinéraire en un seul endroit.",
+            "FULLSCREEN": "Ouvrir la carte interactive"
+        },
+        "AI_BANNER": {
+            "TITLE": "Besoin de conseils ?",
+            "DESC": "Notre expert en voyage IA est prêt à vous aider à planifier votre voyage parfait au Maroc.",
+            "START": "Discuter avec l'IA"
+        }
+    },
+    "CHATBOT": {
+        "HEADER": "Assistant Safar",
+        "PLACEHOLDER": "Écrivez votre message...",
+        "ERROR": "Désolé, j'ai rencontré une erreur. Veuillez réessayer plus tard.",
+        "INITIAL": "Bonjour! Je suis votre assistant IA Safar Morocco. Comment puis-je vous aider aujourd'hui?"
+    },
+    "ITINERARY": {
+        "HERO_SUBTITLE": "Mes Itinéraires",
+        "HERO_TITLE": "Mes Itinéraires de Voyage",
+        "HERO_DESC": "Retrouvez et gérez vos trajets",
+        "STATS_ITINERARIES": "Itinéraires Totaux",
+        "STATS_OPTIMIZED": "Trajets Optimisés",
+        "STATS_DISTANCE": "Distance Totale",
+        "NEW_ITINERARY": "Nouvel Itinéraire",
+        "LOADING": "Chargement...",
+        "NO_ITINERARY": "Aucun itinéraire trouvé",
+        "START_CREATING": "Commencez par créer votre premier itinéraire",
+        "CREATE_ITINERARY": "Créer un itinéraire",
+        "HERO_DESC_CREATE": "Planifiez votre voyage en sélectionnant vos destinations préférées au Maroc.",
+        "UNNAMED_ITINERARY": "Itineraire sans nom",
+        "OPTIMIZED": "Optimisé",
+        "NOT_OPTIMIZED": "Non optimisé",
+        "DESTINATIONS_COUNT": "destinations",
+        "CREATED_ON": "Créé le",
+        "EDIT": "Modifier l'Itinéraire",
+        "CREATE": "Créer un Itinéraire",
+        "NAME": "Nom de l'Itinéraire",
+        "NAME_PLACEHOLDER": "Ex: Voyage au Nord",
+        "NAME_ERROR": "Le nom de l'itinéraire est requis.",
+        "SELECTED_DESTINATIONS": "Destinations sélectionnées",
+        "NO_DESTINATION_SELECTED": "Veuillez sélectionner au moins une destination de la liste ci-dessous.",
+        "AVAILABLE_DESTINATIONS": "Sélectionner des Destinations",
+        "SELECTED": "Sélectionnée",
+        "SAVE": "Enregistrer l'Itinéraire",
+        "UPDATING": "Mise à jour...",
+        "CREATING": "Création...",
+        "CANCEL": "Annuler",
+        "BACK": "Retour",
+        "DETAILS": "Détails de l'itinéraire",
+        "EDIT_PARAMS": "Modifier les paramètres",
+        "DELETE_ITINERARY": "Supprimer l'itinéraire",
+        "DURATION": "Durée Estimée",
+        "DISTANCE": "Distance Totale",
+        "ALREADY_OPTIMIZED": "L'itinéraire est déjà optimisé",
+        "OPTIMIZE": "Optimiser l'Itinéraire",
+        "MAP_TITLE": "Carte de l'Itinéraire",
+        "START_NAVIGATION": "Démarrer la navigation",
+        "VIEW_DETAILS": "Voir les détails de {{name}}",
+        "REFRESH": "Actualiser",
+        "KM_UNIT": "km",
+        "HOURS_UNIT": "h"
+    },
+    "CONTACT_PAGE": {
+        "HERO_TITLE": "Contactez-nous",
+        "HERO_SUBTITLE": "Nous sommes là pour vous aider à planifier votre voyage parfait.",
+        "FORM_TITLE": "Envoyez-nous un message",
+        "LABEL_NAME": "Nom complet",
+        "LABEL_EMAIL": "Adresse e-mail",
+        "LABEL_SUBJECT": "Sujet",
+        "LABEL_MESSAGE": "Votre message",
+        "BTN_SEND": "Envoyer le message",
+        "ERROR_NAME": "Le nom doit contenir au moins 3 caractères.",
+        "ERROR_EMAIL": "Veuillez entrer une adresse e-mail valide.",
+        "ERROR_SUBJECT": "Le sujet est requis.",
+        "ERROR_MESSAGE": "Le message doit contenir au moins 10 caractères.",
+        "INFO_LOCATION_TITLE": "Visitez-nous",
+        "INFO_PHONE_TITLE": "Appelez-nous",
+        "INFO_EMAIL_TITLE": "Écrivez-nous",
+        "INFO_SOCIAL_TITLE": "Suivez-nous",
+        "INTERACTIVE_MAP": "Plan d'accès"
+    },
+    "ITINERARIES": {
+        "DETAIL": {
+            "OVERVIEW": "Aperçu",
+            "LOADING": "Chargement...",
+            "YOUR_DESTINATIONS": "Vos Destinations",
+            "YOUR_RESERVATIONS": "Vos Réservations",
+            "FROM": "Du :",
+            "TO": "Au :",
+            "QUANTITY": "Quantité :",
+            "TOTAL_PRICE": "Prix Total",
+            "PDF_INVOICE": "Facture PDF",
+            "OFFER_LABEL": "Offre"
+        }
+    }
+}

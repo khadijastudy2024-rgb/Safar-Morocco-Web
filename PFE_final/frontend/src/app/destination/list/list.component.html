@@ -1,0 +1,104 @@
+<!-- Hero Section - Redesigned to match Events -->
+<section class="hero-small hero-bg-destinations text-center text-white">
+    <div class="hero-overlay-dark"></div>
+    <div class="container position-relative z-2">
+        <div class="fade-in-up">
+            <span class="badge bg-white-glass text-white px-4 py-2 rounded-pill mb-4 fw-800 letter-spacing-2">
+                {{ 'DESTINATIONS.LIST.HERO_SUBTITLE' | translate | uppercase }}
+            </span>
+            <h1 class="display-3 fw-800 mb-3 font-display" style="color: white !important;">{{ 'DESTINATIONS.LIST.HERO_TITLE' | translate }}</h1>
+            <p class="lead opacity-90 mx-auto mb-5" style="max-width: 700px;">{{ 'DESTINATIONS.LIST.HERO_DESC' | translate }}</p>
+            
+            <!-- Search Bar - Dual Input like Events -->
+            <div class="hero-search-wrapper mb-5">
+                <div class="row g-3 justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="search-input-group">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" class="form-control-custom" [(ngModel)]="searchText" (ngModelChange)="onSearch()"
+                                [placeholder]="'COMMON.SEARCH' | translate">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="search-input-group">
+                            <i class="bi bi-compass search-icon"></i>
+                            <input type="text" class="form-control-custom" [(ngModel)]="selectedType" (ngModelChange)="onSearch()"
+                                [placeholder]="'Type (Ville, Désert, Oasis...)'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container-xl">
+    <!-- Category Filters - Redesigned -->
+    <div class="filters-container text-center mb-5">
+        <div class="filter-pills gap-2">
+            <button class="pill-btn" [class.active]="currentFilter === 'All'" (click)="onFilter('All')">
+                {{ 'CATEGORIES.ALL' | translate }}
+            </button>
+            <button class="pill-btn" [class.active]="currentFilter === 'Cultural'" (click)="onFilter('Cultural')">
+                {{ 'CATEGORIES.CULTURAL' | translate }}
+            </button>
+            <button class="pill-btn" [class.active]="currentFilter === 'Nature'" (click)="onFilter('Nature')">
+                {{ 'CATEGORIES.NATURE' | translate }}
+            </button>
+            <button class="pill-btn" [class.active]="currentFilter === 'Historical'" (click)="onFilter('Historical')">
+                {{ 'CATEGORIES.HISTORICAL' | translate }}
+            </button>
+            <button class="pill-btn" [class.active]="currentFilter === 'Religious'" (click)="onFilter('Religious')">
+                {{ 'CATEGORIES.RELIGIOUS' | translate }}
+            </button>
+        </div>
+    </div>
+
+    <!-- Destinations Grid -->
+    <div class="row g-5" *ngIf="!loading">
+        <div class="col-md-6 col-lg-4" *ngFor="let dest of filteredDestinations">
+            <app-destination-card [destination]="dest"></app-destination-card>
+        </div>
+    </div>
+
+    <!-- Loading Skeleton -->
+    <div class="row g-5" *ngIf="loading">
+        <div class="col-md-6 col-lg-4" *ngFor="let item of [1,2,3,4,5,6]">
+            <mat-card class="h-100 border-0 shadow-sm rounded-xxl overflow-hidden">
+                <app-skeleton-loader [height]="'250px'"></app-skeleton-loader>
+                <div class="p-4">
+                    <app-skeleton-loader [height]="'28px'" [width]="'70%'" class="mb-3 d-block"></app-skeleton-loader>
+                    <app-skeleton-loader [height]="'16px'" [count]="2" class="mb-3 d-block"></app-skeleton-loader>
+                    <div class="d-flex justify-content-between mt-3">
+                        <app-skeleton-loader [height]="'36px'" [width]="'100px'"
+                            class="rounded-pill"></app-skeleton-loader>
+                        <app-skeleton-loader [height]="'36px'" [width]="'100px'"
+                            class="rounded-pill"></app-skeleton-loader>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <!-- Load More Section -->
+    <div class="text-center mt-5 pt-5" *ngIf="filteredDestinations.length > 0">
+        <button class="btn btn-outline-secondary px-5 py-3 border-2 fw-800 shadow-sm rounded-pill">
+            {{ 'DESTINATIONS.LIST.LOAD_MORE' | translate }} <i class="bi bi-arrow-clockwise ms-2"></i>
+        </button>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!loading && filteredDestinations.length === 0"
+        class="empty-state-card text-center py-5 shadow-sm rounded-xxl bg-white">
+        <div class="empty-icon-box mb-4">
+            <i class="bi bi-search-heart text-muted display-1"></i>
+        </div>
+        <h3 class="fw-800 text-secondary">{{ 'DESTINATIONS.LIST.EMPTY_TITLE' | translate }}</h3>
+        <p class="text-muted mb-4 px-4">{{ 'DESTINATIONS.LIST.EMPTY_DESC' | translate }}</p>
+        <button class="btn btn-primary px-5 rounded-pill" (click)="searchText=''; onSearch(); onFilter('All')">{{
+            'DESTINATIONS.LIST.RESET' | translate }}</button>
+    </div>
+
+    <!-- FAB for Admin -->
+    
+</div>

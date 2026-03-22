@@ -1,0 +1,81 @@
+<div class="auth-wrapper">
+    <mat-card class="auth-card fade-in">
+        <!-- Visual Panel -->
+        <div class="visual-panel">
+            <h1>Let's get started!</h1>
+            <p>{{ 'AUTH.REGISTER.SUBTITLE' | translate }}</p>
+            <div class="mt-auto opacity-75 small">
+                Join our community and explore the wonders of Morocco.
+            </div>
+        </div>
+
+        <!-- Form Panel -->
+        <div class="form-panel">
+            <div class="auth-header">
+                <h2 class="fw-800">{{ 'AUTH.REGISTER.TITLE' | translate }}</h2>
+                <p class="text-muted small">Create your account to start your journey</p>
+            </div>
+
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="d-flex flex-column gap-2">
+                <div class="name-row">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>{{ 'AUTH.REGISTER.FIRST_NAME' | translate }}</mat-label>
+                        <input matInput formControlName="firstName" placeholder="e.g. John">
+                        <mat-error *ngIf="registerForm.get('firstName')?.hasError('required')">{{ 'COMMON.REQUIRED' | translate }}</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>{{ 'AUTH.REGISTER.LAST_NAME' | translate }}</mat-label>
+                        <input matInput formControlName="lastName" placeholder="e.g. Doe">
+                        <mat-error *ngIf="registerForm.get('lastName')?.hasError('required')">{{ 'COMMON.REQUIRED' | translate }}</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>{{ 'AUTH.REGISTER.EMAIL' | translate }}</mat-label>
+                    <input matInput formControlName="email" type="email" placeholder="e.g. john@example.com">
+                    <i matSuffix class="bi bi-envelope text-primary opacity-50 px-2"></i>
+                    <mat-error *ngIf="registerForm.get('email')?.hasError('email')">{{ 'AUTH.REGISTER.EMAIL_INV' | translate }}</mat-error>
+                    <mat-error *ngIf="registerForm.get('email')?.hasError('required')">{{ 'AUTH.REGISTER.EMAIL_REQ' | translate }}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>{{ 'AUTH.LOGIN.PASSWORD' | translate }}</mat-label>
+                    <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="motDePasse">
+                    <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button"
+                        class="text-primary opacity-50">
+                        <i [class]="hidePassword ? 'bi bi-eye-slash-fill' : 'bi bi-eye-fill'"></i>
+                    </button>
+                    <mat-error *ngIf="registerForm.get('motDePasse')?.hasError('minlength')">{{ 'AUTH.REGISTER.PASS_MIN' | translate }}</mat-error>
+                    <mat-error *ngIf="registerForm.get('motDePasse')?.hasError('required')">{{ 'AUTH.LOGIN.PASSWORD_REQ' | translate }}</mat-error>
+                </mat-form-field>
+
+                <div class="mb-2">
+                    <mat-checkbox color="primary" class="small-check">
+                        <span class="small opacity-75">{{ 'AUTH.REGISTER.AGREE' | translate }} <a routerLink="/terms-and-conditions" class="fw-700 text-terracotta">{{
+                                'AUTH.REGISTER.TERMS' | translate }}</a></span>
+                    </mat-checkbox>
+                </div>
+
+                <button mat-flat-button color="primary" class="auth-btn mb-1" [disabled]="registerForm.invalid || loading">
+                    <span class="spinner-border spinner-border-sm me-2" role="status" *ngIf="loading"></span>
+                    {{ loading ? ('AUTH.REGISTER.CREATING' | translate) : ('AUTH.REGISTER.GET_STARTED' | translate) }}
+                </button>
+
+                <div class="social-auth text-center">
+                    <p class="small text-muted mb-3 position-relative social-divider"><span>{{ 'AUTH.LOGIN.OR_CONTINUE' | translate }}</span></p>
+                    <button type="button" mat-stroked-button class="w-100 google-btn bg-white shadow-sm" (click)="loginWithGoogle()">
+                        <img src="https://www.google.com/favicon.ico" class="me-2" style="width: 16px;">
+                        {{ 'AUTH.REGISTER.GOOGLE' | translate }}
+                    </button>
+                </div>
+            </form>
+
+            <div class="auth-footer text-center mt-4">
+                <p class="mb-0 small text-muted">{{ 'AUTH.REGISTER.ALREADY_MEMBER' | translate }} 
+                    <a routerLink="/auth/login" class="fw-800 text-decoration-none text-terracotta ms-1">{{ 'AUTH.REGISTER.LOG_IN' | translate }}</a>
+                </p>
+            </div>
+        </div>
+    </mat-card>
+</div>

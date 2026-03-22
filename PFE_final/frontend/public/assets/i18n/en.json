@@ -1,0 +1,495 @@
+{
+    "NAV": {
+        "HOME": "Home",
+        "DESTINATIONS": "Destinations",
+        "MAP": "Map",
+        "EVENTS": "Events",
+        "ADMIN": "Admin",
+        "PROFILE": "Profile",
+        "SETTINGS": "Settings",
+        "LOGOUT": "Logout",
+        "LOGIN": "Login",
+        "SIGNUP": "Sign Up"
+    },
+    "CATEGORIES": {
+        "ALL": "All",
+        "CULTURAL": "Cultural",
+        "NATURE": "Nature",
+        "HISTORICAL": "Historical",
+        "RELIGIOUS": "Religious",
+        "URBAN": "Urban",
+        "FOOD": "Gastronomy",
+        "ADVENTURE": "Adventure",
+        "BEACH": "Beach",
+        "CRAFT": "Craftsmanship"
+    },
+    "DESTINATIONS": {
+        "LIST": {
+            "HERO_SUBTITLE": "Explore Morocco",
+            "HERO_TITLE": "Discover Amazing Places",
+            "HERO_DESC": "From ancient medinas to stunning landscapes",
+            "SEARCH_PLACEHOLDER": "Search destinations...",
+            "LOAD_MORE": "Load More",
+            "EMPTY_TITLE": "No destinations found",
+            "EMPTY_DESC": "Try adjusting your search or filters",
+            "RESET": "Reset Filters",
+            "ADD_TOOLTIP": "Add New Destination"
+        },
+        "RESERVATION": {
+            "TITLE": "Reserve: {{name}}",
+            "LOADING_ITINERARIES": "Loading your itineraries...",
+            "SELECT_ITINERARY": "Select Itinerary",
+            "CHOOSE_ITINERARY": "Choose an itinerary...",
+            "START_DATE": "Start Date",
+            "END_DATE": "End Date",
+            "QUANTITY": "Quantity (People / Units)",
+            "NO_ITINERARIES": "You don't have any itineraries yet. Please create an itinerary first before making a reservation!",
+            "CONFIRM": "Confirm Reservation",
+            "CONFIRMING": "Confirming...",
+            "ERROR_SELECT_ITINERARY": "Please select an itinerary to link this reservation.",
+            "ERROR_HOTEL_DATES": "Start and end dates are required for hotels.",
+            "ERROR_DATE_ORDER": "Start date must be before end date.",
+            "ERROR_GENERIC": "Reservation failed. Please check your data.",
+            "CREATE_ITINERARY_LINK": "Create an itinerary now"
+        },
+        "DETAIL": {
+            "BREADCRUMB": "All Destinations",
+            "REVIEWS": "Reviews",
+            "RECOMMENDED": "Most Recommended",
+            "PLAN_TRIP": "Plan My Trip",
+            "EDIT": "Edit Destination",
+            "DELETE": "Delete",
+            "ABOUT": "About the Place",
+            "HISTORICAL": "Historical Significance",
+            "HISTORICAL_DESC": "Discover the deep-rooted history and architectural marvels that define {{name}}.",
+            "FACILITIES": "Amenities & Facilities",
+            "STANDARD_AMENITIES": "Standard Amenities",
+            "LOCAL_TRANSPORT": "Clean Public Transport",
+            "VISUAL_EXPLORER": "Visual Explorer",
+            "NO_PHOTOS": "No photos available for this destination yet.",
+            "EXPERIENCE_VIBE": "Experience the Vibe",
+            "VIDEO_INFO": "Watch a video tour of this beautiful location.",
+            "INTERACTIVE_LOCATION": "Interactive Location",
+            "VISITOR_REVIEWS": "Visitor Experiences",
+            "WRITE_REVIEW": "Write a Review",
+            "SHARE_EXP": "Share your experience...",
+            "POST": "Post Review",
+            "NO_REVIEWS": "No reviews yet",
+            "WEATHER": {
+                "TITLE": "Local Weather",
+                "HUMIDITY": "Humidity",
+                "WIND": "Wind Speed",
+                "FORECAST": "7-Day Forecast"
+            },
+            "GLANCE": {
+                "TITLE": "At a Glance",
+                "COST": "Average Cost",
+                "PER_PERSON": "per person",
+                "BEST_TIME": "Best Time to Visit",
+                "BEST_TIME_VAL": "Oct - May",
+                "LANGS": "Official Languages",
+                "LANGS_VAL": "Arabic, French, Tashelhit",
+                "POPULARITY": "Popularity",
+                "VIEWS": "views",
+                "CURRENCY": "MAD"
+            },
+            "TABS": {
+                "OVERVIEW": "Overview",
+                "REVIEWS": "Reviews",
+                "GALLERY": "Gallery",
+                "EVENTS": "Events",
+                "VIDEO": "Video",
+                "MAP": "Map",
+                "OFFERS": "Offers"
+            },
+            "ADD_PHOTO": "Add Photo",
+            "HIGHLIGHTS": "Key Highlights",
+            "HIGHLIGHT_BEST_EXP": "Best Experience",
+            "HIGHLIGHT_BEST_EXP_DESC": "Highly rated by recent visitors",
+            "HIGHLIGHT_PHOTO": "Photography Spot",
+            "HIGHLIGHT_PHOTO_DESC": "Perfect for travel photography",
+            "HIGHLIGHT_ECO": "Eco-Friendly",
+            "HIGHLIGHT_ECO_DESC": "Sustainable tourism",
+            "HIGHLIGHT_HERITAGE": "Heritage",
+            "HIGHLIGHT_HERITAGE_DESC": "Deep historical roots",
+            "OFFER_ALL": "All",
+            "OFFER_HOTELS": "Hotels",
+            "OFFER_RESTAURANTS": "Restaurants",
+            "OFFER_ACTIVITIES": "Activities",
+            "OFFER_TYPE_HOTEL": "Hotel",
+            "OFFER_TYPE_RESTAURANT": "Restaurant",
+            "OFFER_TYPE_ACTIVITY": "Activity",
+            "OFFER_NIGHT": "/night",
+            "OFFER_STARS": "stars",
+            "OFFER_NO_RESULTS": "No offers available for this category.",
+            "OFFER_CLEAR_FILTERS": "Clear Filters",
+            "REVIEW_RATING_LABEL": "Rating",
+            "REVIEW_COMMENT_LABEL": "Comment",
+            "STATUS_HIGH_DEMAND": "High Demand",
+            "STATUS_STANDARD": "Standard"
+        }
+    },
+    "EVENTS": {
+        "LIST": {
+            "HERO_SUBTITLE": "Cultural Events",
+            "HERO_TITLE": "Upcoming Events",
+            "HERO_DESC": "Experience Morocco's vibrant culture",
+            "SEARCH_PLACEHOLDER": "Search events...",
+            "LOAD_MORE": "Load More",
+            "EMPTY_TITLE": "No events found",
+            "EMPTY_DESC": "Try adjusting your search or filters",
+            "RESET": "Reset Filters",
+            "UPCOMING": "Upcoming",
+            "NO_EVENTS": "No events available at the moment."
+        },
+        "DETAIL": {
+            "DATE": "Date & Time",
+            "LOCATION": "Location",
+            "STATUS": "Status",
+            "ABOUT": "About the Event",
+            "JOIN": "Book Your Spot",
+            "PRICE_FREE": "Free Entry"
+        }
+    },
+    "AUTH": {
+        "LOGIN": {
+            "WELCOME": "Welcome",
+            "SUBTITLE": "Log in to continue your journey",
+            "PASSWORD": "Password",
+            "PASSWORD_REQ": "Password is required",
+            "REMEMBER": "Remember me",
+            "FORGOT": "Forgot Password?",
+            "SIGN_IN": "Sign In",
+            "SIGNING_IN": "Signing in...",
+            "OR_CONTINUE": "Or continue with",
+            "GOOGLE": "Log in with Google",
+            "NO_ACCOUNT": "Don't have an account?",
+            "CREATE": "Create Account",
+            "TWO_FACTOR": {
+                "TITLE": "2FA Validation",
+                "DESC": "Enter the 6-digit code from your authenticator app.",
+                "LABEL": "2FA Code",
+                "VERIFY": "Verify",
+                "BACK": "Back"
+            }
+        },
+        "REGISTER": {
+            "TITLE": "Join the Explorers",
+            "SUBTITLE": "Create an account to start your adventure",
+            "FIRST_NAME": "First Name",
+            "LAST_NAME": "Last Name",
+            "EMAIL": "Email Address",
+            "EMAIL_REQ": "Email is required",
+            "EMAIL_INV": "Invalid email format",
+            "PASS_MIN": "Password must be at least 6 characters",
+            "AGREE": "I agree to the",
+            "TERMS": "Terms and Conditions",
+            "GET_STARTED": "Get Started",
+            "CREATING": "Creating account...",
+            "ALREADY_MEMBER": "Already have an account?",
+            "LOG_IN": "Log in"
+        }
+    },
+    "PROFILE": {
+        "EMAIL": "Email",
+        "PHONE": "Phone",
+        "EDIT": "Edit Profile",
+        "CANCEL": "Cancel",
+        "SAVE": "Save Changes",
+        "EDIT_INFO": "Edit Personal Info",
+        "FULL_NAME": "Full Name",
+        "LANGUAGE": "Preferred Language",
+        "BIO": "About Me",
+        "BIO_PLACEHOLDER": "Tell us about your travel style...",
+        "ACTIVITY": "Recent Activity",
+        "NO_ACTIVITY": "No activities found yet",
+        "LOADING": "Loading profile..."
+    },
+    "SETTINGS": {
+        "TITLE": "Account Settings",
+        "PREFERENCES": "Preferences",
+        "SECURITY": "Security",
+        "NOTIFICATIONS": "Notifications",
+        "PRIVACY": "Privacy",
+        "DANGER_ZONE": "Danger Zone",
+        "SECURITY_TITLE": "Security Settings",
+        "CHANGE_PASS": {
+            "TITLE": "Change Password",
+            "CURRENT": "Current Password",
+            "NEW": "New Password",
+            "MIN_LENGTH": "Minimum 8 characters",
+            "CONFIRM": "Confirm New Password",
+            "MISMATCH": "Passwords do not match",
+            "UPDATE_BTN": "Update Password"
+        },
+        "PASS_CHANGED": "Password changed successfully",
+        "PASS_FAIL": "Error changing password",
+        "TWO_FACTOR": {
+            "TITLE": "Two-Factor Authentication (2FA)",
+            "DESC": "Add an extra layer of security to your account.",
+            "ENABLE_BTN": "Enable 2FA",
+            "DISABLE_BTN": "Disable 2FA",
+            "SCAN_INSTRUCTIONS": "Scan this QR Code with Google Authenticator:",
+            "MANUAL_SECRET": "Or enter this secret key manually:",
+            "PLACEHOLDER": "6-digit code",
+            "ENABLED_MSG": "2FA is enabled on your account.",
+            "DISABLED_MSG": "2FA has been disabled."
+        },
+        "LANGUAGE_LABEL": "Interface Language",
+        "LANGUAGE_DESC": "Select your preferred language for the application interface.",
+        "THEME": {
+            "LABEL": "Appearance Mode",
+            "DESC": "Choose between Light, Dark, or System default theme.",
+            "LIGHT": "Light Mode",
+            "DARK": "Dark Mode",
+            "SYSTEM": "System Default"
+        },
+        "SAVE_PREFERENCES": "Save Preferences",
+        "NOTIFICATIONS_TITLE": "Notifications",
+        "NOTIFICATIONS_DESC": "Manage how you receive alerts and updates.",
+        "EMAIL_NOTIF": {
+            "TITLE": "Email Notifications",
+            "DESC": "Receive updates and newsletters via email."
+        },
+        "SMS_NOTIF": {
+            "TITLE": "SMS Alerts",
+            "DESC": "Get critical alerts directly on your phone."
+        },
+        "EVENT_REMINDERS": {
+            "TITLE": "Event Reminders",
+            "DESC": "Get notified before your saved events start."
+        },
+        "PRIVACY_TITLE": "Privacy & Visibility",
+        "PRIVACY_DESC": "Control what information others can see.",
+        "PUBLIC_PROFILE": {
+            "TITLE": "Public Profile",
+            "DESC": "Allow others to see your profile and reviews."
+        },
+        "SHOW_EMAIL": {
+            "TITLE": "Show Email",
+            "DESC": "Display your email address on your public profile."
+        },
+        "MAP_PERMISSIONS": {
+            "TITLE": "Map Location",
+            "DESC": "Allow the app to use your location for better navigation."
+        },
+        "DANGER": {
+            "TITLE": "Danger Zone",
+            "DESC": "Irreversible actions for your account.",
+            "DELETE_ACCOUNT": {
+                "TITLE": "Delete Account",
+                "DESC": "Once you delete your account, there is no going back. Please be certain.",
+                "CONFIRM": "Are you absolutely sure you want to permanently delete your account?",
+                "BTN": "Delete my account"
+            }
+        }
+    },
+    "MAP_PAGE": {
+        "SEARCH_PLACEHOLDER": "Search for a place...",
+        "GO": "Go",
+        "CALCULATING": "Calculating route...",
+        "EXPLORE": "Explore Morocco"
+    },
+    "COMMON": {
+        "SEARCH": "Search",
+        "LOADING": "Loading...",
+        "SAVE": "Save",
+        "CANCEL": "Cancel",
+        "DELETE": "Delete",
+        "EDIT": "Edit",
+        "VIEW": "View",
+        "VIEW_MORE": "View more",
+        "CLOSE": "Close",
+        "SHARE": "Share",
+        "REQUIRED": "Required",
+        "VERIFY": "Verify",
+        "MOROCCO": "Morocco",
+        "RESERVE": "Reserve"
+    },
+    "LANG": {
+        "EN": "English",
+        "FR": "Français",
+        "AR": "العربية",
+        "ES": "Español",
+        "DE": "Deutsch"
+    },
+    "FOOTER": {
+        "DESC": "Your ultimate guide to discovering the beauty, culture, and events of Morocco.",
+        "QUICK_LINKS": "Quick Links",
+        "EXPLORE": "Explore",
+        "SUPPORT": "Support",
+        "HELP": "Help Center",
+        "CONTACT": "Contact Us",
+        "TERMS": "Terms of Service",
+        "PRIVACY": "Privacy Policy",
+        "COPYRIGHT": "© 2026 Safar Morocco. All rights reserved.",
+        "MADE_WITH": "Made with",
+        "CULTURAL": "Culture",
+        "NATURE": "Nature",
+        "HISTORICAL": "Historical",
+        "RELIGIOUS": "Religious"
+    },
+    "DASHBOARD": {
+        "TITLE": "Dashboard Overview",
+        "SUBTITLE": "Welcome back, Admin",
+        "METRICS": {
+            "USERS": "Total Travelers",
+            "DESTINATIONS": "Active Destinations",
+            "EVENTS": "Upcoming Events",
+            "REVIEWS": "Pending Reviews"
+        },
+        "CHARTS": {
+            "GROWTH": "Growth Analytics",
+            "LAST_24H": "Last 24 Hours",
+            "CATEGORIES": "Categories",
+            "DURATION": "Recent Events Duration"
+        },
+        "ACTIVITY": {
+            "TITLE": "Recent Activity",
+            "USER": "User",
+            "ACTION": "Action",
+            "DATE": "Date",
+            "EMPTY": "No recent activity",
+            "GUEST": "Guest"
+        }
+    },
+    "HOME": {
+        "HERO": {
+            "SUBTITLE": "Welcome to Safar Morocco",
+            "TITLE": "Discover Your Ultimate Travel Experience in",
+            "DESC": "Discover the most beautiful places, events and culture of Morocco.",
+            "SEARCH_PLACEHOLDER": "Where do you want to go?"
+        },
+        "FEATURED": {
+            "TAG": "Destinations",
+            "TITLE": "Featured Places",
+            "SUBTITLE": "Handpicked destinations for your next adventure",
+            "EXPLORE_ALL": "Explore All"
+        },
+        "WHY": {
+            "TAG": "Features",
+            "TITLE": "Why Choose Safar Morocco",
+            "DESC": "We provide the best tools to make your trip unforgettable.",
+            "VERIFIED": {
+                "TITLE": "Verified Places",
+                "DESC": "All destinations are reviewed and verified by our team."
+            },
+            "EVENTS": {
+                "TITLE": "Cultural Events",
+                "DESC": "Never miss a festival, concert or local event."
+            },
+            "AI": {
+                "TITLE": "AI Companion",
+                "DESC": "Get personalized recommendations from our AI chatbot."
+            },
+            "MAPPED": {
+                "TITLE": "Interactive Map",
+                "DESC": "Navigate easily with our detailed interactive map."
+            },
+            "COMPANION": "Your Perfect Travel Companion"
+        },
+        "MAP_PREVIEW": {
+            "TITLE": "Explore on Map",
+            "DESC": "Visualize all destinations and plan your route in one place.",
+            "FULLSCREEN": "Open Interactive Map"
+        },
+        "AI_BANNER": {
+            "TITLE": "Need Travel Advice?",
+            "DESC": "Our AI travel expert is ready to help you plan your perfect trip to Morocco.",
+            "START": "Chat with AI"
+        }
+    },
+    "CHATBOT": {
+        "HEADER": "Safar Assistant",
+        "PLACEHOLDER": "Type your message...",
+        "ERROR": "Sorry, I encountered an error. Please try again later.",
+        "INITIAL": "Hello! I'm your Safar Morocco AI Assistant. How can I help you today?"
+    },
+    "ITINERARY": {
+        "HERO_SUBTITLE": "My Itineraries",
+        "HERO_TITLE": "My Travel Itineraries",
+        "HERO_DESC": "Find and manage your journeys",
+        "STATS_ITINERARIES": "Total Itineraries",
+        "STATS_OPTIMIZED": "Optimized Routes",
+        "STATS_DISTANCE": "Total Distance",
+        "NEW_ITINERARY": "New Itinerary",
+        "LOADING": "Loading...",
+        "NO_ITINERARY": "No itinerary found",
+        "START_CREATING": "Start by creating your first itinerary",
+        "CREATE_ITINERARY": "Create itinerary",
+        "HERO_DESC_CREATE": "Plan your trip by selecting your favorite destinations in Morocco.",
+        "UNNAMED_ITINERARY": "Unnamed itinerary",
+        "OPTIMIZED": "Optimized",
+        "NOT_OPTIMIZED": "Not optimized",
+        "DESTINATIONS_COUNT": "destinations",
+        "CREATED_ON": "Created on",
+        "EDIT": "Edit Itinerary",
+        "CREATE": "Create Itinerary",
+        "NAME": "Itinerary Name",
+        "NAME_PLACEHOLDER": "Ex: Trip to North",
+        "NAME_ERROR": "Itinerary name is required.",
+        "SELECTED_DESTINATIONS": "Selected Destinations",
+        "NO_DESTINATION_SELECTED": "Please select at least one destination from the list below.",
+        "AVAILABLE_DESTINATIONS": "Available Destinations",
+        "SELECTED": "Selected",
+        "SAVE": "Save Itinerary",
+        "UPDATING": "Updating...",
+        "CREATING": "Creating...",
+        "CANCEL": "Cancel",
+        "BACK": "Back",
+        "DETAILS": "Itinerary Details",
+        "EDIT_PARAMS": "Edit parameters",
+        "DELETE_ITINERARY": "Delete itinerary",
+        "DURATION": "Estimated Duration",
+        "DISTANCE": "Total Distance",
+        "ALREADY_OPTIMIZED": "Itinerary is already optimized",
+        "OPTIMIZE": "Optimize Itinerary",
+        "MAP_TITLE": "Itinerary Map",
+        "START_NAVIGATION": "Start navigation",
+        "VIEW_DETAILS": "View details of {{name}}",
+        "REFRESH": "Refresh",
+        "KM_UNIT": "km",
+        "HOURS_UNIT": "h"
+    },
+    "FAVORIS": {
+        "TITLE": "My Favorites",
+        "COUNT": "saved destinations",
+        "EMPTY_TITLE": "No favorites yet",
+        "EMPTY_DESC": "Start exploring Morocco and click the heart icon to save your favorite destinations.",
+        "EXPLORE": "Explore destinations",
+        "NAV_LINK": "My Favorites"
+    },
+    "CONTACT_PAGE": {
+        "HERO_TITLE": "Contact Us",
+        "HERO_SUBTITLE": "We are here to help you plan your perfect trip.",
+        "FORM_TITLE": "Send us a Message",
+        "LABEL_NAME": "Full Name",
+        "LABEL_EMAIL": "Email Address",
+        "LABEL_SUBJECT": "Subject",
+        "LABEL_MESSAGE": "Your Message",
+        "BTN_SEND": "Send Message",
+        "ERROR_NAME": "Name must be at least 3 characters.",
+        "ERROR_EMAIL": "Please enter a valid email address.",
+        "ERROR_SUBJECT": "Subject is required.",
+        "ERROR_MESSAGE": "Message must be at least 10 characters.",
+        "INFO_LOCATION_TITLE": "Visit Us",
+        "INFO_PHONE_TITLE": "Call Us",
+        "INFO_EMAIL_TITLE": "Email Us",
+        "INFO_SOCIAL_TITLE": "Follow Us",
+        "INTERACTIVE_MAP": "Interactive Map"
+    },
+    "ITINERARIES": {
+        "DETAIL": {
+            "OVERVIEW": "Overview",
+            "LOADING": "Loading...",
+            "YOUR_DESTINATIONS": "Your Destinations",
+            "YOUR_RESERVATIONS": "Your Reservations",
+            "FROM": "From:",
+            "TO": "To:",
+            "QUANTITY": "Quantity:",
+            "TOTAL_PRICE": "Total Price",
+            "PDF_INVOICE": "PDF Invoice",
+            "OFFER_LABEL": "Offer"
+        }
+    }
+}

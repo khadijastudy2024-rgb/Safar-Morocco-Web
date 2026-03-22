@@ -1,0 +1,207 @@
+<div class="main-content fade-in">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <span class="hero-subtitle">{{ 'HOME.HERO.SUBTITLE' | translate }}</span>
+            <h1 class="hero-title">{{ 'HOME.HERO.TITLE' | translate }} <br> <span
+                    class="text-terracotta-light">Morocco</span></h1>
+            <p class="hero-desc">{{ 'HOME.HERO.DESC' | translate }}</p>
+
+            <div class="search-box">
+                <div class="input-wrapper">
+                    <i class="bi bi-geo-alt search-icon"></i>
+                    <input type="text" [(ngModel)]="searchQuery" (keydown.enter)="onSearch()"
+                        [placeholder]="'HOME.HERO.SEARCH_PLACEHOLDER' | translate">
+                </div>
+                <button class="btn btn-primary" (click)="onSearch()">
+                    {{ 'COMMON.SEARCH' | translate }}
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendations Section -->
+    <section class="section-py bg-white" *ngIf="isLoggedIn">
+        <div class="container-xl">
+            <app-recommendation></app-recommendation>
+        </div>
+    </section>
+
+    <!-- Featured Destinations -->
+    <section class="section-py bg-light">
+        <div class="container-xl">
+            <div class="section-header text-center text-md-start d-md-flex align-items-end justify-content-between">
+                <div>
+                    <span class="section-tag">{{ 'HOME.FEATURED.TAG' | translate }}</span>
+                    <h2 class="section-title">{{ 'HOME.FEATURED.TITLE' | translate }}</h2>
+                    <p class="section-subtitle">{{ 'HOME.FEATURED.SUBTITLE' | translate }}</p>
+                </div>
+                <a routerLink="/destinations"
+                    class="btn btn-outline-primary mt-3 mt-md-0 d-inline-flex align-items-center">
+                    {{ 'HOME.FEATURED.EXPLORE_ALL' | translate }} <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+            </div>
+
+            <div class="row g-4" *ngIf="!loading">
+                <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let dest of featuredDestinations">
+                    <app-destination-card [destination]="dest"></app-destination-card>
+                </div>
+            </div>
+
+            <div *ngIf="loading" class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">{{ 'COMMON.LOADING' | translate }}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section class="section-py bg-light">
+        <div class="container-xl">
+            <div
+                class="section-header text-center text-md-start d-md-flex align-items-end justify-content-between mb-5">
+                <div>
+                    <span class="section-tag">Festivals & Culture</span>
+                    <h2 class="section-title">Upcoming Events</h2>
+                    <p class="section-subtitle">Experience the magic of Morocco through its unique festivals and
+                        cultural gatherings.</p>
+                </div>
+                <a routerLink="/events"
+                    class="btn btn-primary mt-3 mt-md-0 d-inline-flex align-items-center rounded-pill px-4">
+                    Explore All Events <i class="bi bi-calendar-event ms-2"></i>
+                </a>
+            </div>
+
+            <div class="row g-4" *ngIf="!loading">
+                <div class="col-lg-4 col-md-6" *ngFor="let event of upcomingEvents">
+                    <a [routerLink]="['/events', event.id]" [state]="{ data: event }"
+                        class="event-preview-card shadow-sm h-100 bg-white rounded-4 overflow-hidden border-0 hover-lift ripple-effect d-block text-decoration-none">
+                        <div class="position-relative">
+                            <img [src]="(event.imageUrl | imageUrl) || 'https://images.unsplash.com/photo-1549493207-01fc1d4569b6?auto=format&fit=crop&q=80&w=800'"
+                                class="img-fluid w-100" style="height: 220px; object-fit: cover;" [alt]="event.nom">
+                            <div
+                                class="position-absolute top-0 end-0 m-3 px-3 py-1 bg-white-glass backdrop-blur rounded-pill shadow-sm">
+                                <span class="fw-bold text-dark small">{{ event.dateDebut | date:'MMM dd' }}</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <i class="bi bi-geo-alt-fill text-terracotta small"></i>
+                                <span class="text-muted small fw-600">{{ event.lieu }}</span>
+                            </div>
+                            <h3 class="h5 fw-800 mb-2">{{ event.nom }}</h3>
+                            <p class="text-muted small mb-0 line-clamp-2">{{ event.description || 'Join us for this
+                                amazing cultural experience in Morocco.' }}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div *ngIf="!loading && upcomingEvents.length === 0"
+                class="text-center py-5 border rounded-4 bg-white border-dashed">
+                <i class="bi bi-calendar-x display-4 text-muted mb-3 d-block"></i>
+                <h4 class="text-secondary">No upcoming events at the moment</h4>
+                <p class="text-muted">Check back later for new cultural gatherings and festivals.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="section-py bg-light">
+        <div class="container-xl">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="section-tag">{{ 'HOME.WHY.TAG' | translate }}</span>
+                    <h2 class="section-title">{{ 'HOME.WHY.TITLE' | translate }}</h2>
+                    <p class="mb-5 text-muted">{{ 'HOME.WHY.DESC' | translate }}</p>
+
+                    <div class="row g-4">
+                        <div class="col-sm-6">
+                            <div class="feature-card">
+                                <div class="icon-box"><i class="bi bi-patch-check-fill"></i></div>
+                                <h3>{{ 'HOME.WHY.VERIFIED.TITLE' | translate }}</h3>
+                                <p class="text-muted small">{{ 'HOME.WHY.VERIFIED.DESC' | translate }}</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="feature-card">
+                                <div class="icon-box"><i class="bi bi-calendar-event-fill"></i></div>
+                                <h3>{{ 'HOME.WHY.EVENTS.TITLE' | translate }}</h3>
+                                <p class="text-muted small">{{ 'HOME.WHY.EVENTS.DESC' | translate }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="feature-card">
+                                <div class="icon-box"><i class="bi bi-chat-quote-fill"></i></div>
+                                <h3>{{ 'HOME.WHY.AI.TITLE' | translate }}</h3>
+                                <p class="text-muted small">{{ 'HOME.WHY.AI.DESC' | translate }}</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="feature-card">
+                                <div class="icon-box"><i class="bi bi-geo-fill"></i></div>
+                                <h3>{{ 'HOME.WHY.MAPPED.TITLE' | translate }}</h3>
+                                <p class="text-muted small">{{ 'HOME.WHY.MAPPED.DESC' | translate }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=800"
+                            alt="Moroccan Architecture" class="img-fluid rounded-4 shadow-lg w-100"
+                            style="aspect-ratio: 4/5; object-fit: cover;" loading="lazy">
+                        <div class="position-absolute bottom-0 start-0 m-4 p-4 bg-white rounded-3 shadow-lg d-none d-md-block"
+                            style="max-width: 250px;">
+                            <i class="bi bi-stars text-warning fs-3 mb-2 d-block"></i>
+                            <p class="fw-bold mb-0">{{ 'HOME.WHY.COMPANION' | translate }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Preview Section -->
+    <section class="section-py p-0">
+        <div class="container-fluid p-0">
+            <div class="map-preview-wrapper position-relative">
+                <div id="mini-map" class="home-mini-map"></div>
+
+                <!-- Map Overlay Gradient & CTA -->
+                <div class="map-overlay-cta pointer-events-none">
+                    <div class="container-xl h-100 d-flex align-items-center">
+                        <div
+                            class="map-text-content pointer-events-auto bg-white-glass p-4 rounded-4 shadow-lg backdrop-blur">
+                            <h2 class="mb-2 text-dark fw-800">{{ 'HOME.MAP_PREVIEW.TITLE' | translate }}</h2>
+                            <p class="mb-4 text-muted">{{ 'HOME.MAP_PREVIEW.DESC' | translate }}</p>
+                            <a routerLink="/map" class="btn btn-primary px-4 py-2 rounded-pill shadow-sm fw-bold">
+                                <i class="bi bi-arrows-fullscreen me-2"></i> {{ 'HOME.MAP_PREVIEW.FULLSCREEN' |
+                                translate }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- AI Promo Banner -->
+    <section class="section-py">
+        <div class="container-xl">
+            <div class="ai-cta-banner shadow-lg">
+                <i class="bi bi-robot ai-icon-large"></i>
+                <h2 class="mb-3">{{ 'HOME.AI_BANNER.TITLE' | translate }}</h2>
+                <p class="mb-4 opacity-75 mx-auto" style="max-width: 600px;">{{ 'HOME.AI_BANNER.DESC' | translate }}</p>
+                <button class="btn btn-light btn-lg px-5 shadow text-majorelle fw-bold" (click)="openChat()">
+                    {{ 'HOME.AI_BANNER.START' | translate }} <i class="bi bi-magic ms-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+</div>

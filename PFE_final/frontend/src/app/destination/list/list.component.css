@@ -1,0 +1,104 @@
+/* Destination List Modern Styling — Harmonized with Events */
+
+.hero-bg-destinations {
+    background: url('https://img.freepik.com/premium-photo/jemaa-elfna-square-sunset-marrakech_656073-15078.jpg') center center/cover no-repeat;
+    background-attachment: fixed;
+}
+
+/* Shared styles handled by styles.css */
+
+.hero-search-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.search-input-group {
+    position: relative;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 16px;
+    padding: 0.4rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.search-input-group:focus-within {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    background: #fff;
+}
+
+.search-icon {
+    padding: 0 1.25rem;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.form-control-custom {
+    border: none;
+    background: transparent;
+    padding: 0.85rem 1rem 0.85rem 0;
+    width: 100%;
+    font-weight: 600;
+    color: #1e293b;
+    outline: none;
+}
+
+.form-control-custom::placeholder {
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+/* Category Filters */
+.filters-container {
+    margin-top: -2.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+.filter-pills {
+    background: white;
+    display: inline-flex;
+    padding: 0.6rem;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f1f5f9;
+}
+
+.pill-btn {
+    border: none;
+    background: transparent;
+    padding: 0.75rem 1.75rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #64748b;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.pill-btn:hover {
+    color: var(--primary-color);
+    background: #fff7ed;
+}
+
+.pill-btn.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 8px 15px rgba(232, 93, 4, 0.3);
+}
+
+/* Response Layout */
+@media (max-width: 991.98px) {
+    .hero-small { height: auto; padding: 10rem 0 6rem; }
+    .filters-container { margin-top: 2rem; }
+    .filter-pills { flex-wrap: wrap; justify-content: center; }
+}
+
+@media (max-width: 767.98px) {
+    .display-3 { font-size: 2.5rem !important; }
+    .hero-search-wrapper .row { flex-direction: column; }
+    .pill-btn { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
+}

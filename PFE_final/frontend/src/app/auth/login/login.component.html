@@ -1,0 +1,97 @@
+<div class="auth-wrapper">
+    <mat-card class="auth-card fade-in">
+        <!-- Visual Panel -->
+        <div class="visual-panel">
+            <h1>{{ 'AUTH.LOGIN.WELCOME' | translate }}</h1>
+            <p>{{ 'AUTH.LOGIN.SUBTITLE' | translate }}</p>
+            <div class="mt-auto opacity-75 small">
+                &copy; 2026 Safar Morocco. Explore the beauty of heritage.
+            </div>
+        </div>
+
+        <!-- Form Panel -->
+        <div class="form-panel">
+            <div class="auth-header">
+                <h2 class="fw-800">{{ 'AUTH.LOGIN.SIGN_IN' | translate }}</h2>
+                <p class="text-muted small">Enter your details to access your account</p>
+            </div>
+
+            <!-- 2FA Form -->
+            <div *ngIf="requiresTwoFactor" class="text-center fade-in">
+                <h3 class="mb-3">{{ 'AUTH.LOGIN.TWO_FACTOR.TITLE' | translate }}</h3>
+                <p class="text-muted small">{{ 'AUTH.LOGIN.TWO_FACTOR.DESC' | translate }}</p>
+
+                <mat-form-field appearance="outline" class="w-100 mb-3">
+                    <mat-label>{{ 'AUTH.LOGIN.TWO_FACTOR.LABEL' | translate }}</mat-label>
+                    <input matInput [(ngModel)]="twoFactorCode" placeholder="123456" maxlength="6"
+                        style="letter-spacing: 5px; text-align: center; font-weight: bold;">
+                </mat-form-field>
+
+                <button mat-flat-button color="primary" class="w-100 mb-3 auth-btn" (click)="verify2FA()"
+                    [disabled]="loading || twoFactorCode.length < 6">
+                    <span class="spinner-border spinner-border-sm me-2" *ngIf="loading"></span>
+                    {{ 'AUTH.LOGIN.TWO_FACTOR.VERIFY' | translate }}
+                </button>
+
+                <button mat-button color="warn" (click)="requiresTwoFactor = false">{{ 'AUTH.LOGIN.TWO_FACTOR.BACK' |
+                    translate }}</button>
+            </div>
+
+            <!-- Main Login Form -->
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="d-flex flex-column gap-2"
+                *ngIf="!requiresTwoFactor">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>{{ 'AUTH.REGISTER.EMAIL' | translate }}</mat-label>
+                    <input matInput formControlName="email" placeholder="e.g. wanderer@example.com">
+                    <i matSuffix class="bi bi-envelope text-primary opacity-50 px-2"></i>
+                    <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+                        {{ 'AUTH.REGISTER.EMAIL_REQ' | translate }}
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+                        {{ 'AUTH.REGISTER.EMAIL_INV' | translate }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>{{ 'AUTH.LOGIN.PASSWORD' | translate }}</mat-label>
+                    <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="motDePasse">
+                    <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button"
+                        class="text-primary opacity-50">
+                        <i [class]="hidePassword ? 'bi bi-eye-slash-fill' : 'bi bi-eye-fill'"></i>
+                    </button>
+                    <mat-error *ngIf="loginForm.get('motDePasse')?.hasError('required')">
+                        {{ 'AUTH.LOGIN.PASSWORD_REQ' | translate }}
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <mat-checkbox color="primary" class="small-check"><span class="small opacity-75">{{
+                            'AUTH.LOGIN.REMEMBER' | translate }}</span></mat-checkbox>
+                    <a routerLink="/auth/forgot-password" class="small fw-700 text-decoration-none text-terracotta">{{ 'AUTH.LOGIN.FORGOT' |
+                        translate }}</a>
+                </div>
+
+                <button mat-flat-button color="primary" class="auth-btn mb-1" [disabled]="loginForm.invalid || loading">
+                    <span class="spinner-border spinner-border-sm me-2" role="status" *ngIf="loading"></span>
+                    {{ loading ? ('AUTH.LOGIN.SIGNING_IN' | translate) : ('AUTH.LOGIN.SIGN_IN' | translate) }}
+                </button>
+
+                <div class="social-auth text-center">
+                    <p class="small text-muted mb-3 position-relative social-divider"><span>{{ 'AUTH.LOGIN.OR_CONTINUE' |
+                            translate }}</span></p>
+                    <button type="button" mat-stroked-button class="w-100 google-btn bg-white shadow-sm"
+                        (click)="loginWithGoogle()">
+                        <img src="https://www.google.com/favicon.ico" class="me-2" style="width: 16px;">
+                        {{ 'AUTH.LOGIN.GOOGLE' | translate }}
+                    </button>
+                </div>
+            </form>
+
+            <div class="auth-footer text-center mt-4">
+                <p class="mb-0 small text-muted">{{ 'AUTH.LOGIN.NO_ACCOUNT' | translate }} 
+                    <a routerLink="/auth/register" class="fw-800 text-decoration-none text-terracotta ms-1">{{ 'AUTH.LOGIN.CREATE' | translate }}</a>
+                </p>
+            </div>
+        </div>
+    </mat-card>
+</div>

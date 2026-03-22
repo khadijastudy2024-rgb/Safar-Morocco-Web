@@ -1,0 +1,40 @@
+.preferences-container {
+    max-width: 800px;
+}
+
+.theme-card {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.theme-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.theme-card.active {
+    border-color: var(--bs-primary);
+    background-color: var(--bs-primary-bg-subtle);
+}
+
+.theme-preview {
+    height: 80px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.theme-light .theme-preview {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+.theme-dark .theme-preview {
+    background-color: #212529;
+    border: 1px solid #343a40;
+}
+
+.theme-system .theme-preview {
+    background: linear-gradient(135deg, #f8f9fa 50%, #212529 50%);
+    border: 1px solid #dee2e6;
+}

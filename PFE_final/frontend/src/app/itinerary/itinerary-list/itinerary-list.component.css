@@ -1,0 +1,135 @@
+/* Hero Section - Matched to Destinations */
+.hero-bg-itinerary {
+    background: url('https://lesglobeblogueurs.com/wp-content/uploads/2019/12/car-2417295erikawittlieb-pixabay-3-1920x1179.jpg') center center/cover no-repeat;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 0.2rem;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Grid Adjustments */
+.rounded-xxl {
+    border-radius: 2rem !important;
+}
+
+.rounded-4 {
+    border-radius: 1rem !important;
+}
+
+/* Empty State Styling */
+.empty-state-card {
+    border: 1px solid #F3F4F6;
+    background: white;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.empty-icon-box {
+    opacity: 0.3;
+}
+
+/* Itinerary Card Styling */
+.itinerary-card {
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.itinerary-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+    border-color: var(--primary-color, #d35400) !important;
+}
+
+.itinerary-badge {
+    font-size: 0.75rem;
+    padding: 0.4em 0.8em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-weight: 600;
+}
+
+.bg-success-subtle {
+    background-color: rgba(25, 135, 84, 0.1) !important;
+}
+
+.bg-secondary-subtle {
+    background-color: rgba(108, 117, 125, 0.1) !important;
+}
+
+.bg-primary-subtle {
+    background-color: rgba(211, 84, 0, 0.1) !important;
+}
+
+.bg-info-subtle {
+    background-color: rgba(13, 202, 240, 0.1) !important;
+}
+
+.bg-warning-subtle {
+    background-color: rgba(255, 193, 7, 0.1) !important;
+}
+
+.card-footer .btn {
+    transition: all 0.2s ease;
+}
+
+.itinerary-card:hover .card-footer .btn {
+    background-color: var(--primary-color, #d35400) !important;
+    color: white !important;
+}
+
+.itinerary-card:hover .card-footer .btn i {
+    color: white !important;
+    transform: translateX(3px);
+    transition: transform 0.2s ease;
+}
+
+@media (max-width: 991.98px) {
+    .hero-small {
+        min-height: 450px;
+    }
+
+    .hero-stats {
+        gap: 1.5rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-small {
+        min-height: 550px;
+        padding-top: 100px;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}

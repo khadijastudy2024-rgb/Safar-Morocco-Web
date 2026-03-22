@@ -1,0 +1,33 @@
+# IDEs
+.idea/
+.vscode/
+
+# Local configuration
+.env
+*.log
+
+# Root level
+node_modules/
+
+# Frontend (Angular)
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/build_log.txt
+frontend/error.txt
+
+# Backend (Spring Boot)
+safar_morocco_backend/Safar_Morocco/target/
+safar_morocco_backend/Safar_Morocco/.mvn/
+safar_morocco_backend/Safar_Morocco/*.log
+safar_morocco_backend/Safar_Morocco/compile_output*.txt
+safar_morocco_backend/Safar_Morocco/output*.txt
+safar_morocco_backend/Safar_Morocco/file_list.txt
+
+# Chatbot (Python)
+chatbot/__pycache__/
+chatbot/.env
+chatbot/*.pyc
+
+# Uploads
+uploads/

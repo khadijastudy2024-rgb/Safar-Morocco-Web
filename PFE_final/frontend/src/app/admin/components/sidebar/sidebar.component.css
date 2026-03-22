@@ -1,0 +1,117 @@
+.sidebar-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #1e293b;
+}
+
+.sidebar-header {
+    padding: 2rem 1.5rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--safar-terracotta);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+}
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.logo .safar {
+    color: white;
+}
+
+.logo .morocco {
+    color: var(--safar-terracotta);
+}
+
+.sidebar-menu {
+    flex: 1;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.menu-label {
+    padding: 1.5rem 0.5rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: #94a3b8;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.nav-link i {
+    font-size: 1.25rem;
+}
+
+.nav-link:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link.active {
+    color: white;
+    background: var(--safar-terracotta);
+    box-shadow: 0 4px 12px rgba(211, 84, 0, 0.3);
+}
+
+.sidebar-footer {
+    padding: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: auto;
+}
+
+.logout-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.logout-btn:hover {
+    background: #ef4444;
+    color: white;
+}

@@ -1,0 +1,114 @@
+.terms-wrapper {
+    min-height: 100vh;
+    background-color: var(--safar-sand);
+    font-family: var(--font-main);
+}
+
+.terms-card {
+    border: none;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-premium) !important;
+    overflow: hidden;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.terms-header {
+    background: linear-gradient(135deg, rgba(28, 57, 187, 0.9) 0%, rgba(18, 34, 112, 0.95) 100%),
+                url('https://img.freepik.com/free-vector/vector-abstract-geometric-islamic-background-based-ethnic-muslim-ornaments-intertwined-paper-stripes-elegant-background-cards-invitations-etc_1217-633.jpg?ga=GA1.1.1087207373.1761571393&semt=ais_hybrid&w=740&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 5rem 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.display-text {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+.section-title {
+    color: var(--safar-majorelle);
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--safar-terracotta);
+    border-radius: 2px;
+}
+
+.terms-body p {
+    line-height: 1.8;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+.terms-body ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.terms-body ul li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.terms-body ul li::before {
+    content: '\F633'; /* Bootstrap icons check-circle-fill */
+    font-family: "bootstrap-icons";
+    position: absolute;
+    left: 0;
+    color: var(--safar-terracotta);
+    font-weight: bold;
+}
+
+.contact-link {
+    color: var(--safar-majorelle);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.25rem;
+    transition: var(--transition-base);
+}
+
+.contact-link:hover {
+    color: var(--safar-terracotta);
+}
+
+.text-terracotta {
+    color: var(--safar-terracotta) !important;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .terms-header {
+        padding: 4rem 1.5rem;
+    }
+    
+    .terms-body {
+        padding: 2.5rem 1.5rem !important;
+    }
+}

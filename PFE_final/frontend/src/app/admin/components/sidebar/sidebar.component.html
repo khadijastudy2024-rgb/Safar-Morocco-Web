@@ -1,0 +1,66 @@
+<div class="sidebar-container">
+    <div class="sidebar-header">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="bi bi-compass-fill"></i>
+            </div>
+            <div class="logo-text">
+                <span class="safar">Safar</span>
+                <span class="morocco">Morocco</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-menu">
+        <div class="menu-label">Main Menu</div>
+        <nav class="nav-links">
+            <a routerLink="/admin/dashboard" routerLinkActive="active" class="nav-link">
+                <i class="bi bi-grid-1x2"></i>
+                <span>Dashboard</span>
+            </a>
+            <a routerLink="/admin/users" routerLinkActive="active" class="nav-link">
+                <i class="bi bi-people"></i>
+                <span>User Management</span>
+            </a>
+            <a routerLink="/admin/destinations" routerLinkActive="active" class="nav-link">
+                <i class="bi bi-geo-alt"></i>
+                <span>Destinations</span>
+            </a>
+            <a routerLink="/admin/offers" routerLinkActive="active" class="nav-link">
+                <i class="bi bi-tags"></i>
+                <span>Offers</span>
+            </a>
+            <a routerLink="/admin/reservations" routerLinkActive="active" class="nav-link">
+                <i class="bi bi-calendar-check"></i>
+                <span>Reservations</span>
+            </a>
+            <a routerLink="/admin/events" routerLinkActive="active" class="nav-link">
+                <i class="bi bi-calendar-event"></i>
+                <span>Events</span>
+            </a>
+            <a routerLink="/admin/reviews" routerLinkActive="active" class="nav-link">
+                <i class="bi bi-chat-right-text"></i>
+                <span>Reviews</span>
+            </a>
+        </nav>
+
+        <div class="menu-label">System</div>
+        <nav class="nav-links">
+            <a routerLink="/admin/logs" routerLinkActive="active" class="nav-link">
+                <i class="bi bi-journal-text"></i>
+                <span>Activity Logs</span>
+            </a>
+            <a routerLink="/settings" routerLinkActive="active" class="nav-link">
+                <i class="bi bi-gear"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="logout-btn" (click)="logout()">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+            </button>
+        </div>
+    </div>
+</div>
