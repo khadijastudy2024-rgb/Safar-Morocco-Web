@@ -3,6 +3,8 @@
 .vscode/
 
 # Local configuration
+#.env
+#*.env
 .env
 *.log
 
