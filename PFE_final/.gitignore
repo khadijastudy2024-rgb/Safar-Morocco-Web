@@ -5,7 +5,6 @@
 # Local configuration
 #.env
 #*.env
-.env
 *.log
 
 # Root level
@@ -28,7 +27,6 @@ safar_morocco_backend/Safar_Morocco/file_list.txt
 
 # Chatbot (Python)
 chatbot/__pycache__/
-chatbot/.env
 chatbot/*.pyc
 
 # Uploads
