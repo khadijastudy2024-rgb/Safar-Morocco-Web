@@ -21,9 +21,9 @@ export class AdminDestinationListComponent implements OnInit {
     @ViewChild(MatSort) sort!: MatSort;
 
     constructor(
-        private apiService: ApiService,
-        private dialog: MatDialog,
-        private translate: TranslateService
+        private readonly apiService: ApiService,
+        private readonly dialog: MatDialog,
+        private readonly translate: TranslateService
     ) {
         this.dataSource = new MatTableDataSource();
     }
@@ -64,5 +64,36 @@ export class AdminDestinationListComponent implements OnInit {
                 this.loadDestinations();
             });
         }
+    }
+
+    exportCSV() {
+        const rows = this.dataSource.data;
+        if (!rows || rows.length === 0) return;
+
+        const headers = [
+            this.translate.instant('ADMIN.DESTINATIONS.COLS.ID'),
+            this.translate.instant('ADMIN.DESTINATIONS.COLS.NAME'),
+            this.translate.instant('ADMIN.DESTINATIONS.COLS.REGION'),
+            this.translate.instant('ADMIN.DESTINATIONS.COLS.CATEGORY'),
+            this.translate.instant('ADMIN.DESTINATIONS.COLS.STATUS')
+        ];
+
+        const csvRows = rows.map(dest => [
+            dest.id,
+            `"${(dest.nom || '').replaceAll('"', '""')}"`,
+            `"${(dest.type || '').replaceAll('"', '""')}"`,
+            `"${(dest.categorie || '').replaceAll('"', '""')}"`,
+            this.translate.instant('ADMIN.DESTINATIONS.STATUS_ACTIVE')
+        ].join(','));
+
+        const csvContent = [headers.join(','), ...csvRows].join('\n');
+        const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `destinations_${new Date().toISOString().slice(0, 10)}.csv`;
+        link.click();
+        URL.revokeObjectURL(url);
     }
 }

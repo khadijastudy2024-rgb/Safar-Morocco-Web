@@ -114,4 +114,28 @@
 .logout-btn:hover {
     background: #ef4444;
     color: white;
-}
+}
+
+/* ===== RTL Support ===== */
+:host-context([dir="rtl"]) .sidebar-container {
+    border-right: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:host-context([dir="rtl"]) .logo {
+    flex-direction: row-reverse;
+}
+
+:host-context([dir="rtl"]) .nav-link {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+:host-context([dir="rtl"]) .logout-btn {
+    flex-direction: row-reverse;
+}
+
+:host-context([dir="rtl"]) .menu-label {
+    text-align: right;
+}
+

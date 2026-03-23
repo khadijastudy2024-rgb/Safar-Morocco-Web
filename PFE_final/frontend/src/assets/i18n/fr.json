@@ -11,13 +11,25 @@
     "CONTACT": "Contact",
     "TERMS": "Conditions",
     "PRIVACY": "Confidentialité",
-    "LANGUAGE": "Langue",
-    "ADMIN": "Admin",
-    "PROFILE": "Profil",
-    "SETTINGS": "Paramètres",
-    "LOGIN": "Connexion",
-    "SIGNUP": "S'inscrire",
     "LOGOUT": "Déconnexion"
+  },
+  "COMMON": {
+    "STATUS": {
+      "CONFIRMED": "Confirmé",
+      "PENDING": "En attente",
+      "CANCELLED": "Annulé",
+      "REJECTED": "Rejeté",
+      "APPROVED": "Approuvé"
+    },
+    "DAY": "Jour",
+    "DAYS": "Jours",
+    "CLOSE": "Fermer",
+    "READ_MORE": "Lire la suite",
+    "VIEW_MORE": "Voir plus",
+    "VIEW_ALL": "Voir tout",
+    "SEARCH": "Rechercher...",
+    "FILTER": "Filtrer",
+    "LOCATION": "Emplacement"
   },
   "DASHBOARD": {
     "TITLE": "Aperçu du Tableau de bord",
@@ -34,10 +46,16 @@
     "CHARTS": {
       "GROWTH_TITLE": "Croissance des réservations et utilisateurs",
       "DESTINATIONS_BY_CATEGORY": "Destinations par catégorie",
-      "ENGAGEMENT_TITLE": "Engagement des destinations populaires",
-      "USER_GROWTH_LABEL": "Nouveaux voyageurs",
+      "ENGAGEMENT_TITLE": "Interaction des Destinations Populaires",
+      "USER_GROWTH_LABEL": "Nouveaux Voyageurs",
       "ACTIVITY_LABEL": "Activité",
-      "DURATION_LABEL": "Durée (Jours)"
+      "DURATION_LABEL": "Durée (Jours)",
+      "CATEGORIES": {
+        "CULTURAL": "Culturel",
+        "NATURE": "Nature",
+        "HISTORICAL": "Historique",
+        "RELIGIOUS": "Religieux"
+      }
     },
     "LOGS": {
       "TITLE": "Journaux d'activité du système",
@@ -62,17 +80,13 @@
       "REVIEWS": "Avis",
       "SYSTEM": "Système",
       "LOGS": "Journaux d'activité",
-      "SETTINGS": "Paramètres",
       "SIGNOUT": "Déconnexion"
     },
     "LAYOUT": {
       "PAGES": "Pages",
       "DASHBOARD": "Tableau de bord",
       "ADMINISTRATOR": "Administrateur",
-      "ROLE": "Admin",
-      "PROFILE": "Mon Profil",
-      "SETTINGS": "Paramètres",
-      "LOGOUT": "Déconnexion"
+      "ROLE": "Admin"
     },
     "USERS": {
       "DELETE_CONFIRM": "Êtes-vous sûr de vouloir supprimer cet utilisateur ?",
@@ -715,58 +729,6 @@
       "DELETE_ERROR": "Échec de la suppression de l'événement"
     }
   },
-  "COMMON": {
-    "DAY": "jour",
-    "DAYS": "jours",
-    "CLOSE": "Fermer",
-    "NOTIFICATIONS": {
-      "LOADING": "Chargement...",
-      "SUCCESS": "Succès",
-      "ERROR": "Une erreur est survenue",
-      "SAVE_SUCCESS": "Modifications enregistrées avec succès !",
-      "DELETE_CONFIRM": "Êtes-vous sûr de vouloir supprimer ceci ?",
-      "DELETE_SUCCESS": "Supprimé avec succès",
-      "LOGIN_REQUIRED": "Veuillez vous connecter pour continuer"
-    },
-    "READ_MORE": "Lire Plus",
-    "VIEW_MORE": "Voir Plus",
-    "VIEW_ALL": "Voir Tout",
-    "SEARCH": "Rechercher...",
-    "FILTER": "Filtrer",
-    "LOCATION": "Emplacement",
-    "PHONE": "Numéro de Téléphone",
-    "LANGUAGE": "Sélection de la Langue",
-    "BIO": "Bio",
-    "BIO_PLACEHOLDER": "Parlez-nous de votre style de voyage...",
-    "EDIT_INFO": "Informations Personnelles",
-    "EDIT": "Modifier le Profil",
-    "SAVE": "Enregistrer les Modifications",
-    "CANCEL": "Annuler",
-    "LOADING": "Mise à jour de votre profil...",
-    "TOTAL_RESERVATIONS": "Total des Réservations",
-    "UPCOMING_EVENTS": "Événements à Venir",
-    "ITINERARIES_CREATED": "Itinéraires Créés",
-    "ALL_RESERVATIONS": "Toutes les Réservations",
-    "NO_RESERVATIONS": "Aucune réservation trouvée.",
-    "NO_RESERVATIONS_DESC": "Commencez à réserver des événements, des hôtels et des activités pour les voir ici.",
-    "TYPE_EVENT": "ÉVÉNEMENT",
-    "TYPE_HOTEL": "HÔTEL",
-    "TYPE_RESTO": "RESTAURANT",
-    "TYPE_ACTIVITY": "ACTIVITÉ",
-    "VIEW": "Voir",
-    "NO_UPCOMING": "Aucun événement à venir.",
-    "NO_UPCOMING_DESC": "Parcourez notre catalogue d'événements pour trouver des activités passionnantes !",
-    "NO_ITINERARIES": "Aucun itinéraire créé.",
-    "NO_ITINERARIES_DESC": "Créez votre premier itinéraire et commencez à explorer !",
-    "DESTINATIONS_LABEL": "Destinations",
-    "CANCEL_CONFIRM": "Êtes-vous sûr de vouloir annuler cette réservation ?",
-    "CANCEL_SUCCESS": "Réservation annulée avec succès.",
-    "CANCEL_ERROR": "Erreur lors de l'annulation de la réservation.",
-    "PHOTO_UPDATED": "Photo mise à jour !",
-    "PHOTO_ERROR": "Échec du téléchargement de la photo.",
-    "UPDATE_SUCCESS": "Profil mis à jour avec succès !",
-    "UPDATE_ERROR": "Échec de la mise à jour du profil."
-  },
   "TERMS_AND_CONDITIONS": {
     "TITLE": "Conditions Générales",
     "LAST_UPDATED": "Dernière mise à jour",
@@ -969,5 +931,47 @@
     "EMPTY_TITLE": "Aucune recommandation disponible pour le moment.",
     "EMPTY_DESC": "Explorez plus de destinations et ajoutez-les à vos favoris pour obtenir des suggestions personnalisées.",
     "EXPLORE": "Explorer"
+  },
+  "MAP_PAGE": {
+    "EXPLORE": "Explorer le Maroc",
+    "SEARCH_PLACEHOLDER": "Rechercher des destinations...",
+    "NO_RESULTS": "Aucune destination trouvée",
+    "VIEW_DETAILS": "Voir les détails",
+    "MY_LOCATION": "Ma position"
+  },
+  "PROFILE": {
+    "TITLE": "Profil",
+    "EMAIL": "Email",
+    "PHONE": "Numéro de Téléphone",
+    "EDIT": "Modifier le Profil",
+    "CANCEL": "Annuler",
+    "SAVE": "Enregistrer les Changements",
+    "TOTAL_RESERVATIONS": "Total des Réservations",
+    "UPCOMING_EVENTS": "Événements à Venir",
+    "ITINERARIES_CREATED": "Itinéraires Créés",
+    "ALL_RESERVATIONS": "Toutes les Réservations",
+    "NO_RESERVATIONS": "Aucune réservation trouvée.",
+    "NO_RESERVATIONS_DESC": "Commencez à réserver des événements, des hôtels et des activités pour les voir ici.",
+    "TYPE_EVENT": "ÉVÉNEMENT",
+    "TYPE_HOTEL": "HÔTEL",
+    "TYPE_RESTO": "RESTAURANT",
+    "TYPE_ACTIVITY": "ACTIVITÉ",
+    "OFFER": "Offre",
+    "NO_UPCOMING": "Aucun événement à venir.",
+    "NO_UPCOMING_DESC": "Parcourez notre catalogue d'événements pour trouver des activités passionnantes !",
+    "NO_ITINERARIES": "Aucun itinéraire créé.",
+    "NO_ITINERARIES_DESC": "Créez votre premier itinéraire et commencez à explorer !",
+    "DESTINATIONS_LABEL": "Destinations",
+    "VIEW": "Voir",
+    "EDIT_INFO": "Informations Personnelles",
+    "FULL_NAME": "Nom Complet",
+    "LANGUAGE": "Langue",
+    "BIO": "Bio",
+    "BIO_PLACEHOLDER": "Parlez-nous de votre style de voyage...",
+    "LOADING": "Mise à jour du profil...",
+    "ROLE": {
+      "ADMIN": "Admin",
+      "USER": "Utilisateur"
+    }
   }
 }

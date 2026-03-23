@@ -149,5 +149,28 @@
         padding: 0 1rem;
     }
 }
+/* RTL Support */
+:host-context([dir="rtl"]) .admin-sidebar {
+    border-left: none;
+    border-right: none;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+}
 
+/* Force correct margins for mat-sidenav-content in RTL if Material defaults are overridden */
+:host-context([dir="rtl"]) ::ng-deep .mat-sidenav-content {
+    margin-right: 280px !important;
+    margin-left: 0 !important;
+}
+
+:host-context([dir="rtl"]) .profile-info {
+    align-items: flex-start;
+}
+
+:host-context([dir="rtl"]) .top-bar-left {
+    flex-direction: row-reverse;
+}
+
+:host-context([dir="rtl"]) .top-bar-right {
+    flex-direction: row-reverse;
+}
 

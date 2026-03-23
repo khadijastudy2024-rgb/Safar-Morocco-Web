@@ -8,7 +8,7 @@
         <div class="header-right desktop-only">
             <div class="date-picker-button">
                 <i class="bi bi-calendar3"></i>
-                <span>{{ currentDate | date:'MMMM dd, yyyy' }}</span>
+                <span>{{ currentDate | date:'longDate' }}</span>
             </div>
             <button class="btn-refresh" (click)="loadDashboardData()" [class.spinning]="isLoading">
                 <i class="bi bi-arrow-clockwise"></i>

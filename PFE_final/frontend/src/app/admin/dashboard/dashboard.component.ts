@@ -142,6 +142,13 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
                 this.stats = stats || this.stats;
                 this.logs = logs ? logs.slice(0, 5) : [];
                 this.updateCharts();
+                
+                // Also listen for language changes to re-translate labels
+                this.translate.onLangChange.subscribe(() => {
+                    this.updateCharts();
+                    this.cd.detectChanges();
+                });
+
                 this.isLoading = false;
                 this.cd.detectChanges();
             },
@@ -184,7 +191,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
                 .slice(0, 5); // Top 5
 
             this.doughnutChartData = {
-                labels: categories.map(c => c[0]),
+                labels: categories.map(c => this.translate.instant('DASHBOARD.CHARTS.CATEGORIES.' + c[0].toUpperCase())),
                 datasets: [{
                     data: categories.map(c => c[1] as number),
                     backgroundColor: ['#4facfe', '#43e97b', '#fa709a', '#fbc2eb', '#ffb86c'],
@@ -192,6 +199,14 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
                     hoverOffset: 4
                 }]
             };
+        } else {
+            // Default labels translated
+            this.doughnutChartData.labels = [
+                this.translate.instant('DASHBOARD.CHARTS.CATEGORIES.CULTURAL'),
+                this.translate.instant('DASHBOARD.CHARTS.CATEGORIES.NATURE'),
+                this.translate.instant('DASHBOARD.CHARTS.CATEGORIES.HISTORICAL'),
+                this.translate.instant('DASHBOARD.CHARTS.CATEGORIES.RELIGIOUS')
+            ];
         }
 
         // Update Bar Chart (Recent Events Duration)

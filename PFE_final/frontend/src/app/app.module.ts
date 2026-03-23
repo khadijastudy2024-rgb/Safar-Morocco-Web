@@ -1,6 +1,14 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Important for Material
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import localeAr from '@angular/common/locales/ar';
+import localeEs from '@angular/common/locales/es';
+
+registerLocaleData(localeFr);
+registerLocaleData(localeAr);
+registerLocaleData(localeEs);
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -45,6 +53,10 @@ export class CustomMissingTranslationHandler implements MissingTranslationHandle
     }
 }
 
+export function localeIdFactory() {
+    return localStorage.getItem('selected_language') || 'fr';
+}
+
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 @NgModule({
@@ -81,11 +93,14 @@ import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
         ItineraryModule
     ],
     providers: [
-        provideCharts(withDefaultRegisterables()),
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpLoggingInterceptor,
             multi: true
+        },
+        {
+            provide: LOCALE_ID,
+            useFactory: localeIdFactory
         }
     ],
     bootstrap: [AppComponent]

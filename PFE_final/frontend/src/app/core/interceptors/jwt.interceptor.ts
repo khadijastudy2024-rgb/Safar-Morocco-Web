@@ -11,17 +11,19 @@ export class JwtInterceptor implements HttpInterceptor {
         const token = this.authService.getToken();
         const isAuthUrl = request.url.includes('/api/auth');
 
-        // Only add token if it exists and we're NOT calling an auth endpoint 
-        // (Login/Register don't need the Bearer token usually, though it doesn't hurt, 
-        // but it can cause 401s if an expired token is sent during login)
+        // Read selected language from localStorage (set by LanguageService)
+        const lang = localStorage.getItem('selected_language') || 'en';
+
+        const headers: { [name: string]: string } = {
+            'Accept-Language': lang
+        };
+
+        // Only add token if it exists and we're NOT calling an auth endpoint
         if (token && !isAuthUrl) {
-            request = request.clone({
-                setHeaders: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
+            headers['Authorization'] = `Bearer ${token}`;
         }
 
+        request = request.clone({ setHeaders: headers });
         return next.handle(request);
     }
 }

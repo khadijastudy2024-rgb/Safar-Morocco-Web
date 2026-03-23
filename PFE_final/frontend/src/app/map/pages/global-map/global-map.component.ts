@@ -4,6 +4,7 @@ import 'leaflet-routing-machine';
 import { Destination } from '../../../core/models/destination.model';
 import { DestinationService } from '../../../core/services/destination.service';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     standalone: false,
@@ -40,7 +41,8 @@ export class GlobalMapComponent implements OnInit, AfterViewInit {
         private destinationService: DestinationService,
         private router: Router,
         private cdr: ChangeDetectorRef,
-        private ngZone: NgZone
+        private ngZone: NgZone,
+        private readonly translate: TranslateService
     ) { }
 
     ngOnInit(): void {
@@ -111,13 +113,14 @@ export class GlobalMapComponent implements OnInit, AfterViewInit {
                     imgUrl = clean.startsWith('uploads/') ? '/' + clean : '/uploads/' + clean;
                 }
 
+                const viewDetailsLabel = this.translate.instant('MAP_PAGE.VIEW_DETAILS');
                 const popupContent = `
                     <div class="map-popup-card">
                         <img src="${imgUrl}" class="popup-img">
                         <div class="popup-info">
                             <h6>${dest.nom}</h6>
                             <p>${dest.type}</p>
-                            <button class="btn-detail" data-id="${dest.id}">View Details</button>
+                            <button class="btn-detail" data-id="${dest.id}">${viewDetailsLabel}</button>
                         </div>
                     </div>
                 `;

@@ -9,15 +9,25 @@
     "DASHBOARD": "Panel de Control",
     "HELP": "Centro de Ayuda",
     "CONTACT": "Contacto",
-    "TERMS": "Términos",
-    "PRIVACY": "Privacidad",
-    "LANGUAGE": "Idioma",
-    "ADMIN": "Admin",
-    "PROFILE": "Perfil",
-    "SETTINGS": "Ajustes",
-    "LOGIN": "Iniciar sesión",
-    "SIGNUP": "Registrarse",
-    "LOGOUT": "Cerrar sesión"
+    "LOGOUT": "Salir"
+  },
+  "COMMON": {
+    "STATUS": {
+      "CONFIRMED": "Confirmado",
+      "PENDING": "Pendiente",
+      "CANCELLED": "Cancelado",
+      "REJECTED": "Rechazado",
+      "APPROVED": "Aprobado"
+    },
+    "DAY": "día",
+    "DAYS": "días",
+    "CLOSE": "Cerrar",
+    "READ_MORE": "Leer más",
+    "VIEW_MORE": "Ver más",
+    "VIEW_ALL": "Ver todo",
+    "SEARCH": "Buscar...",
+    "FILTER": "Filtrar",
+    "LOCATION": "Ubicación"
   },
   "DASHBOARD": {
     "TITLE": "Resumen de la página de inicio",
@@ -37,7 +47,13 @@
       "ENGAGEMENT_TITLE": "Interacción con destinos populares",
       "USER_GROWTH_LABEL": "Nuevos viajeros",
       "ACTIVITY_LABEL": "Actividad",
-      "DURATION_LABEL": "Duración (Días)"
+      "DURATION_LABEL": "Duración (Días)",
+      "CATEGORIES": {
+        "CULTURAL": "Cultural",
+        "NATURE": "Naturaleza",
+        "HISTORICAL": "Histórico",
+        "RELIGIOUS": "Religioso"
+      }
     },
     "LOGS": {
       "TITLE": "Registros de actividad del sistema",
@@ -62,17 +78,7 @@
       "REVIEWS": "Reseñas",
       "SYSTEM": "Sistema",
       "LOGS": "Registros de actividad",
-      "SETTINGS": "Ajustes",
       "SIGNOUT": "Cerrar sesión"
-    },
-    "LAYOUT": {
-      "PAGES": "Páginas",
-      "DASHBOARD": "Tablero",
-      "ADMINISTRATOR": "Administrador",
-      "ROLE": "Administrador",
-      "PROFILE": "Mi Perfil",
-      "SETTINGS": "Ajustes",
-      "LOGOUT": "Cerrar sesión"
     },
     "USERS": {
       "DELETE_CONFIRM": "¿Estás seguro de que quieres eliminar a este usuario?",
@@ -687,49 +693,6 @@
       "DELETE_ERROR": "Error al eliminar el evento"
     }
   },
-  "COMMON": {
-    "DAY": "día",
-    "DAYS": "días",
-    "CLOSE": "Cerrar",
-    "READ_MORE": "Leer Más",
-    "VIEW_MORE": "Ver Más",
-    "VIEW_ALL": "Ver Todo",
-    "SEARCH": "Buscar...",
-    "FILTER": "Filtrar",
-    "LOCATION": "Ubicación",
-    "PHONE": "Número de Teléfono",
-    "LANGUAGE": "Selección de Idioma",
-    "BIO": "Biografía",
-    "BIO_PLACEHOLDER": "Cuéntanos sobre tu estilo de viaje...",
-    "EDIT_INFO": "Información Personal",
-    "EDIT": "Editar Perfil",
-    "SAVE": "Guardar Cambios",
-    "CANCEL": "Cancelar",
-    "LOADING": "Actualizando tu perfil...",
-    "TOTAL_RESERVATIONS": "Total de Reservas",
-    "UPCOMING_EVENTS": "Próximos Eventos",
-    "ITINERARIES_CREATED": "Itinerarios Creados",
-    "ALL_RESERVATIONS": "Todas las Reservas",
-    "NO_RESERVATIONS": "No se encontraron reservas.",
-    "NO_RESERVATIONS_DESC": "¡Comienza a reservar eventos, hoteles y actividades para verlos aquí!",
-    "TYPE_EVENT": "EVENTO",
-    "TYPE_HOTEL": "HOTEL",
-    "TYPE_RESTO": "RESTAURANTE",
-    "TYPE_ACTIVITY": "ACTIVIDAD",
-    "VIEW": "Ver",
-    "NO_UPCOMING": "No hay eventos próximos.",
-    "NO_UPCOMING_DESC": "¡Busca en nuestro catálogo de eventos para encontrar actividades emocionantes!",
-    "NO_ITINERARIES": "No se han creado itinerarios.",
-    "NO_ITINERARIES_DESC": "¡Crea tu primer itinerario y comienza a explorar!",
-    "DESTINATIONS_LABEL": "Destinos",
-    "CANCEL_CONFIRM": "¿Estás seguro de que quieres cancelar esta reserva?",
-    "CANCEL_SUCCESS": "Reserva cancelada con éxito.",
-    "CANCEL_ERROR": "Error al cancelar la reserva.",
-    "PHOTO_UPDATED": "¡Foto actualizada!",
-    "PHOTO_ERROR": "Error al cargar la foto.",
-    "UPDATE_SUCCESS": "¡Perfil actualizado con éxito!",
-    "UPDATE_ERROR": "Error al actualizar el perfil."
-  },
   "TERMS_AND_CONDITIONS": {
     "TITLE": "Términos y Condiciones",
     "LAST_UPDATED": "Última actualización",
@@ -932,5 +895,47 @@
     "EMPTY_TITLE": "No hay recomendaciones disponibles todavía.",
     "EMPTY_DESC": "Explora más destinos y añádelos a tus favoritos para obtener sugerencias personalizadas.",
     "EXPLORE": "Explorar"
+  },
+  "MAP_PAGE": {
+    "EXPLORE": "Explorar Marruecos",
+    "SEARCH_PLACEHOLDER": "Buscar destinos...",
+    "NO_RESULTS": "No se encontraron destinos",
+    "VIEW_DETAILS": "Ver detalles",
+    "MY_LOCATION": "Mi ubicación"
+  },
+  "PROFILE": {
+    "TITLE": "Perfil",
+    "EMAIL": "Correo Electrónico",
+    "PHONE": "Número de Teléfono",
+    "EDIT": "Editar Perfil",
+    "CANCEL": "Cancelar",
+    "SAVE": "Guardar Cambios",
+    "TOTAL_RESERVATIONS": "Total de Reservas",
+    "UPCOMING_EVENTS": "Próximos Eventos",
+    "ITINERARIES_CREATED": "Itinerarios Creados",
+    "ALL_RESERVATIONS": "Todas las Reservas",
+    "NO_RESERVATIONS": "No se encontraron reservas.",
+    "NO_RESERVATIONS_DESC": "¡Comienza a reservar eventos, hoteles y actividades para verlos aquí!",
+    "TYPE_EVENT": "EVENTO",
+    "TYPE_HOTEL": "HOTEL",
+    "TYPE_RESTO": "RESTAURANTE",
+    "TYPE_ACTIVITY": "ACTIVIDAD",
+    "OFFER": "Oferta",
+    "NO_UPCOMING": "No hay eventos próximos.",
+    "NO_UPCOMING_DESC": "¡Busca en nuestro catálogo de eventos para encontrar actividades emocionantes!",
+    "NO_ITINERARIES": "No se han creado itinerarios.",
+    "NO_ITINERARIES_DESC": "¡Crea tu primer itinerario y comienza a explorar!",
+    "DESTINATIONS_LABEL": "Destinations",
+    "VIEW": "Ver",
+    "EDIT_INFO": "Información Personal",
+    "FULL_NAME": "Nombre Completo",
+    "LANGUAGE": "Idioma",
+    "BIO": "Biografía",
+    "BIO_PLACEHOLDER": "Cuéntanos sobre tu estilo de viaje...",
+    "LOADING": "Actualizando tu perfil...",
+    "ROLE": {
+      "ADMIN": "Administrador",
+      "USER": "Usuario"
+    }
   }
 }
